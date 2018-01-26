@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>登陆</title>
+  <style>
+    .content {
+      width: 350px;
+      margin: 0 auto;
+      margin-top: 280px;
+    }
+
+    .content .row {
+      height: 30px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .content .row h3 {
+      text-align: center;
+      color: #4378E6;
+    }
+
+    .content .row span {
+      display: block;
+      float: left;
+      width: 70px;
+      height: 32px;
+      line-height: 32px;
+      color: #111;
+    }
+
+    .content .row p {
+      position: absolute;
+      margin: 0;
+      left: 70px;
+      top: 35px;
+      color: red;
+    }
+
+    .content .row input {
+      display: block;
+      float: left;
+      width: 268px;
+      border: 1px solid #ddd;
+      height: 30px;
+      padding: 0;
+      padding-left: 10px;
+      outline: none;
+    }
+
+    .content .btn button {
+      display: block;
+      float: right;
+      height: 32px;
+      width: 280px;
+      background-color: #4378E6;
+      border-color: #4378E6;
+      color: #ffffff;
+      padding: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <form>
+      <div class="row">
+        <h3>机器人商店运营后台</h3>
+      </div>
+      <div class="row">
+        <span for="">用户名</span>
+        <input type="text" id="username">
+      </div>
+      <div class="row">
+        <span for="">密 &nbsp; 码</span>
+        <input type="password" id="password">
+      </div>
+      <div class="btn">
+        <button type="button" id="submit">登陆</button>
+      </div>
+    </form>
+  </div>
+  <script src="static/jquery-3.2.1.min.js"></script>
+  <script src="static/md5.js"></script>
+  <script src="static/common.js"></script>
+  <script>
+    $(function () {
+      $("#submit").click(function () {
+        var username = $("#username").val();
+        var pwd = MD5($("#password").val());
+        console.log(username, pwd)
+        if (username && pwd) {
+          $.ajax({
+            url: apiHost + "/auth/login",
+            type: "POST",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            data: {
+              username: username,
+              pwd: pwd
+            },
+            success: function (msg) {
+              if (msg.data == true) {
+                location.href = preToIndex;
+              } else {
+                alert("用户名或者密码错误，请重新输入!")
+              }
+            }
+          })
+        }
+      })
+    })
+
+  </script>
+</body>
+
+</html>
