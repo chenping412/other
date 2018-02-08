@@ -7,6 +7,7 @@ import UpdateList from '../components/update-list.vue'
 import UpdateDetail from '../components/update-detail.vue'
 
 import WriteRobot from '../components/write-robot'
+import StockComment from '../components/stock-comment'
 
 import AiPager from '../components/aipager'
 
@@ -62,6 +63,9 @@ export default new Router({
     {
       path: '/write-robot',
       component: WriteRobot
+    },{
+      path: '/stock-comment',
+      component: StockComment
     },
     {
       path: '/ai-pager',

@@ -1,0 +1,503 @@
+@media screen and (min-width: 769px) {
+    .main {
+        width: 100%;
+    }
+
+    .main .banner {
+        width: 100%;
+        height: 354px;
+        background-image: url(../images/experience-banner.png);
+        background-position: center;
+    }
+
+    .main .banner h1 {
+        font-size: 30px;
+        color: #FFFFFF;
+        line-height: 42px;
+        text-align: center;
+        padding-top: 135px;
+    }
+
+    .main .banner p {
+        font-size: 16px;
+        color: #FFFFFF;
+        line-height: 38px;
+        text-align: center;
+    }
+
+    .main .banner .btn {
+        text-align: center;
+        margin-top: 35px;
+    }
+
+    .main .banner .btn a {
+        display: inline-block;
+        width: 100px;
+        height: 36px;
+        line-height: 36px;
+        border: none;
+        font-size: 14px;
+    }
+
+    .main .banner .btn .left {
+        background-color: #477EF8;
+        border-radius: 2px;
+        margin-right: 20px;
+        color: #FFFFFF;
+    }
+
+    .main .banner .btn .left{
+
+    }
+
+    .main .banner .btn .left:hover {
+        background-color: #3F71DE;
+    }
+
+    .main .banner .btn .right {
+        border: 1px solid #477EF8;
+        border-radius: 2px;
+        background-color: transparent;
+        color: #477EF8;
+    }
+
+    .main .banner .btn .right a {
+
+    }
+
+    .main .banner .btn .right:hover {
+        background-color: #3F71DE;
+        color: #fff;
+    }
+
+    .main .banner .btn .right:hover{
+
+    }
+
+    .main .wrap {
+        width: 1000px;
+        margin: 0 auto;
+        padding-bottom: 60px;
+        border-: 1px solid #d8d8d8;
+    }
+
+    .main .wrap h1 {
+        font-size: 30px;
+        color: #111111;
+        line-height: 42px;
+        text-align: center;
+        padding: 60px 0 18px 0;
+    }
+
+    .main .function .wrap {
+        width: 880px;
+        border-bottom: 1px solid #d8d8d8;
+        padding-bottom: 40px;
+    }
+
+    .main .function .wrap ul {
+        margin-top: 36px;
+    }
+
+    .main .function .wrap ul li {
+        width: 342px;
+        height: 170px;
+        float: left;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background: #F0F0F0;
+        border: 1px solid #c4c5c6;
+        border-radius: 6px;
+        display: table;
+        padding: 0 28px 0 28px;
+    }
+
+    .main .function .wrap ul li .li-left {
+        width: 88px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .main .function .wrap ul li .li-left img {
+        width: 100%;
+    }
+
+    .main .function .wrap ul li .li-right {
+        padding-left: 28px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .main .function .wrap ul li .li-right h6 {
+        font-size: 26px;
+        color: #000000;
+        letter-spacing: 0;
+        line-height: 37px;
+        margin-bottom: 8px;
+    }
+
+    .main .function .wrap ul li .li-right p {
+        font-size: 14px;
+        color: #555555;
+        letter-spacing: 0;
+        line-height: 20px;
+    }
+
+    .main .scene .wrap ul {
+        margin-top: 22px;
+        text-align: center;
+    }
+
+    .main .scene .wrap ul li {
+        display: inline-block;
+    }
+
+    .main .scene .wrap ul li + li {
+        margin-left: 120px;
+    }
+
+    .main .scene .wrap ul li div {
+        width: 120px;
+        height: 120px;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .main .scene .wrap ul li div.search-left {
+        background-image: url(../images/phone-search.png);
+    }
+
+    .main .scene .wrap ul li div.search-right {
+        background-image: url(../images/web-search.png);
+    }
+
+    .main .scene .wrap ul li div.relative {
+        background-image: url(../images/news-recommand.png);
+    }
+
+    .main .scene .wrap ul li div.keyword-left {
+        background-image: url(../images/pick-up-news.png);
+    }
+
+    .main .scene .wrap ul li div.keyword-right {
+        background-image: url(../images/pick-up-comment.png);
+    }
+
+    .main .scene .wrap ul li div.catgory-left {
+        background-image: url(../images/emotion-analyse.png);
+    }
+
+    .main .scene .wrap ul li div.catgory-right {
+        background-image: url(../images/search-rate-boost.png);
+    }
+
+    .main .scene .wrap ul li div.summary-left {
+        background-image: url(../images/compress-news.png);
+    }
+
+    .main .scene .wrap ul li div.summary-right {
+        background-image: url(../images/compress-article.png);
+    }
+
+    .main .scene .wrap ul li div.extract-left {
+        background-image: url(../images/extract_line_01.png);
+    }
+
+    .main .scene .wrap ul li div.extract-mid {
+        background-image: url(../images/extract_line_02.png);
+    }
+
+    .main .scene .wrap ul li div.extract-right {
+        background-image: url(../images/extract_line_03.png);
+    }
+
+    .main .scene .wrap ul li div.classify-left {
+        background-image: url(../images/classify_line_01.png);
+    }
+
+    .main .scene .wrap ul li div.classify-right {
+        background-image: url(../images/classify_line_02.png);
+    }
+
+    .main .scene .wrap ul li div.filtration-left {
+        background-image: url(../images/filtration_line_01.png);
+    }
+
+    .main .scene .wrap ul li div.filtration-right {
+        background-image: url(../images/filtration_line_02.png);
+    }
+
+    .main .scene .wrap ul li div.track-left {
+        background-image: url(../images/track_line_01.png);
+    }
+
+    .main .scene .wrap ul li div.track-right {
+        background-image: url(../images/track_line_02.png);
+    }
+
+    .main .scene .wrap ul li div.crawl-left {
+        background-image: url(../images/crawl_line_01.png);
+    }
+    .main .scene .wrap ul li div.crawl-mid {
+        background-image: url(../images/crawl_line_02.png);
+    }
+    .main .scene .wrap ul li div.crawl-right {
+        background-image: url(../images/crawl_line_03.png);
+    }
+    .main .scene .wrap ul li div.trace-left {
+        background-image: url(../images/trace_line_01.png);
+    }
+    .main .scene .wrap ul li div.trace-right {
+        background-image: url(../images/trace_line_02.png);
+    }
+    .main .scene .wrap ul li div.channel-left {
+        background-image: url(../images/channel_line_01.png);
+    }
+    .main .scene .wrap ul li div.channel-right {
+        background-image: url(../images/channel_line_02.png);
+    }
+    .main .scene .wrap ul li div.hots-left {
+        background-image: url(../images/track_line_01.png);
+    }
+    .main .scene .wrap ul li div.hots-right {
+        background-image: url(../images/track_line_02.png);
+    }
+
+    .main .scene .wrap ul li span {
+        display: block;
+        font-size: 14px;
+        color: #111111;
+        line-height: 20px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .main .register {
+        width: 100%;
+        height: 240px;
+        background: url(../images/register-bg.png) no-repeat center;
+        background-size: cover;
+    }
+
+    .main .register .wrap {
+        width: 1000px;
+        margin: 0 auto;
+        height: 240px;
+    }
+
+    .main .register .wrap p {
+        float: left;
+        font-size: 30px;
+        color: #FFFFFF;
+        margin-top: 100px;
+        margin-right: 150px;
+        margin-left: 130px;
+    }
+
+    .main .register .wrap button {
+        float: left;
+        background-color: #FFFFFF;
+        border-radius: 2px;
+        font-size: 16px;
+        color: #477EF8;
+        margin-top: 90px;
+        width: 200px;
+        height: 60px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .main .register .wrap button:hover {
+        background-color: #E5E5E5;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .main {
+        width: 100%;
+    }
+
+    .main .banner {
+        width: 100%;
+        height: 5.59375rem;
+        background-image: url(../images/experience-banner.png);
+        background-position: center;
+        display: table;
+    }
+
+    .main .banner .banner-wrap {
+        display: table-cell;
+        vertical-align: middle;
+        padding-top: 1.40625rem;
+    }
+
+    .main .banner h1 {
+        font-size: 16px;
+        color: #FFFFFF;
+        line-height: 0.65625rem;
+        text-align: center;
+        /*padding-top: 2.234375rem;*/
+    }
+
+    .main .banner p {
+        width: 7.8125rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        color: #FFFFFF;
+        line-height: 0.515625rem;
+        text-align: center;
+    }
+
+    .main .wrap {
+        padding-top: 0.78125rem;
+    }
+
+    .main .wrap h1 {
+        font-size: 16px;
+        color: #111111;
+        line-height: 0.625rem;
+        text-align: center;
+        margin-bottom: 0.3125rem;
+    }
+
+    .main .function .wrap {
+        width: 9.375rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main .function dl {
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        background: #F0F0F0;
+        border: 1px solid #919191;
+        border-radius: 0.09375rem;
+    }
+
+    .main .function ul li {
+        margin-bottom: 0.3125rem;
+    }
+
+    .main .function dl dt {
+        float: left;
+        width: 1.6875rem;
+        margin-right: 0.46875rem;
+        padding-top: 0.3125rem;
+    }
+
+    .main .function dl dd {
+        float: left;
+        width: 6.15625rem;
+    }
+
+    .main .function dl dd h6 {
+        font-size: 13px;
+        color: #000000;
+        letter-spacing: 0;
+        line-height: 0.578125rem;
+        margin-bottom: 8px;
+    }
+
+    .main .function .wrap ul li dl dd p {
+        font-size: 14px;
+        color: #555555;
+        letter-spacing: 0;
+        line-height: 0.46875rem;
+    }
+
+    .main .scene .wrap ul {
+        margin-bottom: 0.78125rem;
+        text-align: center;
+    }
+
+    .main .scene .wrap ul li {
+        display: inline-block;
+        width: 2.84375rem;
+        margin: 0 0.703125rem;
+    }
+
+    .main .scene .wrap ul li img {
+        display: block;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main .scene .wrap ul li div.search-right {
+        background-image: url(../images/web-search.png);
+    }
+
+    .main .scene .wrap ul li div.relative {
+        background-image: url(../images/news-recommand.png);
+    }
+
+    .main .scene .wrap ul li div.keyword-left {
+        background-image: url(../images/pick-up-news.png);
+    }
+
+    .main .scene .wrap ul li div.keyword-right {
+        background-image: url(../images/pick-up-comment.png);
+    }
+
+    .main .scene .wrap ul li div.catgory-left {
+        background-image: url(../images/emotion-analyse.png);
+    }
+
+    .main .scene .wrap ul li div.catgory-right {
+        background-image: url(../images/search-rate-boost.png);
+    }
+
+    .main .scene .wrap ul li div.summary-left {
+        background-image: url(../images/compress-news.png);
+    }
+
+    .main .scene .wrap ul li div.summary-right {
+        background-image: url(../images/compress-article.png);
+    }
+
+    .main .scene .wrap ul li span {
+        display: block;
+        font-size: 11px;
+        color: #111111;
+        line-height: 0.46875rem;
+        margin-top: 0.34375rem;
+        text-align: center;
+    }
+
+    .main .register {
+        background-image: linear-gradient(-133deg, #4570FF 0%, #1D93FF 100%);
+        padding-top: 0.9375rem;
+        padding-bottom: 0.78125rem;
+        text-align: center;
+    }
+
+    .main .register h2 {
+        font-size: 0.53125rem;
+        color: #FFFFFF;
+        line-height: 0.78125rem;
+        text-align: center;
+        margin-bottom: 0.25rem;
+    }
+
+    .main .register p {
+        font-size: 0.34375rem;
+        color: #FFFFFF;
+        line-height: 0.53125rem;
+        margin-bottom: 0.5625rem;
+    }
+
+    .main .register button {
+        width: 3.0rem;
+        height: 1.09375rem;
+        background: #FFFFFF;
+        border-radius: 0.03125rem;
+        font-size: 13px;
+        line-height: 0.5625rem;
+        border: none;
+    }
+
+    .main .register button a {
+        color: #477EF8;
+    }
+}

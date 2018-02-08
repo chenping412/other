@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>在线体验-Giiso机器人商店</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+    <link rel="stylesheet" type="text/css" href="css/onlinedemo.css">
+</head>
+
+<body>
+<div class="header-white">
+    <div class="header-inner clearfix">
+        <a href="index.html" class="log clearfix">
+        </a>
+        <span class="giiso">智搜官网</span>
+        <div class="login-resiter clearfix" id="login_resiter">
+            <button class="btn login">登录</button>
+            <button class="btn register">注册</button>
+        </div>
+        <div class="login-resiter clearfix" id="user_info" style="display: none">
+            <button class="btn user_info">控制台</button>
+            <button class="btn login_out">退出</button>
+        </div>
+        <ul class="nav">
+            <li>
+                <a href="index.html">首页</a>
+            </li>
+            <li class="product-service">
+                <a href="javascript:;">
+                    产品服务
+                </a>
+                <div class="child-nav">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="javascript:;">采集机器人</a>
+                            <ul class="clearfix">
+                                <li>
+                                    <a href="product-search.html">资讯搜索</a>
+                                </li>
+                                <li>
+                                    <a href="product-relative.html">相似资讯</a>
+                                </li>
+                                <!--<li>-->
+                                    <!--<a href="product-crawl.html">资讯爬取</a>-->
+                                <!--</li>-->
+                                <li>
+                                    <a href="product-trace.html">资讯追踪</a>
+                                </li>
+                                <li>
+                                    <a href="product-channel.html">资讯频道</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">编辑机器人</a>
+                            <ul class="clearfix">
+                                <li>
+                                    <a href="product-catgory.html">智能分词</a>
+                                </li>
+                                <li>
+                                    <a href="product-keyword.html">关键词提取</a>
+                                </li>
+                                <li>
+                                    <a href="product-extract.html">实体提取</a>
+                                </li>
+                                <li>
+                                    <a href="product-classify.html">文本分类</a>
+                                </li>
+                                <!--<li>-->
+                                <!--<a href="product-filtration.html">内容过滤</a>-->
+                                <!--</li>-->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">写作机器人</a>
+                            <ul class="clearfix">
+                                <li>
+                                    <a href="product-summary.html">摘要压缩</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">分析机器人</a>
+                            <ul class="clearfix">
+                                <li>
+                                    <a href="product-track.html">传播轨迹</a>
+                                </li>
+                                <li>
+                                    <a href="product-hots.html">领域热词</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="active">
+                <a href="onlinedemo.html">在线体验</a>
+            </li>
+            <li class="document-center">
+                <a href="document-guide.html">文档中心</a>
+                <div class="child-nav">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="document-guide.html">API</a>
+                        </li>
+                        <li>
+                            <a href="document-sdk-introdution.html">SDK</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="about.html">关于智搜</a>
+            </li>
+        </ul>
+    </div>
+    <div class="consult">
+        <div class="qq">
+            <dl>
+                <dt></dt>
+                <dd>QQ咨询</dd>
+            </dl>
+        </div>
+        <div class="tel">
+            <dl>
+                <dt></dt>
+                <dd>电话咨询</dd>
+            </dl>
+            <div class="tel-num">0755-86720697</div>
+            <i></i>
+        </div>
+    </div>
+</div>
+<div class="main clearfix" id="app">
+    <!-- <div class="loading-model" v-show="loadingShow">
+      <img src="images/loading.gif" alt="">
+    </div> -->
+    <div class="wrap clearfix">
+        <div class="sidebar">
+            <ul id="sidebar-nav">
+                <li>
+                    <span>采集机器人</span>
+                    <ul>
+                        <li class="active">
+                            <a href="#news-search">资讯搜索</a>
+                        </li>
+                        <li>
+                            <a href="#news-relative">相似资讯</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>编辑机器人</span>
+                    <ul>
+                        <li>
+                            <a href="#textcatgory">智能分词</a>
+                        </li>
+                        <li>
+                            <a href="#keyword">关键词提取</a>
+                        </li>
+                        <li>
+                            <a href="#extract">实体提取</a>
+                        </li>
+                        <li>
+                            <a href="#classify">文本分类</a>
+                        </li>
+                        <!--<li>-->
+                        <!--<a href="#filtration">内容过滤</a>-->
+                        <!--</li>-->
+                    </ul>
+                </li>
+                <li>
+                    <span>写作机器人</span>
+                    <ul>
+                        <li>
+                            <a href="#summary">摘要压缩</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span>分析机器人</span>
+                    <ul>
+                        <li>
+                            <a href="#track">传播轨迹</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <!-- 资讯搜索 -->
+            <div class="news-search content-box">
+                <span id="news-search"></span>
+                <h1>资讯搜索</h1>
+                <h6>根据深度学习算法，从不同的维度将资讯进行聚合，为客户提供全网资讯</h6>
+                <div class="search-box clearfix">
+                    <input type="text" placeholder="请输入搜索内容" v-model="newsSearchValue">
+                    <button @click="newsSearch" v-show="loadingShow_1">搜索</button>
+                    <button class="btn-icon" v-show="!loadingShow_1" disabled="disabled"></button>
+                </div>
+                <div class="search-result">
+                    <ul>
+                        <li v-for="(list, index) in searchResult" class="clearfix">
+                            <a v-show="list.image" target="_blank" :href="list.url" class="pic"
+                               :style=" list.image instanceof Array ? 'backgroundImage: url(' + list.image[0] + ')' : 'backgroundImage: url(' + list.image + ')'"></a>
+                            <div class="text">
+                                <h4>
+                                    <a :href="list.url" target="_blank">{{list.title}}</a>
+                                </h4>
+                                <div class="clearfix">
+                                    <span class="from">{{list.from}}</span>
+                                    <span class="date">{{list.download}}</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!-- 相似资讯 -->
+            <div class="news-relative content-box">
+                <span id="news-relative"></span>
+                <h1>相似资讯</h1>
+                <h6>通过智能语义算法，分析文章的核心内容，并实时返回该文章的相似资讯</h6>
+                <p class="label">输入一段想分析的文字：</p>
+                <div class="test-area clearfix">
+                    <div class="area-left">
+                        <textarea v-model="newsRelativeValue" style="resize: none;" maxlength="500"></textarea>
+                        <p class="placeholder">最多输入500字</p>
+                    </div>
+                    <div class="area-btn">
+                        <button @click="newsRelative" v-show="loadingShow_2">挖掘</button>
+                        <button class="btn-icon" v-show="!loadingShow_2" disabled="disabled"></button>
+                    </div>
+                    <div class="area-right">
+                        <ul>
+                            <li v-for="(list, index) in relativeNewsData" class="clearfix">
+                                <a v-show="list.image" target="_blank" :href="list.url" class="pic"
+                                   :style=" list.image instanceof Array ? 'backgroundImage: url(' + list.image[0] + ')' : 'backgroundImage: url(' + list.image + ')'"></a>
+                                <div class="text">
+                                    <h4>
+                                        <a :href="list.url" target="_blank">{{list.title.length > 20 ?
+                                            list.title.slice(0,20)+"..." : list.title}}</a>
+                                    </h4>
+                                    <div class="clearfix">
+                                        <span class="from">{{list.from}}</span>
+                                        <span class="date">{{list.download.slice(0, 10)}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!-- 智能分词 -->
+            <div class="news-search content-box">
+                <span id="textcatgory"></span>
+                <h1>智能分词</h1>
+                <h6>Giiso引擎对文章进行分词，并将分词结果返回给用户。</h6>
+                <p class="label">输入一段想分析的文字：</p>
+                <div class="search-participle">
+                    <div class="participle-top">
+                        <textarea v-model="textCatgoryValue" style="resize: none" maxlength="500"></textarea>
+                        <p class="placeholder">最多输入500字</p>
+                    </div>
+                    <div class="participle-mid">
+                        <button @click="textCatgory" v-show="loadingShow_3">分词</button>
+                        <button class="btn-icon" v-show="!loadingShow_3" disabled="disabled"></button>
+                    </div>
+                    <div class="participle-bottom">
+                        <ul class="clearfix">
+                            <li v-for="(list, index) in catgoryData">
+                                <div>{{list.term}}</div>
+                                <span>{{list.typeName}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!-- 关键词提取 -->
+            <div class="news-search content-box">
+                <span id="keyword"></span>
+                <h1>关键词提取</h1>
+                <h6>基于智搜智能引擎，将每篇文章的核心前10个关键词提取出来。</h6>
+                <p class="label">输入一段想分析的文字：</p>
+                <div class="search-participle">
+                    <div class="participle-top">
+                        <textarea v-model="textKeywordValue" style="resize: none" maxlength="500"></textarea>
+                        <p class="placeholder">最多输入500字</p>
+                    </div>
+                    <div class="participle-mid">
+                        <button @click="getKeyword" v-show="loadingShow_4">提取</button>
+                        <button class="btn-icon" v-show="!loadingShow_4" disabled="disabled"></button>
+
+                    </div>
+                    <div class="participle-bottom keyword-extract">
+                        <ul class="clearfix">
+                            <li v-for="(list, index) in keywordList">
+                                <div>{{list.key}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!--文本分类-->
+            <div class="news-search content-box">
+                <span id="classify"></span>
+                <h1>文本分类</h1>
+                <h6>根据智能语义技术，提取出文本的所属类别</h6>
+                <p class="label">输入一段想分析的文字：</p>
+                <div class="search-participle">
+                    <div class="participle-top">
+                        <textarea v-model="classifyValue" style="resize: none" maxlength="500"></textarea>
+                        <!--<p class="placeholder" style="cursor: pointer" @click="classifyNext">换一篇</p>-->
+                    </div>
+                    <div class="participle-mid">
+                        <button @click="classifyNext" v-show="loadingShow_7">换一篇</button>
+                        <button class="btn-icon" v-show="!loadingShow_7" disabled="disabled"></button>
+
+                    </div>
+                    <div class="participle-bottom keyword-extract">
+                        <ul class="clearfix">
+                            <li v-for="(list, index) in classifyData">
+                                <div>{{list}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!--实体提取-->
+            <div class="news-search content-box">
+                <span id="extract"></span>
+                <h1>实体提取</h1>
+                <h6>根据智能语义技术，提取出文本的实体词</h6>
+                <p class="label">输入一段您想提取的文字：</p>
+                <div class="search-participle">
+                    <div class="participle-top">
+                        <textarea v-model="entityValue" style="resize: none" maxlength="500"></textarea>
+                        <p class="placeholder">最多输入500字</p>
+                    </div>
+                    <div class="participle-mid">
+                        <button @click="entityExtract" v-show="loadingShow_6">提取</button>
+                        <button class="btn-icon" v-show="!loadingShow_6" disabled="disabled"></button>
+
+                    </div>
+                    <div class="participle-bottom keyword-extract">
+                        <ul class="clearfix">
+                            <li v-for="(list, index) in extractData.persons">
+                                <div>{{list + "(人物)"}}</div>
+                            </li>
+                            <li v-for="(list, index) in extractData.institutions">
+                                <div>{{list + "(机构)"}}</div>
+                            </li>
+                            <li v-for="(list, index) in extractData.places">
+                                <div>{{list + "(地点)"}}</div>
+                            </li>
+                            <li v-for="(list, index) in extractData.nounKeywords">
+                                <div>{{list + "(名词)"}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!--内容过滤-->
+            <!--<div class="news-search content-box">-->
+            <!--<span id="filtration"></span>-->
+            <!--<h1>内容过滤</h1>-->
+            <!--<h6>识别文字内是否含过滤药品、房产、汽车、赌博等垃圾信息</h6>-->
+            <!--<p class="label">输入一段想分析的文字：</p>-->
+            <!--<div class="search-participle">-->
+            <!--<div class="participle-top">-->
+            <!--<textarea v-model="textFiltrationValue" style="resize: none" maxlength="500"></textarea>-->
+            <!--<p class="placeholder">最多输入500字</p>-->
+            <!--</div>-->
+            <!--<div class="participle-mid">-->
+            <!--<button @click="textFiltration" v-show="loadingShow_8" class="filtration">{{filtrationValue}}-->
+            <!--</button>-->
+            <!--<button class="btn-icon" v-show="!loadingShow_8" disabled="disabled"></button>-->
+
+            <!--</div>-->
+            <!--</div>-->
+            <!--<p>在线检测仅作为部分效果体验，-->
+            <!--<a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>-->
+            <!--</p>-->
+            <!--</div>-->
+            <!-- 摘要压缩 -->
+            <div class="news-compress content-box">
+                <span id="summary"></span>
+                <h1>摘要压缩</h1>
+                <h6>平台会自动实时的为用户将每篇文章压缩成摘要，保留了文章的中心思想。</h6>
+                <p class="label">输入一段想分析的文字：</p>
+                <div class="test-area clearfix summary">
+                    <div class="area-left">
+                        <textarea v-model="writeSummaryValue" style="resize: none" maxlength="500"></textarea>
+                        <p class="placeholder">最多输入500字</p>
+                    </div>
+                    <div class="area-btn">
+                        <button @click="writeSummary" v-show="loadingShow_5">压缩</button>
+                        <button class="btn-icon" v-show="!loadingShow_5" disabled="disabled"></button>
+                    </div>
+                    <div class="area-right">{{ summary }}</div>
+                </div>
+                <p>在线检测仅作为部分效果体验，
+                    <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                </p>
+            </div>
+            <!--传播轨迹-->
+            <div class="news-search content-box">
+                <span id="track"></span>
+                <h1>传播轨迹</h1>
+                <h6>根据智能语义技术，提取出文本的对应新闻资讯以及传播轨迹</h6>
+                <p class="label">输入一段想分析的文字：</p>
+                <div class="search-participle">
+                    <div class="participle-top">
+                        <textarea v-model="trackValue" style="resize: none" maxlength="500"></textarea>
+                        <!--<p class="placeholder" style="cursor: pointer" @click="trackNext">换一篇</p>-->
+                    </div>
+                    <div class="participle-mid">
+                        <button @click="trackNext" v-show="loadingShow_9">换一篇</button>
+                        <button class="btn-icon" v-show="!loadingShow_9" disabled="disabled"></button>
+
+                    </div>
+                    <div class="participle-bottom keyword-extract track">
+                        <!--<h5>标题：中国将人工智能上升为国家战略</h5>-->
+                        <ul>
+                            <li class="clearfix" v-for="(list, index) in trackData">
+                                <b>{{index+1}}</b>
+                                <p class="news-list">
+                                <h5>{{list.title}}</h5>
+                                <span class="title">{{list.site}}</span>
+                                <span class="date">{{list.time}}</span>
+                                </p>
+                            </li>
+                        </ul>
+                        <!--</div>-->
+                    </div>
+                    <p>在线检测仅作为部分效果体验，
+                        <a href="javascript:;" class="register">立即注册，即可免费申请试用！</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <ul class="giiso-relative">
+        <li>
+            <span></span>
+        </li>
+        <li>
+            <h4>产品</h4>
+            <ul>
+                <li>采集机器人</li>
+                <li>编辑机器人</li>
+                <li>写作机器人</li>
+                <li>分析机器人</li>
+            </ul>
+        </li>
+        <li>
+            <h4>体验</h4>
+            <ul>
+                <li>
+                    <a href="onlinedemo.html#news-search">资讯搜索</a>
+                </li>
+                <li>
+                    <a href="onlinedemo.html#news-relative">相似资讯</a>
+                </li>
+                <li>
+                    <a href="onlinedemo.html#textcatgory">智能分词</a>
+                </li>
+                <li>
+                    <a href="onlinedemo.html#keyword">关键词提取</a>
+                </li>
+                <li>
+                    <a href="onlinedemo.html#summary">摘要压缩</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>帮助</h4>
+            <ul>
+                <li>
+                    <a href="document-guide.html">接入指南</a>
+                </li>
+                <li>
+                    <a href="commonquestions.html">常见问题</a>
+                </li>
+                <li>
+                    <a href="termsservice.html">服务条款</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>联系我们</h4>
+            <ul>
+                <li>电话：0755-86720697</li>
+                <li>QQ：2020601975</li>
+                <li>邮箱：contact@giiso.com</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="copyright">
+        <div class="wrap">
+            <p class="left">
+                地址：深圳市南山区清华信息港科研楼905室／1010室
+            </p>
+            <p class="right">
+                &copy;2016-2017 Giiso.com All Rights Reserved | 深圳市智搜信息技术有限公司
+            </p>
+        </div>
+    </div>
+</div>
+<div class="model" id="register">
+    <div class="model-content">
+        <div class="model-header clearfix">
+            <h3>注册</h3>
+            <h3 class="reset" style="display: none">重置密码</h3>
+            <span class="close">×</span>
+        </div>
+        <div class="model-body">
+            <div>
+                <div class="form-row">
+                    <input type="text" placeholder="请输入手机号码" autocomplete="off" id="register_tel">
+                    <span>手机号码不能为空</span>
+                    <span>手机号码格式错误</span>
+                </div>
+                <div class="form-row clearfix">
+                    <input type="text" placeholder="请输入图形验证码" max-length="4" autocomplete="off"
+                           id="register_img_check_code">
+                    <img src="" class="register_img_check_code" onclick="getImgCheckCode()">
+                    <span>验证码不能为空</span><br>
+                    <span>验证码不正确，请重新输入</span>
+                </div>
+                <div class="form-row clearfix">
+                    <input type="text" placeholder="请输入手机号校验码" autocomplete="off" id="register_tel_check_code">
+                    <button class="register_tel_check_code" disabled="disabled" onclick="getTelCheckCode()">发送
+                    </button>
+                    <span>验证码不能为空</span>
+                </div>
+                <div class="form-row">
+                    <input type="password" placeholder="密码（字母、数字、至少6位）" autocomplete="off" id="register_password">
+                    <span>密码不能为空</span>
+                    <span>密码至少6位</span>
+                </div>
+                <div class="form-row">
+                    <input type="password" placeholder="确认密码" autocomplete="off" id="register_confirm_password">
+                    <span>2次密码不一致</span>
+                </div>
+                <div class="form-row btn">
+                    <button id="btn_register" class="btn_register" onclick="register()">开始注册
+                    </button>
+                    <button id="btn_reset" class="btn_register" onclick="register()" style="display: none">重置密码
+                    </button>
+                </div>
+                <div class="form-row checkbox clearfix">
+                    <input type="checkbox" id="register_terms_service" checked="checked">
+                    <p>同意并遵守<a href="termsservice.html">《服务条款》</a></p><br>
+                    <!--<span>需要先同意服务条款，才能进行注册！</span>-->
+                </div>
+                <div class="form-row" style="text-align: center">
+                    <span class="help" style="display: none;">如无法通过手机找回请发送邮件至contact@giiso.com 寻求帮助</span>
+                </div>
+                <div class="form-row checkbox clearfix">
+                    <p class="register_error" id="register_error">注册失败，请检查输入内容是否有误！</p>
+                </div>
+            </div>
+        </div>
+        <!--<div class="model-body">-->
+        <!--<p style="text-align: center;font-size: 14px; color: #111; line-height: 25px; margin-top: 90px;">-->
+        <!--注册功能暂未开放</p>-->
+        <!--<p style="text-align: center;font-size: 14px; color: #111; line-height: 25px;">您可以先联系我们商务进行一对一服务</p>-->
+        <!--<p style="text-align: center;font-size: 14px; color: #111; line-height: 25px;">商务电话： 0755-86720697</p>-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="model" id="login">
+    <div class="model-content">
+        <div class="model-header clearfix">
+            <h3>登录</h3>
+            <span class="close">×</span>
+        </div>
+        <div class="model-body">
+            <div>
+                <div class="form-row">
+                    <input type="text" placeholder="请输入手机号码" id="login_tel">
+                    <span>手机号码不能为空</span>
+                    <span>手机号码格式错误</span>
+                </div>
+                <div class="form-row">
+                    <input type="password" placeholder="请输入登录密码" id="login_password">
+                    <span>密码不能为空</span>
+                    <span>密码至少6位</span>
+                </div>
+                <div class="form-row btn">
+                    <button id="login_submit" onclick="login()">登录</button>
+                </div>
+                <div class="form-row clearfix">
+                    <a href="javascript:;" class="fl reset">忘记密码?</a>
+                    <a href="javascript:;" class="fr register">立即注册</a>
+                </div>
+                <div class="form-row faild" style="display: none;">
+                    <p style="text-align: center; color: red;">登录失败, 用户名不存在或者用户名密码错误</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/plugin/jquery-1.10.1.min.js"></script>
+<script src="js/plugin/vue.min.js"></script>
+<script src="js/plugin/md5.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+           // apiHost: "http://api.giiso.ai/openapi",
+           apiHost: "http://192.168.2.95:9090/openapi",
+//             apiHost: "http://192.168.2.208:8082/openapi",
+            newsSearchValue: "人工智能",
+            newsRelativeValue: "人工智能的迅速发展将深刻改变人类社会生活、改变世界。为抢抓人工智能发展的重大战略机遇，构筑我国人工智能发展的先发优势，加快建设创新型国家和世界科技强国，按照党中央、国务院部署要求，制定本规划。",
+            textCatgoryValue: "11月24日讯勇士主场迎战湖人，最终他们149-106轻取对手，豪取九连胜，同时报了20分惨败湖人的一箭之仇。湖人方面，拉塞尔因膝伤缺席2-3周，兰德尔因臀部受伤缺阵，英格拉姆出任首发，这也是他生涯首次出任首发。库里拿到31分5个篮板9次助攻，杜兰特28分6个篮板5次助攻，汤普森26分，格林5分9个篮板11次助攻。",
+            textKeywordValue: "11月24日讯勇士主场迎战湖人，最终他们149-106轻取对手，豪取九连胜，同时报了20分惨败湖人的一箭之仇。湖人方面，拉塞尔因膝伤缺席2-3周，兰德尔因臀部受伤缺阵，英格拉姆出任首发，这也是他生涯首次出任首发。库里拿到31分5个篮板9次助攻，杜兰特28分6个篮板5次助攻，汤普森26分，格林5分9个篮板11次助攻。",
+            writeSummaryValue: "人工智能发展进入新阶段。经过60多年的演进，特别是在移动互联网、大数据、超级计算、传感网、脑科学等新理论新技术以及经济社会发展强烈需求的共同驱动下，人工智能加速发展，呈现出深度学习、跨界融合、人机协同、群智开放、自主操控等新特征。大数据驱动知识学习、跨媒体协同处理、人机协同增强智能、群体集成智能、自主智能系统成为人工智能的发展重点，受脑科学研究成果启发的类脑智能蓄势待发，芯片化硬件化平台化趋势更加明显，人工智能发展进入新阶段。当前，新一代人工智能相关学科发展、理论建模、技术创新、软硬件升级等整体推进，正在引发链式突破，推动经济社会各领域从数字化、网络化向智能化加速跃升。人工智能成为国际竞争的新焦点。人工智能是引领未来的战略性技术，世界主要发达国家把发展人工智能作为提升国家竞争力、维护国家安全的重大战略，加紧出台规划和政策，围绕核心技术、顶尖人才、标准规范等强化部署，力图在新一轮国际科技竞争中掌握主导权。当前，我国国家安全和国际竞争形势更加复杂，必须放眼全球，把人工智能发展放在国家战略层面系统布局、主动谋划，牢牢把握人工智能发展新阶段国际竞争的战略主动，打造竞争新优势、开拓发展新空间，有效保障国家安全。人工智能成为经济发展的新引擎。人工智能作为新一轮产业变革的核心驱动力，将进一步释放历次科技革命和产业变革积蓄的巨大能量，并创造新的强大引擎，重构生产、分配、交换、消费等经济活动各环节，形成从宏观到微观各领域的智能化新需求，催生新技术、新产品、新产业、新业态、新模式，引发经济结构重大变革，深刻改变人类生产生活方式和思维模式，实现社会生产力的整体跃升。我国经济发展进入新常态，深化供给侧结构性改革任务非常艰巨，必须加快人工智能深度应用，培育壮大人工智能产业，为我国经济发展注入新动能。",
+            entityValue: "万达退出200亿投资长白山度假区 但仍负责运营。王健林旗下的大连万达集团悄然退出了万达长白山国际旅游度假区的经营。11月29日，澎湃新闻发现，在经营万达长白山国际旅游度假区的长白山国际旅游度假区开发公司的股东一列，大连万达集团已经退出，目前股东为北京用友科技有限公司和大连一方集团有限公司。股东变更时间为6月16日。变更后的信息显示，大连一方集团认缴出资额为29.5亿元，北京用友科技认缴出资额为5000万元。以此计算，大连一方的持股比例约为98.33%，北京用友科技持股比例约为1.66%。此外，该公司的法人代表由万达商业地产总裁齐界变更为大连一方集团有限公司董事长孙喜双。资料显示，该公司成立于2009年6月5日，注册资本金为30亿元，经营范围为长白山国际旅游度假区开发、建设、经营管理。根据万达官网资料显示，2009年3月6日，在该项目的签约仪式上，王健林、泛海集团董事长卢志强、一方集团董事长孙喜双、巨人集团董事长史玉柱\" target=\"_blank\" style=\"color: rgb(15, 107, 153);\">史玉柱、亿利资源集团董事长王文彪作为投资方代表与吉林省白山市抚松县领导现场签约。当时，长白山项目的投资方共有5家。5个月之后，在该项目的破土动工仪式上，作为投资方之一的巨人集团董事长史玉柱并没有出现。此后，长白山国际旅游度假区开发公司的股权频繁出现变更。工商资料显示，2012年4月，在最初的5家投资方中，其中万达商业和大连一方的出资额最多，而这5家投资方中并未出现史玉柱的巨人集团，取而代之的是北京用友科技有限公司。一年多之后，股权发生变更，泛海控股的持股比例从20%下降至5%，大连一方的持股比例由20%降至5%，万达商业的股权比例则由45%增至69%。仅过了半年，2014年2月20日，该公司股权再度发生变更，亿利资源集团将其持有的10%股权卖给了万达商业，退出了该项目，万达集团的持股比例升至79%",
+            // classifyValue: "",
+            classifyValue: "苹果发布更新修复 macOS 漏洞，并发表道歉声明。有用户发现 macOS High Sierra 存在严重漏洞，可以无密码登录管理员权限的消息，苹果第一时间承认问题的存在并承诺尽快修复。现在苹果已经推出更新并建议大家尽快升级 macOS High Sierra 系统。苹果建议所有 macOS High Sierra 用户访问 Mac App Store，在更新页进行系统更新。更新1：更新后不用重启电脑，补丁自动完成修补。现在已经无法使用 root 用户名无密码登录取得管理员权限。更新2：苹果发表声明：苹果也通过媒体对外发表声明，就此事所带来的影响向所有 Mac 用户道歉。苹果声明如下：安全对每一款苹果产品来讲都是至关重要的，很遗憾我们在这次的 macOS 更新上犯了错误。当我们的安全工程师在昨天下午意识到这个问题的时候，我们立刻开始着手准备更新并修补漏洞。今晨 8 点，安全更新已经推送，从现在开始补丁将自动安装在运行 macOS High Sierra 10.13.1 的系统上。我们十分遗憾出现了这个错误，我们向所有 Mac 用户道歉，既对带来这样一个漏洞表示歉意，也对带来的关注表示歉意。我们正在审核我们的开发流程，防止这种情况再次发生",
+            textFiltrationValue: "",
+            filtrationValue: "通过",
+            trackValue: "苹果发布更新修复 macOS 漏洞，并发表道歉声明。有用户发现 macOS High Sierra 存在严重漏洞，可以无密码登录管理员权限的消息，苹果第一时间承认问题的存在并承诺尽快修复。现在苹果已经推出更新并建议大家尽快升级 macOS High Sierra 系统。苹果建议所有 macOS High Sierra 用户访问 Mac App Store，在更新页进行系统更新。更新1：更新后不用重启电脑，补丁自动完成修补。现在已经无法使用 root 用户名无密码登录取得管理员权限。更新2：苹果发表声明：苹果也通过媒体对外发表声明，就此事所带来的影响向所有 Mac 用户道歉。苹果声明如下：安全对每一款苹果产品来讲都是至关重要的，很遗憾我们在这次的 macOS 更新上犯了错误。当我们的安全工程师在昨天下午意识到这个问题的时候，我们立刻开始着手准备更新并修补漏洞。今晨 8 点，安全更新已经推送，从现在开始补丁将自动安装在运行 macOS High Sierra 10.13.1 的系统上。我们十分遗憾出现了这个错误，我们向所有 Mac 用户道歉，既对带来这样一个漏洞表示歉意，也对带来的关注表示歉意。我们正在审核我们的开发流程，防止这种情况再次发生。",
+            searchResult: [],
+            relativeNewsData: [],
+            catgoryData: [],
+            keywordList: [],
+            extractData: {},
+            classifyData: [],
+            filtrationData: [],
+            trackData: [],
+            summary: "",
+            loadingShow_1: true,
+            loadingShow_2: true,
+            loadingShow_3: true,
+            loadingShow_4: true,
+            loadingShow_5: true,
+            loadingShow_6: true,
+            loadingShow_7: true,
+            loadingShow_8: true,
+            loadingShow_9: true,
+            classifyNum: 0,
+            classifyModelArt: [
+                "苹果发布更新修复 macOS 漏洞，并发表道歉声明。有用户发现 macOS High Sierra 存在严重漏洞，可以无密码登录管理员权限的消息，苹果第一时间承认问题的存在并承诺尽快修复。现在苹果已经推出更新并建议大家尽快升级 macOS High Sierra 系统。苹果建议所有 macOS High Sierra 用户访问 Mac App Store，在更新页进行系统更新。更新1：更新后不用重启电脑，补丁自动完成修补。现在已经无法使用 root 用户名无密码登录取得管理员权限。更新2：苹果发表声明：苹果也通过媒体对外发表声明，就此事所带来的影响向所有 Mac 用户道歉。苹果声明如下：安全对每一款苹果产品来讲都是至关重要的，很遗憾我们在这次的 macOS 更新上犯了错误。当我们的安全工程师在昨天下午意识到这个问题的时候，我们立刻开始着手准备更新并修补漏洞。今晨 8 点，安全更新已经推送，从现在开始补丁将自动安装在运行 macOS High Sierra 10.13.1 的系统上。我们十分遗憾出现了这个错误，我们向所有 Mac 用户道歉，既对带来这样一个漏洞表示歉意，也对带来的关注表示歉意。我们正在审核我们的开发流程，防止这种情况再次发生。",
+                "新华网北京11月3日电3日，记者从证监会网站获悉，证监会行政处罚巡回审理工作暨行政处罚委员会兼职审理委员培训班于2017年11月23日至24日在北京举办。证监会党委委员、主席助理宣昌能出席开班仪式并讲话。据悉，本次培训的主题是进一步落实证监会党委关于学习贯彻党的十九大精神的部署要求，推动行政处罚战线全体干部深入学习贯彻党的十九大精神，不忘初心，牢记使命，凝心聚力，砥砺前行，努力谱写行政处罚工作的新篇章。宣昌能指出，全体干部要切实对照《中共中央关于认真学习宣传贯彻党的十九大精神的决定》要求，充分认识学习宣传贯彻党的十九大精神的重大意义，按照会党委的统一部署，全面准确学习领会党的十九大精神，坚持读原著、学原文、悟原理，做到学深悟透。要理论联系实际，在狠抓落实上下功夫，要把学习党的最新理论成果同研究谋划新时代我国资本市场改革发展工作有机结合起来，同行政执法工作的具体实践有机结合起来，将学习成效转化为实实在在的行政执法工作成效，切实推进资本市场稳定健康发展。发言中，宣昌能对全系统行政处罚工作所取得的成效给予了充分肯定，2017年截止10月底，共作出182项行政处罚决定，罚没款共计63.61亿元，超过去年全年总和，共对34人实施市场禁入，接近去年全年水平，同时指出，当前执法环境日趋严峻复杂，执法压力不断增大，执法工作的中心地位日益凸显，需要执法战线全体同志主动作为，凝聚执法合力，提升执法效能。要准确把握巡回审理办公室的功能定位，各方共同努力抓好巡回审理办公室建设工作，发挥巡回审理制度优势，实现行政处罚与交易所一线监管的紧密衔接，真正适应资本市场发展的新要求。此外，宣昌能对全体审理委员及审理工作人员提出四点要求：一是要提高政治站位，坚守廉洁底线；二是要坚定法律信仰，坚持依法行政；三是要自觉提升执法能力，应对执法挑战；四是要树立责任意识，主动担当作为，在资本市场执法实践中更加注重中国经验的积累，贡献更多中国智慧，全体审理委员及审理工作人员要不忘初心、牢记使命，按照依法监管、全面监管、从严监管的监管理念，为全会监管执法工作做出新的更大贡献。",
+                "在刚结束的比赛中，76人以118-113战胜奇才。比赛开始，莫里斯率先后仰跳投拿下2分，西蒙斯反击上篮还以颜色，考文顿切到篮下放篮得手，比尔跳投造犯规两罚全中，麦康奈尔跳投命中，西蒙斯反击挑篮得手，随后突破袭篮,打进2+1，恩比德也在篮下抛投得手，76人首节在西蒙斯和恩比德的率领下，打出28-18的开局。第二节76人攻势不减，贝勒斯借掩护跳投命中，恩比德排球大帽随后接西蒙斯传球暴扣得手，76人第二节继续打出30-22的比分，以58-40的比分结束上半场。第三节两队打成均势，比尔突破袭篮命中，萨里奇抢断快攻打进，波特突破上篮造成犯规，西蒙斯跳步上篮得手，两队第三节打成26-25.第四节奇才发力追分，米克斯三分线外投篮造犯规，乌布雷突破上篮也有，米克斯三分再中，奇才第四节打出30-15的开局，将分差追到4分。关键时刻西蒙斯两罚中一，恩比德抢下篮板造成犯规继续两罚一中，奇才继续砍西蒙斯，后者两罚全中保住7分分差，暂停比尔三分飚进，奇才继续砍西蒙斯，但西蒙斯连续罚球命中，比尔三分线外造恩比德六犯下场，西蒙斯继续罚球，雷迪克帽下比尔，快攻上篮打进，萨里奇突破袭篮打进2+1，萨托兰斯基突破抛射打进，萨里奇再抢下关键篮板，比赛就此失去悬念。76人的本-西蒙斯29罚15中，拿下31分18篮板4助攻，恩比德18罚13中，拿下25分14篮板4助攻，萨里奇24分8篮板，考文顿9分12篮板；奇才的比尔21分4篮板，乌布雷22分7篮板，米克斯21分4篮板。",
+            ],
+            trackNum: 0,
+            trackModelArt: [
+                "智联招聘最新公布的一份报告显示，近七成AI人才的薪资水平在月薪1万元以上，约有1%的人才月薪在5万元以上。这份名为《2017人工智能就业市场供需与发展研究报告》(下称《报告》)称，AI人才需求和供给均集中于一线城市。当人工智能(AI)站上时代的风口时，AI从业者的高薪传闻不绝于耳。这一行业真实的薪资水平到底如何?智联招聘最新公布的一份报告显示，近七成AI人才的薪资水平在月薪1万元以上，约有1%的人才月薪在5万元以上。这份名为《2017人工智能就业市场供需与发展研究报告》(下称《报告》)称，AI人才需求和供给均集中于一线城市。今年以来AI人才需求呈现了爆发式的增长，由于AI技术门槛高且难以通过短时间的学习掌握，企业在追逐人才时常处于被动的状态，《报告》预计，今后该行业薪资将继续上涨。40%集中于1万~1.5万2017年，AI人才需求呈现爆发式的增长。随着人工智能在实践上的不断突破，越来越多的创业型公司也加入到AI相关业务的创业大潮中，这一发展窗口催生了大量的人才需求。根据智联全站大数据，2017年第三季度人工智能人才需求量相较2016年第一季度增长了179%，是 2016 年第一季度人才需求量的近3倍。在人工智能人才呈现巨大缺口的市场状况下，这类企业给予人才的薪酬普遍高于全国平均水平。智联招聘2017年秋季在线数据显示，全国 37个主要城市的平均薪酬为7599元/月。而在AI行业中，企业在招聘时给出的薪酬预算中，有33.7%集中于10001~15000元/月区间;27.7% 集中于8001~10000元/月区间;26.7% 集中于15001~25000元/区间，远高于全国平均水平。这也表明，高薪是企业面临人才供给压力时给出的最为直观的吸引条件。从该行业从业者的实际薪酬来看，拥有AI技能的人才现阶段薪酬区间主要集中于10001~15000元/月，占比40%;8001~10000 元/月区间占比34%;15001~25000元/月区间占比20%。《报告》称，虽然他们已属于高薪人群，但与企业给出的薪酬预算来看，依然有上升空间，15001~25000 元/月区间、25001~35000元/月区间的招聘缺口最大，这体现了AI岗位尤其是中高端岗位，企业一时用高薪也难招到合适的人才，也从侧面表明具备拥有 AI 技能的存量人才薪酬持续看涨。智联招聘CEO郭盛表示，近两年来，高科技、共享经济等热门行业的工资涨幅非常快，AI、大数据方面的高精尖人才，国内给出的工资甚至会高过硅谷。人才垄断在AI行业中也非常明显。虽然AI 企业中创业公司数量较多，但人才数量的绝对值远低于头部大企业。存量的AI人才主要集中于华为、联想、IBM 以及 BAT 等行业巨头，其中华为的存量人才占比最高，为 30%。从地域来看，人工智能的人才需求岗位主要集中在北上广深等热门一线城市，北京占据绝对需求，占总需求量的30%。AI人才在城市分布与需求端上基本匹配，但在供需状态上各有不同，其中北京、上海、深圳人才供给占比多于需求占比，广州、杭州的人才供给少于需求占比，人才紧缺的程度更高。程式化、重复性岗位将被取代人工智能时代的飞速到来，让职场人士陷入了被机器人“抢饭碗”的恐惧之中。中国人民大学劳动人事学院院长杨伟国认为，人工智能不仅为经济带来深远影响，也在推动着就业生态发生变化。人力资本被人工智能替代的速度超出想象，金融机构已经首当其冲，成千上万的交易人员被人工智能取代。《报告》称，程式化、重复性的岗位下降趋势已经开始显现。人工智能正在逐渐取代人类的工作岗位，尤其是那些程式化、重复性、依靠反复操作实现的熟练工种。其中，投资银行业务、校对/录入两个典型职位，连续三个季度出现大幅同比负增长。郭盛认为，人工智能虽然取代了一些岗位，但新的岗位也在不断涌现，人工智能带给就业的冲击并非是劳动职位的减少而是劳动方法的改变，它让就业时间、就业空间变得更加弹性和灵活。具体说来，即兼职在中国出现了爆发式增长，2016年Q3同比增幅为230%，今年还在保持高速的增长，劳资关系中正式的组织架构正在被兼职所替代。中国社科院人口与劳动经济研究所所长张车伟表示，新经济带来的新就业形态已经与传统的就业有了根本不同。比如，传统就业要求具备工资、固定场所、社会保障、劳动合同等要素，新就业形态则可能只具备一两个要素。而且，新就业比传统就业更有效，有些新就业的工资水平是传统就业的两倍左右，且需求非常旺盛。《报告》引用了国际知名研究机构的预测称，AI 对人类就业的威胁逐渐乐观，人工智能将创造更多的就业机会。知名咨询公司高德纳(Gartner)指出，在 2019 年之前，人工智能造成的失业将多于其创造的工作机会。但 从2020 年开始，人工智能创造的就业数量将会超过其造成的失业数量，人工智能会在“杀死”180 万个工作机会的同时，将会制造 230 万个新的工作机会。埃森哲则预测，到 2035 年，人工智能能使 12 个发达经济体的年度经济增长率提高一倍，有潜力拉动中国经济增长率上升 1.6 个百分点。",
+                "新华网北京11月3日电3日，记者从证监会网站获悉，证监会行政处罚巡回审理工作暨行政处罚委员会兼职审理委员培训班于2017年11月23日至24日在北京举办。证监会党委委员、主席助理宣昌能出席开班仪式并讲话。据悉，本次培训的主题是进一步落实证监会党委关于学习贯彻党的十九大精神的部署要求，推动行政处罚战线全体干部深入学习贯彻党的十九大精神，不忘初心，牢记使命，凝心聚力，砥砺前行，努力谱写行政处罚工作的新篇章。宣昌能指出，全体干部要切实对照《中共中央关于认真学习宣传贯彻党的十九大精神的决定》要求，充分认识学习宣传贯彻党的十九大精神的重大意义，按照会党委的统一部署，全面准确学习领会党的十九大精神，坚持读原著、学原文、悟原理，做到学深悟透。要理论联系实际，在狠抓落实上下功夫，要把学习党的最新理论成果同研究谋划新时代我国资本市场改革发展工作有机结合起来，同行政执法工作的具体实践有机结合起来，将学习成效转化为实实在在的行政执法工作成效，切实推进资本市场稳定健康发展。发言中，宣昌能对全系统行政处罚工作所取得的成效给予了充分肯定，2017年截止10月底，共作出182项行政处罚决定，罚没款共计63.61亿元，超过去年全年总和，共对34人实施市场禁入，接近去年全年水平，同时指出，当前执法环境日趋严峻复杂，执法压力不断增大，执法工作的中心地位日益凸显，需要执法战线全体同志主动作为，凝聚执法合力，提升执法效能。要准确把握巡回审理办公室的功能定位，各方共同努力抓好巡回审理办公室建设工作，发挥巡回审理制度优势，实现行政处罚与交易所一线监管的紧密衔接，真正适应资本市场发展的新要求。此外，宣昌能对全体审理委员及审理工作人员提出四点要求：一是要提高政治站位，坚守廉洁底线；二是要坚定法律信仰，坚持依法行政；三是要自觉提升执法能力，应对执法挑战；四是要树立责任意识，主动担当作为，在资本市场执法实践中更加注重中国经验的积累，贡献更多中国智慧，全体审理委员及审理工作人员要不忘初心、牢记使命，按照依法监管、全面监管、从严监管的监管理念，为全会监管执法工作做出新的更大贡献。",
+                // "二战后，主要参战国政府纷纷推出国家级哀悼日，以国家公祭的形式来祭奠死难的国民，波兰的奥斯威辛集中营大屠杀纪念馆、美国的珍珠港事件纪念馆、俄罗斯卫国战争纪念馆等，每年都举行国家公祭。”美国《纽约时报》记者德丁曾在新闻稿中这样描述当年的惨状。6周的血腥屠城，30余万同胞惨遭杀害……80年前的今天，侵华日军攻陷南京，制造了震惊中外的“南京大屠杀”惨案。今日上午，中国将举行国家公祭仪式，悼念死难者的同时，更是传递出捍卫历史真相、守护世界和平的坚定信念。12月7日，侵华日军南京大屠杀遇难同胞纪念馆内开始悬挂“国家公祭”的标语。12月13日是国家公祭日，届时南京将举行悼念、和平集会、烛光祭等活动。中新社记者 泱波 摄侵华日军南京大屠杀遇难同胞纪念馆内悬挂“国家公祭”的标语。中新社记者 泱波 摄国家公祭仪式将在南京举行今天，是第四个南京大屠杀死难者国家公祭日，也正逢南京大屠杀80周年。按照安排，今天上午，党和国家领导人将出席在侵华日军南京大屠杀遇难同胞纪念馆举行的国家公祭仪式。据南京市政府的消息，今日清晨7时，在侵华日军南京大屠杀遇难同胞纪念馆的集会广场，将举行升国旗和降半旗仪式。上午10时，在南京市的17处南京大屠杀遇难同胞丛葬地、12个社区和6家反映抗战主题的爱国主义教育基地，与国家公祭仪式同步举行悼念南京大屠杀死难者活动。此外，中国人民抗日战争纪念馆、沈阳“九一八”历史博物馆、上海淞沪抗战纪念馆等国内20家反映抗战主题的纪念(博物)馆，在今天上午同步举行悼念活动。与此同时，208个华侨华人社团今天将同步在世界各地举行悼念活动。11月19日，民众在侵华日军南京大屠杀遇难同胞纪念馆内参观。据该馆通报，因场馆筹备重要活动及设备维修需要，定于11月20日至12月13日期间闭馆。闭馆范围包括“三个必胜”展厅在内的整个场馆。12月14日起，纪念馆将正常对外开放。 中新社记者 泱波 摄资料图：民众在侵华日军南京大屠杀遇难同胞纪念馆内参观。 中新社记者 泱波 摄何为国家公祭日？国家公祭日是国家为了纪念曾经发生过的重大民族灾难而设立的国家祭日。二战后，主要参战国政府纷纷推出国家级哀悼日，以国家公祭的形式来祭奠死难的国民，波兰的奥斯威辛集中营大屠杀纪念馆、美国的珍珠港事件纪念馆、俄罗斯卫国战争纪念馆等，每年都举行国家公祭。其实从1994年起，江苏省和南京市每年12月13日都会举行各界人士参加的悼念仪式，但均停留在地方层面。2014年2月27日，十二届全国人大常委会第七次会议经表决通过，将12月13日设立为南京大屠杀死难者国家公祭日。中国以国家立法的形式设立公祭日，使得对南京大屠杀遇难者的纪念上升至国家层面。民众在侵华日军南京大屠杀遇难同胞纪念馆内参观。据该馆通报，因场馆筹备重要活动及设备维修需要，定于11月20日至12月13日期间闭馆。闭馆范围包括“三个必胜”展厅在内的整个场馆。12月14日起，纪念馆将正常对外开放。 中新社记者 泱波 摄资料图：民众在侵华日军南京大屠杀遇难同胞纪念馆内参观。  中新社记者 泱波 摄80年前发生了什么？80年前的今天，南京陷落。1937年12月13日至1938年1月的六周内，侵华日军将屠刀对准无辜平民和放下武器的中国士兵，强奸抢劫、血腥屠城，制造了二战“三大惨案”之一的南京大屠杀。在此期间，南京三分之一的建筑被毁坏，市内发生两万多起强奸、轮奸的暴行，无数公私财物被掠夺，文化古都遭受了一场空前的劫难。“看到所有街巷内都有平民的尸体，其中有老人、妇女和小孩……死者很多是用刺刀刺死的，有的是用极其野蛮的手段杀害的。”美国《纽约时报》记者德丁曾在新闻稿中这样描述当年的惨状。侵华日军的暴行令世界震惊，更成为人类历史上的黑暗一页。1946年2月，在南京成立了中国审判战犯军事法庭，对南京大屠杀案进行了专门的调查和整理。法庭经过调查，最终认定日军在南京屠杀人数在30万人以上，其中，集体屠杀有28案，屠杀人数为19万余人；零散屠杀有858案，尸体经慈善机构掩埋有15万余具。12月7日，侵华日军南京大屠杀遇难同胞纪念馆内的工作人员擦拭幸存者脚印铜板路。12月13日是国家公祭日，届时南京将举行悼念、和平集会、烛光祭等活动。中新社记者 泱波 摄12月7日，侵华日军南京大屠杀遇难同胞纪念馆内的工作人员擦拭幸存者脚印铜板路。中新社记者 泱波 摄80年过去，如今，幸存者越来越少……2017年12月10日凌晨，南京大屠杀死难者国家公祭日前夕，最年长的南京大屠杀幸存者管光镜与世长辞，享年100岁。管光镜亲身经历了侵华日军在溧水的空袭，又经历了南京大屠杀，是“双重受害”特征的幸存者。老人的逝去，意味着最宝贵的活证人越来越少。南京出版最详尽的《南京大屠杀幸存者名录》中，有上世纪60年代以来收集的2592名幸存者资料；上世纪80年代，中国启动南京大屠杀幸存者登记，当时登记在册人数超过千人；而如今，在世的幸存者已不足百人……冰冷数字变化的背后，是那段灾难历史见证人的消逝。然而，幸存者虽然逐渐凋零，但真相不会被带走。早在2015年，《南京大屠杀档案》就被联合国教科文组织列入《世界记忆遗产名录》。侵华日军公然违反国际法的残暴行径，铁证如山，早有历史结论和法律定论，不容抹杀。12月10日，在第四个国家公祭日来临之际，参加过当年战争的抗战老兵、侵华日军南京大屠杀遇难者家属、南京1213志愿者联合会的志愿者们来到南京光华门遗址公园，向这片曾经发生过激烈战斗的阵地献上和平岁月里的悼念菊花，祈祷永远和平。 中新社记者 泱波 摄12月10日，在第四个国家公祭日来临之际，参加过当年战争的抗战老兵、侵华日军南京大屠杀遇难者家属、南京1213志愿者联合会的志愿者们来到南京光华门遗址公园，向这片曾经发生过激烈战斗的阵地献上和平岁月里的悼念菊花，祈祷永远和平。 中新社记者 泱波 摄昭昭前事，惕惕后人如今，这场浩劫已经过去整整80载。国内外对于南京大屠杀的认知正在逐步加深，随着越来越多历史档案、资料被挖掘出来，那段黑暗、血腥的历史也更全面地呈现在人们面前。中国政府设立国家公祭日，《南京大屠杀档案》被列入《世界记忆遗产名录》，加拿大安大略省将每年12月13日定为“南京大屠杀遇难者纪念日”……一系列举措也都在提醒世人，历史不应被遗忘，更不容歪曲。然而，今天仍有部分日本右翼势力顽固坚持错误史观，公然否认南京大屠杀历史，甚至不遗余力地包装、美化侵略罪行，引起国际社会高度警惕。真相面前，任何对侵略罪行的粉饰都必将遭到唾弃，也必然逃脱不了正义的审判。昭昭前事，惕惕后人。战火硝烟虽然散去，但伤痛不应被淡忘。今天，我们铭记同胞在80年前遭受的苦难，是表达对逝者的尊重与缅怀，更是传递出捍卫历史真相、守护世界和平的坚定信念。",
+            ]
+        },
+        mounted: function () {
+            var self = this;
+            $(function () {
+                $("#sidebar-nav>li>ul>li>a").click(function () {
+                    $("#sidebar-nav>li>ul>li").removeClass("active");
+                    $(this).parent().addClass("active");
+                })
+                var hash = location.hash;
+                $("#sidebar-nav>li>ul>li>a").each(function (i, el) {
+                    if ($(el)[0].hash == hash) {
+                        $("#sidebar-nav li ul li").removeClass("active");
+                        $(el).parent().addClass("active")
+                    }
+                })
+            })
+            this.newsSearch();
+            this.newsRelative();
+            this.textCatgory();
+            this.getKeyword();
+            this.writeSummary();
+            this.entityExtract();
+            this.textClassify();
+            this.textClassify();
+            this.trackFun();
+        },
+
+        methods: {
+            //资讯搜索
+            newsSearch: function () {
+                var self = this;
+                self.loadingShow_1 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+                    type: "POST",
+                    data: {
+                        url: self.apiHost + "/news/search",
+                        params: JSON.stringify({
+                            keyword: self.newsSearchValue,
+                            pageSize: "20"
+                        })
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.code == "0") {
+                            self.searchResult = data.data.news;
+                            self.loadingShow_1 = true;
+                        }
+                    }
+                })
+            },
+
+            //相似资讯
+            newsRelative: function () {
+                var self = this;
+                self.loadingShow_2 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+                    type: "POST",
+                    data: {
+                        url: self.apiHost + "/news/relatedByContent",
+                        params: JSON.stringify({
+                            content: self.newsRelativeValue
+                        })
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.code == "0") {
+                            self.relativeNewsData = data.data.relatedNews;
+                            self.loadingShow_2 = true;
+                        }
+                    }
+                })
+            },
+
+            //智能分词
+            textCatgory: function () {
+                var self = this;
+                self.loadingShow_3 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+                    type: "POST",
+                    data: {
+                        url: self.apiHost + "/text/getTextAnalyzer",
+                        params: JSON.stringify({
+                            content: self.textCatgoryValue
+                        })
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.code == "0") {
+                            self.catgoryData = data.data.keywordList;
+                            self.loadingShow_3 = true;
+                        }
+                    }
+                })
+            },
+
+            //关键词提取
+            getKeyword: function () {
+                var self = this;
+                self.loadingShow_4 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+                    type: "POST",
+                    data: {
+                        url: self.apiHost + "/text/getKeywords",
+                        params: JSON.stringify({
+                            content: self.textKeywordValue
+                        })
+                    },
+                    success: function (data) {
+                        if (data.code == "0") {
+                            self.keywordList = data.data.keywordList;
+                            self.loadingShow_4 = true;
+                        }
+                    }
+                })
+            },
+
+            //实体提取
+            entityExtract: function () {
+                var self = this;
+                self.loadingShow_6 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+
+                    // url:  self.apiHost + "/text/newsEntitiesByContent",
+//                     url: "http://172.16.1.37:8080/openapi/text/newsEntitiesByContent",
+//                     url: "/openapi/text/newsEntitiesByContent",
+                    type: "POST",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    data: {
+                        url: self.apiHost + "/text/newsEntitiesByContent",
+                        params: JSON.stringify({
+                            content: self.entityValue
+                        })
+                    },
+                    success: function (data) {
+                        if (data.code == "0") {
+                            self.loadingShow_6 = true;
+                            self.extractData = data.data
+                        }
+                    }
+                })
+            },
+
+            //文本分类
+            textClassify: function () {
+                var self = this;
+                self.loadingShow_7 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+//                     url: "http://172.16.1.37:8080/openapi/text/textCatgoryByContent",
+                    type: "POST",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    data: {
+                        url: self.apiHost + "/text/textCatgoryByContent",
+                        params: JSON.stringify({
+                            content: self.classifyValue
+                        })
+                    },
+                    success: function (data) {
+                        if (data.code == "0") {
+                            self.loadingShow_7 = true;
+                            self.classifyData = data.data.catgory;
+                        }
+                    }
+                })
+            },
+
+            //内容过滤
+            textFiltration: function () {
+                var self = this;
+                self.loadingShow_8 = false;
+                $.ajax({
+//                    url:  self.apiHost + "/text/newsEntitiesByContent",
+                    url: "/openapi/text/contentFiltering",
+                    type: "POST",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    data: {
+                        content: self.textFiltrationValue
+                    },
+                    success: function (data) {
+                        if (data.code == "0") {
+                            self.loadingShow_8 = true;
+                            self.filtrationData = data.data
+                            console.log(self.extractData)
+                        }
+                    }
+                })
+            },
+
+            //传播轨迹
+            trackFun: function () {
+                var self = this;
+                self.loadingShow_9 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+//                     url: "http://172.16.1.37:8080/openapi/mining/newsTransferLogByContent",
+                    type: "POST",
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
+                    data: {
+                        url: self.apiHost + "/mining/newsTransferLogByContent",
+                        params: JSON.stringify({
+                            content: self.trackValue
+                        })
+                    },
+                    success: function (data) {
+                        if (data.code == "0") {
+                            self.loadingShow_9 = true;
+                            self.trackData = data.data
+                            console.log(self.extractData)
+
+                        }
+                    }
+                })
+            },
+
+            //摘要压缩
+            writeSummary: function () {
+                var self = this;
+                self.loadingShow_5 = false;
+                $.ajax({
+                    url: "/open-portal/demo/getData",
+                    type: "POST",
+                    data: {
+                        url: self.apiHost + "/write/summaryByContent",
+                        params: JSON.stringify({
+                            content: self.writeSummaryValue
+                        })
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        if (data.code == "0") {
+                            self.summary = data.data.summary;
+                            self.loadingShow_5 = true;
+                        }
+                    }
+                })
+            },
+
+            //文本分类换篇
+            classifyNext: function () {
+                var self = this;
+                self.classifyNum += 1;
+                if (self.classifyNum > self.classifyModelArt.length - 1) {
+                    self.classifyNum = 0;
+                }
+                console.log(self.classifyNum)
+                self.classifyValue = self.classifyModelArt[self.classifyNum];
+                self.textClassify();
+
+            },
+            //传播轨迹换篇
+            trackNext: function () {
+                var self = this;
+                self.trackNum += 1;
+                if (self.trackNum > self.trackModelArt.length - 1) {
+                    self.trackNum = 0;
+                }
+                console.log(self.trackNum)
+                self.trackValue = self.trackModelArt[self.trackNum];
+                self.trackFun();
+
+            },
+        }
+    })
+</script>
+<script src="js/common.js"></script>
+</body>
+
+</html>

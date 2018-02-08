@@ -1,0 +1,39 @@
+
+.main {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 84px;
+    padding-bottom: 86px;
+    background-color: #fff;
+}
+.main h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #111111;
+    line-height: 33px;
+    margin: 60px 0 20px 0;
+}
+
+.main .question-box {
+    padding: 42px 0 42px 60px;
+}
+
+.main .question-box .question {
+    padding-left: 35px;
+    font-size: 18px;
+    color: #111111;
+    letter-spacing: 0;
+    line-height: 25px;
+    background: url("../images/question.png") left center no-repeat;
+}
+
+.main .question-box .answer {
+    padding-left: 35px;
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 25px;
+    margin-top: 20px;
+    background: url("../images/answer.png") left center no-repeat;
+}

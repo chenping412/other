@@ -1,0 +1,11 @@
+
+接口文档地址：
+http://172.16.21.39/showdoc/index.php?s=/19&page_id=918
+
+测试服地址：
+172.16.33.4
+/work/open/grobot-api/apache-tomcat-8.0.45/webapps/template
+
+测试地址：
+http://172.16.33.4:9090/template
+

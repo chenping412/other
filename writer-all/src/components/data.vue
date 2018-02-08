@@ -83,7 +83,7 @@
   #resource .classify-item .title {
     padding-left: 30px;
     line-height: 45px;
-    border-bottom: 2px solid #f5f5f5;
+    border-bottom: 1px solid #e6e6e6;
     color: #333333;
     font-size: 14px;
   }

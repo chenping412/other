@@ -3,11 +3,10 @@
  */
 'use strict';
 
-// var apiHost = "http://172.16.21.22:9092";
-var apiHost = "http://172.16.21.22:9092";
+var apiHost = "http://writer.giiso.com";
 
-if(location.host != "172.16.21.22:9092") {
-  apiHost = "http://writer.giiso.com";
-  // apiHost = "http://172.16.21.22:9092";
+if(location.host != "writer.giiso.com") {
+  apiHost = "http://172.16.21.22:9092";//开发环境
+  //apiHost = "http://172.16.1.31:9092";//本机
 }
 

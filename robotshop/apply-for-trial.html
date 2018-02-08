@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>申请试用-Giiso机器人商店</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="js/plugin/flexible-my.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/apply-for-trial.css">
+</head>
+
+<body>
+<div class="mobile-container">
+    <div class="header-white" id="mobile-header">
+        <div class="logo">
+            <a href="index.html" class="logo-img"></a>
+            <a href="index.html" class="logo-name">机器人商店官网</a>
+        </div>
+        <div class="collapse" id="open"></div>
+    </div>
+    <div class="nav" id="nav" style="display: none">
+        <div class="close">
+            <b id="close"></b>
+        </div>
+        <ul>
+            <li><a href="index.html" class="active">首页</a></li>
+            <li>
+                <a href="javascript:;">产品服务</a>
+                <ul>
+                    <li><a href="product-search.html">资讯搜索</a></li>
+                    <li><a href="product-relative.html">相似资讯</a></li>
+                    <li><a href="product-catgory.html">智能分词</a></li>
+                    <li><a href="product-keyword.html">关键词提取</a></li>
+                    <li><a href="product-summary.html">摘要压缩</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">关于智搜</a></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div>
+            <div class="form-row">
+                <input type="text" placeholder="请输入您的联系方式" id="apply-tel">
+                <span>手机号码不能为空</span>
+                <span>手机号码格式错误</span>
+            </div>
+            <div class="form-row">
+                <input type="text" placeholder="请输入您的姓名" id="apply-username">
+                <span>用户姓名不能为空</span>
+            </div>
+            <div class="form-row">
+                <input type="text" placeholder="请填写您的公司名称提高申请成功率" id="apply-company">
+            </div>
+            <div class="form-row">
+                <input type="text" placeholder="请填写您的职务信息" id="user-post">
+            </div>
+            <div class="form-row">
+                <textarea name="" id="trial-function" cols="30" rows="10" placeholder="请告诉我们您想试用的功能"></textarea>
+                <span>试用功能描述不能为空</span>
+            </div>
+            <div class="form-row btn">
+                <button onclick="useApply()">申请试用</button>
+            </div>
+            <div class="form-row faild" style="display: none">
+                <p style="font-size: 12px; text-align: center; color: red;">申请失败</p>
+            </div>
+        </div>
+    </div>
+    <div class="model" id="apply_success">
+        <div class="model-content">
+            <div class="model-header clearfix">
+                <h3>申请试用</h3>
+                <span class="close">×</span>
+            </div>
+            <div class="model-body">
+                <div>
+                    <p style="text-align: center; font-size: 14px; line-height: 0.46875rem;">申请试用成功</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/plugin/jquery-1.10.1.min.js"></script>
+<script src="js/common.js"></script>
+</html>

@@ -5,7 +5,7 @@
       <div class="resource-list">
         <ul class="clearfix">
           <li v-for="list in menuList" :class="[list.permission == 0 ? 'not development' : 'normal']"
-              @click="router(list.name)">
+              @click="router(list.name,list.permission)">
             <div class="li-left">
               <img :src="'static/pub/images/write_' + list.id + '_x.png'" v-if="list.permission == 0">
               <img :src="'static/pub/images/write_' + list.id + '.png'" v-if="list.permission == 1">
@@ -63,10 +63,16 @@
           }
         })
       },
-      router(name) {
+      router(name,permission) {
+        if(permission==0){
+          return false;
+        }
         var self = this;
         if (name == "资讯写作") {
           self.$router.push('/write-robot');
+        }
+        if (name == "写股评") {
+          self.$router.push('/stock-comment');
         }
       }
     }
@@ -88,7 +94,7 @@
   #resource .classify-item .title {
     padding-left: 30px;
     line-height: 45px;
-    border-bottom: 2px solid #f5f5f5;
+    border-bottom: 1px solid #e6e6e6;
     color: #333333;
     font-size: 14px;
   }

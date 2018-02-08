@@ -265,44 +265,4 @@
     }
   }
 
-  body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
-  }
-
-  body {
-    background-color: #fafafa;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  img {
-    border: none;
-  }
-
-  ol, ul, li, button {
-    list-style: none;
-    border: none
-  }
-
-  input, button, textarea {
-    outline: none;
-    font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
-  }
-
-  .clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-  }
-
-  .clearfix {
-    *zoom: 1;
-  }
 </style>

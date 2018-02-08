@@ -7,12 +7,9 @@
             写作机器人
           </router-link>
         </div>
-        <div class="user" @click="isLogoutShow = isLogoutShow == true ? false : true">
-          <!--<b>3</b>-->
-          <span>
-            {{ username }}
-          </span>
-          <div class="logout" v-show="isLogoutShow">
+        <div class="user">
+          <span>{{username}}</span>
+          <div class="logout">
             <router-link :to="{path: '/user'}" tag="p" class="account">账户</router-link>
             <p @click="logout" class="out">退出账号</p>
           </div>
@@ -55,18 +52,40 @@
     methods: {
       //复制
       copy: function () {
-        var that = this;
+        var self = this;
         this.clipboard = new Clipboard('.js-copy');
         //复制成功执行的回调，可选
         this.clipboard.on('success', function (e) {
-          that.$alert('复制成功', '提示', {
-            confirmButtonText: '确定'
-          });
+          if(e.text == "false"){
+            self.$alert('请完成文章写作后，再进行一键复制', '提示', {
+              type:'warning'
+            });
+          }else if(e.text == "false-title"){
+            self.$alert('请输入标题后，再进行一键复制', '提示', {
+              type: 'warning'
+            });
+          }else if(e.text == "false-author"){
+            self.$alert('请输入作者后，再进行一键复制', '提示', {
+              type: 'warning'
+            });
+          }else if(e.text == "false-time"){
+            self.$alert('请输入文章时间后，再进行一键复制', '提示', {
+              type: 'warning'
+            });
+          }else if(e.text == "false-content"){
+            self.$alert('请输入文章内容后，再进行一键复制', '提示', {
+              type: 'warning'
+            });
+          }else {
+            self.$alert('已将文章内容复制到粘贴板', '提示', {
+              type:'success'
+            });
+          }
         });
         //复制失败执行的回调，可选
         this.clipboard.on('error', function (e) {
-          that.$alert('复制失败，您的浏览器不支持', '提示', {
-            confirmButtonText: '确定'
+          self.$alert('复制失败，您的浏览器不支持', '提示', {
+            type:'warning'
           });
         });
       },
@@ -130,6 +149,12 @@
 </script>
 
 <style>
+  html{
+    min-height: 101%;
+  }
+  body{
+    overflow: auto !important;
+  }
   .model-white {
     position: fixed;
     top: 0;
@@ -198,11 +223,12 @@
   .header {
     width: 100%;
     height: 90px;
-    background: linear-gradient(to right, #0774ea, #54d6de);
+    /*background: linear-gradient(to right, #0774ea, #54d6de);*/
+    background: url('assets/images/header-bj.png') no-repeat center;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 1100;
   }
 
   .header .header-content {
@@ -228,9 +254,8 @@
   .header .header-content .user {
     float: right;
     width: 126px;
-    height: 41px;
-    margin-top: 25px;
-    padding-left: 55px;
+    height: 40px;
+    padding:25px 0 27px 55px;
     background: url("./assets/images/user.png") left center no-repeat;
     position: relative;
     z-index: 999;
@@ -269,12 +294,16 @@
     border: 1px solid #e6e6e6;
     border-top: 0;
     position: absolute;
-    top: 65px;
+    top: 90px;
     left: 0;
     background-color: #fff;
     color: #646464;
     font-size: 14px;
     z-index: 999999;
+    display: none;
+  }
+  .header .header-content .user:hover .logout{
+    display: block;
   }
 
   .header .header-content .user .logout p {
@@ -303,8 +332,9 @@
     left: 0;
     width: 100%;
     height: 15px;
-    background-color: #fafafa;
-    /*z-index: 99;*/
+    background-color: #f5f5f5;
+    z-index: 1100;
+    display: none;
   }
 
   .main {
@@ -341,7 +371,6 @@
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
     background-color: #fff;
-    width: 970px;
   }
 
   .main .top .breadcrumb, .main .top-else .breadcrumb {

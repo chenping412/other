@@ -1,0 +1,426 @@
+
+.main {
+    margin-bottom: 50px;
+}
+
+.main .banner {
+    width: 100%;
+    height: 240px;
+    background-image: url(../images/banner-tech-sup.png);
+    background-position: center;
+}
+
+.main .banner h1 {
+    font-size: 30px;
+    color: #F2F2F2;
+    padding-top: 109px;
+    text-align: center;
+}
+
+.main .banner h6 {
+    font-size: 14px;
+    color: #F2F2F2;
+    line-height: 28px;
+    text-align: center;
+}
+
+.main > .wrap {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 54px;
+}
+
+.main .sidebar {
+    float: left;
+    width: 200px;
+    min-height: 530px;
+    padding-top: 30px;
+    background-color: #3a3d40;
+}
+
+.main .sidebar > ul > li {
+    margin-bottom: 30px;
+}
+
+.main .sidebar > ul > li>a {
+    display: block;
+    position: relative;
+    font-size: 14px;
+    line-height: 40px;
+    color: #F2F2F2;
+    padding-left: 60px;
+}
+
+.main .sidebar > ul > li>a.active {
+    background-color: #477ef8;
+}
+
+.main .sidebar > ul > li>a:after {
+    display: block;
+    content: "";
+    width: 10px;
+    height: 2px;
+    background-color: #999;
+    position: absolute;
+    top: 19px;
+    left: 40px;
+}
+
+.main .sidebar > ul > li ul li a {
+    display: block;
+    font-size: 14px;
+    color: #F2F2F2;
+    line-height: 40px;
+    padding-left: 60px;
+}
+
+.main .sidebar > ul > li a:hover {
+    background-color: #477ef8;
+}
+.main .sidebar > ul > li:first-child>a:hover {
+    background-color: transparent;
+}
+
+.main .sidebar > ul > li ul li.active a {
+    background-color: #477ef8;
+}
+
+.main .content {
+    float: left;
+    margin-left: 40px;
+    width: 760px;
+}
+.main .content .table {
+    margin-top: 15px;
+}
+.main .content .table table {
+    border: 1px solid #DEDEDE;
+    border-collapse: collapse;
+    width: 686px;
+}
+.main .content .table table thead {
+    background: #ECF2F9;
+}
+.main .content .table table th {
+    font-size: 14px;
+    color: #111111;
+    height: 34px;
+    text-align: center;
+    border: 1px solid #DEDEDE;
+}
+.main .content .table table td {
+    font-size: 14px;
+    color: #555555;
+    height: 34px;
+    text-align: center;
+    border: 1px solid #DEDEDE;
+}
+
+.main .content .table table tr:nth-child(even) td {
+    background: #ECF2F9;
+}
+
+.content .title-box h1 {
+    font-size: 24px;
+    color: #111111;
+    line-height: 30px;
+    padding: 30px 0;
+}
+
+.content .title-box .overview {
+    padding: 22px 30px;
+    background-color: #EDF0F3;
+    border-radius: 2px;
+}
+
+.content .title-box .overview .overview-left {
+    float: left;
+    width: 500px;
+    height: 56px;
+    padding-left: 72px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 56px;
+}
+
+.content .title-box .overview .news-search {
+    background-image: url("../images/tech-sup-search.png");
+}
+
+.content .title-box .overview .news-relative {
+    background-image: url("../images/tech-sup-relatable-news.png");
+}
+
+.content .title-box .overview .text-catgory {
+    background-image: url("../images/tech-sup-separate-word.png");
+}
+
+.content .title-box .overview .text-keyword {
+    background-image: url("../images/tech-sup-key-word.png");
+}
+
+.content .title-box .overview .write-summary {
+    background-image: url("../images/tech-sup-sum.png");
+}
+
+.content .title-box .overview .track {
+    background-image: url("../images/track_doc_icon.png");
+}
+
+.content .title-box .overview .classify {
+    background-image: url("../images/classify_doc_icon.png");
+}
+
+.content .title-box .overview .extract {
+    background-image: url("../images/extract_doc_icon.png");
+}
+
+.content .title-box .overview .hots {
+    background-image: url("../images/hots_doc_icon.png");
+}
+.content .title-box .overview .trace {
+    background-image: url("../images/trace_doc_icon.png");
+}
+.content .title-box .overview .channel {
+    background-image: url("../images/channel_doc_icon.png");
+}
+.content .title-box .overview .overview-left h3 {
+    font-size: 16px;
+    color: #111111;
+    line-height: 30px;
+}
+
+.content .title-box .overview .overview-left p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 24px;
+}
+
+.content .title-box .overview .overview-right {
+    float: right;
+    margin-top: 10px;
+}
+
+.content .title-box .overview .overview-right .btn {
+    display: inline-block;
+    background: #477EF8;
+    border-radius: 2px;
+    border: none;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.content .title-box .overview .overview-right .btn:hover {
+    background: #3F71DE;
+}
+
+.main .content .overview-step {
+    margin-bottom: 100px;
+}
+
+.main .content .overview-step h1 {
+    padding: 30px 0;
+    font-size: 24px;
+    color: #111111;
+    line-height: 33px;
+}
+
+.main .content .overview-step ul li {
+    float: left;
+    width: 90px;
+    float: left;
+    position: relative;
+}
+
+.main .content .overview-step ul li div {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    line-height: 80px;
+    text-align: center;
+    font-size: 20px;
+    color: #FFFFFF;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main .content .overview-step ul li div.step-1 {
+    background-image: url(../images/step1.png);
+}
+
+.main .content .overview-step ul li div.step-2 {
+    background-image: url(../images/step2.png);
+}
+
+.main .content .overview-step ul li div.step-3 {
+    background-image: url(../images/step3.png);
+}
+
+.main .content .overview-step ul li div.step-4 {
+    background-image: url(../images/step4.png);
+}
+
+.main .content .overview-step ul li p {
+    text-align: center;
+    line-height: 25px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #111111;
+}
+
+.main .content .overview-step ul li + li {
+    margin-left: 133px;
+}
+
+.main .content .overview-step ul li + li:after {
+    position: absolute;
+    display: block;
+    content: "……..……..";
+    width: 102px;
+    height: 80px;
+    line-height: 80px;
+    top: 0;
+    right: 97px;
+    color: #555;
+    text-align: center;
+}
+
+.main .content .overview-step .steps > p {
+    font-size: 16px;
+    color: #111111;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+
+.main .content .detail-step ul li {
+    margin-bottom: 100px;
+}
+
+.main .content .detail-step ul li .img .demo {
+    width: 656px;
+    height: 68px;
+    background: #F8F8F8;
+    border: 1px solid #D8D8D8;
+    padding: 20px 0 8px 30px;
+}
+
+.main .content .detail-step ul li .img .use-service {
+    height: 250px;
+}
+
+.main .content .detail-step ul li .img .use-service li span {
+    font-size: 14px;
+    color: #111111;
+    line-height: 30px;
+}
+.main .content .detail-step ul li .img .use-service li p a {
+    float: left;
+    margin-right: 20px;
+    line-height: 30px;
+}
+
+.main .content .detail-step ul li {
+
+}
+
+.main .content .detail-step ul li table {
+    border: 1px solid #DEDEDE;
+    border-collapse: collapse;
+    width: 686px;
+}
+
+.main .content .detail-step ul li table thead {
+    background: #ECF2F9;
+}
+
+.main .content .detail-step ul li table th, .main .content .detail-step ul li table td {
+    height: 34px;
+    text-align: center;
+    border: 1px solid #DEDEDE;
+}
+
+.main .content .detail-step ul li .request-header {
+    width: 621px;
+    /*height: 170px;*/
+    background: #F8F8F8;
+    border: 1px solid #D8D8D8;
+    padding: 20px 35px 21px 30px;
+}
+.main .content .detail-step ul li .request-header p, .main .content .detail-step ul li .request-header pre {
+    line-height: 17px;
+    font-size: 12px;
+    color: #555555;
+    letter-spacing: 0;
+}
+
+.main .content .detail-step ul li table th {
+    font-size: 14px;
+    color: #111111;
+    letter-spacing: 0;
+}
+
+.main .content .detail-step ul li table td {
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+}
+.main .content .detail-step ul li table tbody tr:nth-child(even) td {
+    background: #ECF2F9;
+}
+
+.main .content .detail-step ul li .img .demo li {
+    line-height: 23px;
+    margin: 0;
+    font-size: 12px;
+    color: #555555;
+    letter-spacing: 0;
+    width: 335px;
+}
+
+.main .content .detail-step ul li .img .demo li a {
+    float: right;
+    color: #477EF8;
+}
+
+.main .content .detail-step ul li h5 {
+    font-size: 16px;
+    color: #111111;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+
+.main .content .detail-step ul li p {
+    font-size: 14px;
+    color: #555555;
+    line-height: 24px;
+}
+
+.main .content .detail-step ul li p span {
+    color: #477EF8;
+}
+
+.main .content .detail-step ul li .btn {
+    margin-top: 20px;
+}
+
+.main .content .detail-step ul li .img {
+    width: 758px;
+    margin-top: 20px;
+}
+
+.main .content .detail-step ul li .btn button {
+    width: 100px;
+    height: 36px;
+    border: none;
+    background-color: #477EF8;
+    border-radius: 2px;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+

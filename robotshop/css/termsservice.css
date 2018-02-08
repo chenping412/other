@@ -1,0 +1,39 @@
+.main {
+    width: 954px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-bottom: 128px;
+}
+
+.main h1 {
+    font-size: 24px;
+    text-align: center;
+    line-height: 33px;
+    margin-bottom: 20px;
+    margin-top: 104px;
+}
+
+.main .statement p {
+    margin-bottom: 20px;
+}
+
+.main h2 {
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.main .agreement-item h3,
+.main .agreement-item p {
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-bottom: 20px;
+}

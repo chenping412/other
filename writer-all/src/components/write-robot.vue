@@ -1,202 +1,215 @@
 <template>
-  <div id="write-robot">
-    <div class="top-else">
-      <!--<h2>选择生成简报信息</h2>-->
+  <div id="write-robot" v-loading.fullscreen="fullLoading">
+    <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
         <router-link :to="{ path: '/' }">首页</router-link>
-        &gt;
-        <span>写作机器人</span>
+        <span>&gt;资讯写作</span>
       </div>
     </div>
     <div class="web_bottom">
-      <div class="write-main">
-        <div class="filter">
-          <div class="filedType clearfix" v-show="filedType==1">
-            <div class="clearfix filterArea">
-              <div class="filed-title">写作领域</div>
-              <div class="filed-input" :class="{'two':dialogVisible}">
-                <el-input v-model="filedName" placeholder="请选择您要写作的领域" @focus="showFileds" :readonly=true></el-input>
-                <label class="write-area" v-show="!filedName">请选择您要写作的领域</label>
-                <div class="filed-model" v-show="dialogVisible">
-                  <div class="filed-model-top">选择写作领域 <span>(写作领域仅支持单选)</span></div>
-                  <ul class="clearfix filedList">
-                    <li v-for="(list,index) in fildList" @click="selectFiled(list,index)">{{list}}</li>
-                  </ul>
-                </div>
-              </div>
+      <div class="control">
+        <div class="row clearfix" style="padding-bottom: 0">
+          <div class="left">
+            <div class="item">
+              <span>选择写作领域</span>
+              <el-select v-model="filedName" placeholder="请选择" size="small">
+                <el-option value="财经" label="财经"></el-option>
+              </el-select>
             </div>
-            <div class="search">
-              <p>请输入关键词</p>
-              <div class="form-box">
-                <form action="" target="nm_iframe">
-                  <input type="text" class="text-input" :disabled="true" v-model="keyWord" placeholder="请输入关键词，多关键词用空格隔开"
-                         maxlength="30">
-                  <button :disabled="true" class="disabled" type="button">写作</button>
-                </form>
-              </div>
+            <div class="item">
+              <span>写作字数</span>
+              <el-select v-model="wordNumber" placeholder="请选择" size="small">
+                <el-option v-for="item in wordList" :value="item.value" :label="item.label"
+                           :key="item.value"></el-option>
+              </el-select>
+            </div>
+            <div class="item">
+              <span>素材采集时间</span>
+              <el-select v-model="timeQuantum" placeholder="请选择" size="small">
+                <el-option v-for="item in timeList" :value="item.value" :label="item.label"
+                           :key="item.value"></el-option>
+              </el-select>
             </div>
           </div>
-          <div class="filedType clearfix" v-show="filedType==3">
-            <div class="clearfix filterArea">
-              <div class="filed-title">写作领域</div>
-              <div class="filed-input" :class="{'two':dialogVisible}">
-                <el-input v-model="filedName" placeholder="点击选择" @focus="showFileds" :readonly=true></el-input>
-                <label v-show="!filedName">请选择您要写作的领域</label>
-                <div class="filed-model" v-show="dialogVisible">
-                  <div class="filed-model-top">选择写作领域 <span>(写作领域仅支持单选)</span></div>
-                  <ul class="clearfix filedList">
-                    <li v-for="(list,index) in fildList" @click="selectFiled(list,index)">{{list}}</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="filed-input filed-input2">
-                <label>素材采集时间</label>
-                <el-select v-model="timeQuantum" placeholder="请选择">
-                  <el-option
-                    v-for="item in timeList"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-              <div class="filed-input filed-input3">
-                <label>写作字数</label>
-                <el-select v-model="wordNumber" placeholder="请选择">
-                  <el-option
-                    v-for="item in wordList"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                  </el-option>
-                </el-select>
-              </div>
-            </div>
-            <div class="search">
-              <p>请输入关键词</p>
-              <div class="form-box">
-                <!--<form @submit="writeArticle()" action="http://tj.giiso.com/www/public/images/download_qr.png"-->
-                <form @submit="writeArticle2()" action="http://tj.giiso.com/www/public/images/download_qr.png"
-                      target="nm_iframe">
-                  <input type="text" class="text-input keyWord" v-model="keyWord" :disabled="btnDisabled"
-                         placeholder="请输入关键词，多关键词用空格隔开" maxlength="30">
-                  <button :disabled="!(wordNumber && timeQuantum && keyWord && !btnDisabled)"
-                          :class="{disabled: !(wordNumber && timeQuantum && keyWord && !btnDisabled)}" type="button"
-                          @click="writeArticle2()">写作
-                  </button>
-                  <!--<el-button :disabled="!(dataPickerValue && stockValue)" type="button" @click="writeArticle()">写作</el-button>-->
-                </form>
-              </div>
-            </div>
+          <div class="right">
+            <el-button type="primary" plain size="small" @click="clickOpenDrafts">草稿箱</el-button>
           </div>
         </div>
-        <div class="state-ico" :class="{'state-show':stateShow}">
-          <ul>
-            <li :class="{'fade-in':state>=1,'fade-out':state>1}">
-              <span class="roboter-ico roboter-1"></span>
-              <div class="progress">
-                <h3>小智收到</h3>
-                <p>好开森~~~</p>
-                <div class="progress-bar"><span :style="{ 'width':stateBar1+'%' }"></span></div>
-                <span>{{stateBar1}}%</span>
-              </div>
-            </li>
-            <li :class="{'fade-in':state>=2,'fade-out':state>2}">
-              <span class="roboter-ico roboter-2"></span>
-              <div class="progress">
-                <h3>搜索资料</h3>
-                <p>稍等哦，让我找找资料... </p>
-                <div class="progress-bar"><span :style="{ 'width':stateBar2+'%' }"></span></div>
-                <span>{{stateBar2}}%</span>
-              </div>
-            </li>
-            <li :class="{'fade-in':state>=3,'fade-out':state>3}">
-              <span class="roboter-ico roboter-3"></span>
-              <div class="progress">
-                <h3>思考一下</h3>
-                <p>抱歉，我要好好想想~~~ </p>
-                <div class="progress-bar"><span :style="{ 'width':stateBar3+'%' }"></span></div>
-                <span>{{stateBar3}}%</span>
-              </div>
-            </li>
-            <li :class="{'fade-in2':state>=4,'fade-out':state>4}">
-              <span class="roboter-ico roboter-4"></span>
-              <div class="progress">
-                <h3>开始写作</h3>
-                <p>努力写作中~~~</p>
-                <div class="progress-bar"><span :style="{ 'width':stateBar4+'%' }"></span></div>
-                <span>{{stateBar4}}%</span>
-              </div>
-            </li>
-            <li :class="{'fade-in2':state>=5,'fade-out':state>5}">
-              <span class="roboter-ico roboter-5"></span>
-              <div class="progress">
-                <h3>完成</h3>
-                <p>终于写完了，棒棒哒~~~</p>
-                <div class="progress-bar"><span style="width: 100%;"></span></div>
-                <span>100%</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="article-title">
-          <input v-model="articleTitle" type="text" :disabled="articleTitle==''" placeholder="文章标题生成中……"/>
-        </div>
-        <div class="article">
-          <div class="text-area-out">
-            <div class="text-area" id="text-area-div">{{articleData}}<span class="pen-box" id="pen-box"></span></div>
-            <textarea v-model="articleData" id="text-area-text" @scroll="textAreaScroll()"></textarea>
+        <div class="row clearfix">
+          <div class="left">
+            <div class="item">
+              <span>请输入关键词</span>
+              <el-input v-model="keyword" placeholder="请输入关键词" size="small" style="width: 490px;"></el-input>
+              <p>备注：请输入5字以内关键词，最多输入三个，之间用空格隔开</p>
+            </div>
           </div>
-          <p class="word-number">输出文章约{{articleData.length}}字</p>
-        </div>
-        <div class="bottom clearfix">
-          <button class="btn js-copy" id="saveArticle" :data-clipboard-text="articleData"
-                     v-show="pageLength>=pageNum">复制文字
-          </button>
-          <el-button class="btn nextPage" @click="postShareData()" v-show="pageLength>=pageNum">向好友炫耀一下</el-button>
-          <p v-show="pageLength>pageNum">写作效果不满意？<a href="javascript:;" @click="nextPage">换一篇试试 > .<</a></p>
+          <div class="right">
+            <el-button type="primary" size="small" @click="clickWrite()">文章写作</el-button>
+          </div>
         </div>
       </div>
-      <!--<div class="model">-->
-        <!--<div class="come-ico" @click="closeWelcomeModel">-->
-          <!--<img src="../assets/images/come-ico.png">-->
-        <!--</div>-->
-      <!--</div>-->
+
+      <div class="write-content">
+        <div class="left">
+          <div class="row clearfix">
+            <span class="left">文章标题</span>
+            <el-input class="right title" v-model="title" size="small"
+                      style="width: 490px;"
+                      :maxlength="50"
+                      :prefix-icon="titleLoading ? 'el-icon-loading' : ''"></el-input>
+          </div>
+          <div class="row row2 clearfix">
+            <div class="left">
+              <span>作者</span>
+              <el-input v-model="author" size="small" style="width: 90px;" :maxlength="20"></el-input>
+              <span style="width: 65px;margin-left: 8px;">文章时间</span>
+              <el-date-picker v-model="time" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss" placeholder="选择文章时间" size="small" style="width: 200px;" :editable="false"></el-date-picker>
+            </div>
+            <el-button class="right js-copy" type="primary" size="small" :data-clipboard-text="copyText">一键复制</el-button>
+          </div>
+          <div class="editor" :class="{'text-show':textShow}">
+            <script id="editor" type="text/plain" style="height:660px;"></script>
+            <p class="text">右侧“AI写作”是写作机器人写的文章，“资讯推荐”是相关资讯推荐~<span class="el-icon-close" @click="textShow=false"></span>
+            </p>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="tabs">
+            <a :class="{'active':active==1}" @click="tabsChange(1)" href="javascript:;">AI写作</a>
+            <a :class="{'active':active==2,'disabled':hasNoAiList && hasNoNewsList}" @click="tabsChange(2)" href="javascript:;">推荐资讯</a>
+          </div>
+          <div class="items">
+            <div class="item" v-show="active==1"  v-loading="aiLoading">
+              <div class="search clearfix">
+                <span class="left">这些AI文章满意么？还可以点击再次写作哦</span>
+                <el-button class="right" type="primary" size="small" :disabled="hasNoAiList" @click="getAIListData()">再次写作</el-button>
+              </div>
+              <ul>
+                <li v-for="item in aiListDataShow">
+                  <p>{{item.summary}}</p>
+                  <div class="clearfix">
+                    <a href="javascript:;" @click="showAIDetail(item)">阅读全文</a>
+                  </div>
+                </li>
+                <li class="no-news" v-show="hasNoAiList && !hasNoNewsList">非常抱歉，这个题目不会做。但我们也为您提供相关资讯内容，您也可以更换关键词！</li>
+                <li class="no-news" v-show="hasNoAiList && hasNoNewsList">非常抱歉，这个题目不会做。</li>
+              </ul>
+              <div class="pagination">
+                <el-pagination
+                  @current-change="handleCurrentChange1"
+                  :page-size="pageSize1"
+                  :current-page="pageNum1"
+                  :total="aiListData.length"
+                  layout=" prev, pager, next" background small>
+                </el-pagination>
+              </div>
+
+              <div class="detail" v-show="aiDetailShow">
+                <div class="inner">
+                  <div class="article" v-html="aiDetail"></div>
+                  <a class="close" href="javascript:;" @click="closeAiDetail($event)">点击收起</a>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="item" v-show="active==2" v-loading="newsLoading">
+              <div class="search">
+                <div class="clearfix">
+                  <el-input class="left" v-model="newsKeyword" size="small" placeholder="请输入资讯关键词" :maxlength="30"></el-input>
+                  <el-button class="right" type="primary" size="small" @click="getNewsListData(newsKeyword)">搜索资讯
+                  </el-button>
+                </div>
+                <span style="width: auto;margin-top: 20px;">您还可以在这里搜索其他的资讯文章哦~</span>
+              </div>
+              <ul>
+                <li v-for="item in newsListDataShow">
+                  <h3>{{item.title}}</h3>
+                  <p>{{item.summary}}</p>
+                  <div class="clearfix">
+                    <span>{{item.site}}</span>
+                    <a href="javascript:;" @click="collectNewsList(item)">阅读全文</a>
+                  </div>
+                </li>
+                <li class="no-news" v-show="hasNoNewsList">找不到相关资讯</li>
+              </ul>
+              <div class="pagination">
+                <el-pagination
+                  @current-change="handleCurrentChange2"
+                  :page-size="pageSize2"
+                  :current-page="pageNum2"
+                  :total="newsListData.length"
+                  layout=" prev, pager, next" background small>
+                </el-pagination>
+              </div>
+
+              <div class="detail" style="top: 102px;" v-show="newsDetailShow">
+                <div class="inner">
+                  <div class="article" v-html="newsDetail"></div>
+                  <a class="close" href="javascript:;" @click="closeNewsDetail($event)">点击收起</a>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="btns">
+        <el-button type="primary" size="small" @click="saveDrafts">保存</el-button>
+        <el-button type="primary" size="small" @click="downLoadWord">下载</el-button>
+      </div>
     </div>
-    <span class="pen-ico" id="pen-ico" v-show="penShow" style="display: none;"></span>
-    <iframe name="nm_iframe" style="display:none;"></iframe>
+
+
+    <el-dialog class="drafts-box" title="草稿箱" :visible.sync="draftsShow" :lock-scroll="false"
+               :close-on-click-modal="false">
+      <table>
+        <thead>
+        <tr>
+          <th width="40">序号</th>
+          <th width="180">保存时间</th>
+          <th>标题</th>
+          <th width="100">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="item in draftsListData">
+          <td>{{item.index}}</td>
+          <td>{{item.create_time}}</td>
+          <td>{{item.title}}</td>
+          <td>
+            <a href="javascript:;" @click="editDrafts(item.id)">编辑</a>
+            <a href="javascript:;" @click="deleteDrafts(item.id)">删除</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <el-pagination
+          @current-change="handleCurrentChange4"
+          :page-size="pageSize4"
+          :current-page="pageNum4"
+          :total="totalCount4"
+          layout=" prev, pager, next" background small>
+        </el-pagination>
+      </div>
+
+    </el-dialog>
+
+
   </div>
 </template>
 
 <script>
   import $ from 'jquery';
-  import Clipboard from 'clipboard';
-
   export default {
-    data() {
+    data: function () {
       return {
-        tagIndex: "",
-        btnDisabled: false,
-        stockSelectDisabled: false,
-        stockCode: "",
-        textInputDisabled: true,
-        stockListDetail: [],
-        showStockList: false,
-        pageLength: 0,
-        pageNum: 1,
-        dataPickerValue: "",
-        nowDate: "",
-        timeQuantum: 1,
-        timeList: [{
-          value: 1,
-          label: '最近一周'
-        }, {
-          value: 2,
-          label: '最近一月'
-        }, {
-          value: 3,
-          label: '最近半年'
-        }],
+        id: '',
+        filedName: '财经',
         wordNumber: 800,
         wordList: [{
           value: 800,
@@ -208,994 +221,1104 @@
           value: 2000,
           label: '1500-2000'
         }],
-        filedName: "",
-        filedType: 1,
-        fildList: [],
-        dialogVisible: false,
-        keyWord: "",
-        allArticleData: [],
-        allArticleData0: [],
-        allArticleData1: [],
-        allArticleGetNum: 0,
-        articleData: "",
-        text: " ",
-        articleTitle: "",
-        mm: 0,
-        config: {
-          version: 0,
-          itype: 2,
-          q: "",
-          token: "0"
-        },
-        penShow: false,
-        stateShow: false,
-        state: 0,
-        stateBar1: 0,
-        stateBar2: 0,
-        stateBar3: 0,
-        stateBar5: 0,
-        timeInterval: {},
-        timeOut: {},
-        hideUp: false,
-        robotHost: "",
-        hostApi: "/stock"
+        timeQuantum: 1,
+        timeList: [
+          {
+            value: 1,
+            label: '最近一周'
+          }, {
+            value: 2,
+            label: '最近一月'
+          }, {
+            value: 3,
+            label: '最近半年'
+          }
+        ],
+        keyword: '',
+        title: '',
+        author: '',
+        time: '',
+        content: '',
+
+
+        active: 1,
+
+        aiListData: [],
+        pageNum1: 1,
+        pageSize1: 5,
+        totalCount1: 50,
+        aiDetail: {},
+        aiDetailShow: false,
+        hasNoAiList: false,
+
+        newsKeyword: '',
+        newsListData: [],
+        pageNum2: 1,
+        pageSize2: 5,
+        newsDetail: {},
+        newsDetailShow: false,
+        hasNoNewsList: false,
+
+        hasNoList:0,
+
+        draftsShow: false,
+        draftsListData: [],
+        pageNum4: 1,
+        pageSize4: 10,
+        totalCount4: 5,
+
+
+        textShow: false,
+        titleLoading: false,
+        aiLoading: false,
+        newsLoading: false,
+        fullLoading: false
       }
     },
     computed: {
-      stateBar4: function () {
-        if (this.text.length == 0) {
-          return 100;
-        } else {
-          var m = parseInt(this.mm / this.text.length * 100);
-          if (m > 100) m = 100;
-          return m;
+      aiListDataShow: function () {
+        return this.aiListData.slice((this.pageNum1 - 1) * this.pageSize1, this.pageNum1 * this.pageSize1);
+      },
+      newsListDataShow: function () {
+        return this.newsListData.slice((this.pageNum2 - 1) * this.pageSize2, this.pageNum2 * this.pageSize2);
+      },
+      copyText:function(){
+        var str='';
+
+        if(!this.title){
+          str='false-title'
+        }else if(!this.author){
+          str='false-author'
+        }else if(!this.time){
+          str='false-time'
+        }else if(!this.content){
+          str='false-content'
+        }else {
+          str='文章标题：'+this.title +'\n\r'
+            + '作者：'+this.author +'\n\r'
+            + '文章时间：'+this.time +'\n\r'
+            + '文章内容：\n'+this.content +'\n'
         }
+        return str
       }
     },
-    watch: {
-      allArticleGetNum: function (val) {
-        var self = this;
-        if (val == 2) {
-          var length = self.allArticleData0.length > self.allArticleData1.length ? self.allArticleData0.length : self.allArticleData1.length;
-          if (length > 0) {
-            for (var i = 0; i < length; i++) {
-              if (i < self.allArticleData0.length) {
-                self.allArticleData.push(self.allArticleData0[i]);
-              }
-              if (i < self.allArticleData1.length) {
-                self.allArticleData.push(self.allArticleData1[i]);
-              }
-            }
-            self.simulateWrite(self.allArticleData[self.pageNum - 1].summray);
-          } else {
-            self.simulateWrite('');
+    watch:{
+      hasNoList:function(val){
+        if(val==2){
+          if(this.hasNoNewsList && this.hasNoAiList){
+            this.$alert('您输入的关键词无法进行写作，请尝试更改关键词进行写作！', '提示',{
+              type:'error'
+            });
           }
-          console.log(self.allArticleData)
+          this.hasNoList=0;
         }
-      },
-      articleData: function () {
-        var self = this;
-        self.$nextTick(function () {
-          var height = $("#text-area-text")[0].scrollHeight;
-          $("#text-area-text").scrollTop(height);
-          $("#text-area-div").scrollTop(height);
-          this.penLocation();
-        })
-      },
-      penShow: function () {
-        var self = this;
-        self.$nextTick(function () {
-          self.penLocation();
-        });
-      },
-      stateShow: function () {
-        var self = this;
-        self.$nextTick(function () {
-          self.penLocation();
-          setTimeout(function () {
-            self.penLocation();
-            /*if(self.stateShow==true){
-              $(document).scrollTop($('.state-ico').offset().top-10);
-            }*/
-          }, 1000)
-        });
-
       }
     },
-    created() {
-      var self = this;
-      if (location.host != "robot.giiso.com" && location.host != "writer.giiso.com") {
-        self.robotHost = "http://writer.giiso.com";
-        self.hostApi = "http://writer.giiso.com/stock";
-      }
+    created: function () {
 
-
-      $("body").click(function (e) {
-        var _con = $(".filed-model");
-        if (!_con.is(e.target) && _con.has(e.target).length === 0 && e.target.className != 'el-input__inner') {
-          self.dialogVisible = false;
-        }
-      })
-      $("body").click(function (e) {
-        var _con = $(".stockListDetail");
-        if (!_con.is(e.target) && _con.has(e.target).length === 0 && e.target.className != 'el-input__inner') {
-          self.showStockList = false;
-        }
-      })
-      self.getFiledList();
     },
     mounted: function () {
-      this.init();
-      // this.copyArticle();
-      this.getTime();
-
+      this.editorInt();
+    },
+    destroyed: function () {
+      this.editor.destroy();
     },
     methods: {
-      //点击在写一篇
-      nextPage() {
+
+      //点击文章写作时调用
+      clickWrite: function () {
         var self = this;
-        self.pageNum++;
-        $('.text-input').blur();
-        self.btnDisabled = true;
-        clearInterval(self.timeInterval);
-        clearTimeout(self.timeOut);
-        self.pageLength = 0;
-        self.articleTitle = "";
-        self.articleData = "";
-        //触发小智收到动画
-        self.stateShow = true;
-        self.timeOut = setTimeout(function () {
-          self.state = 1;
-          self.penShow = true;
-          self.changeStateBar('stateBar1', 1000);
-          self.simulateWrite(self.allArticleData[self.pageNum - 1].summray);
-        }, 500);
+
+        if (self.keyword == '') {
+          self.$alert('请输入至少一个写作关键词哦！', '提示',{
+            type:'warning'
+          });
+          return false;
+        }
+        var arr=self.keyword.split(' ');
+        if(arr.length>3){
+          self.$alert('请按照正确规则输入写作关键词哦！', '提示',{
+            type:'warning'
+          });
+          return false;
+        }
+        for(var i=0;i<arr.length;i++){
+          if(arr[i].length>5){
+            self.$alert('请按照正确规则输入写作关键词哦！', '提示',{
+              type:'warning'
+            });
+            return false;
+          }
+        }
+        self.id='';
+        self.title='';
+        self.author='';
+        self.time='';
+        self.content='';
+        self.editor.setContent('');
+
+        self.newsKeyword='';
+        self.active=1;
+        self.hasNoList=0;
+
+        self.getAIListData(function (data) {
+
+          if (self.aiListData.length > 0) {
+            if(data.data.id) self.id=data.data.id;
+
+            self.getTitle(self.aiListData[0].summary);
+            self.time = self.getTime();
+
+            //此处处理换行符在ueditor中无法正常换行，把\n替换成段落p标签
+            var str = "<p>" + self.aiListData[0].summary.replace(/\n/g, "</p><p>") + "</p>";
+            self.editor.setContent(str);
+          }
+        });
+
+        self.getNewsListData(self.keyword)
       },
-      //获取领域分类列表
-      getFiledList() {
+
+
+      //获取AI写作列表
+      getAIListData: function (callback) {
         var self = this;
+        if (self.keyword == '') {
+          self.$alert('请输入至少一个写作关键词哦！', '提示',{
+            type:'warning'
+          });
+          return false;
+        }
+        var arr=self.keyword.split(' ');
+        if(arr.length>3){
+          self.$alert('请按照正确规则输入写作关键词哦！', '提示',{
+            type:'warning'
+          });
+          return false;
+        }
+        for(var i=0;i<arr.length;i++){
+          if(arr[i].length>5){
+            self.$alert('请按照正确规则输入写作关键词哦！', '提示',{
+              type:'warning'
+            });
+            return false;
+          }
+        }
+
+
+        self.aiListData = [];
+        self.hasNoAiList = false;
+        self.aiLoading = true;
         $.ajax({
-          // url: "http://172.16.1.31:9092/industry-bulletin/writer_robot/writer/get_classify",
-          url: apiHost + "/industry-bulletin/writer_robot/writer/get_classify",
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/write",
           type: "POST",
           xhrFields: {
             withCredentials: true
           },
           crossDomain: true,
-          data: {},
-          success: function (data) {
-            if (data.code == 0) {
-              self.fildList = data.data;
-              self.$nextTick(function () {
-                self.selectFiled(self.fildList[0], 0);
-              })
-            }
-          }
-        })
-      },
-      getTime() {
-        var self = this;
-        var now = new Date();
-        var y = now.getFullYear();
-        var m = now.getMonth() + 1;
-        if (m < 10) {
-          m = "0" + m
-        }
-        var d = now.getDate();
-        if (d < 10) {
-          d = "0" + d
-        }
-        self.dataPickerValue = y + "-" + m + "-" + d;
-        self.nowDate = y + "-" + m + "-" + d;
-        console.log(self.nowDate)
-      }
-      ,
-      showFileds() {
-        var self = this;
-        self.dialogVisible = true
-      }
-      ,
-      closeWelcomeModel() {
-        $(".model").fadeOut();
-      }
-      ,
-      init: function () {
-        var self = this;
-        self.penLocation();
-        setTimeout(function () {
-          $(".model").fadeOut();
-        }, 3000);
-        window.onresize = function () {
-          self.penLocation();
-        }
-      },
-
-
-      //非股票类型点击写作触发
-      writeArticle2: function () {
-        var self = this;
-        $('.text-input').blur();
-        self.btnDisabled = true;
-        clearInterval(self.timeInterval);
-        clearTimeout(self.timeOut);
-        self.pageNum = 1;
-        self.pageLength = 0;
-        self.articleTitle = "";
-        self.articleData = "";
-        self.allArticleData = [];
-        self.allArticleData0 = [];
-        self.allArticleData1 = [];
-        self.allArticleGetNum = 0;
-
-        // self.getAllArticleData(0);
-        self.getAllArticleData(1);
-
-        //触发小智收到动画
-        self.stateShow = true;
-        self.timeOut = setTimeout(function () {
-          self.state = 1;
-          self.penShow = true;
-          self.changeStateBar('stateBar1', 1000);
-        }, 500)
-
-      },
-      //非股票类型写作获取数据
-      getAllArticleData: function (version) {
-        var self = this;
-        $.ajax({
-          method: 'POST',
-          // url: "http://172.16.1.31:9092/industry-bulletin/writer_robot/writer/write",
-          url: apiHost + "/industry-bulletin/writer_robot/writer/write",
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
           data: {
-            version: version,
-            keyword: self.keyWord,
+            version: 1,
+            keyword: self.keyword,
             time: self.timeQuantum,
             sl: self.wordNumber,
             cluster: "",
-            tags: self.tagIndex,
+            tags: self.filedName,
             token: 0
           },
           success: function (data) {
-            if (data.code == 0 && data.data && data.data.rwnews && data.data.rwnews.result && data.data.rwnews.result.length > 0) {
-              if (version == 0) {
-                self.allArticleData0 = data.data.rwnews.result;
+            self.aiLoading=false;
+            if (data.code == '0') {
+              if (data.data && data.data.ai_data && data.data.ai_data.result && data.data.ai_data.result.length > 0) {
+                self.aiListData = data.data.ai_data.result;
+                if (callback) callback(data);
               } else {
-                self.allArticleData1 = data.data.rwnews.result;
+                self.hasNoAiList = true;
+                self.hasNoList++;
               }
+            }else {
+              self.hasNoAiList = true;
+              self.hasNoList++;
             }
-            self.allArticleGetNum=2;
           },
-          error: function () {
-            self.allArticleGetNum++;
+          error: function (XMLHttpRequest) {
+            self.aiLoading=false;
+            if (XMLHttpRequest.status == "9001") {
+              location.href = "./login.html";
+            }
           }
-        });
-      }
-      ,
-      //模拟文章写作过程,并调用生成标题接口,在获取接口数据后调用
-      simulateWrite: function (article) {
-        var self = this;
-        self.text = article.replace(/ /g, "");
-        if (self.text != '') self.getTitle();
-
-        self.timeOut = setTimeout(function () {
-          self.state = 2;
-          self.changeStateBar('stateBar2', 2000);
-          self.timeOut = setTimeout(function () {
-            self.state = 3;
-            self.changeStateBar('stateBar3', 1000);
-            self.timeOut = setTimeout(function () {
-              self.state = 4;
-
-              if (self.text == '') {
-                self.penShow = false;
-                self.state = 5;
-                self.btnDisabled = false;
-                self.$message({
-                  showClose: true,
-                  message: '对不起，无有效内容,请修改题目',
-                  duration: 3000
-                });
-              }
-
-              var m = 0;
-
-              function simulateWrite() {
-                clearInterval(self.timeInterval);
-                self.timeInterval = setInterval(function () {
-                  if (m == 0) {
-                    self.articleData += "      ";
-                  }
-                  self.articleData += self.text.slice(m, m + 1);
-                  if (self.text.slice(m, m + 1) == "。" || self.text.slice(m, m + 1) == "！") {
-                    clearInterval(self.timeInterval);
-                    self.timeOut = setTimeout(function () {
-                      simulateWrite()
-                    }, 700)
-                  }
-
-                  var isN = self.text.slice(m, m + 1);
-                  if (isN.indexOf("\n") >= 0) {
-                    self.articleData += "      ";
-                  }
-
-                  m++;
-                  self.mm = m;
-                  if (m > self.text.length) {
-                    clearInterval(self.timeInterval);
-                    setTimeout(function () {
-                      self.penShow = false;
-                      self.state = 5;
-                      self.pageLength = self.allArticleData.length;
-                      self.btnDisabled = false;
-                      if (self.stockValue == 7) {
-                        self.textInputDisabled = false
-                      }
-                    }, 1000)
-                  }
-                }, 40);
-              }
-
-              simulateWrite();
-            }, 2000)
-          }, 3000)
-        }, 2000);
-
-
-      }
-      ,
+        })
+      },
       //标题生成
-      getTitle: function () {
+      getTitle: function (summary) {
         var self = this;
+        self.titleLoading=true;
         $.ajax({
-          // url: "http://172.16.1.31:9092/industry-bulletin//writer_robot/writer/headline_generation",
-          url: apiHost + "/industry-bulletin/writer_robot/writer/headline_generation",
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/headline_generation",
           type: "POST",
           xhrFields: {
             withCredentials: true
           },
           crossDomain: true,
           data: {
-            article: self.text
+            article: summary
           },
           success: function (data) {
-            if(data.code == 0) {
-              self.articleTitle = data.data;
+            self.titleLoading=false;
+            if (data.code == '0') {
+              self.title = data.data;
             }
           }
         })
       },
-      //进度条计算，过渡增加进度条百分比
-      changeStateBar: function (stateBar, time) {
-        var self = this;
-        setTimeout(function () {
-          var m = 0;
-          var timerIIII = setInterval(function () {
-            self[stateBar] = m;
-            m += 2;
-            if (m > 100) {
-              clearInterval(timerIIII);
-            }
-          }, time / 50)
-        }, 700)
+      //阅读AI全文
+      showAIDetail: function (item) {
+        this.aiDetail = "<p>" + item.summary.replace(/\n/g, "</p><p>") + "</p>";
+        this.aiDetailShow = true;
       },
-      //文本域滚动时，隐藏div也跟着滚动
-      textAreaScroll: function () {
-        var top = $("#text-area-text").scrollTop();
-        $("#text-area-div").scrollTop(top);
-      }
-      ,
-      //重新定位笔的位置
-      penLocation: function () {
-        var offset = $("#pen-box").offset();
-        $("#pen-ico").css({
-          top: offset.top,
-          left: offset.left
-        });
+      //收起阅读全文
+      closeAiDetail:function($event){
+        var inner=$($event.target).parent();
+        inner.scrollTop(0);
+        this.aiDetailShow=false;
       },
-      selectFiled(list, index) {
+
+      //获取资讯列表
+      getNewsListData: function (keyword) {
         var self = this;
-        self.btnDisabled = false;
-        self.tagIndex = list;
-        self.state = 0;
-        self.articleData = "";
-        self.stateShow = false;
-        clearInterval(self.timeInterval);
-        clearTimeout(self.timeOut);
-        self.timeQuantum = 1;
-        self.wordNumber = 800;
-        self.pageLength = 0;
-        $(".filedList li").removeClass("active");
-        $(".filedList").each(function (i, el) {
-          $(el).find("li").eq(index).addClass("active");
-        })
-        if (list == "股评") {
-          self.keyWord = "股市早评";
-          self.stockValue = 1;
-          self.filedType = 2;
-          self.getTime();
-          self.filedName = list;
-        } else if (list == "全部") {
-          self.filedName = "全部";
-          self.keyWord = "";
-          self.filedType = 3;
-          self.tagIndex = "";
-        } else {
-          self.keyWord = "";
-          self.filedType = 3;
-          self.filedName = self.fildList[index];
-        }
-        self.dialogVisible = false;
-      }
-      ,
-      //复制文本内容
-      copyArticle: function () {
-        var self = this;
-        this.clipboard = new Clipboard('.js-copy');
-        //复制成功执行的回调，可选
-        this.clipboard.on('success', function (e) {
-          self.$message({
-            showClose: true,
-            message: '复制成功',
-            duration: 3000
-          });
-        });
-        //复制失败执行的回调，可选
-        this.clipboard.on('error', function (e) {
-          self.$message({
-            showClose: true,
-            message: '复制失败，您的浏览器不支持',
-            duration: 3000
-          });
-        });
-      }
-      ,
-      //上传分享数据，并经过微信授权页面后跳转到分享页
-      postShareData: function () {
-        var self = this;
+        self.newsListData = [];
+        self.hasNoNewsList = false;
+        self.newsLoading = true;
         $.ajax({
-          url: self.robotHost + "/share/share/upload_article",
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/news_search",
           type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
           data: {
-            title: self.articleTitle,
-            article: self.articleData,
-            keyword: self.keyWord,
-            time: self.nowDate,
-            sl: self.wordNumber,
-            tags: self.filedName
+            keyword: keyword
           },
           success: function (data) {
-            if (data.code == 0) {
-              if (self.isWeixin) {
-                window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7142f10380ce946a&redirect_uri=http%3A%2F%2F" + location.host + "%2Fshare%2Fwx%2Fauth&response_type=code&scope=snsapi_userinfo&state="
-                  + data.id + "#wechat_redirect";
+            self.newsLoading = false;
+            if (data.code == '0') {
+              if (data.data && data.data.length > 0) {
+                self.newsListData = data.data;
               } else {
-                window.location.href = "share-page/share.html?id=" + data.id;
+                self.hasNoNewsList = true;
+                self.hasNoList++;
+              }
+            }else {
+              self.hasNoNewsList = true;
+              self.hasNoList++;
+            }
+          },
+          error: function (XMLHttpRequest) {
+            self.newsLoading = false;
+            if (XMLHttpRequest.status == "9001") {
+              location.href = "./login.html";
+            }
+          }
+        })
+      },
+
+
+      //保存草稿箱
+      saveDrafts: function () {
+        var self = this;
+        self.content = self.editor.getContent();
+        if (self.keyword == '') {
+          self.$alert('请输入至少一个写作关键词哦！', '提示',{
+            type:'warning'
+          });
+          return false;
+        }
+        var arr=self.keyword.split(' ');
+        if(arr.length>3){
+          self.$alert('请按照正确规则输入写作关键词哦！', '提示',{
+            type:'warning'
+          });
+          return false;
+        }
+        for(var i=0;i<arr.length;i++){
+          if(arr[i].length>5){
+            self.$alert('请按照正确规则输入写作关键词哦！', '提示',{
+              type:'warning'
+            });
+            return false;
+          }
+        }
+        if (self.title == '') {
+          self.$alert('请输入标题！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+        if (self.author == '') {
+          self.$alert('请输入作者！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+        if (self.time == '') {
+          self.$alert('请输入文章时间！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+        if (self.content == '') {
+          self.$alert('请输入文章内容！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+
+        self.$confirm('您确定要将文章保存到草稿箱么？', '保存提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {
+          $.ajax({
+            url: apiHost + "/industry-bulletin/writer_robot/info_writer/draft_box_save",
+            type: "POST",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            data: {
+              id: self.id,
+              keyword: self.keyword,
+              title: self.title,
+              author: self.author,
+              time: self.time,
+              content: self.content
+            },
+            success: function (data) {
+              if (data.code == '0') {
+                if(data.data) self.id=data.data;
+                self.$message({
+                  message: '已成功将文章保存到草稿箱！',
+                  type: 'success'
+                });
+              }else {
+                self.$message({
+                  message: data.msg,
+                  type: 'error'
+                });
               }
 
+              self.content = self.editor.getPlainTxt();
+            }
+          })
+        }).catch(function () {
+
+        });
+      },
+      //点击打开草稿箱
+      clickOpenDrafts: function () {
+        this.getDraftsListData();
+        this.draftsShow = true;
+      },
+      //获取草稿箱列表
+      getDraftsListData: function () {
+        var self = this;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/draft_box_list",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {
+            pageNo: self.pageNum4
+          },
+          success: function (data) {
+            if (data.code == '0' && data.data) {
+              if (data.data.result) self.draftsListData = data.data.result;
+              if (data.data.totalCount) self.totalCount4 = data.data.totalCount;
+              if (data.data.pageSize) self.pageSize4 = data.data.pageSize;
+              for (var i = 0; i < self.draftsListData.length; i++) {
+                self.draftsListData[i].index = (self.pageNum4 - 1) * self.pageSize4 + i + 1;
+              }
             }
           },
-          error: function () {
-
+          error: function (XMLHttpRequest) {
+            if (XMLHttpRequest.status == "9001") {
+              location.href = "./login.html";
+            }
           }
+        })
+      },
+      //编辑草稿
+      editDrafts:function(id){
+        var self=this;
+        self.id=id;
+        self.active=1;
+        self.newsKeyword='';
+        self.hasNoList=0;
+        self.hasNoAiList = false;
+        self.hasNoNewsList = false;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/draft_box_edit",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {
+            id: id
+          },
+          success: function (data) {
+            if (data.code == '0' && data.data) {
+              self.keyword=data.data.keyword;
+              self.title=data.data.title;
+              self.author=data.data.author;
+              self.time=data.data.time;
+              self.draftsShow = false;
+              self.editor.setContent(data.data.content);
+            }else {
+              self.$message({
+                message: data.msg,
+                type: 'error'
+              });
+            }
+          },
+          error: function (XMLHttpRequest) {
+            if (XMLHttpRequest.status == "9001") {
+              location.href = "./login.html";
+            }
+          }
+        });
+
+        self.getCollectNewsList(1);
+        self.getCollectNewsList(2);
+      },
+      //删除草稿箱
+      deleteDrafts: function (id) {
+        var self=this;
+        self.$confirm('您确定要删除此文章草稿么？', '删除提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {
+          $.ajax({
+            url: apiHost + "/industry-bulletin/writer_robot/info_writer/draft_box_delete",
+            type: "POST",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            data: {
+              id: id
+            },
+            success: function (data) {
+              if (data.code == '0') {
+                self.getDraftsListData();
+                self.$message({
+                  message: '已成功删除此文章草稿！',
+                  type: 'success'
+                });
+              }else {
+                self.$message({
+                  message: data.msg,
+                  type: 'error'
+                });
+              }
+            },
+            error: function (XMLHttpRequest) {
+              if (XMLHttpRequest.status == "9001") {
+                location.href = "./login.html";
+              }
+            }
+          })
+        }).catch(function () {
+
+        });
+
+      },
+
+      //收藏资讯
+      collectNewsList:function(item){
+        var self=this;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/news_textcontent",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {
+            newsid:item._id
+          },
+          success: function (data) {
+            if (data.code == '0' && data.data && data.data.textcontent) {
+              self.newsDetail = "<p>" + data.data.textcontent.replace(/\n/g, "</p><p>") + "</p>";
+              self.newsDetailShow=true;
+            }
+          }
+        });
+        item.draftId=self.id;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/article_collect",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: item,
+          success: function (data) {
+            if (data.code == '0') {
+
+            }
+          }
+        });
+      },
+      //收起阅读全文
+      closeNewsDetail:function($event){
+        var inner=$($event.target).parent();
+        inner.scrollTop(0);
+        this.newsDetailShow=false;
+      },
+      //获取草稿对应收藏的AI列表和咨询列表
+      getCollectNewsList:function(type){
+        var self=this;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/draft_box_article_show",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {
+            draftId:self.id,
+            type:type
+          },
+          success: function (data) {
+            if (data.code == '0' && data.data) {
+              if(type == 1){
+                self.aiListData = data.data;
+              }else {
+                self.newsListData = data.data;
+              }
+            }
+          }
+        })
+      },
+
+      //导出word文档
+      downLoadWord: function () {
+        var self=this;
+        self.content = self.editor.getPlainTxt();
+        if (self.title == '') {
+          self.$alert('请输入标题！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+        if (self.author == '') {
+          self.$alert('请输入作者！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+        if (self.time == '') {
+          self.$alert('请输入文章时间！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+        if (self.content == '') {
+          self.$alert('请输入文章内容！', '提示', {
+            type: 'warning'
+          });
+          return false;
+        }
+
+        self.$confirm('您确定要下载此文章么？', '删除提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {
+          $.ajax({
+            url: apiHost + "/industry-bulletin/writer_robot/info_writer/save_word",
+            type: "POST",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            data: {
+              title: self.title,
+              author: self.author,
+              time: self.time,
+              content: self.content
+            },
+            success: function (data) {
+              if (data.code == '0' && data.data) {
+                window.location.href=apiHost + '/industry-bulletin/writer_robot/info_writer/down_word?filename='+data.data;
+              }else {
+                self.$message({
+                  message: data.msg,
+                  type: 'error'
+                });
+              }
+            },
+            error: function (XMLHttpRequest) {
+              if (XMLHttpRequest.status == "9001") {
+                location.href = "./login.html";
+              }
+            }
+          })
+        }).catch(function () {
+
+        });
+
+      },
+
+      tabsChange:function(active){
+        if(this.hasNoAiList && this.hasNoNewsList){
+          return false;
+        }
+        this.active=active;
+      },
+
+
+      handleCurrentChange1(val) {
+        this.pageNum1 = val;
+      },
+      handleCurrentChange2(val) {
+        this.pageNum2 = val;
+      },
+      handleCurrentChange4(val) {
+        this.pageNum4 = val;
+        this.getDraftsListData();
+      },
+      getTime() {
+        var now = new Date();
+        var y = now.getFullYear();
+        var M = now.getMonth() + 1;
+        if (M < 10) M = "0" + M;
+        var d = now.getDate();
+        if (d < 10) d = "0" + d;
+        var h=now.getHours();
+        if (h < 10) h = "0" + h;
+        var m=now.getMinutes();
+        if (m < 10) m = "0" + m;
+        var s=now.getSeconds();
+        if (s < 10) s = "0" + s;
+
+        return  y + "-" + M + "-" + d + ' ' + h + ':' + m + ':' + s;
+      },
+      //富文本编辑器初始化程序
+      editorInt: function () {
+        var self = this;
+        self.editor = UE.getEditor('editor', {
+          toolbars: [[
+            'source', '|',
+            'undo', 'redo', '|',
+            'pasteplain', 'removeformat', 'selectall', '|',
+            'fontsize', 'forecolor', 'backcolor', 'bold', 'italic', 'underline', '|',
+            'drafts', 'help'
+
+          ], [
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+//            'simpleupload', 'insertimage', 'map', '|',
+//            'inserttable',
+            'horizontal', 'date', 'time', 'spechars', '|',
+//            'link', 'unlink', '|',
+
+          ]],
+          fontsize: [10, 11, 12, 14, 16, 18, 20, 24, 28, 32, 36, 42],
+          saveInterval: 5000,
+          wordCount : false,
+          elementPathEnabled: false,
+          autoHeightEnabled: false,
+          retainOnlyLabelPasted: true
+        });
+        self.textShow=true;
+        self.editor.addListener( 'contentChange', function( editor ) {
+          self.content = self.editor.getPlainTxt();
         })
       }
     }
   }
 </script>
 
-<style lang="less" type="text/less">
-
-  #write-robot .write-main .search .form-box input:disabled {
-    background-color: #eee;
+<style>
+  #write-robot {
+    font-size: 14px;
+    color: #333333;
   }
 
-  #write-robot .write-main .search .form-box button.disabled {
-    background-color: #ccc;
-    border-color: #ccc;
-    cursor: not-allowed;
-    color: #fff;
-  }
-
-  #write-robot .write-main .search .form-box button.disabled:hover {
-    background-color: #ccc;
-    border-color: #ccc;
-    color: #fff;
-  }
-
-  .filedList .active {
-    background-color: #00a0e9 !important;
-    color: #fff !important;
-  }
-
-  #write-robot .el-input__inner {
-    border-color: #e6e6e6;
-    height: 30px;
-    border-radius: 4px;
-  }
-
-  .pen-ico {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 139px;
-    height: 240px;
-    margin: 10px 0 0 -30px;
-    background: url("../assets/images/pen-ico.png") no-repeat center/contain;
-    z-index: 99;
-  }
-
-  .filedType {
-  }
-
-  .filterArea {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .filed-title {
+  #write-robot .left {
     float: left;
-    /*width: 96px;*/
-    margin-right: 15px;
+  }
+
+  #write-robot .right {
+    float: right;
+  }
+
+  #write-robot .web_bottom {
+    margin-bottom: 100px;
+  }
+
+  #write-robot .web_bottom .control {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  #write-robot .web_bottom .control .row {
+    padding: 20px 30px;
+  }
+
+  #write-robot .web_bottom .control .row .item {
+    display: inline-block;
+    margin-right: 35px;
+  }
+
+  #write-robot .web_bottom .control .row .item > span {
+    margin-right: 5px;
+  }
+
+  #write-robot .web_bottom .control .row .item > p {
+    line-height: 14px;
+    font-size: 12px;
+    color: #777;
+    padding: 8px 0 0 100px;
+  }
+
+  #write-robot .write-content {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 900px;
+  }
+
+  #write-robot .write-content > .left {
+    width: 60%;
+    min-height: 875px;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    border-radius: 5px;
+  }
+
+  #write-robot .write-content > .left .row {
+    padding-bottom: 20px;
+  }
+
+  #write-robot .write-content > .left .row .left {
+    line-height: 32px;
+  }
+
+  #write-robot .write-content > .left .row2 .left>span {
+    width: 89px;
+    display: inline-block;
+  }
+  #write-robot .write-content > .left .row .title .el-input__prefix{
+    color: #000;
+    font-size: 18px;
+  }
+
+  #write-robot .editor {
+    position: relative;
+  }
+
+  #write-robot .editor .text {
+    position: absolute;
+    width: 92%;
+    left: 4%;
+    top: 78px;
+    font-size: 12px;
     height: 30px;
     line-height: 30px;
-    color: #666;
-    font-size: 14px;
-  }
-
-  .filed-input {
-    position: relative;
-    float: left;
-    &:after {
-      content: "";
-      position: absolute;
-      right: 10px;
-      top: 12px;
-      width: 0;
-      height: 0;
-      border: 7px solid transparent;
-      border-top-color: #bfcbd9;
-      transition: all 0.3s;
-      transform-origin: 7px 3px;
-    }
-    &.two:after {
-      transform: rotate(180deg);
-    }
-    .el-input {
-      position: relative;
-      width: 165px;
-      input {
-        border-radius: 0;
-      }
-    }
-    label {
-      margin: 0 16px;
-      color: #666;
-    }
-    .filed-model {
-      position: absolute;
-      width: 350px;
-      left: 0;
-      top: 40px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      z-index: 999999999;
-      .filed-model-top {
-        font-size: 14px;
-        border-bottom: 1px solid #ccc;
-        margin: 0 20px;
-        line-height: 62px;
-        color: #333;
-        font-weight: bold;
-        span {
-          color: #999;
-          font-weight: normal;
-        }
-      }
-      ul {
-        padding: 0 15px 15px 15px;
-        margin-top: 13px;
-        li {
-          float: left;
-          width: 70px;
-          height: 40px;
-          cursor: pointer;
-          box-sizing: border-box;
-          text-align: center;
-          line-height: 40px;
-          margin: 5px;
-          background-color: #f4f4f4;
-          color: #666;
-          font-size: 14px;
-        }
-      }
-    }
-  }
-
-  .filed-input2 {
-    float: right;
-    &:after {
-      border: none;
-    }
-  }
-
-  .filed-input3 {
-    margin: 0 15px;
-    float: right;
-    &:after {
-      border: none;
-    }
-  }
-
-  .web_banner {
+    text-align: center;
+    background-color: #edf7ff;
+    border-radius: 4px;
+    z-index: 1000;
     display: none;
   }
 
-  #write-robot .write-main {
-    width: 1074px;
-    margin: 0 auto;
-    /*padding-top: 61px;*/
+  #write-robot .editor.text-show .text {
+    display: block;
+  }
+
+  #write-robot .editor.text-show .text .el-icon-close {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    background-color: #dedede;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  #write-robot .editor.text-show #edui1_iframeholder {
+    padding-top: 55px;
+  }
+
+  #write-robot .write-content > .right {
+    width: 39.2%;
+    min-height: 875px;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding-bottom: 20px;
+  }
+
+  #write-robot .write-content > .right .tabs {
+    padding: 5px 30px 0;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  #write-robot .write-content > .right .tabs a {
+    display: inline-block;
+    height: 46px;
+    line-height: 46px;
+    font-weight: bold;
+    padding: 0 4px;
+    margin: 0 23px;
+  }
+
+  #write-robot .write-content > .right .tabs a.active {
+    color: #409EFF;
+    border-bottom: 2px solid #409EFF;
+  }
+  #write-robot .write-content > .right .tabs a.disabled{
+    color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  #write-robot .write-content > .right .items {
+    padding: 22px 28px 0;
+  }
+
+  #write-robot .write-content > .right .items .search {
+    padding-bottom: 18px;
+  }
+
+  #write-robot .write-content > .right .items .search > span {
+    font-size: 12px;
+    display: block;
+    line-height: 32px;
+    text-align: center;
+    width: 250px;
+    height: 32px;
+    background-color: #edf7ff;
+    border-radius: 4px;
+  }
+
+  #write-robot .write-content > .right .items .search .el-input {
+    width: 240px;
+  }
+
+
+  #write-robot .write-content > .right .item {
+    position: relative;
+  }
+
+  #write-robot .write-content > .right .item > ul {
+    min-height: 675px;
+    position: relative;
+  }
+
+  #write-robot .write-content > .right .item > ul > li {
+    padding: 10px 18px;
+    background-color: #f5f5f5;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+
+  #write-robot .write-content > .right .item > ul > li.no-news {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 280px;
+    margin-left: -158px;
+    text-align: center;
+  }
+
+  #write-robot .write-content > .right .item > ul > li h3 {
+    font-size: 16px;
+    font-weight: bolder;
+    line-height: 22px;
+    height: 24px;
     overflow: hidden;
-    .filter {
-      padding: 15px 50px 0 50px;
-      background-color: #fff;
-      margin-bottom: 15px;
-    }
-    .search {
-      height: 30px;
-      color: #999999;
-      font-size: 14px;
-      margin: 20px 0;
-      p {
-        float: left;
-        line-height: 30px;
-        height: 30px;
-        font-size: 14px;
-        color: #666;
-      }
-      .form-box {
-        float: right;
-        input {
-          width: 655px;
-          border: 1px solid #e6e6e6;
-          line-height: 30px;
-          margin-right: 8px;
-          font-size: 14px;
-          outline: none;
-          height: 30px;
-          padding-left: 10px;
-          border-radius: 4px;
-        }
-        button {
-          width: 150px;
-          height: 30px;
-          color: #0874ea;
-          border: none;
-          border-radius: 6px;
-          border: 1px solid #0874ea;
-          cursor: pointer;
-          background-color: #fff;
-          margin-left: 17px;
-          &:hover {
-            background-color: #0874ea;
-            color: #fff;
-          }
-        }
-      }
-    }
-    .state-ico {
-      height: 0;
-      margin-bottom: 0;
-      transition: all ease 0.3s;
-      &.state-show {
-        height: 78px;
-        margin-bottom: 15px;
-      }
-      ul {
-        height: 100%;
-        width: 1090px;
-        position: relative;
-        li {
-          width: 1090px;
-          height: 78px;
-          color: #ffffff;
-          position: absolute;
-          top: 0;
-          left: 100%;
-          background: #00a0e9;
-          transition: all ease 0.5s;
-          .roboter-ico {
-            width: 56px;
-            height: 94px;
-            position: absolute;
-            top: 4px;
-            left: 315px;
-            z-index: 98;
-            background: url("../assets/images/roboter-1.png") no-repeat center/contain;
-            &.roboter-2 {
-              background-image: url("../assets/images/roboter-2.png");
-            }
-            &.roboter-3 {
-              background-image: url("../assets/images/roboter-3.png");
-            }
-            &.roboter-4 {
-              background-image: url("../assets/images/roboter-4.png");
-            }
-            &.roboter-5 {
-              background-image: url("../assets/images/roboter-5.png");
-            }
-          }
-          .progress {
-            width: 320px;
-            height: 78px;
-            margin: 0 auto;
-            padding: 12px 0 0 40px;
-            h3 {
-              float: left;
-              font-size: 19px;
-              line-height: 35px;
-              padding-right: 14px;
-            }
-            p {
-              font-size: 15px;
-              line-height: 35px;
-              float: left;
-            }
-            .progress-bar {
-              width: 266px;
-              height: 10px;
-              float: left;
-              border: 1px solid #ffffff;
-              background-color: #ffffff;
-              border-radius: 6px;
-              overflow: hidden;
-              & > span {
-                display: block;
-                height: 100%;
-                width: 0;
-                background-color: #00a0e9;
-                border-radius: 5px;
-              }
-            }
-            & > span {
-              font-size: 14px;
-              line-height: 10px;
-              float: right;
-            }
-          }
-          &:nth-child(2) {
-            background: #dae000;
-            .progress .progress-bar {
-              & > span {
-                background: #dae000;
-              }
-            }
-          }
-          &:nth-child(3) {
-            background: #f39800;
-            .progress .progress-bar {
-              & > span {
-                background: #f39800;
-              }
-            }
-          }
-          &:nth-child(4) {
-            background: #8fc31f;
-            .progress .progress-bar {
-              & > span {
-                background: #8fc31f;
-              }
-            }
-          }
-          &:nth-child(5) {
-            background: #ea5514;
-            .progress .progress-bar {
-              & > span {
-                background: #ea5514;
-              }
-            }
-          }
-          &.fade-in {
-            left: 0;
-            .roboter-ico {
-              animation: roboter_run1 0.4s 0.7s 1;
-            }
-          }
-          &.fade-in2 {
-            left: 0;
-            .roboter-ico {
-              animation: roboter_run2 1.6s 0.7s infinite;
-            }
-          }
-          &.fade-out {
-            left: -100%;
-          }
-        }
-      }
-    }
-    .btn {
-      background-color: #0774ea;
-      border-color: #0774ea;
-      color: #fff;
-      width: 150px;
-      height: 30px;
-      line-height: 30px;
-      border-radius: 4px;
-      margin-right: 15px;
-
-    }
-    .article-title {
-      input {
-        width: 100%;
-        height: 39px;
-        padding: 0 18px;
-        border: 1px solid #e6e6e6;
-        line-height: 37px;
-        margin-right: 8px;
-        font-size: 14px;
-        outline: none;
-        box-sizing: border-box;
-        &:disabled {
-          background-color: #eee;
-        }
-      }
-    }
-    .article {
-      margin-top: 15px;
-      position: relative;
-      border: 1px solid #e6e6e6;
-      padding-bottom: 30px;
-      .text-area-out {
-        width: 100%;
-        height: 430px;
-        margin: 0 auto;
-        position: relative;
-      }
-      .text-area-out .text-area, .text-area-out textarea {
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow-y: scroll;
-        width: 100%;
-        height: 100%;
-        padding: 0 16px;
-        font-size: 18px;
-        border: none;
-        color: black;
-        line-height: 30px;
-        letter-spacing: 0;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        resize: none;
-        box-sizing: border-box;
-      }
-      .word-number {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-        width: 100%;
-        height: 30px;
-        box-sizing: border-box;
-        /*background-color: #ffffff;*/
-        line-height: 30px;
-        font-size: 14px;
-        color: #b5b5b5;
-        text-align: right;
-        padding-right: 25px;
-      }
-      .text-area-out .text-area .pen-box {
-        display: inline-block;
-        height: 16px;
-        width: 2px;
-      }
-    }
-    .bottom {
-      padding: 15px 0 25px 0;
-      line-height: 38px;
-      min-height: 38px;
-      .nextPage {
-        display: none;
-      }
-      p {
-        display: inline-block;
-        font-size: 14px;
-        a {
-          color: #3399FF;
-        }
-      }
-    }
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .model {
-    position: fixed;
-    top: 0;
+  #write-robot .write-content > .right .item > ul > li p {
+    text-indent: 2em;
+    text-align: justify;
+    font-size: 14px;
+    line-height: 18px;
+    max-height: 54px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  #write-robot .write-content > .right .item > ul > li > .clearfix {
+    margin-top: 3px;
+    font-size: 10px;
+    line-height: 20px;
+  }
+
+  #write-robot .write-content > .right .item > ul > li span {
+    float: left;
+    color: #999999;
+  }
+
+  #write-robot .write-content > .right .item > ul > li a {
+    float: right;
+    color: #409EFF;
+  }
+
+  #write-robot .write-content > .right .item .detail {
+    position: absolute;
+    top: 50px;
     left: 0;
-    z-index: 99999999;
     width: 100%;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    height: 680px;
+
+  }
+
+  #write-robot .write-content > .right .item .detail .inner {
+    padding: 10px 18px 0;
+    height: 623px;
+    overflow-y: scroll;
+  }
+
+  #write-robot .write-content > .right .item .detail .inner::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  #write-robot .write-content > .right .item .detail .inner::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+  }
+
+  #write-robot .write-content > .right .item .detail h3 {
+    font-size: 18px;
+    line-height: 26px;
+    padding: 16px 0;
+    font-weight: bolder;
+  }
+
+  #write-robot .write-content > .right .item .detail .article,
+  #write-robot .write-content > .right .item .detail .article p {
+    font-size: 16px;
+    line-height: 26px;
+    padding-bottom: 10px;
+    word-wrap: break-word;
+  }
+
+  #write-robot .write-content > .right .item .detail .close {
+    position: absolute;
+    right: 30px;
+    bottom: 12px;
+    font-size: 12px;
+    color: #409EFF;
+    line-height: 22px;
+  }
+  #write-robot .write-content > .right .item .detail.news-detail .inner{
+    padding: 10px 0 0 18px;
+    overflow: hidden;
+  }
+  #write-robot .write-content > .right .item .detail.news-detail .inner .article{
+    width:100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    .come-ico {
-      width: 644px;
-      height: 328px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin: -164px 0 0 -322px;
-      cursor: pointer;
-    }
   }
-
-  @keyframes roboter_run1 {
-    0% {
-      transform: translateY(-20px);
-    }
-    33% {
-      transform: translateY(0);
-    }
-    66% {
-      transform: translateY(-20px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes roboter_run2 {
-    0% {
-      transform: translateY(-20px);
-    }
-    8% {
-      transform: translateY(0);
-    }
-    16% {
-      transform: translateY(-20px);
-    }
-    24% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-
-  body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  img {
+  #write-robot .write-content > .right .item .detail.news-detail .inner .article iframe{
+    width:100%;
+    height: 100%;
+    overflow-y: scroll;
     border: none;
   }
-
-  ol, ul, li, button {
-    list-style: none;
-    border: none
+  #write-robot .write-content > .right .item .detail.news-detail .inner .article iframe::-webkit-scrollbar {
+    width: 5px;
+  }
+  #write-robot .write-content > .right .item .detail.news-detail .inner .article iframe::-webkit-scrollbar-thumb {
+    background-color: #ccc;
   }
 
-  input, button, textarea {
-    outline: none;
-    font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+  #write-robot .pagination {
+    float: none;
+    text-align: center;
   }
 
-  .clearfix:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+  #write-robot .btns {
+    padding-top: 30px;
+    text-align: center;
   }
 
-  .clearfix {
-    *zoom: 1;
+  #write-robot .btns .el-button + .el-button {
+    margin-left: 17px;
+  }
+
+  #write-robot .drafts-box .el-dialog {
+    width: 780px;
+    border-radius: 4px;
+  }
+
+  #write-robot .drafts-box .el-dialog__header {
+    padding: 18px 50px;
+    border-bottom: 1px solid #d8d8d8;
+  }
+
+  #write-robot .drafts-box .el-dialog__title {
+    font-size: 16px;
+  }
+
+  #write-robot .drafts-box .el-dialog__headerbtn {
+    right: 50px;
+  }
+
+  #write-robot .drafts-box .el-dialog__headerbtn .el-dialog__close {
+    font-size: 26px;
+    font-weight: bolder;
+    color: #333;
+  }
+
+  #write-robot .drafts-box .el-dialog__body {
+    padding: 8px 50px 30px;
+  }
+
+  #write-robot .drafts-box .el-dialog__body table {
+    width: 100%;
+    text-align: center;
+  }
+
+  #write-robot .drafts-box .el-dialog__body th,
+  #write-robot .drafts-box .el-dialog__body td {
+    border-bottom: 1px solid #d8d8d8;
+    line-height: 25px;
+    padding: 12px;
+  }
+
+  #write-robot .drafts-box .el-dialog__body td a {
+    color: #409EFF;
+    margin: 0 5px;
+  }
+
+  /*样式覆盖*/
+  #write-robot .el-select {
+    width: 170px;
+  }
+
+  #write-robot .el-button {
+    width: 110px;
   }
 
 
