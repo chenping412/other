@@ -3,7 +3,7 @@
     <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
         <router-link :to="{ path: '/' }">首页</router-link>
-        <span>&gt;资讯写作</span>
+        <span>&gt;财经写作</span>
       </div>
     </div>
     <div class="web_bottom">
@@ -11,8 +11,8 @@
         <div class="row clearfix" style="padding-bottom: 0">
           <div class="left">
             <div class="item">
-              <span>选择写作领域</span>
-              <el-select v-model="filedName" placeholder="请选择" size="small">
+              <span style="display: inline-block;width: 84px;">写作领域</span>
+              <el-select v-model="filedName" placeholder="请选择" size="small" :disabled="true">
                 <el-option value="财经" label="财经"></el-option>
               </el-select>
             </div>
@@ -44,7 +44,7 @@
             </div>
           </div>
           <div class="right">
-            <el-button type="primary" size="small" @click="clickWrite()">文章写作</el-button>
+            <el-button type="primary" size="small" :loading="aiLoading" @click="clickWrite()">{{aiLoading ? '写作中' : '文章写作'}}</el-button>
           </div>
         </div>
       </div>
@@ -1320,6 +1320,9 @@
   #write-robot .el-button {
     width: 110px;
   }
-
+  #write-robot .is-loading,
+  #write-robot .el-button.is-loading:before{
+    cursor: not-allowed;
+  }
 
 </style>

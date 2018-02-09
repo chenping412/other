@@ -3,26 +3,27 @@
     <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
         <router-link :to="{ path: '/' }">首页</router-link>
-        <span>&gt;写股评</span>
+        <span>&gt;股票写作</span>
       </div>
     </div>
     <div class="web-content">
       <div class="control">
         <div class="row clearfix">
           <div class="left">
-            <div class="item">
-              <span>选择模板</span>
-              <el-select v-model="template" placeholder="选择模板" size="small">
-                <el-option value="看数据模板" label="看数据模板"></el-option>
-              </el-select>
-            </div>
+            <!--<div class="item">-->
+              <!--<span>选择模板</span>-->
+              <!--<el-select v-model="template" placeholder="选择模板" size="small">-->
+                <!--<el-option value="看数据模板" label="看数据模板"></el-option>-->
+              <!--</el-select>-->
+            <!--</div>-->
             <div class="item">
               <span>选择日期</span>
               <el-date-picker
                 v-model="date"
                 type="date"
                 value-format="yyyy-MM-dd"
-                placeholder="选择日期"  size="small">
+                placeholder="选择日期"  size="small"
+                :picker-options="pickerOptions">
               </el-date-picker>
             </div>
             <div class="item">
@@ -73,6 +74,18 @@
       return {
         template:'看数据模板',
         date:'',
+        pickerOptions:{
+          disabledDate(time){
+            if(time.getTime()>new Date().getTime()){
+              return true;
+            }
+            var week=time.getDay();
+            if(week == 0 || week ==6){
+              return true;
+            }
+          }
+        },
+
         time:'10:30',
         openLimitUp:0,
         sealLimitUp:0,

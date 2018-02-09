@@ -2,27 +2,64 @@
   <div id="index">
     <div class="aside-menu">
       <ul>
-        <li>
-          <router-link :to="{ path: '/index/write' }">写作类</router-link>
-        </li>
-        <li>
-          <router-link :to="{ path: '/index/resource' }">整合类</router-link>
-        </li>
-        <li>
-          <router-link :to="{ path: '/index/data' }">报告类</router-link>
+        <li v-for="item in classList">
+          <router-link :to="{ path: item.path }">{{item.class_name}}</router-link>
         </li>
       </ul>
     </div>
     <div class="index-main">
-      <router-view></router-view>
+      <router-view :classList="classList"></router-view>
     </div>
   </div>
 </template>
 
 <script>
+  import $ from 'jquery'
   export default {
     data() {
-      return {}
+      return {
+        classList: []
+      }
+    },
+    created() {
+      this.getMenuList();
+    },
+    methods: {
+      getMenuList() {
+        var self = this;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/robot_list",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {
+            class_id: 0
+          },
+          success: function (data) {
+            if (data.code == 0) {
+              self.classList = data.data;
+              for(var i=0;i<self.classList.length;i++){
+                if(self.classList[i].class_id==1){
+                  self.classList[i].path='/index/write';
+                }
+                if(self.classList[i].class_id==2){
+                  self.classList[i].path='/index/resource';
+                }
+                if(self.classList[i].class_id==3){
+                  self.classList[i].path='/index/data';
+                }
+              }
+            }
+          },
+          error: function (XMLHttpRequest) {
+            if (XMLHttpRequest.status == "9001") {
+              location.href = "./login.html";
+            }
+          }
+        })
+      }
     }
   }
 </script>

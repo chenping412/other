@@ -38,9 +38,6 @@
     created() {
       this.getMenuList();
     },
-    mounted: function () {
-      this.getMenuList();
-    },
     methods: {
       getMenuList() {
         var self = this;
@@ -57,7 +54,7 @@
           success: function (data) {
 
             if (data.code == 0) {
-              self.menuList = data.data[0].class_data
+              self.menuList = data.data[1].class_data
             }
           },
           error: function (XMLHttpRequest) {
@@ -78,6 +75,9 @@
         }
         if(name == "行业快报") {
           self.$router.push('/ai-pager');
+        }
+        if (name == "股票写作") {
+          self.$router.push('/stock-comment');
         }
       }
     }

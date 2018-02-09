@@ -39,9 +39,6 @@
     created() {
       this.getMenuList();
     },
-    mounted: function () {
-      // this.getMenuList();
-    },
     methods: {
       getMenuList() {
         var self = this;
@@ -58,7 +55,7 @@
           },
           success: function (data) {
             if (data.code == 0) {
-              self.menuList = data.data[1].class_data
+              self.menuList = data.data[0].class_data
             }
           }
         })
@@ -68,11 +65,8 @@
           return false;
         }
         var self = this;
-        if (name == "资讯写作") {
+        if (name == "财经写作") {
           self.$router.push('/write-robot');
-        }
-        if (name == "写股评") {
-          self.$router.push('/stock-comment');
         }
       }
     }
