@@ -93,7 +93,11 @@
       }
     },
     created:function(){
-      this.date=this.getTime();
+      var week=new Date().getDay();
+      console.log(week)
+      if(week != 0 && week != 6){
+        this.date=this.getTime();
+      }
     },
     methods: {
       clickWrite:function(){
@@ -201,7 +205,6 @@
         if (M < 10) M = "0" + M;
         var d = now.getDate();
         if (d < 10) d = "0" + d;
-
         return  y + "-" + M + "-" + d;
       }
     }

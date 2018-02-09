@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit"/>
+  <title>写作机器人</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="static/pub/css/reset.css">
+  <style>
+    .main {
+      width: 100%;
+      padding: 6px 0;
+      height: 595px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      margin-top: -303px;
+      background: linear-gradient(to right, #0774ea, #54d6de);
+    }
+
+    .wrap {
+      width: 100%;
+      height: 530px;
+      padding-top: 65px;
+      background: url("static/pub/images/login_bc.jpg") center -200px no-repeat;
+      background-size: auto;
+
+    }
+
+    .login {
+      width: 413px;
+      height: 465px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
+      border-radius: 6px;
+    }
+
+    .login .login-title {
+      text-align: center;
+      font-size: 34px;
+      color: #333333;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .login .form-row {
+      height: 48px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      width: 278px;
+      padding-left: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 27px;
+      background-position: 16px center;
+      background-repeat: no-repeat;
+    }
+
+    .login .form-row input {
+      width: 240px;
+      background-color: #f0f0f0;
+      font-size: 12px;
+    }
+
+    .login .username {
+      background-image: url("static/pub/images/user.png");
+    }
+
+    .login .password {
+      background-image: url("static/pub/images/pwd.png");
+    }
+
+    .login .form-row label, .login .form-row input {
+      display: block;
+      float: left;
+      height: 48px;
+      border: none;
+      padding-left: 12px;
+    }
+
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px #f0f0f0 inset;
+    }
+
+    .login .btn {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      cursor: pointer;
+    }
+
+    .login .btn button {
+      width: 318px;
+      height: 48px;
+      background-color: #0774ea;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .login p {
+      color: #f20041;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .footer p {
+      text-align: center;
+      width: 100%;
+      line-height: 43px;
+      font-size: 12px;
+      color: #b3b3b3;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="main">
+  <div class="wrap">
+    <div class="login">
+      <div class="login-title">
+        <img src="static/pub/images/login_logo.png">
+        写作机器人
+      </div>
+      <form  action="http://tj.giiso.com/www/public/images/download_qr.png" target="nm_iframe" onsubmit="login()">
+        <div class="form-row username">
+          <label for="username"></label>
+          <input type="text" id="username" placeholder="请输入用户名" autocomplete="off">
+        </div>
+        <div class="form-row password">
+          <label for="password"></label>
+          <input type="password" id="password" placeholder="请输入登录密码">
+        </div>
+        <div class="btn">
+          <button type="submit">登 录</button>
+        </div>
+        <p class="faild">用户名或者密码不能为空</p>
+        <p class="faild">登录失败, 用户名不存在或者用户名密码错误</p>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <p>© 2016-2017 Giiso.com All Rights Reserved &nbsp;&nbsp; 深圳市智搜信息技术有限公司</p>
+</div>
+<iframe name="nm_iframe" style="display:none;"></iframe>
+</body>
+<script src="static/pub/js/jquery.min.js"></script>
+<script src="static/pub/js/common.js"></script>
+<script>
+  //登录
+  function login() {
+    var username = $("#username").val();
+    var pwd = $("#password").val();
+    if (username == "" || pwd == "") {
+      $(".faild").eq(0).show();
+      $(".faild").eq(1).hide();
+      return false;
+    } else {
+      $(".faild").eq(0).hide();
+      $.ajax({
+        url: apiHost + "/industry-bulletin/auth/login",
+        type: "POST",
+        xhrFields: {
+          withCredentials: true
+        },
+        crossDomain: true,
+        data: {
+          username: username,
+          pwd: pwd,
+        },
+        success: function (data) {
+          if(data.code == 0 && data.data == true) {
+            location.href = "./index.html"
+          }else {
+            $(".faild").eq(1).show();
+            $(".faild").eq(0).hide();
+          }
+        },
+      })
+    }
+    return false;
+  }
+
+</script>
+</html>
