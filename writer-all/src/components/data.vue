@@ -1,7 +1,7 @@
 <template>
   <div id="resource">
     <div class="classify-item">
-      <div class="title">报告类</div>
+      <div class="title">{{name}}</div>
       <div class="resource-list">
         <ul class="clearfix">
           <li v-for="list in menuList" :class="[list.permission == 0 ? 'not development' : 'normal']" @click="router(list.name)">
@@ -31,6 +31,7 @@
   export default {
     data() {
       return {
+        name:'',
         menuList: []
       }
     },
@@ -56,7 +57,8 @@
           },
           success: function (data) {
             if(data.code == 0) {
-              self.menuList = data.data[2].class_data
+              self.menuList = data.data[2].class_data;
+              self.name = data.data[2].class_name;
             }
           }
         })

@@ -10,14 +10,14 @@
       <div class="control">
         <div class="row clearfix" style="padding-bottom: 0">
           <div class="left">
-            <div class="item">
+            <!--<div class="item">
               <span style="display: inline-block;width: 84px;">写作领域</span>
               <el-select v-model="filedName" placeholder="请选择" size="small" :disabled="true">
                 <el-option value="财经" label="财经"></el-option>
               </el-select>
-            </div>
+            </div>-->
             <div class="item">
-              <span>写作字数</span>
+              <span style="display: inline-block;width: 84px;">写作字数</span>
               <el-select v-model="wordNumber" placeholder="请选择" size="small">
                 <el-option v-for="item in wordList" :value="item.value" :label="item.label"
                            :key="item.value"></el-option>
@@ -209,7 +209,7 @@
     data: function () {
       return {
         id: '',
-        filedName: '财经',
+        filedName: '',
         wordNumber: 800,
         wordList: [{
           value: 800,
