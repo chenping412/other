@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 相似资讯 -->
+    <div class="news-relative content-box">
+        <p class="label">输入一段想分析的文字：</p>
+        <div class="test-area clearfix">
+            <div class="area-left">
+                <textarea v-model="newsRelativeValue" style="resize: none;" maxlength="500"></textarea>
+                <p class="placeholder">最多输入500字</p>
+            </div>
+            <div class="area-btn">
+                <button @click="newsRelative" v-show="loadingShow_2">挖掘</button>
+                <button class="btn-icon" v-show="!loadingShow_2" disabled="disabled"></button>
+            </div>
+            <div class="area-right">
+                <ul>
+                    <li v-for="(list, index) in relativeNewsData" class="clearfix">
+                        <a v-show="list.image" target="_blank" :href="list.url" class="pic"
+                           :style=" list.image instanceof Array ? 'backgroundImage: url(' + list.image[0] + ')' : 'backgroundImage: url(' + list.image + ')'"></a>
+                        <div class="text">
+                            <h4>
+                                <a :href="list.url" target="_blank">{{list.title.length > 20 ?
+                                    list.title.slice(0,20)+"..." : list.title}}</a>
+                            </h4>
+                            <div class="clearfix">
+                                <span class="from">{{list.from}}</span>
+                                <span class="date">{{list.download.slice(0, 10)}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.newsRelative();
+
+</script>
+</body>
+</html>

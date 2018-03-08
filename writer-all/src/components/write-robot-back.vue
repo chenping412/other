@@ -3,7 +3,7 @@
     <div class="top-else">
       <!--<h2>选择生成简报信息</h2>-->
       <div class="breadcrumb">
-        <router-link :to="{ path: '/' }">首页</router-link>
+        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
         &gt;
         <span>写作机器人</span>
       </div>

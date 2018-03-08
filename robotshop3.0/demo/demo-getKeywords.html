@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 关键词提取 -->
+    <div class="news-search content-box">
+        <p class="label">输入一段想分析的文字：</p>
+        <div class="search-participle">
+            <div class="participle-top">
+                <textarea v-model="textKeywordValue" style="resize: none" maxlength="500"></textarea>
+                <p class="placeholder">最多输入500字</p>
+            </div>
+            <div class="participle-mid">
+                <button @click="getKeyword" v-show="loadingShow_4">提取</button>
+                <button class="btn-icon" v-show="!loadingShow_4" disabled="disabled"></button>
+            </div>
+            <div class="participle-bottom keyword-extract">
+                <ul class="clearfix">
+                    <li v-for="(list, index) in keywordList">
+                        <div>{{list.key}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.getKeyword();
+
+</script>
+</body>
+</html>

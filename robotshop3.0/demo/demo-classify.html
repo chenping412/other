@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--文本分类-->
+    <div class="news-search content-box">
+        <p class="label">输入一段想分析的文字：</p>
+        <div class="search-participle">
+            <div class="participle-top">
+                <textarea v-model="classifyValue" style="resize: none" maxlength="500"></textarea>
+            </div>
+            <div class="participle-mid">
+                <button @click="classifyNext" v-show="loadingShow_7">换一篇</button>
+                <button class="btn-icon" v-show="!loadingShow_7" disabled="disabled"></button>
+            </div>
+            <div class="participle-bottom keyword-extract">
+                <ul class="clearfix">
+                    <li v-for="(list, index) in classifyData">
+                        <div>{{list}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.textClassify();
+
+</script>
+</body>
+</html>

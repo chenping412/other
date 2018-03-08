@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--传播轨迹-->
+    <div class="news-search content-box">
+        <p class="label">输入一段想分析的文字：</p>
+        <div class="search-participle">
+            <div class="participle-top">
+                <textarea v-model="trackValue" style="resize: none" maxlength="500"></textarea>
+            </div>
+            <div class="participle-mid">
+                <button @click="trackNext" v-show="loadingShow_9">换一篇</button>
+                <button class="btn-icon" v-show="!loadingShow_9" disabled="disabled"></button>
+
+            </div>
+            <div class="participle-bottom keyword-extract track">
+                <ul>
+                    <li class="clearfix" v-for="(list, index) in trackData">
+                        <b>{{index+1}}</b>
+                        <p class="news-list">
+                        <h5>{{list.title}}</h5>
+                        <span class="title">{{list.site}}</span>
+                        <span class="date">{{list.time}}</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.trackFun();
+
+</script>
+</body>
+</html>

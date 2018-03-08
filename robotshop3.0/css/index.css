@@ -1,0 +1,358 @@
+.main .banner {
+  padding-top: 20px;
+}
+.main .banner .inner {
+  height: 400px;
+  position: relative;
+  background-image: linear-gradient(155deg, #1D6B71 0%, #0A1528 100%);
+}
+.main .banner .inner .product-nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 342px;
+  padding-top: 58px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+.main .banner .inner .product-nav li {
+  height: 42px;
+  font-size: 14px;
+  line-height: 42px;
+  padding-bottom: 17px;
+}
+.main .banner .inner .product-nav li > a {
+  display: block;
+  height: 100%;
+  padding-left: 44px;
+  color: #FFFFFF;
+  background: url("../images/home-menu-arrow.png") no-repeat 156px center;
+}
+.main .banner .inner .product-nav li .children {
+  display: none;
+  position: absolute;
+  left: 200px;
+  top: 0;
+  background: #FFFFFF;
+  width: 194px;
+  height: 355px;
+  padding-top: 45px;
+  color: #111111;
+}
+.main .banner .inner .product-nav li .children a {
+  display: block;
+  height: 42px;
+  padding-left: 72px;
+  font-size: 14px;
+  line-height: 42px;
+  margin-bottom: 26px;
+  background: url("../images/index-banner-icon.png") no-repeat 48px center;
+  background-size: 14px;
+}
+.main .banner .inner .product-nav li .children a:hover {
+  background-color: #eeeeee;
+}
+.main .banner .inner .product-nav li:hover a {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.main .banner .inner .product-nav li:hover .children {
+  display: block;
+}
+.main .banner .inner .swiper-container {
+  width: 800px;
+  height: 100%;
+  float: right;
+}
+.main .banner .inner .swiper-container .page {
+  position: relative;
+}
+.main .banner .inner .swiper-container .page .text {
+  position: absolute;
+  top: 153px;
+  left: 89px;
+  width: 385px;
+  z-index: 9;
+}
+.main .banner .inner .swiper-container .page .text h3 {
+  font-size: 26px;
+  color: #C0D2FF;
+  font-weight: bolder;
+  line-height: 37px;
+  padding-bottom: 21px;
+}
+.main .banner .inner .swiper-container .page .text p {
+  font-size: 16px;
+  color: #C0D2FF;
+  line-height: 22px;
+}
+.main .banner .inner .swiper-container .page .pic {
+  z-index: 8;
+  position: absolute;
+  top: 0;
+  left: 480px;
+}
+.main .banner .inner .swiper-container .swiper-button-prev {
+  background: url("../images/home-banner-left-n.png") no-repeat center;
+  left: 30px;
+  width: 16px;
+  height: 28px;
+}
+.main .banner .inner .swiper-container .swiper-button-prev:hover {
+  background-image: url("../images/home-banner-left-active.png");
+}
+.main .banner .inner .swiper-container .swiper-button-next {
+  background: url("../images/home-banner-right-n.png") no-repeat center;
+  right: 30px;
+  width: 16px;
+  height: 28px;
+}
+.main .banner .inner .swiper-container .swiper-button-next:hover {
+  background-image: url("../images/home-banner-right-active.png");
+}
+.main .section h1 {
+  font-size: 30px;
+  color: #000000;
+  line-height: 42px;
+  font-weight: bolder;
+  text-align: center;
+  padding: 38px 0 20px;
+}
+.main .section1 ul {
+  width: 1020px;
+  margin-left: -10px;
+}
+.main .section1 ul li {
+  float: left;
+  width: 320px;
+  height: 198px;
+  background: #5563E2;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+  color: #fff;
+  margin: 0 10px 20px;
+}
+.main .section1 ul li h3 {
+  font-size: 24px;
+  line-height: 33px;
+  padding: 40px 0 10px 40px;
+  font-weight: bolder;
+  width: 238px;
+  height: 33px;
+  overflow: hidden;
+}
+.main .section1 ul li p {
+  font-size: 14px;
+  line-height: 20px;
+  padding-left: 40px;
+  width: 238px;
+  max-height: 100px;
+  overflow: hidden;
+}
+.main .section1 ul li.li2 {
+  background: #F6AC58;
+}
+.main .section1 ul li.li3 {
+  background: #46BF82;
+}
+.main .section1 ul li.li4 {
+  background: #F7627D;
+}
+.main .section1 ul li.li5 {
+  background: #1E8DFF;
+}
+.main .section1 ul li.li6 {
+  background: #455064;
+}
+.main .section1 ul li.li6 h4 {
+  font-size: 20px;
+  padding: 84px 0 0;
+  line-height: 28px;
+  text-align: center;
+}
+.main .section2 .left {
+  width: 220px;
+  height: 500px;
+  background: url("../images/home-image-trial.jpg") no-repeat center;
+  text-align: center;
+}
+.main .section2 .left h3 {
+  font-size: 30px;
+  color: #FFFFFF;
+  font-weight: bolder;
+  line-height: 42px;
+  padding-top: 80px;
+}
+.main .section2 .left p {
+  font-size: 20px;
+  color: #FFFFFF;
+  line-height: 28px;
+  padding-bottom: 40px;
+}
+.main .section2 .left a {
+  display: block;
+  width: 150px;
+  height: 44px;
+  margin: 0 auto;
+  border: 1px solid #FFFFFF;
+  border-radius: 2px;
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 44px;
+}
+.main .section2 .left a:hover {
+  color: #067FFC;
+  background-color: #ffffff;
+}
+.main .section2 ul {
+  width: 778px;
+  height: 500px;
+}
+.main .section2 ul li {
+  float: left;
+  background: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+  text-align: center;
+  margin: 0 0 20px 19px;
+}
+.main .section2 ul li a {
+  display: block;
+  width: 240px;
+  height: 202px;
+  padding-top: 38px;
+}
+.main .section2 ul li a img {
+  display: block;
+  margin: 0 auto 29px;
+  width: 80px;
+  height: 80px;
+}
+.main .section2 ul li a h3 {
+  font-size: 20px;
+  color: #111111;
+  line-height: 28px;
+  font-weight: bolder;
+  margin-bottom: 6px;
+}
+.main .section2 ul li a p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 20px;
+}
+.main .section2 ul li:hover {
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+.main .section3 .swiper-container {
+  padding-top: 10px;
+  height: 450px;
+}
+.main .section3 .swiper-container .page {
+  text-align: center;
+  position: relative;
+}
+.main .section3 .swiper-container .page h3 {
+  height: 28px;
+  padding: 12px 240px 0;
+  font-size: 18px;
+  color: #111111;
+}
+.main .section3 .swiper-container .page .before,
+.main .section3 .swiper-container .page .after {
+  font-size: 18px;
+  color: #111111;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: absolute;
+  top: 64px;
+  text-align: left;
+}
+.main .section3 .swiper-container .page .before {
+  width: 270px;
+  left: 160px;
+}
+.main .section3 .swiper-container .page .after {
+  width: 320px;
+  left: 610px;
+}
+.main .section3 .swiper-container .page img {
+  display: block;
+  margin: 0 auto;
+}
+.main .section3 .swiper-container .page p {
+  font-size: 18px;
+  color: #111111;
+  line-height: 36px;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+}
+.main .section3 .swiper-container .page p a {
+  color: #3773f8;
+}
+.main .section3 .swiper-container .page2 .after {
+  left: 630px;
+  width: 295px;
+}
+.main .section3 .swiper-container .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 8px;
+  background: #666666;
+}
+.main .section3 .swiper-container .swiper-button-prev {
+  background: url("../images/home-page-left-n.png") no-repeat center;
+  left: 0;
+  width: 16px;
+  height: 28px;
+}
+.main .section3 .swiper-container .swiper-button-prev:hover {
+  background-image: url("../images/home-page-left-active.png");
+}
+.main .section3 .swiper-container .swiper-button-next {
+  background: url("../images/home-page-right-n.png") no-repeat center;
+  right: 0;
+  width: 16px;
+  height: 28px;
+}
+.main .section3 .swiper-container .swiper-button-next:hover {
+  background-image: url("../images/home-page-right-active.png");
+}
+.main .section4 {
+  padding-bottom: 40px;
+}
+.main .section4 h1 {
+  padding: 30px 0 20px;
+}
+.main .section4 .swiper {
+  position: relative;
+}
+.main .section4 .swiper-container {
+  height: 124px;
+  width: 814px;
+  margin: 0 auto;
+}
+.main .section4 .swiper-container .swiper-slide {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+}
+.main .section4 .swiper-button-prev {
+  background: url("../images/home-page-left-n.png") no-repeat center;
+  left: 0;
+  width: 16px;
+  height: 28px;
+}
+.main .section4 .swiper-button-prev:hover {
+  background-image: url("../images/home-page-left-active.png");
+}
+.main .section4 .swiper-button-next {
+  background: url("../images/home-page-right-n.png") no-repeat center;
+  right: 0;
+  width: 16px;
+  height: 28px;
+}
+.main .section4 .swiper-button-next:hover {
+  background-image: url("../images/home-page-right-active.png");
+}

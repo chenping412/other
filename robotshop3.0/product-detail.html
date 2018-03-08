@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>产品服务</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="智搜，Giiso，资讯机器人，编辑机器人，写作机器人，武文斌，郑海涛，资讯云，机器人商店，AI资讯机器人，人工智能"/>
+    <meta name="description"
+          content="深圳市智搜信息技术有限成立于2013年，聚焦于大数据和人工智能技术在资讯领域的研发和应用，自主研发了中国首个资讯机器人——Giiso资讯机器人，拥有多项发明专利和多项著作权，并获得了金沙江创投、力合集团、民银国际等多家著名投资机构的参股投资，是中国领先的“人工智能+资讯”领域国家级高新技术企业。"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=222">
+    <link rel="stylesheet" type="text/css" href="css/product-detail.css?v=2222">
+    <script src="js/jquery.min.js"></script>
+    <!--[if (IE 5)|(IE 6)|(IE 7)|(IE 8)]>
+    <script type="text/javascript">alert('请使用IE9及以上版本浏览器，其他浏览器请使用极速模式');
+    window.location.href = "http://browsehappy.com";</script>
+    <![endif]-->
+</head>
+<body>
+<div class="header">
+    <div class="top">
+        <div class="inner">
+            <p class="left">Giiso资讯机器人，让资讯更智能！</p>
+            <p class="right">
+                <span id="login_resiter">
+                    <a href="register.html">注册</a>
+                    <a href="login.html">登录</a>
+                </span>
+                <span id="user_info" style="display: none;">
+                    <a class="user_info" href="javascript:;">欢迎您，robot</a>
+                    <a class="login_out" href="javascript:;">退出</a>
+                </span>
+                <span>|</span>
+                <a href="http://giiso.com">智搜官网</a>
+            </p>
+        </div>
+    </div>
+    <div class="bot">
+        <div class="inner">
+            <a class="logo" href="index.html">
+                <img src="images/log.png">
+            </a>
+            <ul class="nav">
+                <li>
+                    <a href="index.html">首页</a>
+                </li>
+                <li class="active">
+                    <a href="product.html">产品服务</a>
+                </li>
+                <li>
+                    <a href="partner.html">成功案例</a>
+                </li>
+                <li>
+                    <a href="contact.html">联系我们</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main inner">
+    <div class="inner" id="main" style="display: none;">
+        <p class="breadcrumb">
+            当前位置 :
+            <a href="product.html"> 产品服务 > </a>
+            <span id="breadcrumb-api"> 资讯搜索 </span>
+        </p>
+        <div class="content">
+            <div class="top">
+                <img id="icon" class="icon" src="images/api-ico_search.png">
+                <div class="info" id="info">
+                    <h3>资讯搜索</h3>
+                    <p style="color: #111111;">根据关键词搜索条件，Giiso引擎提供智能、准确以及全面的资讯搜索输出。</p>
+                    <p>所属分类： 采集机器人</p>
+                    <p>可接入类型：<span>API、SDK</span></p>
+                    <a class="btn" href="register.html">申请服务</a>
+                </div>
+            </div>
+            <div class="bot" id="tabs">
+                <div class="tabs">
+                    <a class="active" href="javascript:;">商品介绍</a>
+                    <a href="javascript:;">API详情</a>
+                    <a href="javascript:;">SDK详情</a>
+                </div>
+                <div class="items">
+                    <div class="item item1" style="display: block">
+                        <div class="text" id="service-info">
+                            <h3>服务介绍</h3>
+                            <p>根据关键词搜索条件，Giiso引擎提供智能、准确以及全面的资讯搜索输出
+                                <br>可应用于各大APP及网站的资讯搜索业务。</p>
+                            <h3>计费方式</h3>
+                            <p>包月包年，每日调用量上限。</p>
+                            <h3>服务优势</h3>
+                            <p>1、实时更新：7X24小时全网信息实时同步、上万数据源全面覆盖。
+                                <br>2、精准匹配：通过智能语义及知识图谱技术让搜索匹配更精准。
+                                <br>3、秒级响应：基于大规模分布式运算，海量并发处理能力满足业务快速扩展的需求。
+                                <br>4、海量资讯：提供几十个新闻源数据和大量的自媒体资讯，一站式满足全行业需求。</p>
+                        </div>
+                        <div class="experience">
+                            <h3>在线体验</h3>
+                            <div class="iframe">
+                                <iframe id="demoiFrame" name="demoiFrame" width="100%" frameborder="0"
+                                        src="demo/demo-search.html"></iframe>
+                            </div>
+                            <p>在线检测仅作为部分效果体验</p>
+                        </div>
+                    </div>
+                    <div class="item item2 clearfix" id="api-item">
+                        <div class="nav">
+                            <a class="active" href="javascript:;">接入说明</a>
+                            <a href="javascript:;" id="api-name">资讯搜索</a>
+                        </div>
+                        <div class="documents">
+                            <div class="document detail-step" style="display: block;">
+                                <ul>
+                                    <li>
+                                        <h5>1、api说明</h5>
+                                        <p>接口访问前缀：<span>http://robotapi.giiso.com/openapi/</span></p>
+                                    </li>
+                                    <li>
+                                        <h5>2、账号信息</h5>
+                                        <div class="content-box">
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th>字段</th>
+                                                    <th>字段</th>
+                                                    <th>字段</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>username</td>
+                                                    <td>API密钥内的SecretId</td>
+                                                    <td>用户认证名，公共参数中用来验证身份</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>secretKey</td>
+                                                    <td>API密钥内的Secretkey</td>
+                                                    <td>用户认证秘钥，公共参数中用来验证身份</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>customId</td>
+                                                    <td>注册手机号</td>
+                                                    <td>客户id</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </li>
+                                    <li class="step3">
+                                        <h5>3、公共参数说明</h5>
+                                        <p>请求头参数：</p>
+                                        <div class="content-box">
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th>字段</th>
+                                                    <th>数据类型</th>
+                                                    <th>必填</th>
+                                                    <th>字段</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>date</td>
+                                                    <td>字符串</td>
+                                                    <td>是</td>
+                                                    <td>格林威治时间，格式：EEE, dd MMM yyyy HH:mm:ss z</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Authorization</td>
+                                                    <td>字符串</td>
+                                                    <td>是</td>
+                                                    <td>用户认证秘钥，公共参数中用来验证身份</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p>Authorization各参数说明：</p>
+                                        <div class="content-box">
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th>字段</th>
+                                                    <th>数据类型</th>
+                                                    <th>必填</th>
+                                                    <th>备注</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>username</td>
+                                                    <td>字符串</td>
+                                                    <td>是</td>
+                                                    <td>用户凭证</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>algorithm</td>
+                                                    <td>字符串</td>
+                                                    <td>是</td>
+                                                    <td>签名算法，固定值：hmac-sha1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>headers</td>
+                                                    <td>字符串</td>
+                                                    <td>是</td>
+                                                    <td>参与签名的HTTP请求头列表，暂只填固定值：date</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>signature</td>
+                                                    <td>字符串</td>
+                                                    <td>是</td>
+                                                    <td>Base64编码的签名串</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p>如用户凭证为“bob” ，则最终Authorization请求头格式为：</p>
+                                        <div class="content-box">
+                                            <div class="request-header">
+                                                <p>
+                                                    hmac username="bob", algorithm="hmac-sha1", headers="date",
+                                                    signature="Base64(HMAC-SHA1(signing string))" <br>
+                                                    待签名字符串（即上面的signing string）为：date: Fri, 09 Oct 2015 00:00:00 GMT <br>
+                                                    signature计算方式：先用secretKey初始化签名算法，再用HMAC-SHA1对签名字符串进行加密，然后对加密后的内容进行base64编码
+                                                    <br>
+                                                    初始化签名算法java示例：<br>
+                                                    Mac hmacSha1 = Mac.getInstance(AUTH_TYPE);<br>
+                                                    byte[] keyBytes = secretKey.getBytes();<br>
+                                                    hmacSha1.init(new SecretKeySpec(keyBytes, AUTH_TYPE));
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h5>4、demo示例</h5>
+                                        <p>各语言接入demo代码说明：</p>
+                                        <div class="img">
+                                            <ul class="demo">
+                                                <li>Java请参照GiisoAPI-demo-java.rar <a
+                                                        href="http://p083mjzub.bkt.clouddn.com/GiisoAPI-demo-java.rar">下载</a>
+                                                </li>
+                                                <li>C#请参照GiisoAPI-demo-c#.rar <a
+                                                        href="http://p083mjzub.bkt.clouddn.com/GiisoAPI_demo-c%23.rar">下载</a>
+                                                </li>
+                                                <li>Python请参照GiisoAPI-demo-python.rar <a
+                                                        href="http://p083mjzub.bkt.clouddn.com/GiisoApi-demo-python.rar">下载</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="document">
+                                <iframe id="documentiFrame" name="documentiFrame" width="100%" frameborder="0"
+                                        src="documentcenter/search.html" height="500"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="item item2 clearfix">
+                        <div class="nav">
+                            <a href="#detail-step1">开始使用</a>
+                            <a href="#detail-step2">接口调用方法</a>
+                            <a href="#detail-step3">接口说明文档</a>
+                        </div>
+                        <div class="documents">
+                            <div class="detail-step">
+                                <span id="detail-step1" class="position"></span>
+                                <h1>一. 开始使用</h1>
+                                <ul>
+                                    <li>
+                                        <h5>1.1，引入js文件</h5>
+                                        <p>在页面中引入GRobot-JS-SDK.min.js文件，如下：</p>
+                                        <div class="request-header">
+                            <pre>&lt;script type="text/javascript" src="http://robotsdk.giiso.com/SDK/js/GRobot-JS-SDK.min.js?se
+cretId=C0001160003&secretKey=ca56e5ef-9b3c-43e5-8b42-e8672d2d8ee8"></script&gt;</pre>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h5>1.2，初始化GRobot实例</h5>
+                                        <p>在使用数据接口之前，必须调用GRobot.ready()方法，进行初始化操作</p>
+                                        <div class="request-header">
+                            <pre>GRobot.ready(function(){
+    console.log('ready')
+})</pre>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="detail-step">
+                                <span id="detail-step2" class="position"></span>
+                                <h1>二. 接口调用方法</h1>
+                                <ul>
+                                    <li>
+                                        <h5>2.1 ，调用接口的方法</h5>
+                                        <p>在使用数据接口之前，必须调用GRobot.ready()方法，进行初始化操作</p>
+                                        <div class="request-header">
+                            <pre>GRobot.getData({
+    apiName: 'collector.search',
+
+    data: {
+        keyword: '王宝强'
+    },
+
+    success: function(data){
+        console.log(data)
+    },
+
+    error: function(status){
+        console.log(status)
+    },
+
+})</pre>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <h5>传入字段的说明</h5>
+                                        <div class="content-box">
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th>字段</th>
+                                                    <th>是否必传</th>
+                                                    <th>说明</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>apiName</td>
+                                                    <td>是</td>
+                                                    <td>字符串，要调用的接口名称，务必填写正确（中间包含 符号 . 不可省略）</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>data</td>
+                                                    <td>否</td>
+                                                    <td>接口请求参数，具体请看对应接口文档，如果接口无需参数，该字段可以不传</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>success</td>
+                                                    <td>是</td>
+                                                    <td>成功回调，请求成功时回调函数，data为成功后接口返回数据，JSON对象</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>error</td>
+                                                    <td>否</td>
+                                                    <td>失败回调，请求失败时回调函数，status为错误状态码</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="img">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="detail-step" id="sdk-document">
+                                <span id="detail-step3" class="position"></span>
+                                <h1>三. 接口文档说明</h1>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="other-service">
+            <h1>推荐服务</h1>
+            <ul class="clearfix" id="product-list">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="top">
+        <div class="inner clearfix">
+            <div class="logo left">
+                <img src="images/footer-giiso-logo.png">
+            </div>
+            <div class="nav right">
+                <dl>
+                    <dt>机器人</dt>
+                    <dd><a href="product.html?robot=采集机器人">采集机器人</a></dd>
+                    <dd><a href="product.html?robot=编辑机器人">编辑机器人</a></dd>
+                    <dd><a href="product.html?robot=写作机器人">写作机器人</a></dd>
+                    <dd><a href="product.html?robot=推荐机器人">推荐机器人</a></dd>
+                    <dd><a href="product.html?robot=分析机器人">分析机器人</a></dd>
+                </dl>
+                <dl>
+                    <dt>帮助中心</dt>
+                    <dd><a href="help1.html">接入指南</a></dd>
+                    <dd><a href="help2.html">常见问题</a></dd>
+                    <dd><a href="help3.html">服务条款</a></dd>
+                    <dd><a href="contact.html">联系我们</a></dd>
+                </dl>
+                <dl>
+                    <dt>友情链接</dt>
+                    <dd><a href="http://giiso.com" target="_blank">智搜官网</a></dd>
+                    <dd><a href="http://e.giiso.com" target="_blank">Giiso资讯联盟</a></dd>
+                    <dd><a href="http://www.wentianji.com" target="_blank">天机智讯</a></dd>
+                </dl>
+                <dl>
+                    <dt>联系我们</dt>
+                    <dd>电话：0755-86720697</dd>
+                    <dd>QQ：2020601975</dd>
+                    <dd>邮箱：contact@giiso.com</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="bot">
+        <div class="inner">
+            <p class="left">地址：深圳市南山区清华信息港科研楼905室／1010室</p>
+            <p class="right">©2016-2018 Giiso.com All Rights Reserved | 深圳市智搜信息技术有限公司</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="consult">
+    <div class="qq">
+        <dl>
+            <dt></dt>
+            <dd>QQ咨询</dd>
+        </dl>
+    </div>
+    <div class="tel">
+        <dl>
+            <dt></dt>
+            <dd>电话咨询</dd>
+        </dl>
+        <div class="tel-num">0755-86720697</div>
+        <i></i>
+    </div>
+</div>
+<script type="text/javascript" src="js/pub.js?v=1"></script>
+
+<script type="text/javascript">
+    var obj = searchObj();
+    var slug = '';
+    var htmlName = '';
+    if (obj.slug) {
+        slug = obj.slug;
+        htmlName = slug.replace('product_', '');
+    }
+
+    $("#demoiFrame").attr('src', 'demo/demo-' + htmlName + '.html').load(function () {
+        $('#demoiFrame').height(0).height(demoiFrame.document.body.scrollHeight);
+        if (demoiFrame.document.title == "404 Not Found") {
+            $('#demoiFrame').parent().parent().remove();
+        }
+    });
+    $("#documentiFrame").attr('src', 'documentcenter/' + htmlName + '.html').load(function () {
+        if (documentiFrame.document.title == "404 Not Found") {
+            $('#documentiFrame').removeAttr('src');
+        }
+    });
+
+    //选项卡设置
+    $('#tabs').find('.tabs a').click(function () {
+        var index = $(this).index();
+        $('#tabs').find('.tabs a').removeClass('active').eq(index).addClass('active');
+        $('#tabs').find('.items .item').hide().eq(index).show();
+
+        $('#documentiFrame').height(0).height(documentiFrame.document.body.scrollHeight);
+    });
+    $('#api-item').find('.nav a').click(function () {
+        var index = $(this).index();
+        $('#api-item').find('.nav a').removeClass('active').eq(index).addClass('active');
+        $('#api-item').find('.documents .document').hide().eq(index).show();
+
+        $('#documentiFrame').height(0).height(documentiFrame.document.body.scrollHeight);
+    });
+
+
+    //获取接口详情
+
+    function getApiDetail() {
+        $.ajax({
+            url: apiHost , data: {
+                json:'get_post',
+                post_slug:slug
+            }, success: function (data) {
+                document.getElementById('main').style.display='block';
+                if(data.status=='ok' && data.post){
+                    var res=data.post;
+                    $('#info').html(
+                            '<h3>'+res.title+'</h3>'
+                            +'<p style="color: #111111;">'+res.custom_fields.apiText[0]+'</p>'
+                            +'<p>所属分类： '+res.custom_fields.robot[0]+'</p>'
+                            +'<p>可接入类型：<span>'+res.custom_fields.type[0]+'</span></p>'
+                            +'<a class="btn" href="register.html">申请服务</a>'
+                    );
+                    $('#service-info').html(res.excerpt);
+                    $('#breadcrumb-api').html(res.title);
+                    $('#api-name').html(res.title);
+                    $('#icon').attr('src',res.custom_fields.icon[0]);
+                    $('#sdk-document').html(
+                            '<ul><li>'
+                            +'<span id="detail-step3" class="position"></span>'
+                            +'<h1>三. 接口文档说明</h1>'
+                            +res.content
+                            +'</li></ul>'
+                    );
+
+
+                }
+            },
+            error: function () {
+
+                console.log('接口失败')
+            }
+        })
+    }
+    getApiDetail();
+
+
+    //推荐服务渲染数据函数
+    function setList(list) {
+        var content = ''
+        for (var i = 0; i < list.length; i++) {
+            content += '<li>'
+                    + '<img src="' + list[i].icon + '">'
+                    + '<h3>' + list[i].api + '</h3>'
+                    + '<p>' + list[i].robot + '</p>'
+                    + '<a href="product-detail.html?slug=' + list[i].slug + '">查看详情</a>'
+                    + '</li>';
+        }
+        $('#product-list').html(content);
+    }
+    function getRandomArrayElements(arr, count) {
+        var shuffled = arr.slice(0), i = arr.length, min = i - count, temp, index;
+        while (i-- > min) {
+            index = Math.floor((i + 1) * Math.random());
+            temp = shuffled[index];
+            shuffled[index] = shuffled[i];
+            shuffled[i] = temp;
+        }
+        return shuffled.slice(min);
+    }
+
+    getApiList(function(apiList){
+        var otherList = [];
+        for(var i=0;i<apiList.length;i++){
+            if(slug!=apiList[i].slug){
+                otherList.push(apiList[i]);
+            }
+        }
+        setList(getRandomArrayElements(otherList,4));
+    })
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

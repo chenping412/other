@@ -2,7 +2,7 @@
   <div id="stock-comment">
     <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/' }">首页</router-link>
+        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
         <span>&gt;股票写作</span>
       </div>
     </div>

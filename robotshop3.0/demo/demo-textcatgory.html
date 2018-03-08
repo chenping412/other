@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 智能分词 -->
+    <div class="news-search content-box">
+        <p class="label">输入一段想分析的文字：</p>
+        <div class="search-participle">
+            <div class="participle-top">
+                <textarea v-model="textCatgoryValue" style="resize: none" maxlength="500"></textarea>
+                <p class="placeholder">最多输入500字</p>
+            </div>
+            <div class="participle-mid">
+                <button @click="textCatgory" v-show="loadingShow_3">分词</button>
+                <button class="btn-icon" v-show="!loadingShow_3" disabled="disabled"></button>
+            </div>
+            <div class="participle-bottom">
+                <ul class="clearfix">
+                    <li v-for="(list, index) in catgoryData">
+                        <div>{{list.term}}</div>
+                        <span>{{list.typeName}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.textCatgory();
+
+</script>
+</body>
+</html>

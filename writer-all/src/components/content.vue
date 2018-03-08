@@ -2,7 +2,7 @@
   <div id="content">
     <div class="top">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/' }">首页</router-link>
+        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
         &gt;
         <router-link :to="{ path: '/classify' }">行业简报信息页</router-link>
         &gt;

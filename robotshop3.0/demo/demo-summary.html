@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 摘要压缩 -->
+    <div class="news-compress content-box">
+        <p class="label">输入一段想分析的文字：</p>
+        <div class="test-area clearfix summary">
+            <div class="area-left">
+                <textarea v-model="writeSummaryValue" style="resize: none" maxlength="500"></textarea>
+                <p class="placeholder">最多输入500字</p>
+            </div>
+            <div class="area-btn">
+                <button @click="writeSummary" v-show="loadingShow_5">压缩</button>
+                <button class="btn-icon" v-show="!loadingShow_5" disabled="disabled"></button>
+            </div>
+            <div class="area-right">{{ summary }}</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.writeSummary();
+
+</script>
+</body>
+</html>

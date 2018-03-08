@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 资讯搜索 -->
+    <div class="news-search content-box">
+        <div class="search-box clearfix">
+            <input type="text" placeholder="请输入关键词" v-model="newsSearchValue">
+            <button @click="newsSearch" v-show="loadingShow_1">搜索</button>
+            <button class="btn-icon" v-show="!loadingShow_1" disabled="disabled"></button>
+        </div>
+        <div class="search-result">
+            <ul>
+                <li v-for="(list, index) in searchResult" class="clearfix">
+                    <a v-show="list.image" target="_blank" :href="list.url" class="pic"
+                       :style=" list.image instanceof Array ? 'backgroundImage: url(' + list.image[0] + ')' : 'backgroundImage: url(' + list.image + ')'"></a>
+                    <div class="text">
+                        <h4>
+                            <a :href="list.url" target="_blank">{{list.title}}</a>
+                        </h4>
+                        <div class="clearfix">
+                            <span class="from">{{list.from}}</span>
+                            <span class="date">{{list.download}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/demo.js"></script>
+<script type="text/javascript">
+
+app.newsSearch();
+
+</script>
+</body>
+</html>

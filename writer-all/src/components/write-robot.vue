@@ -2,7 +2,7 @@
   <div id="write-robot" v-loading.fullscreen="fullLoading">
     <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/' }">首页</router-link>
+        <router-link :to="{ path: '/index/write' }">资讯写作</router-link>
         <span>&gt;财经写作</span>
       </div>
     </div>
@@ -87,6 +87,7 @@
               </div>
               <ul>
                 <li v-for="item in aiListDataShow">
+                  <h3 :class="{'loading':!item.title}">{{item.title}}</h3>
                   <p>{{item.summary}}</p>
                   <div class="clearfix">
                     <a href="javascript:;" @click="showAIDetail(item)">阅读全文</a>
@@ -107,7 +108,8 @@
 
               <div class="detail" v-show="aiDetailShow">
                 <div class="inner">
-                  <div class="article" v-html="aiDetail"></div>
+                  <h2 class="title">{{aiDetail.title}}</h2>
+                  <div class="article" v-html="aiDetail.summary"></div>
                   <a class="close" href="javascript:;" @click="closeAiDetail($event)">点击收起</a>
                 </div>
               </div>
@@ -146,7 +148,9 @@
 
               <div class="detail" style="top: 102px;" v-show="newsDetailShow">
                 <div class="inner">
-                  <div class="article" v-html="newsDetail"></div>
+                  <h2 class="title">{{newsDetail.title}}</h2>
+                  <p class="source">{{newsDetail.site}}</p>
+                  <div class="article" v-html="newsDetail.article"></div>
                   <a class="close" href="javascript:;" @click="closeNewsDetail($event)">点击收起</a>
                 </div>
               </div>
@@ -247,7 +251,7 @@
         pageNum1: 1,
         pageSize1: 5,
         totalCount1: 50,
-        aiDetail: {},
+        aiDetail: '',
         aiDetailShow: false,
         hasNoAiList: false,
 
@@ -360,13 +364,16 @@
         self.newsKeyword='';
         self.active=1;
         self.hasNoList=0;
+        self.aiDetailShow=false;
+        self.newsDetailShow=false;
+        self.newsDetail={};
+        self.aiDetail='';
 
         self.getAIListData(function (data) {
 
           if (self.aiListData.length > 0) {
             if(data.data.id) self.id=data.data.id;
 
-            self.getTitle(self.aiListData[0].summary);
             self.time = self.getTime();
 
             //此处处理换行符在ueditor中无法正常换行，把\n替换成段落p标签
@@ -430,6 +437,38 @@
               if (data.data && data.data.ai_data && data.data.ai_data.result && data.data.ai_data.result.length > 0) {
                 self.aiListData = data.data.ai_data.result;
                 if (callback) callback(data);
+
+                self.titleLoading=true;
+                var m=0;
+                self.timer=setInterval(function(){
+                  self.getTitle(self.aiListData[m].summary,function(data,summary){
+                    if (data.code == '0') {
+                      for(var j=0;j<self.aiListData.length;j++){
+                        if(self.aiListData[j].summary == summary){
+                          if(j==0){
+                            self.titleLoading=false;
+                            self.title = data.data;
+                          }
+                          self.$set(self.aiListData,j,{
+                            summary:self.aiListData[j].summary,
+                            _id:self.aiListData[j]._id,
+                            title:data.data
+                          });
+                          self.uploadTitle(self.aiListData[j]._id,data.data)
+                        }
+                      }
+                    }
+
+
+                  });
+                  m++;
+                  if(m>=self.aiListData.length){
+                    clearInterval(self.timer)
+                  }
+
+                },200);
+
+
               } else {
                 self.hasNoAiList = true;
                 self.hasNoList++;
@@ -448,9 +487,8 @@
         })
       },
       //标题生成
-      getTitle: function (summary) {
+      getTitle: function (summary,callback) {
         var self = this;
-        self.titleLoading=true;
         $.ajax({
           url: apiHost + "/industry-bulletin/writer_robot/info_writer/headline_generation",
           type: "POST",
@@ -462,16 +500,36 @@
             article: summary
           },
           success: function (data) {
-            self.titleLoading=false;
-            if (data.code == '0') {
-              self.title = data.data;
-            }
+            if (callback) callback(data,summary);
           }
         })
       },
+      //上传标题到草稿箱
+      uploadTitle: function (id,title) {
+        var self = this;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/writer_robot/info_writer/upload_title",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {
+            draftNewsId: id,
+            title: title
+          },
+          success: function (data) {
+
+          }
+        })
+      },
+
       //阅读AI全文
       showAIDetail: function (item) {
-        this.aiDetail = "<p>" + item.summary.replace(/\n/g, "</p><p>") + "</p>";
+        this.aiDetail={
+          title :item.title,
+          summary : "<p>" + item.summary.replace(/\n/g, "</p><p>") + "</p>"
+        }
         this.aiDetailShow = true;
       },
       //收起阅读全文
@@ -750,7 +808,9 @@
           },
           success: function (data) {
             if (data.code == '0' && data.data && data.data.textcontent) {
-              self.newsDetail = "<p>" + data.data.textcontent.replace(/\n/g, "</p><p>") + "</p>";
+              self.newsDetail.title=item.title;
+              self.newsDetail.site=item.site;
+              self.newsDetail.article = "<p>" + data.data.textcontent.replace(/\n/g, "</p><p>") + "</p>";
               self.newsDetailShow=true;
             }
           }
@@ -795,6 +855,24 @@
             if (data.code == '0' && data.data) {
               if(type == 1){
                 self.aiListData = data.data;
+
+                for(var i=0;i<self.aiListData.length;i++){
+                  if(!self.aiListData[i].title){
+                    self.getTitle(self.aiListData[i].summary,function(data,summary){
+                      if (data.code == '0') {
+                        for(var j=0;j<self.aiListData.length;j++){
+                          if(self.aiListData[j].summary == summary){
+                            self.$set(self.aiListData,j,{
+                              summary:self.aiListData[j].summary,
+                              title:data.data
+                            });
+                          }
+                        }
+                      }
+                    });
+                  }
+                }
+
               }else {
                 self.newsListData = data.data;
               }
@@ -1153,6 +1231,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  #write-robot .write-content > .right .item > ul > li h3.loading{
+    background: url(../assets/images/loading.gif) no-repeat center / 16px;
+  }
 
   #write-robot .write-content > .right .item > ul > li p {
     text-indent: 2em;
@@ -1209,13 +1290,20 @@
     background-color: #ccc;
   }
 
-  #write-robot .write-content > .right .item .detail h3 {
+  #write-robot .write-content > .right .item .detail .title {
     font-size: 18px;
-    line-height: 26px;
-    padding: 16px 0;
+    line-height: 20px;
     font-weight: bolder;
+    padding:3px 0;
   }
-
+  #write-robot .write-content > .right .item .detail .source {
+    font-size: 12px;
+    line-height: 20px;
+    color: #666;
+  }
+  #write-robot .write-content > .right .item .detail .article{
+    padding-top: 10px;
+  }
   #write-robot .write-content > .right .item .detail .article,
   #write-robot .write-content > .right .item .detail .article p {
     font-size: 16px;

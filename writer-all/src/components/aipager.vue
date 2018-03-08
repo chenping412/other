@@ -2,7 +2,7 @@
   <div id="aipager">
     <div class="top-else">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/' }">首页</router-link>
+        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
         &gt;
         <span>行业快报</span>
       </div>
