@@ -2,7 +2,7 @@
   <div id="stock-comment">
     <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">报告写作</router-link>
         <span>&gt;股票写作</span>
       </div>
     </div>
@@ -89,10 +89,15 @@
         time:'10:30',
         openLimitUp:0,
         sealLimitUp:0,
-        article:''
+        article:'',
+        menuIndex: 0,
       }
     },
     created:function(){
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
+
       var week=new Date().getDay();
       console.log(week)
       if(week != 0 && week != 6){
@@ -143,7 +148,7 @@
           },
           error: function (XMLHttpRequest) {
             if (XMLHttpRequest.status == "9001") {
-              location.href = "./login.html";
+              location.href = "../login.html";
             }
           }
         })
@@ -188,7 +193,7 @@
             },
             error: function (XMLHttpRequest) {
               if (XMLHttpRequest.status == "9001") {
-                location.href = "./login.html";
+                location.href = "../login.html";
               }
             }
           })

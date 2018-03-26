@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="dist/js/jquery-3.2.1.min.js"></script>
+  <title>登陆</title>
+  <style>
+    .content {
+      width: 350px;
+      margin: 0 auto;
+      margin-top: 280px;
+    }
+
+    .content .row {
+      height: 30px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .content .row h3 {
+      text-align: center;
+      color: #4378E6;
+    }
+
+    .content .row span {
+      display: block;
+      float: left;
+      width: 70px;
+      height: 32px;
+      line-height: 32px;
+      color: #111;
+    }
+
+    .content .row p {
+      position: absolute;
+      margin: 0;
+      left: 70px;
+      top: 35px;
+      color: red;
+    }
+
+    .content .row input {
+      display: block;
+      float: left;
+      width: 268px;
+      border: 1px solid #ddd;
+      height: 30px;
+      padding: 0;
+      padding-left: 10px;
+      outline: none;
+    }
+
+    .content .btn button {
+      display: block;
+      float: right;
+      height: 32px;
+      width: 280px;
+      background-color: #4378E6;
+      border-color: #4378E6;
+      color: #ffffff;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <form>
+      <div class="row">
+        <h3>智搜开发者后台 2.0</h3>
+      </div>
+      <div class="row">
+        <span for="">用户名</span><input type="text" id="username">
+        <p style="display: none">用户名不能为空</p>
+      </div>
+      <div class="row">
+        <span for="">密 &nbsp; 码</span><input type="password" id="password">
+        <p style="display: none">密码不能为空</p>
+      </div>
+      <div class="btn">
+        <button type="button" id="submit">登陆</button>
+      </div>
+    </form>
+  </div>
+  <script src="dist/js/jquery-3.2.1.min.js"></script>
+  <script>
+    $(function () {
+      $("#username").on("blur", function () {
+        if($("#username").val() === "" || typeof($("#username").val()) === "undefined") {
+          $(this).next().slideDown();
+        } else {
+          $(this).next().slideUp();
+        }
+      })
+      $("#password").on("blur", function () {
+        if($("#password").val() === "" || typeof($("#password").val()) === "undefined") {
+          $(this).next().slideDown();
+        } else {
+          $(this).next().slideUp();
+        }
+      })
+      $("#submit").click(function () {
+        var username = $("#username").val();
+        var pwd = $("#password").val();
+        if(username && pwd) {
+          $.ajax({
+            url:"/open-portal/ac/login",
+            type: "POST",
+            data: {
+              username: username,
+              pwd: pwd
+            },
+            success: function (msg) {
+              if(msg.data == true) {
+                location.href = "/index.html";
+              }else {
+                alert("用户名或者密码错误，请重新输入!")
+              }
+            }
+          })
+        }
+      })
+    })
+  </script>
+</body>
+</html>

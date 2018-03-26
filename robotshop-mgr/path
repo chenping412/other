@@ -1,0 +1,14 @@
+设计文件共享盘路径:
+\\172.16.23.1\
+
+测试文件夹路径
+/usr/local/nginx-1.7.3/open-view
+
+测试环境路径
+http://192.168.1.108:8090/#
+
+生产地址：
+http://robot.giiso.com
+
+接口文档地址
+http://172.16.21.39/showdoc/index.php?s=/14&page_id=114

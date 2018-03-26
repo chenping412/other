@@ -63,9 +63,6 @@
         if (value == "") {
           callback(new Error('请输入登录密码'));
         }
-        if (value.length < 6) {
-          callback(new Error('密码长度不能小于6位'));
-        }
         callback();
       };
       var validatePass = (rule, value, callback) => {
@@ -143,7 +140,7 @@
             if (error.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }
@@ -157,7 +154,7 @@
       },
       reset(formName) {
         var self = this;
-        self.$refs[formName].validate((valid) => {
+        self.$refs[formName].validate(function(valid){
           if (valid) {
             $.ajax({
               url: apiHost + "/industry-bulletin/user/update_password",
@@ -188,7 +185,7 @@
                 if (error.status == "9001") {
                   self.loginState = true;
                   setTimeout(function () {
-                    location.href = "./login.html";
+                    location.href = "../login.html";
                     self.loginState = false;
                   }, 2000);
                 }

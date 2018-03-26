@@ -64,10 +64,9 @@ textarea {
 .clearfix {
   *zoom: 1;
 }
-html,
 body {
   font-size: 14px;
-  width: 100%;
+  min-width: 1040px;
   max-width: 1920px;
   margin: 0 auto;
   background-color: #f6f8fc;
@@ -88,6 +87,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 99999;
+  background-color: #fff;
   border-bottom: 1px solid #dddddd;
 }
 .header .top {
@@ -103,7 +103,6 @@ body {
 }
 .header .bot {
   height: 70px;
-  background-color: #fff;
 }
 .header .bot .logo {
   float: left;

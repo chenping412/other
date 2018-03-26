@@ -8,10 +8,9 @@
     <meta name="keywords" content="智搜，Giiso，资讯机器人，编辑机器人，写作机器人，武文斌，郑海涛，资讯云，机器人商店，AI资讯机器人，人工智能"/>
     <meta name="description" content="深圳市智搜信息技术有限成立于2013年，聚焦于大数据和人工智能技术在资讯领域的研发和应用，自主研发了中国首个资讯机器人——Giiso资讯机器人，拥有多项发明专利和多项著作权，并获得了金沙江创投、力合集团、民银国际等多家著名投资机构的参股投资，是中国领先的“人工智能+资讯”领域国家级高新技术企业。"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=222">
-    <link rel="stylesheet" type="text/css" href="css/help.css?v=2222">
+    <link rel="stylesheet" type="text/css" href="css/help.css?v=222211">
     <script src="js/jquery.min.js"></script>
     <!--[if (IE 5)|(IE 6)|(IE 7)|(IE 8)]>
     <script type="text/javascript">alert('请使用IE9及以上版本浏览器，其他浏览器请使用极速模式');window.location.href = "http://browsehappy.com";</script>
@@ -32,7 +31,7 @@
                     <a class="login_out" href="javascript:;">退出</a>
                 </span>
                 <span>|</span>
-                <a href="http://giiso.com">智搜官网</a>
+                <a href="http://giiso.com" target="_blank">智搜官网</a>
             </p>
         </div>
     </div>
@@ -69,7 +68,7 @@
             <h3>联系我们</h3>
             <p>
                 电话：0755-86720697
-                <br>QQ：2020601975
+                <br>Q  Q：2020601975
                 <br>邮箱：contact@giiso.com
             </p>
         </div>
@@ -81,12 +80,28 @@
         <div class="left">
             <h2>智搜天机（北京）信息技术有限公司</h2>
             <h3>公司地址</h3>
-            <p>北京市大兴区天河西路28号民银国际办公楼4幢2层</p>
+            <p>北京市朝阳区东三环中路16号京粮大厦</p>
             <h3>联系我们</h3>
-            <p>电话：010-6125 1958</p>
+            <p>电话：010-6125 1958
+                <br>邮箱：giiso_bj@giiso.com
+            </p>
         </div>
         <div class="right" id="beijing">
             <img src="images/about-contact-map_06.jpg">
+        </div>
+    </div>
+    <div class="text clearfix">
+        <div class="left">
+            <h2>深圳市智搜信息技术有限公司（上海办事处）</h2>
+            <h3>公司地址</h3>
+            <p>上海市虹口区四川北路525号宇航大厦1307</p>
+            <h3>联系我们</h3>
+            <p>电话：13682661006
+                <br>邮箱：yangl@giiso.com
+            </p>
+        </div>
+        <div class="right" id="shanghai">
+            <!--<img src="images/about-contact-map_06.jpg">-->
         </div>
     </div>
     <div class="erweima">
@@ -103,11 +118,11 @@
             <div class="nav right">
                 <dl>
                     <dt>机器人</dt>
-                    <dd><a href="product.html?robot=采集机器人">采集机器人</a></dd>
-                    <dd><a href="product.html?robot=编辑机器人">编辑机器人</a></dd>
-                    <dd><a href="product.html?robot=写作机器人">写作机器人</a></dd>
-                    <dd><a href="product.html?robot=推荐机器人">推荐机器人</a></dd>
-                    <dd><a href="product.html?robot=分析机器人">分析机器人</a></dd>
+                    <dd><a href="product.html?robot=0">采集机器人</a></dd>
+                    <dd><a href="product.html?robot=1">编辑机器人</a></dd>
+                    <dd><a href="product.html?robot=2">写作机器人</a></dd>
+                    <dd><a href="product.html?robot=3">推荐机器人</a></dd>
+                    <dd><a href="product.html?robot=4">分析机器人</a></dd>
                 </dl>
                 <dl>
                     <dt>帮助中心</dt>
@@ -159,15 +174,6 @@
 <script type="text/javascript" src="js/pub.js?v=1"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=09xPqGL1fWtSMQM8MemO7Y4kfK59jZ9Z"></script>
 <script type="text/javascript">
-    // 创建北京地图
-    var mapBeijing = new BMap.Map("beijing");    // 创建Map实例
-    var new_point_beijing = new BMap.Point(116.314311,39.696707);
-    mapBeijing.centerAndZoom(new_point_beijing, 16);  // 初始化地图,设置中心点坐标和地图级别
-    mapBeijing.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-    var markerBeijing = new BMap.Marker(new_point_beijing);  // 创建标注
-    mapBeijing.addOverlay(markerBeijing);
-    mapBeijing.panTo(new_point_beijing);
-
     // 创建深圳地图
     var mapShenzheng = new BMap.Map("shenzheng");    // 创建Map实例
     var new_point_shenzheng = new BMap.Point(113.954252,22.558784);
@@ -176,6 +182,25 @@
     var markerShenzheng = new BMap.Marker(new_point_shenzheng);  // 创建标注
     mapShenzheng.addOverlay(markerShenzheng);
     mapShenzheng.panTo(new_point_shenzheng);
+
+    // 创建北京地图
+    var mapBeijing = new BMap.Map("beijing");    // 创建Map实例
+    var new_point_beijing = new BMap.Point(116.469217,39.905746);
+    mapBeijing.centerAndZoom(new_point_beijing, 16);  // 初始化地图,设置中心点坐标和地图级别
+    mapBeijing.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    var markerBeijing = new BMap.Marker(new_point_beijing);  // 创建标注
+    mapBeijing.addOverlay(markerBeijing);
+    mapBeijing.panTo(new_point_beijing);
+
+    // 创建上海地图
+    var mapShanghai = new BMap.Map("shanghai");    // 创建Map实例
+    var new_point_shanghai = new BMap.Point(121.491598,31.252535);
+    mapShanghai.centerAndZoom(new_point_shanghai, 17);  // 初始化地图,设置中心点坐标和地图级别
+    mapShanghai.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    var markerShanghai = new BMap.Marker(new_point_shanghai);  // 创建标注
+    mapShanghai.addOverlay(markerShanghai);
+    mapShanghai.panTo(new_point_shanghai);
+
 </script>
 
 </body>

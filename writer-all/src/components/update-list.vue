@@ -2,9 +2,9 @@
   <div id="update-list">
     <div class="top">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">报告写作</router-link>
         &gt;
-        <router-link :to="{ path: '/classify' }">行业简报信息页</router-link>
+        <router-link :to="{ path: '/classify?index='+menuIndex }">行业简报信息页</router-link>
         &gt;
         <span>选择修改简报分类</span>
       </div>
@@ -15,7 +15,7 @@
           已选择 <span>{{"(" + count + ")"}}</span>
         </div>
         <div class="right">
-          <router-link :to="{ path: '/content', query: { id: id } }" tag="button">重新生成简报</router-link>
+          <router-link :to="{ path: '/content?index='+menuIndex, query: { id: id } }" tag="button">重新生成简报</router-link>
         </div>
       </div>
       <div class="list-main">
@@ -51,7 +51,7 @@
               label="操作"
               width="200">
               <template slot-scope="scope">
-                <router-link :to="{ path: '/update-detail', query: { id: id, classId: scope.row.classId }}"
+                <router-link :to="{ path: '/update-detail?index='+menuIndex, query: { id: id, classId: scope.row.classId }}"
                              tag="span" style="color: #0874ea; cursor: pointer">修改
                 </router-link>
               </template>
@@ -88,9 +88,14 @@
         count: "",
         loginState: false,
         loadingShow: false,
+        menuIndex: 0,
       }
     },
     created() {
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
+
       var self = this;
       self.id = self.$route.query.id;
       if (self.$route.query.contentIds) {
@@ -130,7 +135,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }
@@ -178,7 +183,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }

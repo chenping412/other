@@ -5,7 +5,7 @@
   <meta name="renderer" content="webkit"/>
   <title>写作机器人</title>
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" href="static/pub/css/reset.css">
+  <link rel="stylesheet" href="dist/static/pub/css/reset.css">
   <style>
     .main {
       width: 100%;
@@ -22,7 +22,7 @@
       width: 100%;
       height: 530px;
       padding-top: 65px;
-      background: url("static/pub/images/login_bc.jpg") center -200px no-repeat;
+      background: url("dist/static/pub/images/login_bc.jpg") center -200px no-repeat;
       background-size: auto;
 
     }
@@ -64,11 +64,11 @@
     }
 
     .login .username {
-      background-image: url("static/pub/images/user.png");
+      background-image: url("dist/static/pub/images/user.png");
     }
 
     .login .password {
-      background-image: url("static/pub/images/pwd.png");
+      background-image: url("dist/static/pub/images/pwd.png");
     }
 
     .login .form-row label, .login .form-row input {
@@ -131,7 +131,7 @@
   <div class="wrap">
     <div class="login">
       <div class="login-title">
-        <img src="static/pub/images/login_logo.png">
+        <img src="dist/static/pub/images/login_logo.png">
         写作机器人
       </div>
       <form  action="http://tj.giiso.com/www/public/images/download_qr.png" target="nm_iframe" onsubmit="login()">
@@ -157,13 +157,19 @@
 </div>
 <iframe name="nm_iframe" style="display:none;"></iframe>
 </body>
-<script src="static/pub/js/jquery.min.js"></script>
-<script src="static/pub/js/common.js"></script>
+<script src="dist/static/pub/js/jquery.min.js"></script>
+<script src="dist/static/pub/js/common.js"></script>
 <script>
   //登录
   function login() {
     var username = $("#username").val();
     var pwd = $("#password").val();
+
+    if(username == 'demo' && pwd == 'demo'){
+      window.location.href='http://writer.giiso.com/demo';
+      return false;
+    }
+
     if (username == "" || pwd == "") {
       $(".faild").eq(0).show();
       $(".faild").eq(1).hide();
@@ -183,7 +189,7 @@
         },
         success: function (data) {
           if(data.code == 0 && data.data == true) {
-            location.href = "./index.html"
+            location.href = "dist/index.html"
           }else {
             $(".faild").eq(1).show();
             $(".faild").eq(0).hide();

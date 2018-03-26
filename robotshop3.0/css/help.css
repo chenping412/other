@@ -75,6 +75,9 @@
   padding: 0 100px;
   width: 800px;
 }
+.help4 * {
+  transition: all 0s;
+}
 .help4 h1 {
   padding: 40px 0 30px;
   border-bottom: 1px solid #cccccc;
@@ -85,7 +88,7 @@
 }
 .help4 .text .left {
   padding-top: 25px;
-  width: 330px;
+  width: 370px;
 }
 .help4 .text .left h2 {
   font-size: 18px;
@@ -121,7 +124,7 @@
   text-align: center ;
 }
 .help4 .erweima img {
-  width: 105px;
+  width: 160px;
 }
 .help4 .BMap_Marker {
   transform: scale(2);

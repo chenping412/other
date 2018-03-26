@@ -1,5 +1,4 @@
 .main {
-  width: 100%;
   min-height: 900px;
   overflow: hidden;
 }
@@ -166,7 +165,6 @@
   display: none;
 }
 .main .section2 ul li .page2 {
-  background: #E4E4E4;
   transform: rotateY(180deg) translateZ(1px);
   -ms-transform: rotateY(180deg) translateZ(1px);
   -webkit-transform: rotateY(180deg) translateZ(1px);

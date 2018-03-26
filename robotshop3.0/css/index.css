@@ -11,21 +11,21 @@
   left: 0;
   top: 0;
   width: 200px;
-  height: 342px;
-  padding-top: 58px;
+  height: 347px;
+  padding-top: 53px;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 99;
 }
 .main .banner .inner .product-nav li {
-  height: 42px;
-  font-size: 14px;
-  line-height: 42px;
-  padding-bottom: 17px;
+  height: 50px;
+  font-size: 16px;
+  line-height: 50px;
+  padding-bottom: 9px;
 }
 .main .banner .inner .product-nav li > a {
   display: block;
   height: 100%;
-  padding-left: 44px;
+  padding-left: 51px;
   color: #FFFFFF;
   background: url("../images/home-menu-arrow.png") no-repeat 156px center;
 }
@@ -35,8 +35,10 @@
   left: 200px;
   top: 0;
   background: #FFFFFF;
-  width: 194px;
-  height: 355px;
+  border: 1px solid #DFDFDF;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.1);
+  width: 192px;
+  height: 353px;
   padding-top: 45px;
   color: #111111;
 }
@@ -44,11 +46,11 @@
   display: block;
   height: 42px;
   padding-left: 72px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 42px;
   margin-bottom: 26px;
-  background: url("../images/index-banner-icon.png") no-repeat 48px center;
-  background-size: 14px;
+  background: url("") no-repeat 46px center;
+  background-size: 16px;
 }
 .main .banner .inner .product-nav li .children a:hover {
   background-color: #eeeeee;
@@ -91,6 +93,7 @@
   position: absolute;
   top: 0;
   left: 480px;
+  width: 244px;
 }
 .main .banner .inner .swiper-container .swiper-button-prev {
   background: url("../images/home-banner-left-n.png") no-repeat center;
@@ -130,6 +133,12 @@
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
   color: #fff;
   margin: 0 10px 20px;
+}
+.main .section1 ul li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
 }
 .main .section1 ul li h3 {
   font-size: 24px;
@@ -326,6 +335,24 @@
 }
 .main .section4 .swiper {
   position: relative;
+}
+.main .section4 .swiper:before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 0;
+  width: 54px;
+  height: 124px;
+  background: url("../images/card-left.png") no-repeat;
+}
+.main .section4 .swiper:after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  top: 0;
+  width: 54px;
+  height: 124px;
+  background: url("../images/card-right.png") no-repeat;
 }
 .main .section4 .swiper-container {
   height: 124px;

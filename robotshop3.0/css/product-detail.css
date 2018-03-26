@@ -314,7 +314,8 @@
   font-size: 14px;
   color: #067FFC;
   line-height: 33px;
-  background: url('../images/jiantou_03.png') no-repeat 180px center;
+  background: url('../images/product-arrow-blue@2x.png') no-repeat 180px center;
+  background-size: 12px;
 }
 .main .other-service ul li:hover {
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
@@ -322,7 +323,7 @@
 }
 .main .other-service ul li:hover a {
   background-color: #067FFC;
-  background-image: url("../images/jiantou_04.png");
+  background-image: url("../images/product-arrow-white@2x.png");
   color: #ffffff;
   border-color: #067FFC;
 }

@@ -2,7 +2,7 @@
   <div id="aipager">
     <div class="top-else">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">报告写作</router-link>
         &gt;
         <span>行业快报</span>
       </div>
@@ -68,17 +68,23 @@
         loadingShow: false,
         pagerList: [],
         searchForm: {
-          classname: "财经行业",
-          date: "",
+          classname: 1,
+          date: ""
         },
         classList: [
-          // {label: "AI行业", value: "AI行业"},
-          {label: "财经行业", value: "财经行业"},
+          {label: "财经行业", value: 1},
+          {label: "AI行业", value: 2}
         ],
         id: null,
+        menuIndex: 0,
       }
     },
     created() {
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
+
+      this.getUserInfo();
       this.getCurrentDate();
       this.getAINews();
     },
@@ -119,9 +125,8 @@
       },
       getAINews() {
         var self = this;
-        self.loadingShow = true
+        self.loadingShow = true;
         $.ajax({
-          // url: "http://172.16.1.31:9092/industry-bulletin/writer_robot/aipaper/content",
           url: apiHost + "/industry-bulletin/writer_robot/express/content",
           type: "POST",
           xhrFields: {
@@ -130,12 +135,33 @@
           },
           crossDomain: true,
           data: {
-            date:  self.searchForm.date
+            date:  self.searchForm.date,
+            type:  self.searchForm.classname
           },
           success: function (data) {
             self.pagerList = data.data.aipaper;
             self.loadingShow = false;
             self.id = data.data.id
+          }
+        })
+      },
+      //获取用户信息
+      getUserInfo() {
+        var self = this;
+        $.ajax({
+          url: apiHost + "/industry-bulletin/user/info",
+          type: "POST",
+          xhrFields: {
+            withCredentials: true
+          },
+          crossDomain: true,
+          data: {},
+          success: function (data) {
+            if (data.code == 0 && data.data && data.data.username && data.data.username=='kancaijing') {
+              self.classList=[
+                {label: "财经行业", value: 1}
+              ]
+            }
           }
         })
       },

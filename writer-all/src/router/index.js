@@ -11,9 +11,6 @@ import StockComment from '../components/stock-comment'
 
 import AiPager from '../components/aipager'
 
-import Resource from '../components/resource'
-import Write from '../components/write'
-import Data from '../components/data'
 
 import User from '../components/user'
 
@@ -27,22 +24,7 @@ export default new Router({
     },
     {
       path: '/index',
-      component: Index,
-      redirect: "/index/write",
-      children: [
-        {
-          path: '/index/resource',
-          component: Resource
-        },
-        {
-          path: '/index/write',
-          component: Write
-        },
-        {
-          path: '/index/data',
-          component: Data
-        }
-      ]
+      component: Index
     },
     {
       path: '/classify',

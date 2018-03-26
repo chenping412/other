@@ -2,14 +2,14 @@
   <div id="content">
     <div class="top">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">报告写作</router-link>
         &gt;
-        <router-link :to="{ path: '/classify' }">行业简报信息页</router-link>
+        <router-link :to="{ path: '/classify?index='+menuIndex }">行业简报信息页</router-link>
         &gt;
         <span>生成简报</span>
       </div>
       <div class="btn">
-        <router-link :to="{ path: '/update-list', query: { id: id }}" tag="button">修改</router-link>
+        <router-link :to="{ path: '/update-list?index='+menuIndex, query: { id: id }}" tag="button">修改</router-link>
         <button type="button" class="js-copy" :data-clipboard-text="copyData">复制</button>
         <button type="button" @click="createWord">导出word</button>
       </div>
@@ -99,9 +99,14 @@
           "二十",
         ],
         loginState: false,
+        menuIndex: 0,
       }
     },
     created() {
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
+
       var self = this;
       console.log(self.$route.query)
       self.ids = self.$route.query.classId;
@@ -167,7 +172,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }
@@ -241,7 +246,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }

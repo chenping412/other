@@ -9,6 +9,14 @@ var _hmt = _hmt || [];
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
 })();
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?fc35f3c630ccbdad57baf00a2c0cb481";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+
+
 
 $(function () {
     $('#register_img_check_code').attr("maxlength", "4")
@@ -355,7 +363,7 @@ function login(params) {
             success: function (res) {
                 if (res.code == 0) {
                     if (res.data == true) {
-                        window.location.href="http://robot.giiso.com/shop-mgr-build/index.html#/";
+                        window.location.href="shop-mgr-build/index.html#/";
                     } else {
                         $("#login .faild").text(data.msg).show();
                     }

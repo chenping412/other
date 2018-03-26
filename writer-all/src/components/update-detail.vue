@@ -2,9 +2,9 @@
   <div id="update-list">
     <div class="top">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">报告写作</router-link>
         &gt;
-        <router-link :to="{ path: '/classify' }">行业简报信息页</router-link>
+        <router-link :to="{ path: '/classify?index='+menuIndex }">行业简报信息页</router-link>
         &gt;
         <span>选择简报文章</span>
       </div>
@@ -15,7 +15,7 @@
           已选择 <span>{{"(" + count + ")"}}</span>
         </div>
         <div class="right">
-          <router-link :to="{ path: '/update-list', query: {id: id} }" tag="button">返回</router-link>
+          <router-link :to="{ path: '/update-list?index='+menuIndex, query: {id: id} }" tag="button">返回</router-link>
           <button type="button" @click="save">保存</button>
         </div>
       </div>
@@ -96,9 +96,14 @@
         count: "",
         loginState: false,
         loadingShow: false,
+        menuIndex: 0,
       }
     },
     created() {
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
+
       var self = this;
       self.id = self.$route.query.id;
       self.classId = self.$route.query.classId;
@@ -145,7 +150,7 @@
           });
         } else {
           self.$router.push({
-            path: "/update-list",
+            path: '/update-list?index='+self.menuIndex,
             query: {id: self.id, tradeId: self.classId, contentIds: arr.toString()}
           })
         }
@@ -178,7 +183,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }

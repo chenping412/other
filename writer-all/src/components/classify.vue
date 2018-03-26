@@ -3,7 +3,7 @@
     <div class="top">
       <!--<h2>选择生成简报信息</h2>-->
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/resource' }">报告写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">报告写作</router-link>
         &gt;
         <span>生成简报</span>
       </div>
@@ -80,9 +80,14 @@
         isIndeterminate: true,
         loginState: false,
         loadingShow: false,
+        menuIndex: 0,
       }
     },
     created() {
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
+
       var self = this;
       self.startDate = new Date(new Date().getTime()-3*24*60*60*1000);
       self.endDate = new Date();
@@ -114,7 +119,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }
@@ -156,7 +161,7 @@
         var ids = self.checkTrades.toString();
         var st = self.formatDate(self.startDate);
         var et = self.formatDate(self.endDate);
-        self.$router.push({path: "/content", query: {classId: ids, sdate: st, edate: et}})
+        self.$router.push({path: '/content?index='+self.menuIndex, query: {classId: ids, sdate: st, edate: et}})
       },
       //开始日期选择
       startDateChange(val) {

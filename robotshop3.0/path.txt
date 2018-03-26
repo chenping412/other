@@ -1,0 +1,16 @@
+
+wordpress 测试地址：
+http://172.16.25.6/wordpress_robot_shop/wp-admin/
+账号密码：  giiso     giiso
+
+测试服地址：
+172.16.33.4
+/work/open/grobot-api/apache-tomcat-8.0.45/webapps/robotshop3.0
+
+测试地址：
+http://172.16.33.4:9090/robotshop3.0/
+
+
+wordpress 正式服地址：
+http://wordpress.giiso.com/wordpress_robot_shop/wp-login.php
+账号密码：  giiso     giiso

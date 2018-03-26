@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=222">
-    <link rel="stylesheet" type="text/css" href="css/product-detail.css?v=2222">
+    <link rel="stylesheet" type="text/css" href="css/product-detail.css?v=22221">
     <script src="js/jquery.min.js"></script>
     <!--[if (IE 5)|(IE 6)|(IE 7)|(IE 8)]>
     <script type="text/javascript">alert('请使用IE9及以上版本浏览器，其他浏览器请使用极速模式');
@@ -33,7 +33,7 @@
                     <a class="login_out" href="javascript:;">退出</a>
                 </span>
                 <span>|</span>
-                <a href="http://giiso.com">智搜官网</a>
+                <a href="http://giiso.com" target="_blank">智搜官网</a>
             </p>
         </div>
     </div>
@@ -74,8 +74,13 @@
                     <h3>资讯搜索</h3>
                     <p style="color: #111111;">根据关键词搜索条件，Giiso引擎提供智能、准确以及全面的资讯搜索输出。</p>
                     <p>所属分类： 采集机器人</p>
-                    <p>可接入类型：<span>API、SDK</span></p>
-                    <a class="btn" href="register.html">申请服务</a>
+                    <p>可接入类型：
+                        <span>
+                            <a href="javascript:;" id="show-api">API</a>、
+                            <a href="javascript:;" id="show-sdk">SDK</a>
+                        </span>
+                    </p>
+                    <a id="apply-use" class="btn" href="login.html" target="_blank">申请服务</a>
                 </div>
             </div>
             <div class="bot" id="tabs">
@@ -393,11 +398,11 @@ cretId=C0001160003&secretKey=ca56e5ef-9b3c-43e5-8b42-e8672d2d8ee8"></script&gt;<
             <div class="nav right">
                 <dl>
                     <dt>机器人</dt>
-                    <dd><a href="product.html?robot=采集机器人">采集机器人</a></dd>
-                    <dd><a href="product.html?robot=编辑机器人">编辑机器人</a></dd>
-                    <dd><a href="product.html?robot=写作机器人">写作机器人</a></dd>
-                    <dd><a href="product.html?robot=推荐机器人">推荐机器人</a></dd>
-                    <dd><a href="product.html?robot=分析机器人">分析机器人</a></dd>
+                    <dd><a href="product.html?robot=0">采集机器人</a></dd>
+                    <dd><a href="product.html?robot=1">编辑机器人</a></dd>
+                    <dd><a href="product.html?robot=2">写作机器人</a></dd>
+                    <dd><a href="product.html?robot=3">推荐机器人</a></dd>
+                    <dd><a href="product.html?robot=4">分析机器人</a></dd>
                 </dl>
                 <dl>
                     <dt>帮助中心</dt>
@@ -459,12 +464,23 @@ cretId=C0001160003&secretKey=ca56e5ef-9b3c-43e5-8b42-e8672d2d8ee8"></script&gt;<
 
     $("#demoiFrame").attr('src', 'demo/demo-' + htmlName + '.html').load(function () {
         $('#demoiFrame').height(0).height(demoiFrame.document.body.scrollHeight);
-        if (demoiFrame.document.title == "404 Not Found") {
+        if (demoiFrame.document.title.indexOf('404')>-1 || demoiFrame.document.title.indexOf('Error')>-1) {
             $('#demoiFrame').parent().parent().remove();
         }
+        var m=0;
+        var timer=setInterval(function(){
+            $('#demoiFrame').height(0).height(demoiFrame.document.body.scrollHeight);
+            if (demoiFrame.document.title.indexOf('404')>-1 || demoiFrame.document.title.indexOf('Error')>-1) {
+                $('#demoiFrame').parent().parent().remove();
+            }
+            m++;
+            if(m>8){
+                clearInterval(timer);
+            }
+        },500)
     });
     $("#documentiFrame").attr('src', 'documentcenter/' + htmlName + '.html').load(function () {
-        if (documentiFrame.document.title == "404 Not Found") {
+        if (documentiFrame.document.title.indexOf('404')>-1 || documentiFrame.document.title.indexOf('Error')>-1) {
             $('#documentiFrame').removeAttr('src');
         }
     });
@@ -501,8 +517,11 @@ cretId=C0001160003&secretKey=ca56e5ef-9b3c-43e5-8b42-e8672d2d8ee8"></script&gt;<
                             '<h3>'+res.title+'</h3>'
                             +'<p style="color: #111111;">'+res.custom_fields.apiText[0]+'</p>'
                             +'<p>所属分类： '+res.custom_fields.robot[0]+'</p>'
-                            +'<p>可接入类型：<span>'+res.custom_fields.type[0]+'</span></p>'
-                            +'<a class="btn" href="register.html">申请服务</a>'
+                            +'<p>可接入类型：<span>'
+                            +'<a href="javascript:;" id="show-api">API</a>、'
+                            +'<a href="javascript:;" id="show-sdk">SDK</a>'
+                            +'</span></p>'
+                            +'<a id="apply-use" class="btn" href="'+ $('#apply-use').attr('href') +'" target="_blank">申请服务</a>'
                     );
                     $('#service-info').html(res.excerpt);
                     $('#breadcrumb-api').html(res.title);
@@ -515,6 +534,18 @@ cretId=C0001160003&secretKey=ca56e5ef-9b3c-43e5-8b42-e8672d2d8ee8"></script&gt;<
                             +res.content
                             +'</li></ul>'
                     );
+
+
+                    $('#show-api').click(function(){
+                        $('#tabs').find('.tabs a').removeClass('active').eq(1).addClass('active');
+                        $('#tabs').find('.items .item').hide().eq(1).show();
+                        $('#documentiFrame').height(0).height(documentiFrame.document.body.scrollHeight);
+                    });
+
+                    $('#show-sdk').click(function(){
+                        $('#tabs').find('.tabs a').removeClass('active').eq(2).addClass('active');
+                        $('#tabs').find('.items .item').hide().eq(2).show();
+                    });
 
 
                 }

@@ -95,14 +95,14 @@
         $.ajax({
           url: apiHost + "/industry-bulletin//auth/logout",
           type: "POST",
-          // xhrFields: {
-          //   withCredentials: true
-          // },
-          // crossDomain: true,
+           xhrFields: {
+             withCredentials: true
+           },
+           crossDomain: true,
           data: {},
           success: function (data) {
             if (data.code == 0) {
-              location.href = "./login.html"
+              location.href = "../login.html"
             }
           }
         })
@@ -113,10 +113,10 @@
         var timerUser = setTimeout(function () {
           self.loginState = true;
           setTimeout(function () {
-            location.href = "./login.html";
+            location.href = "../login.html";
             self.loginState = false;
           }, 2000);
-        },5000)
+        },5000);
 
         $.ajax({
           url: apiHost + "/industry-bulletin/user/info",
@@ -137,7 +137,7 @@
             if (XMLHttpRequest.status == "9001") {
               self.loginState = true;
               setTimeout(function () {
-                location.href = "./login.html";
+                location.href = "../login.html";
                 self.loginState = false;
               }, 2000);
             }
@@ -396,5 +396,13 @@
     line-height: 60px;
     float: left;
 
+  }
+
+  .el-tooltip__popper{
+    width: 310px;
+  }
+  #app .el-loading-mask{
+    z-index: 1009;
+    background-color: rgba(255,255,255,.7);
   }
 </style>

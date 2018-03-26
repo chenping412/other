@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=222">
-    <link rel="stylesheet" type="text/css" href="css/product.css?v=2222">
+    <link rel="stylesheet" type="text/css" href="css/product.css?v=222211">
     <script src="js/jquery.min.js"></script>
     <!--[if (IE 5)|(IE 6)|(IE 7)|(IE 8)]>
     <script type="text/javascript">alert('请使用IE9及以上版本浏览器，其他浏览器请使用极速模式');
@@ -33,7 +33,7 @@
                     <a class="login_out" href="javascript:;">退出</a>
                 </span>
                 <span>|</span>
-                <a href="http://giiso.com">智搜官网</a>
+                <a href="http://giiso.com" target="_blank">智搜官网</a>
             </p>
         </div>
     </div>
@@ -78,8 +78,7 @@
         <img src="images/product-bg.jpg">
         <div class="text" id="banner-text">
             <!--<h3>国内领先的AI服务</h3>
-            <p>国内首个聚焦资讯AI技术应用的商店。
-                <br>提供几十项AI能力、7大场景化机器人，总有一款能够总能满足您的需求。
+            <p>5大场景化机器人 30余项AI能力 让资讯更智能
             </p>-->
         </div>
     </div>
@@ -102,11 +101,11 @@
             <div class="nav right">
                 <dl>
                     <dt>机器人</dt>
-                    <dd><a href="product.html?robot=采集机器人">采集机器人</a></dd>
-                    <dd><a href="product.html?robot=编辑机器人">编辑机器人</a></dd>
-                    <dd><a href="product.html?robot=写作机器人">写作机器人</a></dd>
-                    <dd><a href="product.html?robot=推荐机器人">推荐机器人</a></dd>
-                    <dd><a href="product.html?robot=分析机器人">分析机器人</a></dd>
+                    <dd><a href="product.html?robot=0">采集机器人</a></dd>
+                    <dd><a href="product.html?robot=1">编辑机器人</a></dd>
+                    <dd><a href="product.html?robot=2">写作机器人</a></dd>
+                    <dd><a href="product.html?robot=3">推荐机器人</a></dd>
+                    <dd><a href="product.html?robot=4">分析机器人</a></dd>
                 </dl>
                 <dl>
                     <dt>帮助中心</dt>
@@ -202,7 +201,7 @@
 
 
         function changeNav(robot){
-            var bannerText='<h3>国内领先的AI服务</h3><p>国内首个聚焦资讯AI技术应用的商店。<br>提供几十项AI能力、7大场景化机器人，总有一款能够总能满足您的需求。</p>';
+            var bannerText='<h3>国内领先的AI服务</h3><p>5大场景化机器人 30余项AI能力 让资讯更智能</p>';
             if (robot == '全部') {
                 setList(list);
             } else {
@@ -223,15 +222,20 @@
             $("#banner-text").html(bannerText);
         }
 
+
+
+
+        //获取Url参数
         var obj=searchObj();
         var robot='全部';
         if(obj.robot){
-            robot=decodeURI(obj.robot);
+            var robotCode=decodeURI(obj.robot);
+            if(navListOld[robotCode]){
+                robot=navListOld[robotCode];
+            }
         }
 
         var navList = [];
-        var navListOld=['采集机器人','编辑机器人','写作机器人','推荐机器人','分析机器人'];
-
         for (var i = 0; i < navListOld.length; i++) {
             for(var j=0;j<list.length;j++){
                 if(navListOld[i]==list[j].robot){

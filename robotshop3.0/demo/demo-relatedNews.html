@@ -23,7 +23,7 @@
             <div class="area-right">
                 <ul>
                     <li v-for="(list, index) in relativeNewsData" class="clearfix">
-                        <a v-show="list.image" target="_blank" :href="list.url" class="pic"
+                        <a v-show="list.image && list.image[0]" target="_blank" :href="list.url" class="pic"
                            :style=" list.image instanceof Array ? 'backgroundImage: url(' + list.image[0] + ')' : 'backgroundImage: url(' + list.image + ')'"></a>
                         <div class="text">
                             <h4>

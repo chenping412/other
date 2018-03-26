@@ -2,7 +2,7 @@
   <div id="write-robot" v-loading.fullscreen="fullLoading">
     <div class="top-else" style="padding: 0 30px;">
       <div class="breadcrumb">
-        <router-link :to="{ path: '/index/write' }">资讯写作</router-link>
+        <router-link :to="{ path: '/index?index='+menuIndex }">资讯写作</router-link>
         <span>&gt;财经写作</span>
       </div>
     </div>
@@ -39,7 +39,10 @@
           <div class="left">
             <div class="item">
               <span>请输入关键词</span>
-              <el-input v-model="keyword" placeholder="请输入关键词" size="small" style="width: 490px;"></el-input>
+
+              <div class="el-input el-input--small" style="width: 490px;">
+                <input v-model="keyword" autocomplete="off" placeholder="请输入关键词" size="small" type="text" rows="2" validateevent="true" class="el-input__inner" @keyup.enter="clickWrite">
+              </div>
               <p>备注：请输入5字以内关键词，最多输入三个，之间用空格隔开</p>
             </div>
           </div>
@@ -86,11 +89,12 @@
                 <el-button class="right" type="primary" size="small" :disabled="hasNoAiList" @click="getAIListData()">再次写作</el-button>
               </div>
               <ul>
-                <li v-for="item in aiListDataShow">
+                <li v-for="(item,$index) in aiListDataShow">
                   <h3 :class="{'loading':!item.title}">{{item.title}}</h3>
                   <p>{{item.summary}}</p>
                   <div class="clearfix">
                     <a href="javascript:;" @click="showAIDetail(item)">阅读全文</a>
+                    <a href="javascript:;" @click="editeAIArticle(item,$index)">编辑</a>
                   </div>
                 </li>
                 <li class="no-news" v-show="hasNoAiList && !hasNoNewsList">非常抱歉，这个题目不会做。但我们也为您提供相关资讯内容，您也可以更换关键词！</li>
@@ -119,7 +123,9 @@
             <div class="item" v-show="active==2" v-loading="newsLoading">
               <div class="search">
                 <div class="clearfix">
-                  <el-input class="left" v-model="newsKeyword" size="small" placeholder="请输入资讯关键词" :maxlength="30"></el-input>
+                  <div class="left el-input el-input--small">
+                    <input v-model="newsKeyword" @keyup.enter="getNewsListData(newsKeyword)" autocomplete="off" placeholder="请输入资讯关键词" size="small" maxlength="30" type="text" rows="2" validateevent="true" class="el-input__inner">
+                  </div>
                   <el-button class="right" type="primary" size="small" @click="getNewsListData(newsKeyword)">搜索资讯
                   </el-button>
                 </div>
@@ -128,10 +134,15 @@
               <ul>
                 <li v-for="item in newsListDataShow">
                   <h3>{{item.title}}</h3>
-                  <p>{{item.summary}}</p>
+
+                  <el-tooltip effect="dark" :content="'【摘要】'+item.summary" placement="top-start">
+                    <p>【摘要】{{item.summary}}</p>
+                  </el-tooltip>
                   <div class="clearfix">
                     <span>{{item.site}}</span>
                     <a href="javascript:;" @click="collectNewsList(item)">阅读全文</a>
+                    <a href="javascript:;" @click="changeNewsArticle(item)">改写</a>
+                    <a href="javascript:;" @click="editeNewsArticle(item)">编辑</a>
                   </div>
                 </li>
                 <li class="no-news" v-show="hasNoNewsList">找不到相关资讯</li>
@@ -254,6 +265,7 @@
         aiDetail: '',
         aiDetailShow: false,
         hasNoAiList: false,
+        editeIndex:0,
 
         newsKeyword: '',
         newsListData: [],
@@ -276,7 +288,9 @@
         titleLoading: false,
         aiLoading: false,
         newsLoading: false,
-        fullLoading: false
+        fullLoading: false,
+
+        menuIndex: 0,
       }
     },
     computed: {
@@ -303,6 +317,7 @@
             + '文章时间：'+this.time +'\n\r'
             + '文章内容：\n'+this.content +'\n'
         }
+        $('#editor').find('.edui-for-js-copy').attr('data-clipboard-text',str);
         return str
       }
     },
@@ -319,7 +334,9 @@
       }
     },
     created: function () {
-
+      if(this.$route.query.index){
+        this.menuIndex=this.$route.query.index;
+      }
     },
     mounted: function () {
       this.editorInt();
@@ -364,8 +381,6 @@
         self.newsKeyword='';
         self.active=1;
         self.hasNoList=0;
-        self.aiDetailShow=false;
-        self.newsDetailShow=false;
         self.newsDetail={};
         self.aiDetail='';
 
@@ -415,6 +430,7 @@
         self.aiListData = [];
         self.hasNoAiList = false;
         self.aiLoading = true;
+        self.aiDetailShow=false;
         $.ajax({
           url: apiHost + "/industry-bulletin/writer_robot/info_writer/write",
           type: "POST",
@@ -445,7 +461,7 @@
                     if (data.code == '0') {
                       for(var j=0;j<self.aiListData.length;j++){
                         if(self.aiListData[j].summary == summary){
-                          if(j==0){
+                          if(j == self.editeIndex){
                             self.titleLoading=false;
                             self.title = data.data;
                           }
@@ -481,7 +497,7 @@
           error: function (XMLHttpRequest) {
             self.aiLoading=false;
             if (XMLHttpRequest.status == "9001") {
-              location.href = "./login.html";
+              location.href = "../login.html";
             }
           }
         })
@@ -524,6 +540,25 @@
         })
       },
 
+      //编辑该篇AI文章
+      editeAIArticle:function(item,index){
+        var self=this;
+        self.$confirm('您确定要编辑该篇文章么？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {
+          self.title=item.title;
+          self.editeIndex=index;
+
+          //此处处理换行符在ueditor中无法正常换行，把\n替换成段落p标签
+          var str = "<p>" + item.summary.replace(/\n/g, "</p><p>") + "</p>";
+          self.editor.setContent(str);
+
+        }).catch(function () {
+
+        });
+      },
       //阅读AI全文
       showAIDetail: function (item) {
         this.aiDetail={
@@ -545,6 +580,7 @@
         self.newsListData = [];
         self.hasNoNewsList = false;
         self.newsLoading = true;
+        self.newsDetailShow=false;
         $.ajax({
           url: apiHost + "/industry-bulletin/writer_robot/info_writer/news_search",
           type: "POST",
@@ -572,7 +608,7 @@
           error: function (XMLHttpRequest) {
             self.newsLoading = false;
             if (XMLHttpRequest.status == "9001") {
-              location.href = "./login.html";
+              location.href = "../login.html";
             }
           }
         })
@@ -700,7 +736,7 @@
           },
           error: function (XMLHttpRequest) {
             if (XMLHttpRequest.status == "9001") {
-              location.href = "./login.html";
+              location.href = "../login.html";
             }
           }
         })
@@ -741,7 +777,7 @@
           },
           error: function (XMLHttpRequest) {
             if (XMLHttpRequest.status == "9001") {
-              location.href = "./login.html";
+              location.href = "../login.html";
             }
           }
         });
@@ -783,7 +819,7 @@
             },
             error: function (XMLHttpRequest) {
               if (XMLHttpRequest.status == "9001") {
-                location.href = "./login.html";
+                location.href = "../login.html";
               }
             }
           })
@@ -793,8 +829,9 @@
 
       },
 
-      //收藏资讯
-      collectNewsList:function(item){
+
+      //阅读资讯原文，并收藏资讯
+      collectNewsList:function(item,isEdite,callback){
         var self=this;
         $.ajax({
           url: apiHost + "/industry-bulletin/writer_robot/info_writer/news_textcontent",
@@ -807,11 +844,15 @@
             newsid:item._id
           },
           success: function (data) {
-            if (data.code == '0' && data.data && data.data.textcontent) {
-              self.newsDetail.title=item.title;
-              self.newsDetail.site=item.site;
-              self.newsDetail.article = "<p>" + data.data.textcontent.replace(/\n/g, "</p><p>") + "</p>";
-              self.newsDetailShow=true;
+            if(isEdite){
+              if(callback) callback(data);
+            }else {
+              if (data.code == '0' && data.data) {
+                  self.newsDetail.title=item.title;
+                  self.newsDetail.site=item.site;
+                  self.newsDetail.article = "<p>" + data.data.textcontent.replace(/\n/g, "</p><p>") + "</p>";
+                  self.newsDetailShow=true;
+              }
             }
           }
         });
@@ -837,6 +878,75 @@
         inner.scrollTop(0);
         this.newsDetailShow=false;
       },
+      //编辑相关资讯
+      editeNewsArticle:function(item){
+        var self=this;
+        self.$confirm('您确定要编辑该篇文章么？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {
+          self.collectNewsList(item,true,function(data){
+            if (data.code == '0' && data.data) {
+              self.title=item.title;
+              //此处处理换行符在ueditor中无法正常换行，把\n替换成段落p标签
+              var str = "<p>" + data.data.textcontent.replace(/\n/g, "</p><p>") + "</p>";
+              self.editor.setContent(str);
+            }
+          })
+        }).catch(function () {
+
+        });
+      },
+      //改写相关资讯文章
+      changeNewsArticle:function(item){
+        var self=this;
+        self.$confirm('您确定要改写该篇文章么？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function () {
+          self.newsLoading=true;
+          $.ajax({
+            url: apiHost + "/industry-bulletin/writer_robot/info_writer/rewrite_news",
+            type: "POST",
+            xhrFields: {
+              withCredentials: true
+            },
+            crossDomain: true,
+            data: {
+              newsId:item._id
+            },
+            success: function (data) {
+              self.newsLoading=false;
+              if (data.code == '0' && data.data && data.data.result && data.data.result[0] && data.data.result[0].summray) {
+                self.title=item.title;
+                //此处处理换行符在ueditor中无法正常换行，把\n替换成段落p标签
+                var str = "<p>" + data.data.result[0].summray.replace(/\n/g, "</p><p>") + "</p>";
+                self.editor.setContent(str);
+              }else {
+                self.$alert('很抱歉！此篇文章无法改写，请换一篇', '提示', {
+                  type: 'error'
+                });
+              }
+            },
+            error:function(){
+              self.newsLoading=false;
+              if (XMLHttpRequest.status == "9001") {
+                location.href = "../login.html";
+              }
+            }
+          })
+        }).catch(function () {
+
+        });
+
+      },
+
+
+
+
+
       //获取草稿对应收藏的AI列表和咨询列表
       getCollectNewsList:function(type){
         var self=this;
@@ -940,7 +1050,7 @@
             },
             error: function (XMLHttpRequest) {
               if (XMLHttpRequest.status == "9001") {
-                location.href = "./login.html";
+                location.href = "../login.html";
               }
             }
           })
@@ -960,9 +1070,11 @@
 
       handleCurrentChange1(val) {
         this.pageNum1 = val;
+        this.aiDetailShow=false;
       },
       handleCurrentChange2(val) {
         this.pageNum2 = val;
+        this.newsDetailShow=false;
       },
       handleCurrentChange4(val) {
         this.pageNum4 = val;
@@ -987,6 +1099,7 @@
       //富文本编辑器初始化程序
       editorInt: function () {
         var self = this;
+        self.addEditorButton();
         self.editor = UE.getEditor('editor', {
           toolbars: [[
             'source', '|',
@@ -1010,10 +1123,28 @@
           autoHeightEnabled: false,
           retainOnlyLabelPasted: true
         });
+        self.editor.ready( function( editor ) {
+          $('#editor').find('.edui-for-js-copy').addClass('js-copy').attr('data-clipboard-text',self.copyText);
+        });
         self.textShow=true;
         self.editor.addListener( 'contentChange', function( editor ) {
           self.content = self.editor.getPlainTxt();
         })
+      },
+      //富文本编辑器扩展按钮
+      addEditorButton:function(){
+        var self=this;
+        UE.registerUI('js-copy',function(editor,uiName){
+          return new UE.ui.Button({
+            name:uiName,
+            //提示
+            title:'一键复制',
+            cssRules :'background-position: -280px 0;',
+            onclick:function () {
+//              console.log(self.copyText);
+            }
+          });
+        });
       }
     }
   }
@@ -1237,10 +1368,10 @@
 
   #write-robot .write-content > .right .item > ul > li p {
     text-indent: 2em;
-    text-align: justify;
     font-size: 14px;
     line-height: 18px;
     max-height: 54px;
+    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -1261,6 +1392,7 @@
   #write-robot .write-content > .right .item > ul > li a {
     float: right;
     color: #409EFF;
+    margin-left: 15px;
   }
 
   #write-robot .write-content > .right .item .detail {
@@ -1412,5 +1544,6 @@
   #write-robot .el-button.is-loading:before{
     cursor: not-allowed;
   }
+
 
 </style>
