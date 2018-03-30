@@ -118,7 +118,7 @@
     },
     created: function () {
       if(location.host != "robot.giiso.com") {
-        this.apiHost = "http://robot.giiso.com"
+        this.apiHost = "http://172.16.33.4:8081"
       }
     },
     mounted() {

@@ -1,24 +1,36 @@
 <template>
-  <div id="template-add">
+  <div id="task-add">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/template' }">文章管理</el-breadcrumb-item>
-        <el-breadcrumb-item>{{form.id=='' ? '新增文章' : '修改文章'}}</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/template' }">任务管理</el-breadcrumb-item>
+        <el-breadcrumb-item>{{form.id=='' ? '新增任务' : '修改任务'}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="content clearfix">
       <div class="form left">
         <el-form ref="form" :model="form" :rules="rules" label-width="110px" size="small">
-          <el-form-item label="文章名称" prop="title" required>
+          <el-form-item label="" prop="status" required>
+            <el-radio v-model="form.status" label="0">启用</el-radio>
+            <el-radio v-model="form.status" label="1">禁用</el-radio>
+          </el-form-item>
+          <el-form-item label="任务名称" prop="title" required>
             <el-input v-model="form.title"></el-input>
           </el-form-item>
-          <!--<el-form-item label="包含个股属性" prop="title" required>-->
-            <!--<el-radio v-model="form.radio" label="1">是</el-radio>-->
-            <!--<el-radio v-model="form.radio" label="0">否</el-radio>-->
-          <!--</el-form-item>-->
+
+          <el-form-item label="" prop="andOr" required>
+            <el-radio v-model="form.andOr" label="0">and</el-radio>
+            <el-radio v-model="form.andOr" label="1">or</el-radio>
+          </el-form-item>
+
+          <el-form-item label="写作时间" prop="time">
+            <el-date-picker v-model="form.time" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss"
+                            placeholder="选择文章时间" size="small" :editable="false"></el-date-picker>
+          </el-form-item>
+
           <el-form-item label="描述" prop="description" required>
             <el-input v-model="form.description" type="textarea" :rows="4"></el-input>
           </el-form-item>
+
           <el-form-item label="模板" prop="content" required>
             <script id="editor" type="text/plain" style="height:400px;"></script>
           </el-form-item>
@@ -154,7 +166,7 @@
             <tr v-for="item in listData5">
               <td width="170">{{item.title}}</td>
               <td>
-                <a href="javascript:;">文章查看</a>
+                <a href="javascript:;">任务查看</a>
                 <a href="javascript:;">任务修改</a>
                 <a href="javascript:;">任务删除</a>
               </td>
@@ -198,14 +210,16 @@
         form: {
           id: '',
           title: '',
+          time:'',
           radio:'1',
           description: '',
           content: '',
-          status: ''
+          status: '',
+          andOr: '',
         },
         rules: {
           title: [
-            {required: true, message: '请输入文章名称'}
+            {required: true, message: '请输入任务名称'}
           ],
           description: [
             {required: true, message: '请输入描述'}
@@ -299,10 +313,10 @@
       onSubmit(status) {
         var self = this;
         var url = apiHost + '/template/add';
-        var text = '新增文章成功！';
+        var text = '新增任务成功！';
         if (self.form.id != '') {
           url = apiHost + '/template/update';
-          text = '修改文章成功！';
+          text = '修改任务成功！';
         }
         self.form.content = self.editor.getContent();
 
@@ -599,36 +613,36 @@
 </script>
 
 <style>
-  #template-add .content {
+  #task-add .content {
     padding-top: 30px;
     min-width: 1260px;
   }
 
-  #template-add .form {
+  #task-add .form {
     width: 800px;
   }
 
-  #template-add .form .btn {
+  #task-add .form .btn {
     margin-left: 10px;
   }
-  #template-add .detail-show .mid{
+  #task-add .detail-show .mid{
     width: 90%;
     margin:0 auto;
   }
-  #template-add .detail-show .mid h2{
+  #task-add .detail-show .mid h2{
     text-align: center;
     font-weight: bold;
     padding:10px 0;
   }
-  #template-add .detail-show .el-dialog__footer{
+  #task-add .detail-show .el-dialog__footer{
     text-align: center;
   }
-  #app #template-add .content .example{
+  #app #task-add .content .example{
     width: 410px;
   }
 
 
-  #template-add .content .task-list{
+  #task-add .content .task-list{
     padding:15px;
     margin-top: 15px;
     background: #fff;
@@ -636,19 +650,19 @@
     -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
   }
-  #template-add .content .task-list .top{
+  #task-add .content .task-list .top{
     padding-bottom: 10px;
   }
-  #template-add .content .task-list .top h3{
+  #task-add .content .task-list .top h3{
     float: left;
     line-height: 32px;
     font-size: 14px;
   }
-  #template-add .content .task-list .list td{
+  #task-add .content .task-list .list td{
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
   }
-  #template-add .content .task-list .list a{
+  #task-add .content .task-list .list a{
     margin: 0 3px;
   }
 

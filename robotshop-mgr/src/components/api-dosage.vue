@@ -140,7 +140,7 @@
     created() {
       var self = this;
       if (location.host != "robot.giiso.com") {
-        self.apiHost = "http://robot.giiso.com"
+        self.apiHost = "http://172.16.33.4:8081"
       }
       self.getApiDosage();
       $(".el-dialog__close").hide();

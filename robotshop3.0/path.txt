@@ -5,7 +5,7 @@ http://172.16.25.6/wordpress_robot_shop/wp-admin/
 
 测试服地址：
 172.16.33.4
-/work/open/grobot-api/apache-tomcat-8.0.45/webapps/robotshop3.0
+/work/open/portal/apache-tomcat-8.0.45/webapps
 
 测试地址：
 http://172.16.33.4:9090/robotshop3.0/

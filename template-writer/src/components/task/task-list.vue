@@ -1,38 +1,24 @@
 <template>
-  <div id="template-list">
+  <div id="task-list">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/template' }">文章管理</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/task' }">任务管理</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="control">
       <div class="item">
-        <router-link class="btn" to="/template/add">新增</router-link>
+        <router-link class="btn" to="/task/add">新增</router-link>
       </div>
       <div class="item">
-        <span>时间：</span>
-        <el-date-picker
-          v-model="searchDate"
-          type="daterange"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期" size="small" value-format="yyyy-MM-dd">
-        </el-date-picker>
-      </div>
-      <div class="item">
-        <span>文章名称：</span>
+        <span>任务名称：</span>
         <el-input v-model="searchTitle" size="small"></el-input>
-      </div>
-      <div class="item">
-        <span>描述：</span>
-        <el-input v-model="searchText" size="small"></el-input>
       </div>
       <div class="item">
         <span>状态：</span>
         <el-select v-model="searchStatus" size="small">
           <el-option label="全部" value=""></el-option>
-          <el-option label="未完成" value="0"></el-option>
-          <el-option label="已完成" value="1"></el-option>
+          <el-option label="启用" value="0"></el-option>
+          <el-option label="禁用" value="1"></el-option>
         </el-select>
       </div>
       <el-button type="primary" size="small" @click="getListData">搜索</el-button>
@@ -48,18 +34,16 @@
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column prop="index" label="序号" width="50"></el-table-column>
-        <el-table-column prop="title" label="文章名称" width="150"></el-table-column>
-        <el-table-column prop="description" label="描述" show-overflow-tooltip></el-table-column>
-        <el-table-column prop="createTime" label="录入时间"></el-table-column>
-        <el-table-column label="状态" width="80">
+        <el-table-column prop="title" label="任务名称"></el-table-column>
+        <el-table-column label="状态">
           <template slot-scope="scope">
-            <span v-if="scope.row.status == 0">未完成</span>
-            <span v-if="scope.row.status == 1">已完成</span>
+            <span v-if="scope.row.status == 0">启用</span>
+            <span v-if="scope.row.status == 1">禁用</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="150">
+        <el-table-column label="操作">
           <template slot-scope="scope">
-            <a href="javascript:;" @click="clickDetailShow(scope.row)">预览</a>
+            <a href="javascript:;" @click="clickDetailShow(scope.row)">文章列表</a>
             <router-link :to=" '/template/add?id='+scope.row.id ">修改</router-link>
             <a href="javascript:;" @click="deleteData(scope.row.id)">删除</a>
           </template>
@@ -102,7 +86,6 @@
         searchTitle: '',
         searchText: '',
         searchStatus: '',
-        searchTask: '',
         listData: [],
         multipleSelection: [],
         detailShow: false,
@@ -120,20 +103,11 @@
       //获取表格数据
       getListData: function () {
         var self = this;
-        var startDate = '';
-        var enDate = '';
-        if (self.searchDate && self.searchDate.length > 1) {
-          startDate = self.searchDate[0];
-          enDate = self.searchDate[1];
-        }
         $.ajax({
-          url: apiHost + '/template/list',
+          url: apiHost + '/task/list',
           data: {
-            title: self.searchTitle,
+            keyword: self.searchTitle,
             status: self.searchStatus,
-            description: self.searchText,
-            start_date: startDate,
-            end_date: enDate,
             pageNo: self.pageNum,
             pageSize: self.pageSize
           },
@@ -185,7 +159,7 @@
       },
       deleteData: function (id) {
         var self = this;
-        this.$confirm('您确定要删除文章么?', '提示', {
+        this.$confirm('您确定要删除任务么?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
@@ -230,23 +204,5 @@
 </script>
 
 <style>
-  #template-list .detail-show .mid {
-    width: 90%;
-    margin: 0 auto;
-  }
 
-  #template-list .detail-show .mid h2 {
-    text-align: center;
-    font-weight: bold;
-    padding: 10px 0;
-  }
-
-  #template-list .detail-show .mid h5 {
-    text-align: center;
-    padding-bottom: 20px;
-  }
-
-  #template-list .detail-show .el-dialog__footer {
-    text-align: center;
-  }
 </style>

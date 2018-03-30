@@ -1,5 +1,8 @@
 
 var robotApiHost = "http://robot.giiso.com/open-portal";
+if(location.host != 'robot.giiso.com'){
+    robotApiHost = "http://172.16.33.4:8081/open-portal";
+}
 
 //百度统计
 var _hmt = _hmt || [];
@@ -40,7 +43,8 @@ $("#register_tel").on("input", function () {
 })
 //图形验证码验证
 $("#register_img_check_code").on("input", function () {
-    var self = this
+    var self = this;
+
     if ($("#register_img_check_code").val() == "" || $("#register_img_check_code").val() == undefined) {
         $(self).parent().find("span").eq(0).fadeIn();
     } else {
@@ -72,6 +76,7 @@ $("#register_img_check_code").on("input", function () {
             }
         })
     }else {
+        $(self).parent().find("span").eq(1).fadeOut();
         $(".register_tel_check_code").attr("disabled","disabled");
     }
 })
@@ -115,6 +120,14 @@ $("#register_terms_service").on("change", function () {
     }
 })
 
+//完善资料页面输入清空提示
+$("#form2").find('input').on("input", function () {
+    $(this).parent().find("span").hide();
+});
+$("#form2").find('textarea').on("input", function () {
+    $(this).parent().find("span").hide();
+});
+
 //表单重置
 function registerFormReset() {
     $("#register_tel").val("")
@@ -130,8 +143,8 @@ function loginFormReset() {
     $("#login_password").val("")
 }
 
-// 点击注册
-function register() {
+//点击下一步
+function clickNext(){
     if ($("#register_tel").val() == "" || $("#register_tel").val() == undefined) {
         $("#register_tel").parent().find("span").eq(0).fadeIn();
         $("#register_tel").parent().find("span").eq(1).hide();
@@ -159,6 +172,51 @@ function register() {
         return;
     } else {
         $.ajax({
+            url: robotApiHost + "/auth/regist/verify",
+            type: "POST",
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            data: {
+                mobile: $("#register_tel").val(),
+                vcode: $("#register_tel_check_code").val()
+            },
+            success: function (data) {
+                if (data.code == 0) {
+                    $('.model-step').find('.step').eq(1).addClass('active');
+                    $('#form1').hide();
+                    $('#form2').show();
+                } else {
+                    $("#register_error").html(data.msg).show();
+                }
+            }
+        })
+    }
+}
+
+// 点击注册
+function register() {
+    if ($("#register_tel").val() == "" || $("#register_tel").val() == undefined) {
+        $("#register_error").html('手机号码不能为空').show();
+        return;
+    }else if ($("#register_password").val() == "" || $("#register_password").val() == undefined) {
+        $("#register_error").html('密码不能为空').show();
+        return;
+    } else if ($("#register_name").val() == "" || $("#register_name").val() == undefined) {
+        $("#register_name").parent().find("span").eq(0).fadeIn();
+        return;
+    } else if ($("#register_company").val() == "" || $("#register_company").val() == undefined) {
+        $("#register_company").parent().find("span").eq(0).fadeIn();
+        return;
+    } else if ($("#register_post").val() == "" || $("#register_post").val() == undefined) {
+        $("#register_post").parent().find("span").fadeIn();
+        return;
+    } else if ($("#register_require").val() == "" || $("#register_require").val() == undefined) {
+        $("#register_require").parent().find("span").fadeIn();
+        return;
+    } else {
+        $.ajax({
             url: robotApiHost + "/auth/regist/mobile",
             type: "POST",
             xhrFields: {
@@ -169,6 +227,11 @@ function register() {
                 mobile: $("#register_tel").val(),
                 password: MD5($("#register_password").val()),
                 vcode: $("#register_tel_check_code").val(),
+                name: $("#register_name").val(),
+                company: $("#register_company").val(),
+                position: $("#register_post").val(),
+                request: $("#register_require").val(),
+                information: $("#register_find").val(),
             },
             success: function (data) {
                 if (data.code == 0) {
@@ -270,7 +333,7 @@ function getTelCheckCode() {
         $(".register_tel_check_code").attr("disabled", "true");
         $(".register_tel_check_code").text(count + "s");
         if (count == 0) {
-            $(".register_tel_check_code").text("发送").removeAttr("disabled");
+            $(".register_tel_check_code").text("重新获取").removeAttr("disabled");
             clearInterval(countdown);
         }
         count--;
@@ -361,11 +424,11 @@ function login(params) {
             crossDomain: true,
             data: data,
             success: function (res) {
-                if (res.code == 0) {
+                if (res.code == '0') {
                     if (res.data == true) {
                         window.location.href="shop-mgr-build/index.html#/";
                     } else {
-                        $("#login .faild").text(data.msg).show();
+                        $("#login .faild").show();
                     }
                 }
             }

@@ -29,6 +29,10 @@
             <i class="el-icon-edit-outline"></i>
             <span slot="title">文章管理</span>
           </el-menu-item>
+          <!--<el-menu-item index="/task">-->
+            <!--<i class="el-icon-edit-outline"></i>-->
+            <!--<span slot="title">任务管理</span>-->
+          <!--</el-menu-item>-->
         </el-menu>
       </div>
       <div class="content-container">
@@ -189,13 +193,9 @@
   #app .content-container .example .list li .title a{
     font-size: 14px;
   }
-  #app .content-container .example .list li p{
-    text-align: justify;
-  }
   #app .content-container .example .list li p.hide{
     display: -webkit-box;
     overflow: hidden;
-    text-align: justify;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;

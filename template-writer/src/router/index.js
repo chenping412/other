@@ -13,6 +13,8 @@ import SectionList from '../components/section/section-list.vue'
 import SectionAdd from '../components/section/section-add.vue'
 import TemplateList from '../components/template/template-list.vue'
 import TemplateAdd from '../components/template/template-add.vue'
+//import TaskList from '../components/task/task-list.vue'
+//import TaskAdd from '../components/task/task-add.vue'
 
 
 
@@ -86,6 +88,19 @@ export default new Router({
           component: TemplateAdd
         },
       ]
-    }
+    },
+    //{
+    //  path: '/task',
+    //  component: RouterView,
+    //  children:[
+    //    {
+    //      path: '',
+    //      component: TaskList
+    //    },{
+    //      path: 'add',
+    //      component: TaskAdd
+    //    },
+    //  ]
+    //}
   ]
 })

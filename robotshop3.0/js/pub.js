@@ -4,6 +4,9 @@
 
 /*用户信息登录模块~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 var robotApiHost = "http://robot.giiso.com/open-portal";
+if(location.host != 'robot.giiso.com'){
+    robotApiHost = "http://172.16.33.4:8081/open-portal";
+}
 
 //退出登录
 $("#user_info .login_out").click(function () {

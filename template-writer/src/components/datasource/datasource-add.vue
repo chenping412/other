@@ -11,7 +11,7 @@
         <el-form ref="form" :model="form" :rules="rules" label-width="150px" size="small">
           <el-form-item label="代码" prop="code" required :class="{'prefix': form.id==''}">
             <span class="pre">D_</span>
-            <el-input v-model="form.code" :maxlength="14" :disabled=" form.id!='' "></el-input>
+            <el-input v-model="form.code"></el-input>
           </el-form-item>
           <el-form-item label="数据源名称" prop="name" required>
             <el-input v-model="form.name"></el-input>
