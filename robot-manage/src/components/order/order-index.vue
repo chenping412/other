@@ -4,7 +4,7 @@
       <h2><i class="el-icon-menu"></i> 订单管理</h2>
       <ul class="sidebar-nav">
         <li>
-          <router-link :to="{path: '/order/list'}">订单列表</router-link>
+          <router-link :to="{path: '/home/order/list'}">订单列表</router-link>
         </li>
       </ul>
     </div>

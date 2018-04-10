@@ -2,8 +2,8 @@
   <div id="user-normal-api-detail">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">普通用户</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/user-index/user-normal/user-detail?id='+parentId }">用户详情</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">普通用户</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-normal/user-detail?id='+parentId }">用户详情</el-breadcrumb-item>
         <el-breadcrumb-item >接口详情</el-breadcrumb-item>
       </el-breadcrumb>
     </div>

@@ -2,7 +2,7 @@
   <div id="user-agent-agent-detail">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">代理商</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">代理商</el-breadcrumb-item>
         <el-breadcrumb-item >代理商详情</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -18,18 +18,18 @@
           <tbody>
           <tr>
             <td class="col1">代理商名称</td>
-            <td>杭州前方</td>
+            <td>{{baseInfo.name}}</td>
             <td></td>
           </tr>
           <tr>
             <td class="col1">代理商账号</td>
-            <td>DLhzqf</td>
+            <td>{{baseInfo.username}}</td>
             <td></td>
           </tr>
           <tr>
             <td class="col1">备注</td>
-            <td>{{baseInfo.comment}}</td>
-            <td><a href="javascript:;" @click="commentShow = true">修改</a></td>
+            <td>{{baseInfo.remark}}</td>
+            <td><a href="javascript:;" @click="changeRemark()">修改</a></td>
           </tr>
           </tbody>
         </table>
@@ -50,7 +50,7 @@
           <el-table-column prop="product" label="已接入应用" align="center"></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
-              <router-link :to="{ path: '/user-index/user-agent/user-detail', query: {id: scope.row.id , parentId:id , from:'agent'}}">详情</router-link>
+              <router-link :to="{ path: '/home/user-index/user-agent/user-detail', query: {id: scope.row.id , parentId:id , from:'agent'}}">详情</router-link>
             </template>
           </el-table-column>
         </el-table>
@@ -69,12 +69,12 @@
 
 
 
-    <el-dialog title="修改备注" :visible.sync="commentShow" width="450px">
+    <el-dialog title="修改备注" :visible.sync="remarkShow" width="450px">
       <p>备注：</p>
-      <el-input type="textarea" :rows="6" v-model="baseInfo.comment"></el-input>
+      <el-input type="textarea" :rows="6" v-model="remark"></el-input>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="commentShow = false">取 消</el-button>
-        <el-button type="primary" @click="submitComment()">确 定</el-button>
+        <el-button @click="remarkShow = false">取 消</el-button>
+        <el-button type="primary" @click="submitRemark()">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -99,8 +99,9 @@
         loginState: false,
         id: '',
         baseInfo:{
-          comment:'某某app使用'
+          remark:''
         },
+        remark:'',
         userListData:[
           {
             id:'1',
@@ -132,7 +133,7 @@
         pageNum: 1,
         pageSize: 20,
         totalPage: 100,
-        commentShow:false
+        remarkShow:false
 
       };
     },
@@ -140,32 +141,92 @@
       if(this.$route.query.id){
         this.id=this.$route.query.id;
       }
+      this.getDetailData();
     },
     methods: {
-      //提交备注修改
-      submitComment:function(){
+      //获取用户详情
+      getDetailData() {
+        var self = this;
+        self.$http({
+          url: apiHost + "/member/detail",
+          type: 'post',
+          data: {
+            id: self.id
+          },
+          success: function (data) {
+            if (data.code == 0) {
+              self.baseInfo=data.data;
+            } else {
+
+            }
+          }
+        });
+      },
+      //打开修改备注
+      changeRemark(){
+        this.remarkShow = true;
+        this.remark=this.baseInfo.remark;
+      },
+      //提交修改备注
+      submitRemark:function(){
         var self=this;
-        self.commentShow = false;
+        self.$http({
+          url: apiHost + "/member/update",
+          type: 'post',
+          data: {
+            id: self.id,
+            remark: self.remark
+          },
+          success: function (data) {
+            if (data.code == 0) {
+              self.getDetailData();
+              self.remarkShow = false;
+            } else {
+              self.$message({
+                message: data.msg,
+                type: "error"
+              });
+            }
+          }
+        });
       },
       //重置密码
       resetPassword:function() {
         var self=this;
-        self.$confirm('重置后密码为123456, 是否继续?', '提示', {
+        self.$confirm( '重置后密码为123456, 是否继续？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(function() {
-          self.$message({
-            type: 'success',
-            message: '重置密码成功!'
+        }).then(function(){
+          self.$http({
+            url: apiHost + "/member/update",
+            type: 'post',
+            data: {
+              id: self.id,
+              password: '123456'
+            },
+            success: function (data) {
+              if (data.code == 0) {
+                self.$message({
+                  type: 'success',
+                  message: '重置密码成功!'
+                });
+              } else {
+                self.$message({
+                  message: data.msg,
+                  type: "error"
+                });
+              }
+            }
           });
+
         }).catch(function(){
 
         });
       },
       //打开添加客户
       openAddUser() {
-        this.$router.push('/user-index/user-agent/add-customer?id='+this.id)
+        this.$router.push('/home/user-index/user-agent/add-customer?id='+this.id)
       },
       //分页处理
       handleCurrentChange(val) {

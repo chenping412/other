@@ -2,12 +2,12 @@
   <div id="user-normal-user-detail">
     <div class="breadcrumb">
       <el-breadcrumb separator="/" v-if="from!='agent'">
-        <el-breadcrumb-item :to="{ path: '/' }">普通用户</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home' }">普通用户</el-breadcrumb-item>
         <el-breadcrumb-item >用户详情</el-breadcrumb-item>
       </el-breadcrumb>
       <el-breadcrumb separator="/" v-if="from=='agent'">
-        <el-breadcrumb-item :to="{ path: '/user-index/user-agent' }">代理商</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/user-index/user-agent/agent-detail?id='+parentId }">代理商详情</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent' }">代理商</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent/agent-detail?id='+parentId }">代理商详情</el-breadcrumb-item>
         <el-breadcrumb-item >客户详情</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -23,12 +23,12 @@
           <tbody>
           <tr>
             <td class="col1">{{from=='agent' ? '客户账号' : '用户账号'}}</td>
-            <td>zhisou</td>
+            <td>{{baseInfo.username}}</td>
             <td></td>
           </tr>
           <tr v-if="from!='agent'">
             <td class="col1">用户手机号</td>
-            <td>15920033453</td>
+            <td>{{baseInfo.mobile}}</td>
             <td></td>
           </tr>
           <tr v-if="from=='agent'">
@@ -38,17 +38,17 @@
           </tr>
           <tr>
             <td class="col1">SecretId</td>
-            <td>chenping</td>
+            <td>{{baseInfo.secretId}}</td>
             <td rowspan="2"><a href="javascript:;" @click="resetSecretKey()">重置</a> </td>
           </tr>
           <tr>
             <td class="col1">SecretKey</td>
-            <td>feabca98b2924596b5c28d345b895780</td>
+            <td>{{baseInfo.secretKey}}</td>
           </tr>
           <tr>
             <td class="col1">备注</td>
-            <td>{{baseInfo.comment}}</td>
-            <td><a href="javascript:;" @click="commentShow = true">修改</a></td>
+            <td>{{baseInfo.remark}}</td>
+            <td><a href="javascript:;" @click="changeRemark()">修改</a></td>
           </tr>
           </tbody>
         </table>
@@ -86,7 +86,7 @@
           </el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
-              <router-link :to="{ path: '/user-index/user-normal/api-detail', query: {parentId:id ,id: scope.row.id ,from:from}}">查看接口详情</router-link>
+              <router-link :to="{ path: '/home/user-index/user-normal/api-detail', query: {parentId:id ,id: scope.row.id ,from:from}}">查看接口详情</router-link>
             </template>
           </el-table-column>
         </el-table>
@@ -143,7 +143,7 @@
 
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
-              <router-link :to="{ path: '/user-index/user-normal/user-detail', query: {id: scope.row.id}}">查看订单</router-link>
+              <router-link :to="{ path: '/home/user-index/user-normal/user-detail', query: {id: scope.row.id}}">查看订单</router-link>
             </template>
           </el-table-column>
         </el-table>
@@ -189,29 +189,19 @@
       </span>
     </el-dialog>
 
-    <el-dialog title="修改备注" :visible.sync="commentShow" :lock-scroll="false" :close-on-click-modal="false" width="450px">
+    <el-dialog title="修改备注" :visible.sync="remarkShow" :lock-scroll="false" :close-on-click-modal="false" width="450px">
       <p>备注：</p>
-      <el-input type="textarea" :rows="6" v-model="baseInfo.comment"></el-input>
+      <el-input type="textarea" :rows="6" v-model="remark"></el-input>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="commentShow = false">取 消</el-button>
-        <el-button type="primary" @click="submitComment()">确 定</el-button>
+        <el-button @click="remarkShow = false">取 消</el-button>
+        <el-button type="primary" @click="submitRemark()">确 定</el-button>
       </span>
     </el-dialog>
 
-
-    <div class="model" v-show="loginState">
-      <div class="content">
-        <a href="javascript:;">
-          <b>!</b>
-          登陆过期，请重新登陆。
-        </a>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-  import $ from "jquery";
 
   export default {
     data() {
@@ -221,9 +211,10 @@
         parentId: '',
         from: 'normal',
         baseInfo:{
-          name:'报业A',
-          comment:'某某app使用'
+          name:'',
+          remark:''
         },
+        remark:'',
         productTableData: [{
           id: '5a5c8fb3',
           name: '天机智讯',
@@ -335,7 +326,7 @@
         pageSize: 10,
         totalPage: 100,
         baseInfoNameShow:false,
-        commentShow:false,
+        remarkShow:false,
         productDetailShow:false,
         productDetail:{
           name:'天机智讯',
@@ -360,31 +351,92 @@
       if(this.$route.query.from){
         this.from=this.$route.query.from;
       }
-      console.log(this.from)
+      this.getDetailData();
+      this.getProductListData();
+      this.getOrderListData();
     },
     methods: {
+      //获取用户详情
+      getDetailData() {
+        var self = this;
+        self.$http({
+          url: apiHost + "/member/detail",
+          type: 'post',
+          data: {
+            id: self.id
+          },
+          success: function (data) {
+            if (data.code == 0) {
+                self.baseInfo=data.data;
+            } else {
+
+            }
+          }
+        });
+      },
       //提交修改客户名称
       submitBaseInfoName:function(){
         var self=this;
         self.baseInfoNameShow = false;
       },
+      //打开修改备注
+      changeRemark(){
+        this.remarkShow = true;
+        this.remark=this.baseInfo.remark;
+      },
       //提交修改备注
-      submitComment:function(){
+      submitRemark:function(){
         var self=this;
-        self.commentShow = false;
+        self.$http({
+          url: apiHost + "/member/update",
+          type: 'post',
+          data: {
+            id: self.id,
+            remark: self.remark
+          },
+          success: function (data) {
+            if (data.code == 0) {
+              self.getDetailData();
+              self.remarkShow = false;
+            } else {
+              self.$message({
+                message: data.msg,
+                type: "error"
+              });
+            }
+          }
+        });
       },
       //重置密码
       resetPassword:function() {
         var self=this;
-        self.$confirm('重置后密码为123456, 是否继续?', '提示', {
+        self.$confirm( '重置后密码为123456, 是否继续？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(function() {
-          self.$message({
-            type: 'success',
-            message: '重置密码成功!'
+        }).then(function(){
+          self.$http({
+            url: apiHost + "/member/update",
+            type: 'post',
+            data: {
+              id: self.id,
+              password: '123456'
+            },
+            success: function (data) {
+              if (data.code == 0) {
+                self.$message({
+                  type: 'success',
+                  message: '重置密码成功!'
+                });
+              } else {
+                self.$message({
+                  message: data.msg,
+                  type: "error"
+                });
+              }
+            }
           });
+
         }).catch(function(){
 
         });
@@ -405,6 +457,44 @@
 
         });
       },
+
+      //获取用户产品信息
+      getProductListData() {
+        var self = this;
+        self.$http({
+          url: apiHost + "/member/goods/query",
+          type: 'get',
+          data: {
+            mid: self.id
+          },
+          success: function (data) {
+            if (data.code == 0 && data.data && data.data.data) {
+
+            } else {
+
+            }
+          }
+        });
+      },
+      //获取用户订单信息
+      getOrderListData() {
+        var self = this;
+        self.$http({
+          url: apiHost + "/order/query",
+          type: 'get',
+          data: {
+            memberId: self.id
+          },
+          success: function (data) {
+            if (data.code == 0 && data.data && data.data.data) {
+
+            } else {
+
+            }
+          }
+        });
+      },
+
       openProductDetail:function(id){
         this.productDetailShow=true;
       },

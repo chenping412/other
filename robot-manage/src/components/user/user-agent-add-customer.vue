@@ -2,8 +2,8 @@
   <div id="user-agent-add-customer">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/user-index/user-agent' }">代理商</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/user-index/user-agent/agent-detail?id='+id }">代理商详情</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent' }">代理商</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent/agent-detail?id='+id }">代理商详情</el-breadcrumb-item>
         <el-breadcrumb-item >添加客户</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -55,9 +55,11 @@
     data() {
       var uid = function(rule, value, callback) {
         if (value == "") {
-          callback(new Error("用户名不能为空"));
+          callback(new Error("客户账号不能为空"));
         } else if(value.length<6 || value.length>32){
-          callback(new Error("用户名长度需在6-32位字符之间"));
+          callback(new Error("客户账号长度需在6-32位字符之间"));
+        }else {
+          callback();
         }
       };
 
@@ -150,15 +152,6 @@
                     message: data.msg,
                     type: "error"
                   });
-                }
-              },
-              error: function (XMLHttpRequest) {
-                if (XMLHttpRequest.status == "9001") {
-                  self.loginState = true;
-                  setTimeout(function () {
-                    location.href = backToLogin;
-                    self.loginState = false;
-                  }, 2000);
                 }
               }
             });

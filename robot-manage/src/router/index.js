@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Login from '../components/login.vue'
+import Home from '../components/home.vue'
 import RouerView from '../components/router-view.vue'
 
 import UserIndex from '../components/user/user-index.vue'
@@ -36,146 +38,159 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: UserIndex,
-      redirect: '/user-index'
+      component: Login
     },
     {
-      path: '/user-index',
-      component: UserIndex,
+      path: '/home',
+      component: Home,
       children: [
+
         {
-          path: "",
-          component: RouerView,
-          redirect: 'user-normal'
-        }, {
-          path: "user-normal",
-          component: RouerView,
-          children: [
-            {
-              path: "",
-              component: UserNormalList
-            }, {
-              path: "add",
-              component: UserNormalAdd
-            }, {
-              path: "user-detail",
-              component: UserNormalUserDetail
-            }, {
-              path: "api-detail",
-              component: UserNormalApiDetail
-            }
-          ]
-        }, {
-          path: "user-agent",
-          component: RouerView,
-          children: [
-            {
-              path: "",
-              component: UserAgentList
-            }, {
-              path: "add",
-              component: UserAgentAdd
-            }, {
-              path: "agent-detail",
-              component: UserAgentAgentDetail
-            }, {
-              path: "add-customer",
-              component: UserAgentAddCustomer
-            }, {
-              path: "user-detail",
-              component: UserNormalUserDetail
-            }, {
-              path: "api-detail",
-              component: UserNormalApiDetail
-            }
-          ]
-        }
-      ]
-    },
-    {
-      path: '/product',
-      component: ProductIndex,
-      children: [
-        {
-          path: "",
-          component: RouerView,
-          redirect: 'robot'
+          path: '',
+          component: UserIndex,
+          redirect: 'user-index'
         },
         {
-          path: "robot",
-          component: RouerView,
-          children:[
+          path: 'user-index',
+          component: UserIndex,
+          children: [
             {
               path: "",
-              component: ProductRobotList
-            },{
-              path: "detail",
-              component: ProductRobotDetail
+              component: RouerView,
+              redirect: 'user-normal'
+            }, {
+              path: "user-normal",
+              component: RouerView,
+              children: [
+                {
+                  path: "",
+                  component: UserNormalList
+                }, {
+                  path: "add",
+                  component: UserNormalAdd
+                }, {
+                  path: "user-detail",
+                  component: UserNormalUserDetail
+                }, {
+                  path: "api-detail",
+                  component: UserNormalApiDetail
+                }
+              ]
+            }, {
+              path: "user-agent",
+              component: RouerView,
+              children: [
+                {
+                  path: "",
+                  component: UserAgentList
+                }, {
+                  path: "add",
+                  component: UserAgentAdd
+                }, {
+                  path: "agent-detail",
+                  component: UserAgentAgentDetail
+                }, {
+                  path: "add-customer",
+                  component: UserAgentAddCustomer
+                }, {
+                  path: "user-detail",
+                  component: UserNormalUserDetail
+                }, {
+                  path: "api-detail",
+                  component: UserNormalApiDetail
+                }
+              ]
             }
           ]
-        },{
-          path: "service",
-          component: RouerView,
-          children:[
+        },
+        {
+          path: 'product',
+          component: ProductIndex,
+          children: [
             {
               path: "",
-              component: ProductServiceList
+              component: RouerView,
+              redirect: 'robot'
+            },
+            {
+              path: "robot",
+              component: RouerView,
+              children:[
+                {
+                  path: "",
+                  component: ProductRobotList
+                },{
+                  path: "detail",
+                  component: ProductRobotDetail
+                }
+              ]
             },{
-              path: "detail",
-              component: ProductServiceDetail
+              path: "service",
+              component: RouerView,
+              children:[
+                {
+                  path: "",
+                  component: ProductServiceList
+                },{
+                  path: "detail",
+                  component: ProductServiceDetail
+                },{
+                  path: "add",
+                  component: ProductServiceAdd
+                }
+              ]
             },{
-              path: "add",
-              component: ProductServiceAdd
+              path: "package",
+              component: RouerView,
+              children:[
+                {
+                  path: "",
+                  component: ProductPackageList
+                },{
+                  path: "detail",
+                  component: ProductPackageDetail
+                },{
+                  path: "add",
+                  component: ProductPackageAdd
+                }
+              ]
             }
+
+
           ]
-        },{
-          path: "package",
-          component: RouerView,
-          children:[
+        },
+        {
+          path: 'order',
+          component: OrderIndex,
+          children: [
             {
               path: "",
-              component: ProductPackageList
-            },{
-              path: "detail",
-              component: ProductPackageDetail
-            },{
-              path: "add",
-              component: ProductPackageAdd
+              component: RouerView,
+              redirect: 'list'
+            },
+            {
+              path: "list",
+              component: RouerView,
+              children: [
+                {
+                  path: "",
+                  component: OrderList
+                },
+                {
+                  path: "detail",
+                  component: OrderDetail
+                },
+                {
+                  path: "add",
+                  component: OrderAdd
+                }
+              ]
             }
           ]
         }
 
-
-      ]
-    },
-    {
-      path: '/order',
-      component: OrderIndex,
-      children: [
-        {
-          path: "",
-          component: RouerView,
-          redirect: 'list'
-        },
-        {
-          path: "list",
-          component: RouerView,
-          children: [
-            {
-              path: "",
-              component: OrderList
-            },
-            {
-              path: "detail",
-              component: OrderDetail
-            },
-            {
-              path: "add",
-              component: OrderAdd
-            }
-          ]
-        }
       ]
     }
+
   ]
 })

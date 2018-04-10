@@ -4,8 +4,8 @@
       <h2><i class="el-icon-menu"></i> 用户管理</h2>
       <ul class="sidebar-nav">
         <li>
-          <router-link :to="{path: '/user-index/user-normal'}">普通用户</router-link>
-          <router-link :to="{path: '/user-index/user-agent'}">代理商</router-link>
+          <router-link :to="{path: '/home/user-index/user-normal'}">普通用户</router-link>
+          <router-link :to="{path: '/home/user-index/user-agent'}">代理商</router-link>
         </li>
       </ul>
     </div>

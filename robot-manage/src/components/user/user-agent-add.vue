@@ -2,22 +2,22 @@
   <div id="user-agent-add">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/user-index/user-agent' }">代理商</el-breadcrumb-item>
-        <el-breadcrumb-item >添加代理商</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent' }">代理商</el-breadcrumb-item>
+        <el-breadcrumb-item>添加代理商</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
 
     <div class="add-user">
       <el-form :model="addUserForm" ref="addUserForm" :rules="addUserRules" label-width="100px" class="demo-ruleForm">
 
-        <el-form-item label="代理商账号" prop="uid" required>
-          <el-input v-model="addUserForm.uid" size="small"></el-input>
+        <el-form-item label="代理商账号" prop="username" required>
+          <el-input v-model="addUserForm.username" size="small"></el-input>
         </el-form-item>
-        <el-form-item label="代理商名称" prop="username" required>
-          <el-input v-model="addUserForm.username" size="small" :maxlength="20"></el-input>
+        <el-form-item label="代理商名称" prop="name" required>
+          <el-input v-model="addUserForm.name" size="small" :maxlength="20"></el-input>
         </el-form-item>
-        <el-form-item label="新密码" prop="newPwd" required>
-          <el-input v-model="addUserForm.newPwd" size="small"></el-input>
+        <el-form-item label="新密码" prop="password" required>
+          <el-input v-model="addUserForm.password" size="small"></el-input>
         </el-form-item>
         <el-form-item label="确认密码" prop="confirmPwd" required>
           <el-input v-model="addUserForm.confirmPwd" size="small"></el-input>
@@ -31,7 +31,7 @@
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="addUser('addUserForm')">添加</el-button>
+          <el-button type="primary" size="small" @click="addUser()">添加</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -52,30 +52,33 @@
 
   export default {
     data() {
-      var uid = function(rule, value, callback) {
+      var self = this;
+      var username = function (rule, value, callback) {
         if (value == "") {
-          callback(new Error("用户名不能为空"));
-        } else if(value.length<6 || value.length>32){
-          callback(new Error("用户名长度需在6-32位字符之间"));
+          callback(new Error("代理商账号不能为空"));
+        } else if (value.length < 6 || value.length > 32) {
+          callback(new Error("代理商账号长度需在6-32位字符之间"));
+        }else {
+          callback();
         }
       };
 
-      var newPwd = function(rule, value, callback) {
+      var password = function (rule, value, callback) {
         if (value == "") {
           callback(new Error("请输入密码"));
-        } else if(value.length<6 || value.length>32){
+        } else if (value.length < 6 || value.length > 32) {
           callback(new Error("密码长度需在6-32位字符之间"));
-        }else {
-          if (this.addUserForm.confirmPwd != "") {
-            this.$refs.addUserForm.validateField("confirmPwd");
+        } else {
+          if (self.addUserForm.confirmPwd != "") {
+            self.$refs.addUserForm.validateField("confirmPwd");
           }
           callback();
         }
       };
-      var confirmPwd = function(rule, value, callback){
+      var confirmPwd = function (rule, value, callback) {
         if (value == "") {
           callback(new Error("请再次输入密码"));
-        } else if (value != this.addUserForm.newPwd) {
+        } else if (value != self.addUserForm.password) {
           callback(new Error("两次输入密码不一致!"));
         } else {
           callback();
@@ -84,21 +87,21 @@
       return {
         loginState: false,
         addUserForm: {
+          name: "",
           username: "",
-          uid: "",
           remark: "",
-          newPwd: "",
+          password: "",
           confirmPwd: ""
         },
         addUserRules: {
+          name: [
+            {required: true, message: '请输入代理商名称', trigger: 'blur'}
+          ],
           username: [
-            { required: true, message: '请输入代理商名称', trigger: 'blur' }
+            {validator: username, trigger: "blur"}
           ],
-          uid: [
-            {validator: uid, trigger: "blur"}
-          ],
-          newPwd: [
-            {validator: newPwd, trigger: "blur"}
+          password: [
+            {validator: password, trigger: "blur"}
           ],
           confirmPwd: [
             {validator: confirmPwd, trigger: "blur"}
@@ -112,49 +115,41 @@
     },
     methods: {
       //添加用户
-      addUser(formName) {
+      addUser() {
         var self = this;
-        self.$refs[formName].validate(valid => {
+        self.$refs.addUserForm.validate(function (valid) {
+          console.log(valid)
           if (valid) {
-            $.ajax({
+            self.$http({
               url: apiHost + "/member/add",
-              type: "POST",
-              xhrFields: {
-                withCredentials: true
-              },
-              crossDomain: true,
+              type: 'post',
               data: {
-                mobile: self.addUserForm.account,
+                type: 1,
+                name: self.addUserForm.name,
                 username: self.addUserForm.username,
-                company: self.addUserForm.company,
-                phone: self.addUserForm.phone,
-                qq: self.addUserForm.qq,
-                remark: self.addUserForm.remark,
-                password: self.addUserForm.newPwd,
-                status: self.addUserForm.status
+                password: self.addUserForm.password,
+                remark: self.addUserForm.remark
               },
               success: function (data) {
-                console.log(data);
-                if (data.code == 0) {
-                  self.showAddUser = false;
-                  self.$message({
-                    message: "添加成功",
-                    type: "success"
+                if (data.code == '0') {
+                  self.$confirm('添加成功，点击确认跳转至用户列表', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'success'
+                  }).then(function () {
+                    self.$router.push('/home/user-index/user-normal');
+                  }).catch(function () {
+                    self.addUserForm.name = '';
+                    self.addUserForm.username = '';
+                    self.addUserForm.remark = '';
+                    self.addUserForm.password = '';
+                    self.addUserForm.confirmPwd = '';
                   });
                 } else {
-                  self.$message({
-                    message: data.msg,
-                    type: "error"
+                  self.$alert(data.msg, '提示', {
+                    confirmButtonText: '确定',
+                    type: 'error'
                   });
-                }
-              },
-              error: function (XMLHttpRequest) {
-                if (XMLHttpRequest.status == "9001") {
-                  self.loginState = true;
-                  setTimeout(function () {
-                    location.href = backToLogin;
-                    self.loginState = false;
-                  }, 2000);
                 }
               }
             });
@@ -166,9 +161,9 @@
 </script>
 
 <style>
-#user-agent-add .add-user{
-  width: 400px;
-  margin-left: 100px;
-  padding:30px 0;
-}
+  #user-agent-add .add-user {
+    width: 400px;
+    margin-left: 100px;
+    padding: 30px 0;
+  }
 </style>
