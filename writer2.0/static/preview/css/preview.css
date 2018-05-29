@@ -1,0 +1,117 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+  outline:none;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline:none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+input,
+button,
+textarea {
+  outline: none;
+  font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif
+}
+
+ol,
+ul,
+li,
+button {
+  list-style: none;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+html, body {
+  width: 100%;
+}
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+
+.main{
+  max-width: 950px;
+  margin:0 auto;
+  padding:0 15px;
+}
+.main .title{
+  font-size: 25px;
+  color: #333;
+  line-height: 30px;
+  font-weight: bolder;
+  padding:15px 0 5px;
+}
+.main .info{
+  font-size: 14px;
+  color: #999;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.main .info .time{
+  margin-left: 10px;
+}
+.main .article{
+  padding-top: 10px;
+  font-size: 18px;
+  line-height: 25px;
+  color: #333333;
+  text-align: justify;
+}
+.main .article p{
+  margin-bottom: 20px;
+}
+.main .article img{
+  max-width: 100%;
+}
+
+

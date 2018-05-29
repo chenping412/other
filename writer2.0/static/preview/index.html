@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit"/>
+  <title>预览</title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/preview.css?v=222211">
+</head>
+<body>
+<div class="main" id="main">
+  <h1 class="title" id="title"></h1>
+  <div class="info clearfix">
+    <span class="author" id="author"></span>
+    <span class="time" id="time"></span>
+  </div>
+  <div class="article" id="article">
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function searchObj() {
+    var str=location.search.slice(1);
+    var res = {};
+    if (!str) {
+      return res;
+    }
+    str.split("&").forEach(function(v, k, arr) {
+      var param = v.split('=');
+      res[param[0]] = param[1];
+    });
+    return res;
+  }
+  var obj=searchObj();
+  var previewId='';
+  var articleObj={};
+  if(obj.previewId){
+    previewId=obj.previewId;
+  }
+  if(window.sessionStorage && window.sessionStorage[previewId]){
+    articleObj=JSON.parse(window.sessionStorage[previewId]);
+  }
+  console.log(articleObj)
+  if(articleObj.title){
+    document.getElementById('title').innerHTML=articleObj.title;
+  }
+  if(articleObj.author){
+    document.getElementById('author').innerHTML=articleObj.author;
+  }
+  if(articleObj.time){
+    document.getElementById('time').innerHTML=articleObj.time;
+  }
+  if(articleObj.article){
+    document.getElementById('article').innerHTML=articleObj.article;
+  }
+
+
+</script>
+</body>
+
+</html>
