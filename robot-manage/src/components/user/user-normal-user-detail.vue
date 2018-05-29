@@ -3,19 +3,20 @@
     <div class="breadcrumb">
       <el-breadcrumb separator="/" v-if="from!='agent'">
         <el-breadcrumb-item :to="{ path: '/home' }">普通用户</el-breadcrumb-item>
-        <el-breadcrumb-item >用户详情</el-breadcrumb-item>
+        <el-breadcrumb-item>用户详情</el-breadcrumb-item>
       </el-breadcrumb>
       <el-breadcrumb separator="/" v-if="from=='agent'">
         <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent' }">代理商</el-breadcrumb-item>
-        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent/agent-detail?id='+parentId }">代理商详情</el-breadcrumb-item>
-        <el-breadcrumb-item >客户详情</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/user-index/user-agent/agent-detail?id='+parentId }">代理商详情
+        </el-breadcrumb-item>
+        <el-breadcrumb-item>客户详情</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="user-info box">
       <div class="top clearfix">
         <h3 class="left">基本资料</h3>
         <div class="right">
-          <el-button type="primary" size="small"  @click="resetPassword()">重置密码</el-button>
+          <el-button type="primary" size="small" @click="resetPassword()">重置密码</el-button>
         </div>
       </div>
       <div class="bot">
@@ -26,20 +27,17 @@
             <td>{{baseInfo.username}}</td>
             <td></td>
           </tr>
-          <tr v-if="from!='agent'">
-            <td class="col1">用户手机号</td>
+          <tr>
+            <td class="col1">{{from=='agent' ? '客户手机号' : '用户手机号'}}</td>
             <td>{{baseInfo.mobile}}</td>
             <td></td>
-          </tr>
-          <tr v-if="from=='agent'">
-            <td class="col1">客户名称</td>
-            <td>{{baseInfo.name}}</td>
-            <td><a href="javascript:;" @click="baseInfoNameShow = true">修改</a></td>
           </tr>
           <tr>
             <td class="col1">SecretId</td>
             <td>{{baseInfo.secretId}}</td>
-            <td rowspan="2"><a href="javascript:;" @click="resetSecretKey()">重置</a> </td>
+            <td rowspan="2">
+              <!--<a href="javascript:;" @click="resetSecretKey()">重置</a> -->
+            </td>
           </tr>
           <tr>
             <td class="col1">SecretKey</td>
@@ -56,6 +54,12 @@
     </div>
     <el-tabs type="card">
       <el-tab-pane label="产品信息">
+        <div class="top clearfix">
+          <h3 class="left">当前使用产品服务</h3>
+          <div class="right">
+            <el-button type="primary" size="small" @click="addProductShow=true">添加应用</el-button>
+          </div>
+        </div>
         <el-table
           :data="productTableData"
           :span-method="objectSpanMethod"
@@ -65,95 +69,94 @@
             label="应用"
             align="center">
             <template slot-scope="scope">
-              <a href="javascript:;" @click="openProductDetail(scope.row.id)">{{scope.row.name}}<br>({{scope.row.id}})</a>
+              <a href="javascript:;" @click="openProductDetail(scope.row.appId)">{{scope.row.appName}}</a>
             </template>
           </el-table-column>
           <el-table-column
-            prop="robot"
+            prop="robotName"
             label="机器人" align="center">
           </el-table-column>
           <el-table-column
-            prop="amount1"
+            prop="goodsName"
             label="服务名称" align="center">
           </el-table-column>
           <el-table-column
-            prop="amount2"
             label="规格" align="center">
+            <template slot-scope="scope">
+              <p>使用时长:{{scope.row.period}}天</p>
+              <p>每日调用上限：{{scope.row.times}}</p>
+              <p>每秒并发量：{{scope.row.concurrency}}</p>
+              <p>超额计费：{{scope.row.extraFee}}元/1000次</p>
+            </template>
           </el-table-column>
           <el-table-column
-            prop="amount3"
+            prop="expireDate"
             label="到期日期" align="center">
           </el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
-              <router-link :to="{ path: '/home/user-index/user-normal/api-detail', query: {parentId:id ,id: scope.row.id ,from:from}}">查看接口详情</router-link>
+              <router-link
+                :to="{ path: '/home/user-index/user-normal/api-detail', query: { parentId:id  , orderId:scope.row.orderId , apiId:scope.row.apiId , goodsId:scope.row.goodsId , from:from}}">
+                查看接口详情
+              </router-link>
             </template>
           </el-table-column>
         </el-table>
         <div class="pagination">
           <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page.sync="pageNum"
-            :page-size="pageSize"
+            @current-change="productHandleCurrentChange"
+            :current-page.sync="productPageNum"
+            :page-size="productPageSize"
             layout="prev, pager, next, jumper"
-            :total="totalPage" background>
+            :total="productTotalPage" background>
           </el-pagination>
         </div>
 
 
       </el-tab-pane>
       <el-tab-pane label="订单信息">
-        <el-table
-          :data="orderTableData"
-          border
-          style="width: 100%;">
-          <el-table-column
-            prop="id"
-            label="订单编号"
-            align="center">
+        <el-table :data="orderTableData" border style="width: 100%;">
+          <el-table-column prop="orderNo" label="订单编号" align="center"></el-table-column>
+          <el-table-column label="订单类型" align="center">
+            <template slot-scope="scope">
+              <span v-if="scope.row.type == 0">正式订单</span>
+              <span v-if="scope.row.type == 1">试用订单</span>
+            </template>
           </el-table-column>
-          <el-table-column
-            prop="type"
-            label="订单类型" align="center">
+          <el-table-column prop="createTime" label="提交时间" align="center"></el-table-column>
+          <el-table-column prop="appName" label="应用" align="center"></el-table-column>
+          <el-table-column prop="goodsName" label="订单信息" align="center"></el-table-column>
+          <el-table-column prop="realAmount" label="订单金额" align="center"></el-table-column>
+          <el-table-column label="支付方式" align="center">
+            <template slot-scope="scope">
+              <span v-if="scope.row.payType == 1">银行转账</span>
+              <span v-if="scope.row.payType == 2">在线支付</span>
+              <span v-if="!scope.row.payType">无</span>
+            </template>
           </el-table-column>
-          <el-table-column
-            prop="creatTime"
-            label="提交时间" align="center">
-          </el-table-column>
-          <el-table-column
-            prop="product"
-            label="应用" align="center">
-          </el-table-column>
-          <el-table-column
-            prop="text"
-            label="产品信息" align="center">
-          </el-table-column>
-          <el-table-column
-            prop="price"
-            label="订单金额" align="center">
-          </el-table-column>
-          <el-table-column
-            prop="payType"
-            label="支付方式" align="center">
-          </el-table-column>
-          <el-table-column
-            prop="status"
-            label="订单状态" align="center">
+
+          <el-table-column label="订单状态" align="center">
+            <template slot-scope="scope">
+              <span v-if="scope.row.status == 1">待支付</span>
+              <span v-if="scope.row.status == 2">已支付</span>
+              <span v-if="scope.row.status == 3">订单关闭</span>
+              <span v-if="scope.row.status == 4">订单取消</span>
+            </template>
           </el-table-column>
 
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
-              <router-link :to="{ path: '/home/user-index/user-normal/user-detail', query: {id: scope.row.id}}">查看订单</router-link>
+              <router-link :to="{ path: '/home/order/list/detail', query: {id: scope.row.id}}">查看订单</router-link>
             </template>
           </el-table-column>
         </el-table>
         <div class="pagination">
           <el-pagination
-            @current-change="handleCurrentChange"
-            :current-page.sync="pageNum"
-            :page-size="pageSize"
+            @current-change="orderHandleCurrentChange"
+            :current-page.sync="orderPageNum"
+            :page-size="orderPageSize"
             layout="prev, pager, next, jumper"
-            :total="totalPage" background>
+            :total="orderTotalPage" background>
           </el-pagination>
         </div>
 
@@ -161,18 +164,19 @@
       </el-tab-pane>
     </el-tabs>
 
-    <el-dialog class="product-detail" :title="productDetail.name" :visible.sync="productDetailShow" :lock-scroll="false" width="450px">
+    <el-dialog class="product-detail" :title="productDetail.app_name" :visible.sync="productDetailShow"
+               :lock-scroll="false" width="450px">
       <div class="content">
         <p>应用简介：</p>
-        <p>{{productDetail.text}}</p>
+        <p>{{productDetail.remark}}</p>
         <h4>WEB</h4>
-        <p>host：{{productDetail.host}}</p>
+        <p>host：{{productDetail.sign}}</p>
         <h4>IOS</h4>
-        <p>应用名称：{{productDetail.iosName}}</p>
+        <p>应用名称：{{productDetail.app_name}}</p>
         <p>Bundle ID：{{productDetail.bundleID}}</p>
         <h4>Android</h4>
-        <p>应用名称：{{productDetail.androidName}}</p>
-        <p>应用签名：{{productDetail.sign}}</p>
+        <p>应用名称：{{productDetail.app_name}}</p>
+        <p>应用签名：{{productDetail.sign1}}</p>
         <p>应用包名：{{productDetail.package}}</p>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -180,7 +184,8 @@
       </span>
     </el-dialog>
 
-    <el-dialog title="修改客户名称" :visible.sync="baseInfoNameShow" :lock-scroll="false" :close-on-click-modal="false" width="450px">
+    <el-dialog title="修改客户名称" :visible.sync="baseInfoNameShow" :lock-scroll="false" :close-on-click-modal="false"
+               width="450px">
       <p>客户名称：</p>
       <el-input type="textarea" :rows="6" v-model="baseInfo.name"></el-input>
       <span slot="footer" class="dialog-footer">
@@ -198,6 +203,38 @@
       </span>
     </el-dialog>
 
+    <el-dialog title="添加应用" :visible.sync="addProductShow" :lock-scroll="false" :close-on-click-modal="false" width="450px">
+      <p>备注：</p>
+      <el-form :model="addProductForm" ref="addProductForm" label-width="100px">
+        <el-form-item label="应用名称" prop="name" required>
+          <el-input v-model="addProductForm.name" size="small"></el-input>
+        </el-form-item>
+        <el-form-item label="应用平台" prop="platform">
+          <el-radio v-model="addProductForm.platform" :label="1">WEB</el-radio>
+        </el-form-item>
+        <el-form-item label="host" prop="sign">
+          <el-input v-model="addProductForm.sign" size="small"></el-input>
+          <p>若不使用SDK则无需填写</p>
+        </el-form-item>
+        <el-form-item label="应用分类" prop="type">
+          <el-select v-model="addProductForm.type" placeholder="请选择" size="small">
+            <el-option v-for="item in addProductTypes" :key="item.code" :label="item.name" :value="item.code">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="简介" prop="remark">
+          <el-input
+            type="textarea"
+            :rows="3"
+            v-model="addProductForm.remark">
+          </el-input>
+        </el-form-item>
+      </el-form>
+      <div class="text-center">
+        <el-button type="primary" @click="addProduct()">创建</el-button>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -210,146 +247,51 @@
         id: '',
         parentId: '',
         from: 'normal',
-        baseInfo:{
-          name:'',
-          remark:''
+        baseInfo: {
+          name: '',
+          remark: ''
         },
-        remark:'',
-        productTableData: [{
-          id: '5a5c8fb3',
-          name: '天机智讯',
-          robot:'采集机器人',
-          amount1: '234',
-          amount2: '3.2',
-          amount3: 10
-        }, {
-          id: '5a5c8fb3',
-          name: '天机智讯',
-          robot:'采集机器人',
-          amount1: '165',
-          amount2: '4.43',
-          amount3: 12
-        }, {
-          id: '5a5c8fb3',
-          name: '天机智讯',
-          robot:'编辑机器人',
-          amount1: '324',
-          amount2: '1.9',
-          amount3: 9
-        }, {
-          id: '5a5c8fb3',
-          name: '天机智讯',
-          robot:'写作机器人',
-          amount1: '621',
-          amount2: '2.2',
-          amount3: 17
-        }, {
-          id: '5a3cd006',
-          name: '天机联盟',
-          robot:'采集机器人',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
-        }, {
-          id: '5a3cd006',
-          name: '天机联盟',
-          robot:'采集机器人',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
-        }, {
-          id: '5a3cd006',
-          name: '天机联盟',
-          robot:'写作机器人',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
-        }],
-        orderTableData:[
+        remark: '',
+        productTableData: [],
+        productPageNum: 1,
+        productPageSize: 10,
+        productTotalPage: 0,
+        orderTableData: [],
+        orderPageNum: 1,
+        orderPageSize: 10,
+        orderTotalPage: 0,
+        baseInfoNameShow: false,
+        remarkShow: false,
+        productDetailShow: false,
+        productDetail: {},
+        addProductShow:false,
+        addProductForm:{
+          name:'',
+          sign:'',
+          remark:'',
+          platform:1,
+          type:1
+        },
+        addProductTypes:[
           {
-            id:'201707196398345',
-            type:'正式订单',
-            creatTime:'2017-07-19 14:48:38',
-            product:'天机智讯',
-            text:'采集机器人-资讯搜索-相似资讯',
-            price:'¥10000.00',
-            payType:'银行转账',
-            status:'1'
+            name:'分类1',
+            code:1
           },{
-            id:'201707196398345',
-            type:'正式订单',
-            creatTime:'2017-07-19 14:48:38',
-            product:'天机智讯',
-            text:'采集机器人-资讯搜索-相似资讯',
-            price:'¥10000.00',
-            payType:'银行转账',
-            status:'1'
-          },{
-            id:'201707196398345',
-            type:'正式订单',
-            creatTime:'2017-07-19 14:48:38',
-            product:'天机智讯',
-            text:'采集机器人-资讯搜索-相似资讯',
-            price:'¥10000.00',
-            payType:'银行转账',
-            status:'1'
-          },{
-            id:'201707196398345',
-            type:'正式订单',
-            creatTime:'2017-07-19 14:48:38',
-            product:'天机智讯',
-            text:'采集机器人-资讯搜索-相似资讯',
-            price:'¥10000.00',
-            payType:'银行转账',
-            status:'1'
-          },{
-            id:'201707196398345',
-            type:'正式订单',
-            creatTime:'2017-07-19 14:48:38',
-            product:'天机智讯',
-            text:'采集机器人-资讯搜索-相似资讯',
-            price:'¥10000.00',
-            payType:'银行转账',
-            status:'1'
-          },{
-            id:'201707196398345',
-            type:'正式订单',
-            creatTime:'2017-07-19 14:48:38',
-            product:'天机智讯',
-            text:'采集机器人-资讯搜索-相似资讯',
-            price:'¥10000.00',
-            payType:'银行转账',
-            status:'1'
-          },
-        ],
-        pageNum: 1,
-        pageSize: 10,
-        totalPage: 100,
-        baseInfoNameShow:false,
-        remarkShow:false,
-        productDetailShow:false,
-        productDetail:{
-          name:'天机智讯',
-          text:'天机智讯是索拉卡就分松雷肯德基分蓝思科技的分类接口阿死定了附近是了点击开发了继奎饲料店科技看就算了肯定就',
-          host:'www.giiso.com',
-          iosName:'天机智讯',
-          bundleID:'sdsdsdsd45sd5s4ds4d56s',
-          androidName:'天机智讯',
-          sign:'sdsdsdsd45sd5s4ds4d56s',
-          package:'sdsdsdsd45sd5s4ds4d56s'
-
-        }
+            name:'分类2',
+            code:2
+          }
+        ]
       };
     },
     created() {
-      if(this.$route.query.id){
-        this.id=this.$route.query.id;
+      if (this.$route.query.id) {
+        this.id = this.$route.query.id;
       }
-      if(this.$route.query.parentId){
-        this.parentId=this.$route.query.parentId;
+      if (this.$route.query.parentId) {
+        this.parentId = this.$route.query.parentId;
       }
-      if(this.$route.query.from){
-        this.from=this.$route.query.from;
+      if (this.$route.query.from) {
+        this.from = this.$route.query.from;
       }
       this.getDetailData();
       this.getProductListData();
@@ -367,7 +309,7 @@
           },
           success: function (data) {
             if (data.code == 0) {
-                self.baseInfo=data.data;
+              self.baseInfo = data.data;
             } else {
 
             }
@@ -375,18 +317,18 @@
         });
       },
       //提交修改客户名称
-      submitBaseInfoName:function(){
-        var self=this;
+      submitBaseInfoName: function () {
+        var self = this;
         self.baseInfoNameShow = false;
       },
       //打开修改备注
       changeRemark(){
         this.remarkShow = true;
-        this.remark=this.baseInfo.remark;
+        this.remark = this.baseInfo.remark;
       },
       //提交修改备注
-      submitRemark:function(){
-        var self=this;
+      submitRemark: function () {
+        var self = this;
         self.$http({
           url: apiHost + "/member/update",
           type: 'post',
@@ -398,6 +340,10 @@
             if (data.code == 0) {
               self.getDetailData();
               self.remarkShow = false;
+              self.$message({
+                type: 'success',
+                message: '修改备注成功!'
+              });
             } else {
               self.$message({
                 message: data.msg,
@@ -408,13 +354,13 @@
         });
       },
       //重置密码
-      resetPassword:function() {
-        var self=this;
-        self.$confirm( '重置后密码为123456, 是否继续？', '提示', {
+      resetPassword: function () {
+        var self = this;
+        self.$confirm('重置后密码为123456, 是否继续？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(function(){
+        }).then(function () {
           self.$http({
             url: apiHost + "/member/update",
             type: 'post',
@@ -437,23 +383,43 @@
             }
           });
 
-        }).catch(function(){
+        }).catch(function () {
 
         });
       },
       //重置SecretKey
-      resetSecretKey:function() {
-        var self=this;
+      resetSecretKey: function () {
+        var self = this;
         self.$confirm('您是否确认重置？重置后则无法使用该密钥', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(function() {
-          self.$message({
-            type: 'success',
-            message: '重置密钥成功!'
+        }).then(function () {
+          self.$http({
+            url: apiHost + "/secret/reset",
+            type: 'post',
+            data: {
+              memberId: self.id,
+              secretId: self.baseInfo.secretId,
+              secretKey: self.baseInfo.secretKey
+            },
+            success: function (data) {
+              if (data.code == 0) {
+                self.getDetailData();
+                self.$message({
+                  type: 'success',
+                  message: '重置密钥成功!'
+                });
+              } else {
+                self.$message({
+                  message: data.msg,
+                  type: "error"
+                });
+              }
+            }
           });
-        }).catch(function(){
+
+        }).catch(function () {
 
         });
       },
@@ -462,60 +428,127 @@
       getProductListData() {
         var self = this;
         self.$http({
-          url: apiHost + "/member/goods/query",
+          url: apiHost + "/member/goodsInfo",
           type: 'get',
           data: {
-            mid: self.id
+            mid: self.id,
+            pageNo: self.productPageNum,
+            pageSize: self.productPageSize
           },
           success: function (data) {
-            if (data.code == 0 && data.data && data.data.data) {
-
-            } else {
+            if (data.code == 0 && data.data) {
+              if (data.data.data) {
+                self.productTableData = data.data.data;
+              }
+              if (data.data.totalRecord) {
+                self.productTotalPage = data.data.totalRecord;
+              }
 
             }
           }
         });
       },
+
+
+      //打开应用详情
+      openProductDetail: function (id) {
+        var self = this;
+        self.$http({
+          url: apiHost + "/app/detail",
+          data: {
+            id: id
+          },
+          success: function (data) {
+            if (data.code == 0 && data.data) {
+              self.productDetail = data.data;
+              self.productDetailShow = true;
+            }
+          }
+        });
+      },
+
+      //添加应用
+      addProduct(){
+        var self = this;
+        self.$refs.addProductForm.validate(function(valid){
+          if (valid) {
+            self.$confirm('确认添加应用？', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(function () {
+              self.addProductForm.mid=self.id;
+              self.$http({
+                url: apiHost + "/app/add",
+                type: 'post',
+                data: self.addProductForm,
+                success: function (data) {
+                  if (data.code == 0) {
+                    self.getProductListData();
+                    self.addProductShow=false;
+                    self.$message({
+                      type: 'success',
+                      message: '重置密钥成功!'
+                    });
+                  } else {
+                    self.$message({
+                      message: data.msg,
+                      type: "error"
+                    });
+                  }
+                }
+              });
+
+            }).catch(function () {
+
+            });
+          }
+        });
+
+      },
+
       //获取用户订单信息
       getOrderListData() {
         var self = this;
         self.$http({
-          url: apiHost + "/order/query",
+          url: apiHost + "/member/orderInfo",
           type: 'get',
           data: {
-            memberId: self.id
+            mid: self.id,
+            pageNo: self.orderPageNum,
+            pageSize: self.orderPageSize
           },
           success: function (data) {
-            if (data.code == 0 && data.data && data.data.data) {
-
-            } else {
+            if (data.code == 0 && data.data) {
+              if (data.data.data) {
+                self.orderTableData = data.data.data;
+              }
+              if (data.data.totalRecord) {
+                self.orderTotalPage = data.data.totalRecord;
+              }
 
             }
           }
         });
       },
 
-      openProductDetail:function(id){
-        this.productDetailShow=true;
-      },
-
       objectSpanMethod({ row, column, rowIndex, columnIndex }) {
         if (columnIndex === 0) {
-          var m=1;
-          for(var i=rowIndex+1;i<this.productTableData.length;i++){
-            if(this.productTableData[i].id==row.id){
+          var m = 1;
+          for (var i = rowIndex + 1; i < this.productTableData.length; i++) {
+            if (this.productTableData[i].appName == row.appName) {
               m++;
-            }else {
+            } else {
               break;
             }
           }
-          this.productTableData[rowIndex].rowspan=m;
-          if(rowIndex>0 && this.productTableData[rowIndex-1].rowspan>1){
+          this.productTableData[rowIndex].rowspan = m;
+          if (rowIndex > 0 && this.productTableData[rowIndex - 1].rowspan > 1) {
             return {
               rowspan: 0,
               colspan: 0
             }
-          }else{
+          } else {
             return {
               rowspan: m,
               colspan: 1
@@ -523,21 +556,21 @@
           }
         }
         if (columnIndex === 1) {
-          var n=1;
-          for(var i=rowIndex+1;i<this.productTableData.length;i++){
-            if(this.productTableData[i].robot==row.robot){
+          var n = 1;
+          for (var i = rowIndex + 1; i < this.productTableData.length; i++) {
+            if (this.productTableData[i].robotName == row.robotName) {
               n++;
-            }else {
+            } else {
               break;
             }
           }
-          this.productTableData[rowIndex].rowspan1=n;
-          if(rowIndex>0 && this.productTableData[rowIndex-1].rowspan1>1){
+          this.productTableData[rowIndex].rowspan1 = n;
+          if (rowIndex > 0 && this.productTableData[rowIndex - 1].rowspan1 > 1) {
             return {
               rowspan: 0,
               colspan: 0
             }
-          }else{
+          } else {
             return {
               rowspan: n,
               colspan: 1
@@ -546,32 +579,46 @@
         }
       },
       //分页处理
-      handleCurrentChange(val) {
-        this.pageNum = val;
+      productHandleCurrentChange(val) {
+        this.productPageNum = val;
+        this.getProductListData();
+      },
+      orderHandleCurrentChange(val) {
+        this.orderPageNum = val;
+        this.getOrderListData();
       }
     }
   };
 </script>
 
 <style>
-  #user-normal-user-detail .user-info{
-    padding:10px 0 40px;
+  #user-normal-user-detail .user-info {
+    padding: 10px 0 40px;
   }
-#user-normal-user-detail .user-info .top{
-  padding:10px 30px;
-  font-size: 14px;
-  line-height: 32px;
-}
-#user-normal-user-detail .user-info .bot{
-  padding:0 30px;
-}
 
-  #user-normal-user-detail .el-tab-pane{
-    padding:10px 30px;
+  #user-normal-user-detail .user-info .top {
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 32px;
   }
-  #user-normal-user-detail .product-detail .content h4{
+
+  #user-normal-user-detail .user-info .bot {
+    padding: 0 30px;
+  }
+
+  #user-normal-user-detail .el-tab-pane {
+    padding: 10px 30px;
+  }
+  #user-normal-user-detail .el-tabs .top {
+    padding: 0 0 10px;
+    font-size: 14px;
+    line-height: 32px;
+  }
+
+  #user-normal-user-detail .product-detail .content h4 {
     font-weight: bold;
     line-height: 30px;
     padding-top: 5px;
   }
+
 </style>

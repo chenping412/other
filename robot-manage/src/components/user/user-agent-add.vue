@@ -132,12 +132,12 @@
               },
               success: function (data) {
                 if (data.code == '0') {
-                  self.$confirm('添加成功，点击确认跳转至用户列表', '提示', {
+                  self.$confirm('添加成功，点击确认跳转至代理商列表', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'success'
                   }).then(function () {
-                    self.$router.push('/home/user-index/user-normal');
+                    self.$router.push('/home/user-index/user-agent');
                   }).catch(function () {
                     self.addUserForm.name = '';
                     self.addUserForm.username = '';

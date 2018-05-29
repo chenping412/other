@@ -45,9 +45,9 @@
       </div>
       <div class="bot">
         <el-table :data="userListData" style="width: 100%">
-          <el-table-column prop="name" label="客户名称" align="center"></el-table-column>
-          <el-table-column prop="uid" label="客户账号" align="center"></el-table-column>
-          <el-table-column prop="product" label="已接入应用" align="center"></el-table-column>
+          <el-table-column prop="username" label="客户账号" align="center"></el-table-column>
+          <el-table-column prop="mobile" label="客户手机号" align="center"></el-table-column>
+          <el-table-column prop="appName" label="已接入应用" align="center"></el-table-column>
           <el-table-column label="操作" align="center">
             <template slot-scope="scope">
               <router-link :to="{ path: '/home/user-index/user-agent/user-detail', query: {id: scope.row.id , parentId:id , from:'agent'}}">详情</router-link>
@@ -57,7 +57,7 @@
         <div class="pagination">
           <el-pagination
             @current-change="handleCurrentChange"
-            :current-page.sync="pageNum"
+            :current-page.sync="pageNo"
             :page-size="pageSize"
             layout="prev, pager, next, jumper"
             :total="totalPage" background>
@@ -79,14 +79,6 @@
     </el-dialog>
 
 
-    <div class="model" v-show="loginState">
-      <div class="content">
-        <a href="javascript:;">
-          <b>!</b>
-          登陆过期，请重新登陆。
-        </a>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -102,37 +94,10 @@
           remark:''
         },
         remark:'',
-        userListData:[
-          {
-            id:'1',
-            uid:'kehua',
-            name:'客户A',
-            product:'全橙智媒'
-          },{
-            id:'2',
-            uid:'kehua',
-            name:'客户A',
-            product:'全橙智媒'
-          },{
-            id:'3',
-            uid:'kehua',
-            name:'客户A',
-            product:'全橙智媒'
-          },{
-            id:'4',
-            uid:'kehua',
-            name:'客户A',
-            product:'全橙智媒'
-          },{
-            id:'5',
-            uid:'kehua',
-            name:'客户A',
-            product:'全橙智媒'
-          },
-        ],
-        pageNum: 1,
-        pageSize: 20,
-        totalPage: 100,
+        userListData:[],
+        pageNo: 1,
+        pageSize: 10,
+        totalPage: 0,
         remarkShow:false
 
       };
@@ -140,8 +105,9 @@
     created() {
       if(this.$route.query.id){
         this.id=this.$route.query.id;
+        this.getDetailData();
+        this.getUserListData();
       }
-      this.getDetailData();
     },
     methods: {
       //获取用户详情
@@ -224,13 +190,36 @@
 
         });
       },
+      //获取客户列表数据
+      getUserListData() {
+        var self = this;
+        self.$http({
+          url: apiHost + "/member/query",
+          type: 'post',
+          data: {
+            type:0,
+            pid: self.id,
+            pageNo: self.pageNo,
+            pageSize: self.pageSize
+          },
+          success: function (data) {
+            if (data.code == 0 && data.data && data.data.data) {
+              self.userListData = data.data.data;
+              self.totalPage = data.data.totalRecord;
+            } else {
+              self.userListData = [];
+            }
+          }
+        });
+      },
       //打开添加客户
       openAddUser() {
-        this.$router.push('/home/user-index/user-agent/add-customer?id='+this.id)
+        this.$router.push('/home/user-index/user-agent/add-customer?id='+this.id+'&name='+this.baseInfo.name);
       },
       //分页处理
       handleCurrentChange(val) {
-        this.pageNum = val;
+        this.pageNo = val;
+        this.getUserListData();
       }
     }
   };

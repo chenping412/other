@@ -96,15 +96,6 @@
             },{
               name:'手动注册',
               code:'1'
-            },{
-              name:'大客户',
-              code:'2'
-            },{
-              name:'杭州前方',
-              code:'3'
-            },{
-              name:'U传播',
-              code:'4'
             }
           ],
           username: "",
@@ -126,8 +117,7 @@
           confirmPwd: [
             {validator: confirmPwd, trigger: "blur"}
           ]
-        },
-        userListData: []
+        }
       };
     },
     created() {
@@ -151,7 +141,6 @@
                 remark: self.addUserForm.remark
               },
               success: function (data) {
-                console.log(data)
                 if (data.code == '0') {
                   self.$confirm('添加成功，点击确认跳转至用户列表', '提示', {
                     confirmButtonText: '确定',

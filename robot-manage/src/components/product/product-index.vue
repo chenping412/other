@@ -6,7 +6,7 @@
         <li>
           <router-link :to="{path: '/home/product/robot'}">机器人列表</router-link>
           <router-link :to="{path: '/home/product/service'}">服务列表</router-link>
-          <router-link :to="{path: '/home/product/package'}">套餐管理</router-link>
+          <router-link :to="{path: '/home/product/package'}">商品管理</router-link>
         </li>
       </ul>
     </div>

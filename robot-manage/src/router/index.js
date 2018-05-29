@@ -20,7 +20,6 @@ import ProductRobotList from '../components/product/product-robot-list.vue'
 import ProductRobotDetail from '../components/product/product-robot-detail.vue'
 import ProductServiceList from '../components/product/product-service-list.vue'
 import ProductServiceDetail from '../components/product/product-service-detail.vue'
-import ProductServiceAdd from '../components/product/product-service-add.vue'
 import ProductPackageList from '../components/product/product-package-list.vue'
 import ProductPackageDetail from '../components/product/product-package-detail.vue'
 import ProductPackageAdd from '../components/product/product-package-add.vue'
@@ -134,9 +133,6 @@ export default new Router({
                 },{
                   path: "detail",
                   component: ProductServiceDetail
-                },{
-                  path: "add",
-                  component: ProductServiceAdd
                 }
               ]
             },{

@@ -40,7 +40,7 @@
           if (valid) {
             self.logining = true;
             self.$http({
-              method: 'post',
+              type: 'post',
               url: apiHost + "/auth/login",
               data: {
                 "username": self.form.username,

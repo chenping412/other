@@ -2,19 +2,13 @@
   <div id="product-package-list">
     <div class="breadcrumb">
       <el-breadcrumb>
-        <el-breadcrumb-item>套餐管理</el-breadcrumb-item>
+        <el-breadcrumb-item>商品管理</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="form box">
       <el-form :inline="true" :model="searchForm" class="demo-form-inline">
-        <el-form-item label="套餐名称：">
-          <el-input v-model="searchForm.name" placeholder="套餐名称" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="类型：">
-          <el-select v-model="searchForm.type" placeholder="请选择" size="small">
-            <el-option v-for="item in searchForm.typeList" :key="item.code" :label="item.name" :value="item.code">
-            </el-option>
-          </el-select>
+        <el-form-item label="商品名称:">
+          <el-input v-model="searchForm.name" placeholder="商品名称" size="small"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" size="small" @click="getListData">查询</el-button>
@@ -22,25 +16,44 @@
       </el-form>
     </div>
     <div class="add">
-      <el-button type="primary" size="small" @click="openAdd">添加套餐</el-button>
+      <el-button type="primary" size="small" @click="openAdd">添加商品</el-button>
     </div>
     <div class="table">
       <el-table :data="listData" style="width: 100%">
-        <el-table-column prop="id" label="套餐编号" align="center"></el-table-column>
-        <el-table-column prop="id" label="套餐名称" align="center"></el-table-column>
-        <el-table-column prop="id" label="类型" align="center"></el-table-column>
-        <el-table-column prop="id" label="规格数量" align="center"></el-table-column>
-        <el-table-column prop="id" label="单价" align="center"></el-table-column>
-        <el-table-column prop="id" label="销量" align="center"></el-table-column>
-        <el-table-column prop="id" label="创建日期" align="center"></el-table-column>
-        <el-table-column prop="id" label="状态" align="center"></el-table-column>
-
-        <el-table-column label="操作" align="center" width="140">
+        <el-table-column prop="id" label="商品编号" align="center"></el-table-column>
+        <el-table-column prop="name" label="商品名称" align="center"></el-table-column>
+        <el-table-column label="可接入类型" align="center">
           <template slot-scope="scope">
-            <router-link :to="{ path: '/product/package/detail', query: {id: scope.row.id}}">详情</router-link>
-            <a href="javascript:;" v-if="scope.row.status != 0" @click="changeStatus(scope.row.id,0)">上架</a>
-            <a href="javascript:;" v-if="scope.row.status == 0" @click="changeStatus(scope.row.id,-1)">下架</a>
-            <a href="javascript:;" @click="changeStatus(scope.row.id,-1)">删除</a>
+            <span v-if="scope.row.type == '1'">API</span>
+            <span v-if="scope.row.type == '2'">SDK</span>
+            <span v-if="scope.row.type == '3'">API+SDK</span>
+          </template>
+        </el-table-column>
+        <el-table-column label="规格" align="center" width="165">
+          <template slot-scope="scope">
+            <p>使用时长:{{scope.row.period}}天</p>
+            <p>每日调用上限：{{scope.row.times}}</p>
+            <p>每秒并发量：{{scope.row.concurrency}}</p>
+            <p>超额计费：{{scope.row.extraFee}}元/1000次</p>
+          </template>
+        </el-table-column>
+        <el-table-column prop="price" label="单价" align="center"></el-table-column>
+        <el-table-column prop="salesVol" label="销量" align="center"></el-table-column>
+        <el-table-column prop="createTime" label="创建日期" align="center"></el-table-column>
+        <el-table-column label="状态" align="center">
+          <template slot-scope="scope">
+            <span v-if="scope.row.status == 0">上架</span>
+            <span v-if="scope.row.status == 1">下架</span>
+          </template>
+        </el-table-column>
+
+        <el-table-column label="操作" align="center" width="120">
+          <template slot-scope="scope">
+            <router-link :to="{ path: '/home/product/package/detail', query: {id: scope.row.id}}">详情</router-link>
+            <router-link :to="{ path: '/home/product/package/add', query: {id: scope.row.id}}">编辑</router-link>
+            <a href="javascript:;" v-if="scope.row.status == 1" @click="changeStatus(scope.row.id,0)">上架</a>
+            <a href="javascript:;" v-if="scope.row.status == 0" @click="changeStatus(scope.row.id,1)">下架</a>
+            <a href="javascript:;" @click="deleteProduct(scope.row.id)">删除</a>
           </template>
         </el-table-column>
 
@@ -49,21 +62,14 @@
     <div class="pagination">
       <el-pagination
         @current-change="handleCurrentChange"
-        :current-page.sync="pageNum"
+        :current-page.sync="pageNo"
         :page-size="pageSize"
         layout="prev, pager, next, jumper"
         :total="totalPage" background>
       </el-pagination>
     </div>
 
-    <div class="model" v-show="loginState">
-      <div class="content">
-        <a href="javascript:;">
-          <b>!</b>
-          登陆过期，请重新登陆。
-        </a>
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -75,24 +81,11 @@
       return {
         loginState: false,
         showAddUser: false,
-        pageNum: 1,
+        pageNo: 1,
         pageSize: 10,
         totalPage: 0,
         searchForm: {
           name: "",
-          type:'',
-          typeList:[
-            {
-              name:'全部',
-              code:''
-            },{
-              name:'正式',
-              code:'1'
-            },{
-              name:'试用',
-              code:'2'
-            }
-          ]
         },
         listData: []
       };
@@ -102,115 +95,107 @@
       self.getListData();
     },
     methods: {
-      //获取用户列表数据
+      //获取列表数据
       getListData() {
         var self = this;
-        var startTime = "";
-        var endTime = "";
-        if (self.searchForm.registerDate) {
-          startTime = self.searchForm.registerDate[0];
-          endTime = self.searchForm.registerDate[1];
-        }
-        $.ajax({
-          url: apiHost + "/member/list",
-          type: "POST",
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
+        self.$http({
+          url: apiHost + "/goods/query",
           data: {
-            keyword: self.searchForm.user,
-            startTime: startTime,
-            endTime: endTime,
-            pageNum: self.pageNum,
+            name: self.searchForm.name,
+            pageNo: self.pageNo,
             pageSize: self.pageSize
           },
           success: function (data) {
-            console.log(data);
             if (data.code == 0) {
-              self.listData = data.data.data;
-              self.pageNum = data.data.index;
-              self.pageSize = data.data.size;
-              self.totalPage = data.data.totalRecord;
-            } else {
-              self.listData = [];
-            }
-          },
-          error: function (XMLHttpRequest) {
-            if (XMLHttpRequest.status == "9001") {
-              self.loginState = true;
-              setTimeout(function () {
-                location.href = backToLogin;
-                self.loginState = false;
-              }, 2000);
+              if (data.data && data.data.data) {
+                self.listData = data.data.data;
+                self.totalPage = data.data.totalRecord;
+              }else {
+                self.listData = [];
+                self.totalPage = 0;
+              }
             }
           }
         });
       },
-      //日期选择
-      registerDateChange(val) {
-        var self = this;
-        console.log(val);
-        self.searchForm.registerDate = val;
-      },
       //分页处理
       handleCurrentChange(val) {
-        var self = this;
-        self.pageNum = val;
-        self.getListData();
+        this.pageNo = val;
+        this.getListData();
       },
-      //打开添加用户model
+      //打开添加商品
       openAdd() {
-        this.$router.push('/product/package/add')
+        this.$router.push('/home/product/package/add')
       },
 
       //禁用和启用用户
       changeStatus(id,status) {
         var self = this;
-        self.$confirm('此操作将删除该用户, 是否继续?', '提示', {
+        self.$confirm( status==1 ? '是否下架该商品？' : '是否上架该商品？', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
-        }).then(() => {
-          self.deleteUser(id)
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: '已取消删除'
+        }).then(function(){
+          self.$http({
+            url: apiHost + "/goods/update",
+            type: 'post',
+            data: {
+              id: id,
+              status: status
+            },
+            success: function (data) {
+              if (data.code == 0) {
+                self.getListData();
+                self.$message({
+                  message: '操作成功！',
+                  type: "success"
+                });
+              } else {
+                self.$message({
+                  message: data.msg,
+                  type: "error"
+                });
+              }
+            }
           });
+
+        }).catch(function(){
+
         });
       },
-      //删除用户
-      deleteUser(id) {
+      //删除商品
+      deleteProduct(id) {
         var self = this;
-        $.ajax({
-          url: apiHost + "/member/delete",
-          type: "POST",
-          xhrFields: {
-            withCredentials: true
-          },
-          crossDomain: true,
-          data: {
-            id: id,
-          },
-          success: function (data) {
-            if (data.code == 0) {
-              self.getListData();
-              self.$message({
-                type: 'success',
-                message: '删除成功!'
-              });
+        self.$confirm( '是否删除该商品？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(function(){
+          self.$http({
+            url: apiHost + "/goods/update",
+            type: 'post',
+            data: {
+              id: id,
+              isDelete: 1
+            },
+            success: function (data) {
+              if (data.code == 0) {
+                self.getListData();
+                self.$message({
+                  message: '操作成功！',
+                  type: "success"
+                });
+              } else {
+                self.$message({
+                  message: data.msg,
+                  type: "error"
+                });
+              }
             }
-          },
-          error: function (XMLHttpRequest) {
-            if (XMLHttpRequest.status == "9001") {
-              self.loginState = true;
-              setTimeout(function () {
-                location.href = backToLogin;
-                self.loginState = false;
-              }, 2000);
-            }
-          }
+          });
+
+        }).catch(function(){
+
         });
       }
     }

@@ -42,7 +42,7 @@
     </div>
     <div class="table">
       <el-table
-        :data="userListData"
+        :data="listData"
         style="width: 100%">
         <el-table-column
           prop="username"
@@ -131,25 +131,19 @@
           channel:'',
           channelList:[
             {
+              name:'全部',
+              code:''
+            },{
               name:'官网注册',
               code:'0'
             },{
               name:'手动注册',
               code:'1'
-            },{
-              name:'大客户',
-              code:'2'
-            },{
-              name:'杭州前方',
-              code:'3'
-            },{
-              name:'U传播',
-              code:'4'
             }
           ],
           registerDate: ""
         },
-        userListData: []
+        listData: []
       };
     },
     created() {
@@ -181,10 +175,10 @@
           },
           success: function (data) {
             if (data.code == 0 && data.data && data.data.data) {
-              self.userListData = data.data.data;
+              self.listData = data.data.data;
               self.totalPage = data.data.totalRecord;
             } else {
-              self.userListData = [];
+              self.listData = [];
             }
           }
         });

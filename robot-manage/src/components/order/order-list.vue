@@ -8,23 +8,23 @@
     <div class="form box">
       <el-form :inline="true" :model="searchForm" class="demo-form-inline">
         <el-form-item label="账号:">
-          <el-input v-model="searchForm.uid" placeholder="账号或手机号" size="small"></el-input>
+          <el-input v-model="searchForm.mobile" placeholder="账号或手机号" size="small"></el-input>
         </el-form-item>
         <el-form-item label="订单类型:">
-          <el-select v-model="searchForm.orderType" placeholder="请选择" size="small">
-            <el-option v-for="item in searchForm.orderTypeList" :key="item.code" :label="item.name" :value="item.code">
+          <el-select v-model="searchForm.type" placeholder="请选择" size="small">
+            <el-option v-for="item in searchForm.typeList" :key="item.code" :label="item.name" :value="item.code">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="订单状态:">
-          <el-select v-model="searchForm.orderStatus" placeholder="请选择" size="small">
-            <el-option v-for="item in searchForm.orderStatusList" :key="item.code" :label="item.name" :value="item.code">
+          <el-select v-model="searchForm.status" placeholder="请选择" size="small">
+            <el-option v-for="item in searchForm.statusList" :key="item.code" :label="item.name" :value="item.code">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="账号类型:">
-          <el-select v-model="searchForm.idType" placeholder="请选择" size="small">
-            <el-option v-for="item in searchForm.idTypeList" :key="item.code" :label="item.name" :value="item.code">
+          <el-select v-model="searchForm.userType" placeholder="请选择" size="small">
+            <el-option v-for="item in searchForm.userTypeList" :key="item.code" :label="item.name" :value="item.code">
             </el-option>
           </el-select>
         </el-form-item>
@@ -41,73 +41,40 @@
           </el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" size="small" @click="getOrderListData">查询</el-button>
+          <el-button type="primary" size="small" @click="getListData">查询</el-button>
         </el-form-item>
       </el-form>
     </div>
     <div class="table">
       <el-table
-        :data="orderListData"
+        :data="listData"
         style="width: 100%">
-        <el-table-column
-          prop="order_no"
-          label="订单编号"
-          width="140"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          label="订单类型"
-          align="center">
+        <el-table-column prop="orderNo" label="订单编号" align="center"></el-table-column>
+        <el-table-column label="订单类型" align="center">
           <template slot-scope="scope">
             <span v-show="scope.row.type == 1">试用订单</span>
-            <span v-show="scope.row.type == 2">正式订单</span>
+            <span v-show="scope.row.type == 0">正式订单</span>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="create_time"
-          label="提交时间"
-          width="160"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="mobile"
-          label="账号"
-          width="110"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="mobile"
-          label="手机号"
-          width="115"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          prop="amount"
-          label="订单金额"
-          align="center">
-        </el-table-column>
-        <el-table-column
-          label="支付方式"
-          align="center">
+        <el-table-column prop="createTime" label="提交时间" align="center"></el-table-column>
+        <el-table-column prop="username" label="账号" align="center"></el-table-column>
+        <el-table-column prop="mobile" label="手机号" align="center"></el-table-column>
+        <el-table-column prop="appName" label="应用" align="center"></el-table-column>
+        <el-table-column prop="realAmount" label="订单金额" align="center"></el-table-column>
+        <el-table-column label="支付方式" align="center">
           <template slot-scope="scope">
-            <span v-show="scope.row.pay_type == 1">银行转账</span>
-            <span v-show="scope.row.pay_type == 2">在线支付</span>
+            <span v-show="scope.row.payType == 1">银行转账</span>
+            <span v-show="scope.row.payType == 2">在线支付</span>
           </template>
         </el-table-column>
-
-        <el-table-column
-          prop="status"
-          label="订单状态"
-          align="center">
+        <el-table-column prop="status" label="订单状态" align="center">
           <template slot-scope="scope">
-            <span v-show="scope.row.status == 1">未支付</span>
-            <span v-show="scope.row.status == 2">已支付</span>
-            <span v-show="scope.row.status == 3">已关闭</span>
+            <span v-for="item in searchForm.statusList" v-show="scope.row.status == item.code">{{item.name}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" align="center" width="80">
+        <el-table-column label="操作" align="center">
           <template slot-scope="scope">
-            <router-link :to="{path: '/order/list/detail', query: {id: scope.row.id}}">查看订单</router-link>
+            <router-link :to="{path: '/home/order/list/detail', query: {id: scope.row.id}}">查看订单</router-link>
           </template>
         </el-table-column>
       </el-table>
@@ -115,20 +82,13 @@
     <div class="pagination">
       <el-pagination
         @current-change="handleCurrentChange"
-        :current-page.sync="pageNum"
+        :current-page.sync="pageNo"
         :page-size="pageSize"
         layout="prev, pager, next, jumper"
         :total="totalPage" background>
       </el-pagination>
     </div>
-    <div class="model" v-show="loginState">
-      <div class="content">
-        <a href="javascript:;">
-          <b>!</b>
-          登陆过期，请重新登陆。
-        </a>
-      </div>
-    </div>
+
   </div>
 </template>
 
@@ -139,34 +99,50 @@ export default {
   data() {
     return {
       loginState: false,
-      pageNum: 1,
+      pageNo: 1,
       pageSize: 10,
       totalPage: 0,
       searchForm: {
-        uid: "",
-        orderType: "",
-        orderTypeList:[
+        mobile: "",
+        type: "",
+        typeList:[
           {
-            name:'试用订单',
-            code:'1'
-          }, {
+            name:'全部',
+            code:''
+          },
+          {
             name:'正式订单',
-            code:'2'
-          }
-        ],
-        orderStatus: "",
-        orderStatusList:[
-          {
-            name:'未支付',
             code:'0'
           },{
-            name:'已支付',
+            name:'试用订单',
             code:'1'
           }
         ],
-        idType: "",
-        idTypeList:[
+        status: "",
+        statusList:[
           {
+            name:'全部',
+            code:''
+          },{
+            name:'未支付',
+            code:'1'
+          },{
+            name:'已支付',
+            code:'2'
+          },{
+            name:'已关闭',
+            code:'3'
+          },{
+            name:'已取消',
+            code:'4'
+          }
+        ],
+        userType: "",
+        userTypeList:[
+          {
+            name:'全部',
+            code:''
+          },{
             name:'普通用户',
             code:'0'
           }, {
@@ -179,16 +155,16 @@ export default {
         ],
         submitDate: ""
       },
-      orderListData: []
+      listData: []
     };
   },
   created() {
     var self = this;
-    self.getOrderListData();
+    self.getListData();
   },
   methods: {
     //获取订单列表数据
-    getOrderListData() {
+    getListData() {
       var self = this;
       var startTime = "";
       var endTime = "";
@@ -196,40 +172,25 @@ export default {
         startTime = self.searchForm.submitDate[0];
         endTime = self.searchForm.submitDate[1];
       }
-      $.ajax({
-        url: apiHost + "/order/list",
-        type: "POST",
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
+      self.$http({
+        url: apiHost + "/order/query",
+        type: 'post',
         data: {
-          mobile: self.searchForm.keyword,
+          mobile: self.searchForm.mobile,
+          type: self.searchForm.type,
+          status: self.searchForm.status,
+          userType: self.searchForm.userType,
           startTime: startTime,
           endTime: endTime,
-          pageNum: self.pageNum,
+          pageNo: self.pageNo,
           pageSize: self.pageSize
         },
-        success: function(data) {
-          console.log(data);
-          if (data.code == 0) {
-            if (data.data) {
-              self.orderListData = data.data.data;
-              self.pageNum = data.data.index;
-              self.pageSize = data.data.size;
-              self.totalPage = data.data.totalRecord;
-            } else {
-              self.orderListData = [];
-            }
-          }
-        },
-        error: function(XMLHttpRequest) {
-          if (XMLHttpRequest.status == "9001") {
-            self.loginState = true;
-            setTimeout(function() {
-              location.href = backToLogin;
-              self.loginState = false;
-            }, 2000);
+        success: function (data) {
+          if (data.code == 0 && data.data && data.data.data) {
+            self.listData = data.data.data;
+            self.totalPage = data.data.totalRecord;
+          } else {
+            self.listData = [];
           }
         }
       });
@@ -242,8 +203,8 @@ export default {
     //分页处理
     handleCurrentChange(val) {
       var self = this;
-      self.pageNum = val;
-      self.getOrderListData();
+      self.pageNo = val;
+      self.getListData();
     },
     //修改订单状态
     updateOrder(id) {
@@ -269,20 +230,11 @@ export default {
             success: function(data) {
               console.log(data);
               if (data.code == 0) {
-                self.getOrderListData();
+                self.getListData();
                 self.$message({
                   type: "success",
                   message: "关闭成功!"
                 });
-              }
-            },
-            error: function(XMLHttpRequest) {
-              if (XMLHttpRequest.status == "9001") {
-                self.loginState = true;
-                setTimeout(function() {
-                  location.href = backToLogin;
-                  self.loginState = false;
-                }, 2000);
               }
             }
           });
@@ -318,21 +270,12 @@ export default {
             success: function(data) {
               if (data.code == 0) {
                 if (data.data.status == true) {
-                  self.getOrderListData();
+                  self.getListData();
                   self.$message({
                     type: "success",
                     message: "删除成功!"
                   });
                 }
-              }
-            },
-            error: function(XMLHttpRequest) {
-              if (XMLHttpRequest.status == "9001") {
-                self.loginState = true;
-                setTimeout(function() {
-                  location.href = backToLogin;
-                  self.loginState = false;
-                }, 2000);
               }
             }
           });

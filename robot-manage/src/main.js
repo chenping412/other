@@ -21,17 +21,20 @@ Vue.prototype.$ = $;
 Vue.prototype.$http = function(param){
   $.ajax({
     url: param.url || '',
-    type: param.type || 'GET',
-    //xhrFields: {
-    //  withCredentials: true
-    //},
-    //crossDomain: true,
+    type: param.type || 'POST',
+    xhrFields: {
+      withCredentials: true
+    },
+    crossDomain: true,
     data: param.data || {},
     success: function(data) {
       if(param.success) param.success(data);
     },
     error: function(data) {
       if(param.error) param.error(data);
+      if (data.status == "9001") {
+        location.href=location.pathname;
+      }
     }
   });
 };

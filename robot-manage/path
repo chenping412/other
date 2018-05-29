@@ -1,16 +1,13 @@
 接口文档地址：
-http://172.16.21.39/showdoc/index.php?s=/14&page_id=114
+http://172.16.21.39/showdoc/index.php?s=/14&page_id=1065
 
-http://172.16.21.39/showdoc/index.php?s=/14&page_id=531
+测试环境
+172.16.33.4:8085
+目录
+/work/open/portal-admin/apache-tomcat-8.0.45/webapps/portal-html
 
+测试演示地址：
+http://172.16.33.4:8085/portal-html/
 
-
-开发账号： 18600714850
- 密码： 123123
-
-
-开发环境
-172.16.33.4:8085/portal-html/
-
-
-http://robot-oms.giiso.com/portal-html/index.html#/
+测试账号： 18600714850
+密码： 123123

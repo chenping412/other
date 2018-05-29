@@ -2,7 +2,7 @@
   <div id="order-list">
     <div class="breadcrumb">
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{ path: '/product' }">机器人列表</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/home/product' }">机器人列表</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="box">
@@ -23,12 +23,17 @@
     </div>
     <div class="table">
       <el-table :data="listData" style="width: 100%">
-        <el-table-column prop="order_no" label="编号" align="center"></el-table-column>
-        <el-table-column prop="order_no" label="机器人名称" align="center"></el-table-column>
-        <el-table-column prop="order_no" label="服务数量" align="center"></el-table-column>
+        <el-table-column prop="index" label="编号" align="center"></el-table-column>
+        <el-table-column prop="name" label="机器人名称" align="center"></el-table-column>
+        <el-table-column prop="count" label="服务数量" align="center"></el-table-column>
+        <el-table-column label="状态" align="center">
+          <template slot-scope="scope">
+            <span v-for="item in searchForm.statusList" v-show="scope.row.status == item.code">{{item.name}}</span>
+          </template>
+        </el-table-column>
         <el-table-column label="操作" align="center">
           <template slot-scope="scope">
-            <router-link :to="{path: '/product/robot/detail', query: {id: scope.row.id}}">详情</router-link>
+            <router-link :to="{path: '/home/product/robot/detail', query: {id: scope.row.id , name:scope.row.name}}">详情</router-link>
           </template>
         </el-table-column>
       </el-table>
@@ -36,22 +41,13 @@
     <div class="pagination">
       <el-pagination
         @current-change="handleCurrentChange"
-        :current-page.sync="pageNum"
+        :current-page.sync="pageNo"
         :page-size="pageSize"
         layout="prev, pager, next, jumper"
         :total="totalPage" background>
       </el-pagination>
     </div>
 
-
-    <div class="model" v-show="loginState">
-      <div class="content">
-        <a href="javascript:;">
-          <b>!</b>
-          登陆过期，请重新登陆。
-        </a>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -62,19 +58,22 @@ export default {
   data() {
     return {
       loginState: false,
-      pageNum: 1,
-      pageSize: 10,
+      pageNo: 1,
+      pageSize: 20,
       totalPage: 0,
       searchForm: {
         name: "",
         status: "",
         statusList:[
           {
+            name:'全部',
+            code:''
+          }, {
             name:'已上线',
-            code:'1'
+            code:'0'
           }, {
             name:'未上线',
-            code:'2'
+            code:'1'
           }
         ]
       },
@@ -82,62 +81,39 @@ export default {
     };
   },
   created() {
-    var self = this;
-    self.getListData();
+    this.getListData();
   },
   methods: {
-    //获取订单列表数据
+    //获取列表数据
     getListData() {
       var self = this;
-      var startTime = "";
-      var endTime = "";
-      if(self.searchForm.submitDate) {
-        startTime = self.searchForm.submitDate[0];
-        endTime = self.searchForm.submitDate[1];
-      }
-      $.ajax({
-        url: apiHost + "/order/list",
-        type: "POST",
-        xhrFields: {
-          withCredentials: true
-        },
-        crossDomain: true,
+      self.$http({
+        url: apiHost + "/robot/query",
+        type: 'post',
         data: {
-          mobile: self.searchForm.keyword,
-          startTime: startTime,
-          endTime: endTime,
-          pageNum: self.pageNum,
+          name: self.searchForm.name,
+          status: self.searchForm.status,
+          pageNo: self.pageNo,
           pageSize: self.pageSize
         },
-        success: function(data) {
-          console.log(data);
-          if (data.code == 0) {
-            if (data.data) {
-              self.listData = data.data.data;
-              self.pageNum = data.data.index;
-              self.pageSize = data.data.size;
-              self.totalPage = data.data.totalRecord;
-            } else {
-              self.listData = [];
+        success: function (data) {
+          if (data.code == 0 && data.data && data.data.data) {
+            self.totalPage = data.data.totalRecord;
+            var arr = data.data.data;
+            for(var i=0;i<arr.length;i++){
+              arr[i].index=(self.pageNo-1)*self.pageSize+i+1;
             }
-          }
-        },
-        error: function(XMLHttpRequest) {
-          if (XMLHttpRequest.status == "9001") {
-            self.loginState = true;
-            setTimeout(function() {
-              location.href = backToLogin;
-              self.loginState = false;
-            }, 2000);
+            self.listData = arr;
+          }else {
+            self.listData =[];
           }
         }
       });
     },
     //分页处理
     handleCurrentChange(val) {
-      var self = this;
-      self.pageNum = val;
-      self.getListData();
+      this.pageNo = val;
+      this.getListData();
     }
   }
 };
