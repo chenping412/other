@@ -1,0 +1,318 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+ol,
+ul,
+li,
+button {
+    list-style: none;
+    border: none;
+}
+
+input,
+textarea {
+    outline: none;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    border: 1px solid #CCCCCC;
+    background: #FFFFFF;
+}
+input:focus,
+textarea:focus{
+    border-color: #2577FF;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #CCCCCC;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #CCCCCC;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #CCCCCC;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #CCCCCC;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: #1674C9 !important;
+}
+
+.inner {
+    width: 1280px;
+    margin: 0 auto;
+    *zoom: 1;
+}
+
+.inner:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    min-width: 1550px;
+    background-color: #f0f1f4;
+}
+body{
+    position: relative;
+}
+
+.header-view{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 15px -4px rgba(183,183,183,0.50);
+}
+.header-view .logo{
+    width: 263px;
+    height: 100%;
+    float: left;
+    background: #1674C9;
+}
+.header-view .logo img{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 27px;
+    top:17px;
+}
+.header-view .logo p{
+    padding:20px 0 0 72px;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: bolder;
+    line-height: 28px;
+}
+.header-view .fast-nav{
+    float: left;
+    font-size: 14px;
+    color: #2B2B2B;
+    font-weight: bolder;
+    padding:24px 0 0 18px;
+}
+.header-view .fast-nav .nav-show{
+    margin-left: 30px;
+    display: inline-block;
+    position: relative;
+}
+.header-view .fast-nav .nav-show>span{
+    cursor: pointer;
+    font-weight: bolder;
+}
+.header-view .fast-nav .nav-show>span>img{
+    margin-left: 10px;
+}
+.header-view .fast-nav .list{
+    display: none;
+    position: absolute;
+    top:19px;
+    left: -30px;
+    padding-top: 25px;
+    background: #FFFFFF;
+    width: 284px;
+}
+.header-view .fast-nav .nav-show:hover .list{
+    display: block;
+}
+.header-view .fast-nav .list li{
+    height: 20px;
+    padding:13px 24px 13px 30px;
+    background: #F3F3F3;
+    font-size: 14px;
+    color: #333333;
+    line-height: 20px;
+}
+.header-view .fast-nav .list li .title{
+    float: left;
+    display: block;
+    max-width: 180px;
+}
+.header-view .fast-nav .list li .delete{
+    color: #FF4747;
+    float: right;
+}
+.header-view .fast-nav .list .add{
+    display: block;
+    width: 100%;
+    height: 46px;
+    background-color: #ffffff;
+    position: relative;
+    border: 1px solid #F3F3F3;
+}
+.header-view .fast-nav .list .add:after{
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #CAD3DC;
+    position:  absolute;
+    left: 50%;
+    top:50%;
+    margin:-1px 0 0 -11px;
+}
+.header-view .fast-nav .list .add:before{
+    content: '';
+    display: block;
+    width: 2px;
+    height: 22px;
+    background: #CAD3DC;
+    position:  absolute;
+    left: 50%;
+    top:50%;
+    margin:-11px 0 0 -1px;
+}
+
+.header-view .control{
+    float: right;
+    padding: 21px 28px 0 0;
+}
+.header-view .control .search{
+    display: inline-block;
+    position: relative;
+}
+.header-view .control .search input{
+    background: #EFF3F8;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #8196AD;
+    width: 260px;
+    height: 26px;
+    box-sizing: border-box;
+    padding:0 35px 0 14px;
+    border:none;
+}
+.header-view .control .search>a{
+    position: absolute;
+    right: 0;
+    top:0;
+    height: 26px;
+    width: 38px;
+    background: url('../images/search-icon-01.png') no-repeat center;
+}
+.header-view .control .menu,
+.header-view .control>a{
+    margin-left: 23px;
+    font-size: 14px;
+    color: #8196AD;
+    line-height: 26px;
+    letter-spacing: 0;
+}
+.header-view .control>a img{
+    vertical-align: middle;
+    margin-right: 7px;
+}
+.header-view .control a.layout{
+    font-weight: bolder;
+    color: #2577FF;
+    border-bottom: 1px solid #2577FF;
+}
+.header-view .control .menu{
+    display: inline-block;
+    position: relative;
+}
+.header-view .control .menu>img{
+    cursor: pointer;
+}
+.header-view .control .menu .list{
+    display: none;
+    background: #FFFFFF;
+    border: 1px solid #F3F3F3;
+    width: 190px;
+    position: absolute;
+    top:47px;
+    left: -85px;
+    padding-bottom: 5px;
+}
+.header-view .control .menu .list:before{
+    content: '';
+    width: 100%;
+    height: 28px;
+    position: absolute;
+    left: 0;
+    top:-28px;
+}
+.header-view .control .menu:hover .list{
+    display: block;
+}
+.header-view .control .menu .list>a{
+    display: block;
+    text-align: center;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    color: #333333;
+}
+.header-view .control .menu .list>a:hover{
+    background: #F3F3F3;
+}
+
+

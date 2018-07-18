@@ -1,0 +1,287 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+}
+
+ol,
+ul,
+li,
+button {
+    list-style: none;
+    border: none;
+}
+
+input,
+textarea {
+    outline: none;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    border: 1px solid #CCCCCC;
+    background: #FFFFFF;
+}
+input:focus,
+textarea:focus{
+    border-color: #2577FF;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+html,
+body {
+    width: 100%;
+    font-size: 14px;
+    min-width: 1280px;
+}
+
+a {
+    color: #979ca2;
+}
+
+a:hover {
+    color: #e81759;
+}
+
+.inner {
+    width: 1280px;
+    margin: 0 auto;
+    *zoom: 1;
+}
+
+.inner:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #CCCCCC;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #CCCCCC;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #CCCCCC;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #CCCCCC;
+}
+
+
+
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.login-main{
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+}
+.login-main .model{
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 90px;
+    width: 100%;
+    background: url("../images/login-bj.jpg") no-repeat center;
+    background-size: cover;
+
+}
+.login-main .model:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.46;
+    background: #000F2B;
+}
+
+.login-main .title{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    margin: -30px 0 0 -525px;
+}
+.login-main .title h3{
+    font-size: 60px;
+    color: #FFFFFF;
+    font-weight: bolder;
+    margin-bottom: 7px;
+}
+.login-main .title p{
+    font-size: 40px;
+    color: #FFFFFF;
+}
+.login-main .content{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    margin:-275px 0 0 145px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    width: 400px;
+    height: 505px;
+}
+.login-main .content .header{
+    height: 90px;
+    background: #1674C9;
+    padding: 30px 0 0 64px;
+}
+.login-main .content .header img{
+    display: block;
+    float: left;
+    width: 62px;
+    margin-right: 14px;
+}
+.login-main .content .header h3{
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 33px;
+    padding:5px 0 3px;
+    font-weight: bolder;
+}
+.login-main .content .header p{
+    font-size: 12px;
+    color: #FFFFFF;
+    letter-spacing: -0.06px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.login-main .content .header p span{
+    display: block;
+    transform-origin: 2% 50%;
+    transform: scale(0.5);
+}
+.login-main .content form{
+    display: block;
+    padding:50px 43px 0;
+}
+.login-main .content form .row{
+    margin-bottom: 19px;
+    position: relative;
+}
+.login-main .content form .row img{
+    position: absolute;
+    left: 15px;
+    top:50%;
+    display: block;
+    transform: translateY(-50%);
+}
+.login-main .content form .row input{
+    width: 100%;
+    border-radius: 4px;
+    height: 48px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333333;
+    padding:0 15px 0 45px;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+.login-main .content form .row .code{
+    width: 115px;
+    height: 45px;
+    transform: translateY(0);
+    left: auto;
+    right: 0;
+    top:0;
+    border: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+.login-main .content form .row label{
+    font-size: 14px;
+    color: #999999;
+    cursor: pointer;
+}
+.login-main .content form .row input[type="checkbox"]{
+    display: inline-block;
+    border-radius: 2px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.login-main .content form .btn{
+    background: #1674C9;
+    border-radius: 2px;
+    width: 100%;
+    height: 44px;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.login-main .content form .btn:hover{
+    background: #3895ea;
+}
+
+
+.login-main .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding:40px 0;
+    font-size: 12px;
+    color: #666666;
+    height: 17px;
+    background: #F0F1F4;
+    text-align: center;
+}
+
+.login-main .bottom img{
+    width: 17px;
+    vertical-align: middle;
+}
+.login-main .bottom span{
+    margin:0 7px;
+}
