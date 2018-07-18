@@ -1,0 +1,72 @@
+.main-view .top{
+    padding:23px 0 20px;
+}
+.main-view .top a{
+    display: block;
+    height: 100px;
+    padding:18px 0;
+    float: left;
+    background: #FFFFFF;
+    box-shadow: 0 0 6px 0 rgba(197,197,197,0.50);
+    border-radius: 4px;
+}
+.main-view .top a+a{
+    margin-left: 1%;
+}
+.main-view .top a:hover{
+    box-shadow: 0 0 10px 0 #5DADF6;
+}
+.main-view .top a i{
+    height: 100%;
+    width: 43.5%;
+    float: left;
+    text-align: center;
+}
+.main-view .top a i img{
+    display: inline-block;
+    vertical-align:middle;
+}
+
+.main-view .top a p{
+    width: 56.4%;
+    height: 100%;
+    float: right;
+    text-align: center;
+}
+.main-view .top a p span{
+    font-size: 18px;
+    color: #333333;
+    line-height: 25px;
+}
+.main-view .top a p b{
+    font-size: 30px;
+    color: #005CCC;
+    font-weight: bolder;
+    text-align: left;
+    display: block;
+    margin-top: 7px;
+}
+.main-view .top a.one{
+    width: 24.16%;
+    position: relative;
+}
+.main-view .top a.one:after{
+    content: '';
+    position: absolute;
+    top:18px;
+    left: 42%;
+    width: 4px;
+    height: 100px;
+    background: #F3F3F3;
+}
+.main-view .top a.two{
+    width: 11.52%;
+    position: relative;
+}
+.main-view .top a.two p{
+    text-align: left;
+}
+
+
+
+
