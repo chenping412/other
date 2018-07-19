@@ -67,6 +67,87 @@
     text-align: left;
 }
 
+.main-view .bottom .box{
+    width: 32.3%;
+    min-height: 557px;
+    background: #FFFFFF;
+    box-shadow: 0 0 6px 0 rgba(197,197,197,0.50);
+    border-radius: 4px;
+    float: left;
+    box-sizing: border-box;
+    padding:37px 32px 18px;
+}
+.main-view .bottom .box+.box{
+    margin-left: 1.3%;
+}
+.main-view .bottom .box h3{
+    font-size: 18px;
+    color: #2B2B2B;
+    font-weight: bolder;
+    line-height: 25px;
+    height: 25px;
+    padding-left: 30px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #F3F3F3;
+    margin-bottom: 19px;
+}
+.main-view .bottom .box h3 img{
+    margin-right: 8px;
+    vertical-align: sub;
+}
+
+.main-view .bottom .box h4{
+    font-size: 14px;
+    color: #2B2B2B;
+    line-height: 20px;
+    padding:9px 30px 8px;
+    background: #F3F3F3;
+    font-weight: bolder;
+}
+.main-view .bottom .box h4 span{
+    float: right;
+}
+.main-view .bottom .box .list{
+    min-height: 360px;
+    position: relative;
+}
+.main-view .bottom .box .list a{
+    display: block;
+    font-size: 14px;
+    color: #2B2B2B;
+    line-height: 20px;
+    padding:19px 10px 20px 30px;
+    position: relative;
+    border-bottom: 1px solid #F3F3F3;
+}
+.main-view .bottom .box .list a:hover{
+    background: #F3F3F3;
+}
+.main-view .bottom .box .list a p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    margin-right: 100px;
+}
+.main-view .bottom .box .list a span{
+    position: absolute;
+    right: 10px;
+    top:19px;
+    width: 90px;
+}
+.main-view .bottom .box .more{
+    float: right;
+    font-size: 14px;
+    color: #8196AD;
+    margin-top: 17px;
+}
+.main-view .bottom .box .more img{
+    margin-right: 5px;
+    vertical-align: inherit;
+}
+
+
+
 
 
 

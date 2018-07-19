@@ -1,0 +1,13 @@
+
+.main-view .box{
+    padding-bottom: 30px;
+}
+.main-view .box .control .select{
+    font-size: 14px;
+    color: #1674C9;
+    line-height: 36px;
+    font-weight: bolder;
+}
+.main-view .box .control .select img{
+    margin-left: 10px;
+}

@@ -36,6 +36,7 @@ a {
 
 img {
     border: none;
+    vertical-align: middle;
 }
 
 ol,
@@ -153,6 +154,7 @@ body{
     height: 68px;
     background: #FFFFFF;
     box-shadow: 0 2px 15px -4px rgba(183,183,183,0.50);
+    z-index: 9999;
 }
 .header-view .logo{
     width: 263px;
@@ -449,13 +451,62 @@ body{
     overflow-y: scroll;
 }
 
+.main-view .no-more{
+    position: absolute;
+    top:50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #B9B9B9;
+}
+.main-view .bread{
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 24px;
+    padding:25px 0 14px;
+}
+.main-view .box{
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+.main-view .control{
+    padding:20px 30px;
+    border-bottom: 1px solid #D8D8D8;
+}
+.main-view input{
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 36px;
+    padding:0 12px;
+    font-size: 12px;
+}
+.main-view input:hover{
+    border-color: #2577FF;
+}
 
-
-
-
-
-
-
+.main-view button{
+    background: #1674C9;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 14px;
+    color: #FFFFFF;
+    height: 36px;
+    padding:0 22px;
+}
+.main-view .control input{
+    width: 330px;
+}
+.main-view .control button{
+    margin-right: 7px;
+}
+.main-view .control .item{
+    display: inline-block;
+    margin-right: 7px;
+}
 
 
 
