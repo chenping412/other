@@ -28,6 +28,7 @@ td {
     padding: 0;
     font-weight: normal;
     font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
 }
 
 a {
@@ -45,31 +46,9 @@ li,
 button {
     list-style: none;
     border: none;
+    cursor: pointer;
 }
 
-input,
-textarea {
-    outline: none;
-    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
-    border: 1px solid #CCCCCC;
-    background: #FFFFFF;
-}
-input:focus,
-textarea:focus{
-    border-color: #2577FF;
-}
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    color: #CCCCCC;
-}
-input:-moz-placeholder, textarea:-moz-placeholder {
-    color: #CCCCCC;
-}
-input::-moz-placeholder, textarea::-moz-placeholder {
-    color: #CCCCCC;
-}
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-    color: #CCCCCC;
-}
 
 .clearfix:after {
     content: ".";
@@ -508,8 +487,227 @@ body{
     margin-right: 7px;
 }
 
+/*表格模块*/
+.main-view .table{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.main-view .table table{
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+.main-view .table th{
+    background: #F0F1F4;
+    font-size: 14px;
+    color: #111111;
+    line-height: 20px;
+    padding:10px;
+    letter-spacing: 0;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #D8D8D8;
+}
+.main-view .table td{
+    font-size: 12px;
+    color: #666666;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 20px;
+    padding:15px 10px;
+    border: none;
+    border-bottom: 1px solid #D8D8D8;
+}
+.main-view .table table input[type="checkbox"]{
+    height: auto;
+}
+.main-view .table table .cell{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.main-view .table table a{
+    color: #1674C9;
+}
+.main-view .table table a.red{
+    color: red;
+}
 
 
+/*分页模块*/
+.main-view .pagination{
+    text-align: right;
+    font-size: 14px;
+    color: #666666;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.main-view .pagination a{
+    display: inline-block;
+    line-height: 20px;
+    padding:0 5px;
+    margin:0 5px;
+    font-weight: bolder;
+}
+.main-view .pagination a.active{
+    color: #1674C9;
+}
+.main-view .pagination span{
+    margin-left: 10px;
+}
+.main-view .pagination span input{
+    width: 50px;
+    height: 26px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    margin:0 3px;
+}
+
+
+/*弹窗浮层通用样式*/
+.model-view{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 19999;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+    display: none;
+}
+.model-view .body{
+    position: absolute;
+    left: 50%;
+    top:15%;
+    width: 950px;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border-radius: 2px;
+    min-height: 60px;
+    margin-bottom: 120px;
+}
+.model-view .body .close{
+    position: absolute;
+    right: 28px;
+    top:20px;
+    width: 24px;
+    height: 24px;
+    background: url('../images/close-icon.png') no-repeat center;
+}
+.model-view .body .header{
+    height: 45px;
+    border-bottom: 2px solid  #F5F5F5;
+    padding:15px 30px 0;
+}
+.model-view .body .header>a,
+.model-view .body .header>span{
+    display: inline-block;
+    font-size: 14px;
+    color: #333333;
+    font-weight: bolder;
+    letter-spacing: 0;
+    line-height: 25px;
+    padding:10px 0;
+    margin-right: 24px;
+    position: relative;
+}
+.model-view .body .header>a.active:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom:-2px;
+    width: 100%;
+    height: 2px;
+    background-color: #1674C9;
+}
+.model-view .body .content{
+    padding:20px 30px 40px;
+}
+
+
+.btns{
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+/*表单组件通用样式*/
+.form form,
+.form table{
+    width: 100%;
+}
+.form th{
+    height: 0;
+}
+.form td{
+    padding-bottom: 20px;
+    position: relative;
+}
+.form td:first-child{
+    line-height: 32px;
+}
+.form input,
+.form select{
+    width: 100%;
+}
+
+/*button按钮通用样式*/
+button{
+    background: #1674C9;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 14px;
+    color: #FFFFFF;
+    height: 30px;
+    min-width: 110px;
+    padding:0 20px;
+}
+button.btn2{
+    background: #FFFFFF;
+    border: 1px solid #BCBEBF;
+    color: #333333;
+}
+button+button{
+    margin-left: 10px;
+}
+
+
+/*input输入框组件*/
+input,
+textarea,
+select{
+    border: 1px solid #D8D8D8;
+    border-radius: 2px;
+    background: #FFFFFF;
+    height: 32px;
+    box-sizing: border-box;
+    padding:0 15px;
+}
+textarea{
+    padding:15px;
+}
+input:focus,
+select:focus{
+    border-color: #2577FF;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #CCCCCC;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #CCCCCC;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #CCCCCC;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #CCCCCC;
+}
+input[type="file"]{
+    border: none;
+    height: auto;
+}
 
 
 

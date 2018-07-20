@@ -212,7 +212,7 @@
 <div class="main-view">
     <div class="bread">
         <a href="">后监管理</a>
-         > 监理人员管理
+        > 监理人员管理
     </div>
     <div class="box">
         <div class="control">
@@ -220,13 +220,277 @@
                 <input type="text" placeholder="请输入关键字">
             </div>
             <button type="button">查阅</button>
-            <button type="button">新增</button>
-            <a class="select right" href="javascript:;">选择标段<img src="images/jiantou-right.png"></a>
+            <button type="button" onclick="addUser()">新增</button>
+            <button class="right" type="button">选择标段</button>
+        </div>
+
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th width="30">
+                        <input type="checkbox">
+                    </th>
+                    <th width="40">顺序</th>
+                    <th width="50">姓名</th>
+                    <th>监理标段</th>
+                    <th width="100">总监办或监理站</th>
+                    <th width="50">姓别</th>
+                    <th width="50">年龄</th>
+                    <th width="100">职务</th>
+                    <th width="100">职称</th>
+                    <th width="100">进场日期</th>
+                    <th width="100">附件</th>
+                    <th width="100">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>徐鸣</td>
+                    <td><p class="cell">牡佳七标监理牡佳项目组牡佳项目组牡佳项目组牡佳项目组</p></td>
+                    <td>总监办</td>
+                    <td>男</td>
+                    <td>41</td>
+                    <td>高级职称人员</td>
+                    <td>注册监理工程师</td>
+                    <td>2017-09-01</td>
+                    <td>附件（1）</td>
+                    <td>
+                        <a href="javascript:;">查看</a>
+                        <a href="javascript:;">修改</a>
+                        <a class="red" href="javascript:;">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>徐鸣</td>
+                    <td><p class="cell">牡佳七标监理牡佳项目组牡佳项目组牡佳项目组牡佳项目组</p></td>
+                    <td>总监办</td>
+                    <td>男</td>
+                    <td>41</td>
+                    <td>高级职称人员</td>
+                    <td>注册监理工程师</td>
+                    <td>2017-09-01</td>
+                    <td>附件（1）</td>
+                    <td>
+                        <a href="javascript:;">查看</a>
+                        <a href="javascript:;">修改</a>
+                        <a class="red" href="javascript:;">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>徐鸣</td>
+                    <td><p class="cell">牡佳七标监理牡佳项目组牡佳项目组牡佳项目组牡佳项目组</p></td>
+                    <td>总监办</td>
+                    <td>男</td>
+                    <td>41</td>
+                    <td>高级职称人员</td>
+                    <td>注册监理工程师</td>
+                    <td>2017-09-01</td>
+                    <td>附件（1）</td>
+                    <td>
+                        <a href="javascript:;">查看</a>
+                        <a href="javascript:;">修改</a>
+                        <a class="red" href="javascript:;">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="pagination">
+            <a href="javascript:;" class="prev"> < </a>
+            <a href="javascript:;" class="num active">1</a>
+            <a href="javascript:;" class="num">2</a>
+            <a href="javascript:;" class="num">3</a>
+            <a href="javascript:;" class="num">4</a>
+            <a href="javascript:;" class="next"> > </a>
+            <span>
+                前往第<input type="number">页
+            </span>
         </div>
 
     </div>
 
 </div>
 
+<div class="model-view" id="add-user">
+    <div class="body tab-change">
+        <a class="close" href="javascript:;"></a>
+        <div class="header tabs">
+            <a href="javascript:;" class="tab active">监理人员管理</a>
+            <a href="javascript:;" class="tab">工作内容</a>
+            <a href="javascript:;" class="tab">资质证书（扫描件）</a>
+        </div>
+        <div class="content items">
+            <div class="form item" style="display: block;">
+                <form>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="120"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>标段：</td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option>标段标段标段</option>
+                                    <option>标段标段标段</option>
+                                    <option>标段标段标段</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>姓名：</td>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>总监办或总监站：</td>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>性别：</td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>身份证：</td>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>年龄：</td>
+                            <td>
+                                <input type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>职务：</td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option>职员</option>
+                                    <option>经理</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>职称：</td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option>中级工程师</option>
+                                    <option>高级工程师</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>进场日期：</td>
+                            <td>
+                                <input type="text" class="Wdate" onclick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>离场日期：</td>
+                            <td>
+                                <input type="text" class="Wdate" onclick="WdatePicker()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>加入黑名单：</td>
+                            <td>
+                                <select>
+                                    <option></option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="item" style="display: none;">
+                <textarea style="width: 100%;height: 500px;"></textarea>
+            </div>
+
+            <div class="form item" style="display: none;">
+                <form>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th width="120"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>身份证照片：</td>
+                            <td>
+                                <input type="file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>毕业证照片：</td>
+                            <td>
+                                <input type="file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>学位证照片：</td>
+                            <td>
+                                <input type="file">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>资格证照片：</td>
+                            <td>
+                                <input type="file">
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+
+            <div class="btns">
+                <button type="button">保存</button>
+                <button class="btn2" type="button">取消</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="public/wdatepicker/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
+<script type="text/javascript">
+    tabChange();
+    function addUser(){
+        document.getElementById('add-user').style.display='block';
+    }
+</script>
 </body>
 </html>
