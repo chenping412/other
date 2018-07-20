@@ -1,0 +1,132 @@
+
+.main-view .box{
+    padding:25px 20px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.main-view .top h3{
+    font-size: 24px;
+    color: #333333;
+    line-height: 36px;
+}
+.main-view .top h3 span{
+    display: inline-block;
+    background: #FFA800;
+    border-radius: 2px;
+    width: 70px;
+    height: 28px;
+    margin-right: 13px;
+    font-size: 12px;
+    color: #FFFFFF;
+    line-height: 28px;
+    text-align: center;
+    vertical-align: text-bottom;
+}
+.main-view .top>p{
+    font-size: 18px;
+    color: #2A2A2A;
+    line-height:25px;
+    margin-top: 23px;
+}
+.main-view .top>p span+span{
+    margin-left: 40px;
+}
+
+.main-view .bottom .left{
+    width: 25.8%;
+}
+.main-view .bottom .left h3{
+    font-size: 16px;
+    color: #333333;
+    line-height: 22px;
+    font-weight: bolder;
+    padding-left: 13px;
+    border-left: 4px solid #1674C9;
+    margin:0 0 13px 10px;
+}
+.main-view .bottom .left ul{
+    padding:0 25px;
+}
+.main-view .bottom .left li{
+    padding:13px 0;
+}
+.main-view .bottom .left li+li{
+    border-top: 1px solid  #D8D8D8;
+}
+.main-view .bottom .left li p{
+    float: left;
+    font-size: 12px;
+    color: #333333;
+}
+.main-view .bottom .left li p img{
+    transform: translateY(-1px);
+    margin-right: 5px;
+}
+.main-view .bottom .left li a{
+    float: right;
+    font-size: 12px;
+    color: #1674C9;
+}
+.main-view .bottom .left .list{
+    padding:0 25px;
+}
+.main-view .bottom .left .list a{
+    display: block;
+    font-size: 14px;
+    color: #333333;
+    line-height: 20px;
+    padding:17px 0 18px;
+    position: relative;
+}
+.main-view .bottom .left .list a+a{
+    border-top: 1px solid  #D8D8D8;
+}
+
+.main-view .bottom .left .list .title{
+    display: block;
+    margin-right: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.main-view .bottom .left .list .time{
+    position: absolute;
+    right: 0;
+    top:18px;
+}
+
+.main-view .bottom .right{
+    width: 73.5%;
+    padding:25px 50px 45px;
+}
+.main-view .bottom .right .top p{
+    width: 25%;
+    float: left;
+    font-size: 16px;
+    color: #111;
+    line-height: 22px;
+    height: 44px;
+    margin:0 0 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+.main-view .bottom .right .top p span{
+    font-size: 14px;
+    color: #666666;
+    margin-left: 5px;
+}
+.main-view .bottom .right .bottom h3{
+    font-size: 16px;
+    color: #111;
+    padding: 15px 0 24px;
+}
+.main-view .bottom .right .bottom iframe{
+    border: 1px solid #D8D8D8;
+    width: 100%;
+    height: 480px;
+}
+
+
+
+

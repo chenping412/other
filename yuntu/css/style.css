@@ -46,6 +46,8 @@ li,
 button {
     list-style: none;
     border: none;
+}
+button{
     cursor: pointer;
 }
 
@@ -113,11 +115,15 @@ a:hover {
 }
 
 
+
+
+
+
 html,body{
     width: 100%;
     height: 100%;
     font-size: 14px;
-    min-width: 1550px;
+    min-width: 1280px;
     background-color: #f0f1f4;
 }
 body{
@@ -386,6 +392,7 @@ body{
     width: 266px;
     height: 100%;
     padding-left: 6px;
+    overflow-y: auto;
 }
 .menu-view li:hover .small-menu{
     display: block;
@@ -493,7 +500,7 @@ body{
     padding-bottom: 15px;
 }
 .main-view .table table{
-    table-layout: fixed;
+    /*table-layout: fixed;*/
     border-collapse: collapse;
     width: 100%;
 }
@@ -502,7 +509,7 @@ body{
     font-size: 14px;
     color: #111111;
     line-height: 20px;
-    padding:10px;
+    padding:10px 5px;
     letter-spacing: 0;
     text-align: center;
     border: none;
@@ -528,6 +535,7 @@ body{
 }
 .main-view .table table a{
     color: #1674C9;
+    display: inline-block;
 }
 .main-view .table table a.red{
     color: red;
@@ -708,6 +716,38 @@ input[type="file"]{
     border: none;
     height: auto;
 }
+
+
+
+
+
+@media (max-width: 1550px) {
+    .header-view .fast-nav .nav-show{
+        margin-left: 10px;
+    }
+    .header-view .control .menu, .header-view .control>a{
+        margin-left: 10px;
+    }
+    .header-view .control .search input{
+        width: 180px;
+    }
+}
+@media (max-width: 1400px) {
+    .header-view .control>a img{
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

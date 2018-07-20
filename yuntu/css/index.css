@@ -32,6 +32,7 @@
     height: 100%;
     float: right;
     text-align: center;
+    white-space: nowrap;
 }
 .main-view .top a p span{
     font-size: 18px;
@@ -47,7 +48,7 @@
     margin-top: 7px;
 }
 .main-view .top a.one{
-    width: 24.16%;
+    width: 22.5%;
     position: relative;
 }
 .main-view .top a.one:after{
@@ -60,7 +61,7 @@
     background: #F3F3F3;
 }
 .main-view .top a.two{
-    width: 11.52%;
+    width: 14%;
     position: relative;
 }
 .main-view .top a.two p{
