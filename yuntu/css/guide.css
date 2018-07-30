@@ -125,7 +125,7 @@ body{
     position: relative;
 }
 .header{
-    position: fixed;
+    position: absolute;
     top:0;
     left: 0;
     z-index: 999;
@@ -140,7 +140,6 @@ body{
 }
 .header .nav{
     font-size: 14px;
-    padding-right: 120px;
 }
 .header .nav a{
     margin-left: 15px;
@@ -148,7 +147,9 @@ body{
 
 .banner{
     height: 476px;
-    background: #000F2B url("../images/guide-top-bj.jpg") no-repeat center;
+    background: #000F2B url("../images/guide-top-bj-02.jpg") no-repeat center top;
+    background-size: auto 110%;
+    transition: all 0.7s;
 }
 .banner .inner{
     height: 100%;
@@ -202,14 +203,14 @@ body{
     border-color: #1674C9;
 }
 .banner .content .last{
-    font-size: 10px;
+    font-size: 14px;
     color: #4CAFFF;
     text-decoration: underline;
 }
 
 .main{
     padding:60px 0 100px;
-    background: url("../images/guide-bot-bj.jpg") no-repeat center top;
+    background: url("../images/guide-bot-bj-01.jpg") no-repeat center top;
 }
 .main .inner{
     position: relative;
@@ -234,8 +235,10 @@ body{
     transition: all 0.3s;
 }
 .main .swiper-slide .box .pics .pic:hover{
-    width: 100%;
-    height: 100%;
+    /*transform: scale(1.1);*/
+    box-shadow: 0 0 15px 0 #333333;
+    width: 55%;
+    height: 55%;
     z-index: 100;
 }
 .main .swiper-slide .box .pics .pic:hover .icon{
@@ -301,6 +304,9 @@ body{
     width: 405px;
     float: right;
 }
+.main .swiper-slide .box .text .text-show{
+    display: none;
+}
 .main .swiper-slide .box .text h3{
     font-size: 30px;
     color: #000000;
@@ -351,7 +357,7 @@ body{
     text-align: center;
 }
 .main .swiper-pagination-bullet{
-    width: 20px;
+    width: 12px;
     height: 4px;
     background: #FFFFFF;
     border: 1px solid #666;

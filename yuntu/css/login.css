@@ -126,7 +126,7 @@ html,body{
     height: 100%;
     width: 100%;
     position: relative;
-
+    overflow: hidden;
 }
 .login-main .model{
     position: absolute;
@@ -136,7 +136,11 @@ html,body{
     width: 100%;
     background: url("../images/login-bj.jpg") no-repeat center;
     background-size: cover;
+    transition: transform 1.2s;
 
+}
+.login-main .model:hover{
+    transform: scale(1.05);
 }
 .login-main .model:after{
     content: '';
@@ -156,7 +160,6 @@ html,body{
 .login-main .title h3{
     font-size: 60px;
     color: #FFFFFF;
-    font-weight: bolder;
     margin-bottom: 7px;
 }
 .login-main .title p{
@@ -166,7 +169,7 @@ html,body{
 .login-main .content{
     position: absolute;
     left: 50%;
-    top:50%;
+    top:48%;
     margin:-275px 0 0 145px;
     background: #FFFFFF;
     border-radius: 2px;
@@ -201,7 +204,7 @@ html,body{
 .login-main .content .header p span{
     display: block;
     transform-origin: 2% 50%;
-    transform: scale(0.5);
+    transform: scale(0.78);
 }
 .login-main .content form{
     display: block;

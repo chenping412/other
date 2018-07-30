@@ -334,7 +334,7 @@ body{
     bottom:0;
     width: 263px;
     background: #484D5D;
-    z-index: 9;
+    z-index: 9999;
 }
 .menu-view ul{
     padding-bottom: 30px;
@@ -475,11 +475,6 @@ body{
 }
 
 .main-view button{
-    background: #1674C9;
-    border-radius: 2px;
-    display: inline-block;
-    font-size: 14px;
-    color: #FFFFFF;
     height: 36px;
     padding:0 22px;
 }
@@ -491,7 +486,7 @@ body{
 }
 .main-view .control .item{
     display: inline-block;
-    margin-right: 7px;
+    margin-right: 17px;
 }
 
 /*表格模块*/
@@ -671,6 +666,9 @@ button{
     height: 30px;
     min-width: 110px;
     padding:0 20px;
+}
+button:hover{
+    background: #3791e3;
 }
 button.btn2{
     background: #FFFFFF;
