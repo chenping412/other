@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travel.system.dao.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.travel.system.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+
+        <result column="is_active" jdbcType="INTEGER" property="isActive"/>
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+
+        <result column="tel" jdbcType="VARCHAR" property="tel"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, is_active, creator, create_date, modifier, modify_date, description, username, password, real_name,department,tel, qq
+    </sql>
+
+    <select id="getUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="getUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="addUser" parameterType="com.travel.system.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user (is_active, creator, create_date, modifier, modify_date, description, username, password, real_name, department, tel, qq)
+        values (
+            1,
+            #{creator,jdbcType=VARCHAR},
+            now(),
+            #{modifier,jdbcType=VARCHAR},
+            now(),
+            #{description,jdbcType=VARCHAR},
+            #{username,jdbcType=VARCHAR},
+            #{password,jdbcType=VARCHAR},
+            #{realName,jdbcType=VARCHAR},
+            #{department,jdbcType=VARCHAR},
+            #{tel,jdbcType=VARCHAR},
+            #{qq,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="updateUser" parameterType="com.travel.system.entity.User">
+        update t_user
+        <set>
+            <if test="isActive != null">
+                is_active = #{isActive,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="department != null">
+                department = #{department,jdbcType=VARCHAR},
+            </if>
+            <if test="tel != null">
+                tel = #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            modify_date = now()
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="queryAllRoleByUserId" resultType="com.travel.system.entity.Role" parameterType="java.lang.Integer">
+
+        select sr.id, sr.is_active isActive, sr.create_date createDate, sr.description, sr.role_code roleCode, sr.role_name roleName
+          from t_role sr, t_user_role sur
+         where sr.id = sur.role_id
+           and sur.user_id = #{userId,jdbcType=INTEGER}
+
+    </select>
+
+    <select id="queryAllResourceByUserId" resultType="com.travel.system.entity.Resource" parameterType="java.lang.Integer">
+        select distinct
+               t2.id, t2.is_active isActive, t2.create_date createDate, t2.description, t2.resource_code resourceCode,
+               t2.resource_name resourceName, t2.resource_type reseourceType, t2.url_pattern urlPattern
+          from t_user_role t1, t_resource t2, t_role_resource t3
+         where t2.id = t3.resource_id
+           and t3.role_id = t1.role_id
+           and t1.user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+    <select id="queryUserList" parameterType="com.travel.system.entity.User" resultMap="BaseResultMap">
+        select
+        distinct
+        u.id , u.username, u.password, u.real_name as realName, u.department,
+        u.description, u.is_active as isActive, u.tel, u.qq
+
+        from t_user u, t_role r, t_user_role ur
+        where u.id = ur.user_id
+        and r.id = ur.role_id
+
+        <if test="realName" >
+            and u.real_name like concat('%', #{realName}, '%')
+        </if>
+        <if test="username" >
+            and u.username like concat('%', #{username}, '%')
+        </if>
+        <if test="roleCode" >
+            and r.role_code = #{roleCode}
+        </if>
+    </select>
+    
+    <select id="queryAllUserList" resultMap="BaseResultMap">
+        select
+        distinct
+        u.id , u.username, u.password, u.real_name as realName, u.department,
+        u.description, u.is_active as isActive, u.tel, u.qq
+        from t_user u
+    </select>
+
+    <update id="invalidUser" parameterType="java.util.Map">
+        update t_user
+        set
+            is_active = #{isActive,jdbcType=INTEGER},
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            modify_date = now()
+        where 1=1
+        <if test="null != userId">
+           and id = #{userId,jdbcType=INTEGER}
+        </if>
+        <if test="null != username">
+           and username = #{username,jdbcType=VARCHAR}
+        </if>
+    </update>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from t_user
+        where id = #{userId,jdbcType=INTEGER}
+    </delete>
+
+    <delete id="deleteUserRoles" parameterType="java.lang.Integer">
+        delete from t_user_role
+        where user_id = #{userId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="saveUserRoles01" parameterType="com.travel.system.entity.UserRole" useGeneratedKeys="true" keyProperty="id">
+        <foreach collection="list" item="item" index="index" separator=";">
+            INSERT into
+            t_user_role
+            (
+            user_id,
+            role_id
+            )
+            VALUES
+            (
+            #{item.userId},
+            #{item.roleId}
+            )
+        </foreach>
+    </insert>
+
+
+    <insert id="saveUserRoles" parameterType="com.travel.system.entity.UserRole">
+            INSERT into
+            t_user_role
+            (
+            user_id,
+            role_id
+            )
+            VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.userId},
+            #{item.roleId}
+            )
+        </foreach>
+    </insert>
+
+
+</mapper>

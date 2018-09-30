@@ -1,0 +1,2335 @@
+@charset "utf-8"; 
+
+.teamInfo_label>span:first-child, .teamInfo_span01 {
+	text-align: right;
+	line-height: 28px
+}
+
+.Additional_cheackbox a:hover, .teamInfo_more a:hover, a.MissionRoom_dateNone:hover
+	{
+	text-decoration: underline
+}
+
+.MissionRoom {
+	padding: 15px
+}
+
+.MissionRoom_content {
+	border-bottom: none !important;
+	border-left: none !important;
+	border-right: none !important;
+	background: #fff;
+	box-shadow: 3px 2px 9px #f0f3f6
+}
+
+.MissionRoom_contentBg {
+	box-shadow: 0 2px 3px #f0f3f6;
+	border: solid #e2e2e2;
+	border-width: 0 1px 1px
+}
+
+.teamInfo_label {
+	float: left;
+	width: 390px
+}
+
+.teamInfo_label>span:first-child {
+	width: 120px
+}
+
+.teamInfo_more {
+	float: left;
+	line-height: 28px;
+	cursor: pointer
+}
+
+.teamInfo_content li:after {
+	clear: both;
+	display: block;
+	visibility: hidden;
+	height: 0;
+	content: "."
+}
+
+.teamInfo_content li {
+	padding-bottom: 15px
+}
+
+.teamInfo_content li:last-child {
+	padding-bottom: 0
+}
+
+.MissionRoom_table01>tbody>tr>td {
+	font-size: 14px;
+	padding: 15px 0;
+	border: solid #e2e2e2;
+	border-width: 0 0 1px
+}
+
+.MissionRoom_table01>tbody>tr>td.MissionRoom_td01 {
+	background: #f9fafc;
+	padding-right: 15px;
+	text-align: right;
+	font-weight: 700;
+	font-size: 14px;
+	border-width: 0 1px 1px 0
+}
+
+.MissionRoom_table01>tbody>tr:last-child td {
+	border-bottom: none
+}
+
+.w_960 {
+	width: 954px
+}
+
+.w_270 {
+	width: 270px
+}
+
+.w_250 {
+	width: 250px
+}
+
+.p_l15 {
+	padding-left: 15px
+}
+
+.p_t56 {
+	padding-top: 56px;
+	padding-bottom: 97px
+}
+
+.teamInfo_textarea01 {
+	padding: 5px 8px;
+	text-indent: 0;
+	line-height: 20px;
+	height: 60px;
+	color: #888
+}
+
+.teamInfo_content {
+	overflow: hidden
+}
+
+.MissionRoom_date {
+	width: 190px;
+	border: 1px solid #e8e8e8;
+	background: #f9fafc;
+	margin-left: 30px;
+	color: #848484
+}
+
+.MissionRoom_date dt {
+	width: 45px;
+	text-align: center;
+	line-height: 20px;
+	margin-top: 15px;
+	border-right: 1px solid #e6e6e6
+}
+
+.MissionRoom_date dd {
+	width: 140px;
+	text-align: center;
+	padding: 15px 0;
+	position: relative;
+	height: 40px;
+	cursor: pointer
+}
+
+.MissionRoom_date dd a, .MissionRoom_date dd span {
+	z-index: 10;
+	position: relative
+}
+
+.MissionRoom_dateNone {
+	line-height: 40px
+}
+
+.MissionRoom_date dd input {
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	left: -47px;
+	height: 0;
+	width: 0
+}
+
+.MissionRoom_dateSelect i {
+	display: block;
+	line-height: 20px;
+	color: #ff9b0c;
+	font-weight: 700
+}
+
+.MissionRoom_dateSelect em {
+	font-style: normal;
+	display: block;
+	line-height: 20px
+}
+
+.MissionRoom_cheackbox, .MissionRoom_notice {
+	line-height: 28px;
+	padding-top: 15px;
+	padding-bottom: 15px
+}
+
+.MissionRoom_notice {
+	color: #888
+}
+
+.input_pbox {
+	text-align: right;
+	padding-right: 5px;
+	position: relative
+}
+
+.input_pbox input {
+	height: 28px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: 0 0;
+	border: none;
+	text-align: left;
+	float: left;
+	color: #888;
+	margin-left: 5px
+}
+
+.MissionRoom_table02>tbody>tr>td, .MissionRoom_table02>tbody>tr>th {
+	border-top: 1px solid #e2e2e2;
+	font-size: 14px
+}
+
+.MissionRoom_table02 th {
+	text-align: left
+}
+
+.MissionRoom_add01, .MissionRoom_del01 {
+	position: relative;
+	top: 2px
+}
+
+.MissionRoom_add01:hover {
+	opacity: .8
+}
+
+.MissionRoom_table02 td.MissionRoom_td03 {
+	padding: 0;
+	line-height: 20px;
+	text-align: center
+}
+
+.MissionRoom_td03 i {
+	display: block;
+	color: grey
+}
+
+.MissionRoom_td03 em {
+	color: #000;
+	font-style: normal;
+	font-size: 18px
+}
+
+.MissionRoom_table01>tbody>tr>td.MissionRoom_td04 {
+	padding-top: 0;
+	padding-bottom: 0
+}
+
+.MissionRoom_td03 {
+	border-right: 1px solid #e2e2e2
+}
+
+.MissionRoom_table02 td.p_l15, .MissionRoom_table02 th.p_l15 {
+	padding-left: 15px
+}
+
+.MissionRoom_table02>tbody>tr>td.MissionRoom_td05, .MissionRoom_table02>tbody>tr>th.MissionRoom_td05
+	{
+	border-top: none;
+	padding-top: 0;
+	padding-bottom: 0
+}
+
+.MissionRoom_table03 td, .MissionRoom_table03 th {
+	padding: 15px 0;
+	border-top: 1px solid #e2e2e2;
+	font-size: 14px;
+	text-align: left
+}
+
+.MissionRoom_table03 td {
+	line-height: 30px
+}
+
+.Additional_cheackbox {
+	color: #888
+}
+
+.MissionRoom_table03 td.p_l30, .MissionRoom_table03 th.p_l30 {
+	padding-left: 30px
+}
+
+.MissionRoom_table06 {
+	margin: 15px 0
+}
+
+.MissionRoom_table06 td {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 14px;
+	color: #848484
+}
+
+.textStyle01 {
+	color: #333;
+	font-weight: 700;
+	width: 70px;
+	display: inline-block;
+	text-align: right
+}
+
+.colorGreen {
+	color: #008c52
+}
+
+.colorRed {
+	color: #f72626
+}
+
+.MissionRoom_Remark_btn {
+	background: url(../images/open.png) left 3px no-repeat;
+	display: inline-block;
+	padding-left: 17px;
+	color: #888;
+	line-height: 18px;
+	cursor: pointer
+}
+
+.MissionRoom_Remark {
+	font-size: 13px;
+	padding: 0 30px 10px
+}
+
+.MissionRoom_Remark h3 {
+	font-size: 14px;
+	font-weight: 400;
+	color: #333;
+	line-height: 20px
+}
+
+.MissionRoom_Remark textarea {
+	margin-top: 6px;
+	width: 365px;
+	height: 130px;
+	padding: 5px 8px;
+	text-indent: 0;
+	line-height: 20px;
+	color: #888
+}
+
+.MissionRoom_Remark dd, .MissionRoom_Remark dt {
+	float: left;
+	width: 50%
+}
+
+.MissionRoom_Remark p {
+	margin-top: 10px
+}
+
+.MissionRoom_Remark ul {
+	width: 375px;
+	margin-top: 5px;
+	max-height: 120px;
+	overflow-y: auto
+}
+
+.MissionRoom_Remark li {
+	line-height: 28px;
+	position: relative;
+	padding-left: 24px;
+	color: #888
+}
+
+.MissionRoom_Remark li i {
+	position: absolute;
+	left: 0;
+	top: 3px;
+	width: 18px
+}
+
+.MissionRoom_Detail_title span {
+	width: 140px;
+	height: 30px;
+	border-radius: 5px 5px 0 0;
+	padding: 0;
+	text-align: center;
+	display: inline-block;
+	color: #fff;
+	line-height: 30px;
+	font-size: 15px;
+	font-weight: 700
+}
+
+.MissionRoom_order_Information {
+	line-height: 40px;
+	background: #eff1f2;
+	color: #333;
+	font-size: 14px;
+	border-bottom: 1px solid #edeff0
+}
+
+.MissionRoom_order_Information span {
+	display: inline-block;
+	width: 88px;
+	padding-right: 2px;
+	text-align: right;
+	font-weight: 700
+}
+
+.MissionRoom_order_Information i {
+	display: inline-block;
+	width: 295px;
+	padding-left: 35px
+}
+
+.MissionRoom_order_Information i:last-child {
+	padding-left: 0
+}
+
+.teamInfo_label01 {
+	float: left;
+	width: 325px
+}
+
+.w_805 {
+	width: 805px
+}
+
+.MissionRoom_order_Information_td, .MissionRoom_table01>tbody>tr>td.MissionRoom_order_Information_td
+	{
+	border-left: 1px solid #e2e2e2;
+	text-align: center
+}
+
+.MissionRoom_order_Information_td a {
+	height: 28px;
+	line-height: 28px;
+	padding: 0 15px;
+	font-style: normal
+}
+
+.MissionRoom_order_Information_td .settingBtn {
+	padding: 0 15px;
+	line-height: 28px;
+	height: 28px;
+	display: inline-block;
+	font-size: 14px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px
+}
+
+.MissionRoom_order_Information_td em {
+	display: none
+}
+
+.c_848484, .teamInfo_label span.c_848484 {
+	color: #848484;
+	width: auto
+}
+
+.teamInfo_label span.c_848484 {
+	line-height: 28px
+}
+
+.MissionRoom_date_no dd {
+	cursor: default
+}
+
+.MissionRoom_Additional_btnBox, .MissionRoom_RoomInfo_btnBox {
+	width: 149px;
+	border-left: 1px solid #e2e2e2;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 14px 0
+}
+
+.MissionRoom_Additional_btnBox a, .MissionRoom_RoomInfo_btnBox a {
+	height: 28px;
+	line-height: 28px;
+	padding: 0 15px;
+	font-style: normal
+}
+
+.MissionRoom_Additional_btnBox a:hover, .MissionRoom_RoomInfo_btnBox a:hover
+	{
+	text-decoration: none
+}
+
+.MissionRoom_content1_table td a.blue:hover, a.totalBtn:hover, a.underline1
+	{
+	text-decoration: underline
+}
+
+.MissionRoom_Additional_btnBox a.settingBtn,
+	.MissionRoom_RoomInfo_btnBox a.settingBtn {
+	padding: 0 15px;
+	line-height: 28px;
+	height: 28px;
+	display: inline-block;
+	font-size: 14px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px
+}
+
+.J_changenum, .MissionRoom_Additional_btnBox em,
+	.MissionRoom_Remark_input, .MissionRoom_RoomInfo_btnBox em {
+	display: none
+}
+
+.Mission_Unsubscribe em {
+	font-style: normal
+}
+
+.Mission_Unsubscribe_sp {
+	margin-right: 25px
+}
+
+.J_changenum .valid-tip.success {
+	margin-left: 45px
+}
+
+.position_r {
+	position: relative
+}
+
+.MissionRoom_Remark_show {
+	line-height: 22px;
+	color: #848484
+}
+
+.MissionRoom_content1 {
+	margin-top: 25px
+}
+
+.MissionRoom_content1_table01 td, .MissionRoom_content1_table01 th {
+	word-break: break-all;
+	font-size: 13px;
+	color: #848484;
+	line-height: 18px;
+	height: 45px;
+	text-align: center;
+	border-left: 1px dashed #e2e2e2;
+	border-bottom: 1px solid #dedede
+}
+
+.MissionRomm_page li.pageWidth span, .finace_Account_table span,
+	.information .employee_tb td .spanOverflow, .w_200overFlow {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: keep-all
+}
+
+.MissionRoom_content1_table01 th {
+	background: #eff1f2;
+	font-weight: 400;
+	color: #333;
+	border-bottom: 1px solid #edeff0
+}
+
+.MissionRoom_content1_table td {
+	border-bottom: 1px solid #dedede
+}
+
+.MissionRoom_content1_table02 tr:last-child td {
+	border-bottom: 0
+}
+
+.MissionRoom_content1_table01 tr:last-child td {
+	border-bottom: none
+}
+
+.MissionRoom_content1_table01 td.MissionRoom_content1_td01,
+	.MissionRoom_content1_table01 th.MissionRoom_content1_td01 {
+	border-left: 0;
+	color: #333
+}
+
+.MissionRoom_content1_table01 td .uploadify {
+	margin-bottom: 0;
+	margin-left: 20px
+}
+
+.MissionRoom_content2 {
+	margin-top: 40px;
+	border-bottom: none !important;
+	border-left: none !important;
+	border-right: none !important
+}
+
+.MissionRoom_annexList {
+	padding: 10px 0
+}
+
+.MissionRoom_annexList li {
+	float: left;
+	width: 82px;
+	margin: 10px 13px;
+	position: relative;
+	height: 127px
+}
+
+.MissionRoom_annexList_img {
+	width: 80px;
+	height: 110px;
+	border: 1px solid #dfdfdf;
+	border-radius: 5px;
+	display: block;
+	cursor: pointer;
+	position: relative
+}
+
+.MissionRoom_annexList li img {
+	width: 80px;
+	height: 110px;
+	border-radius: 5px
+}
+
+.MissionRoom_annexList li h3 {
+	text-align: center;
+	font-weight: 400;
+	color: #333;
+	font-size: 12px;
+	line-height: 20px;
+	margin-top: 5px;
+	height: 20px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 82px
+}
+
+.RoomW .cw_c li, .TF_ATS li {
+	font-weight: 700;
+	float: left
+}
+
+.MissionRoom_addBtn {
+	cursor: pointer;
+	background: url(../images/MissionRoom/addBtn.png) center center
+		no-repeat;
+	width: 80px;
+	height: 110px;
+	border: 1px solid #dfdfdf;
+	border-radius: 5px;
+	display: block
+}
+
+.MissionRoom_bottom {
+	height: 60px;
+	border-top: 1px solid #edeff2;
+	background: #f7f9fb;
+	text-align: center;
+	padding-top: 15px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	box-shadow: 0 -2px 3px #f0f3f6
+}
+
+.MissionRoom_bottom a {
+	width: 118px !important;
+	height: 38px !important;
+	line-height: 38px !important;
+	padding: 0 !important;
+	text-align: center !important;
+	display: inline-block;
+	font-size: 14px !important;
+	margin: 0 10px
+}
+
+.MissionRoom_borderTop_n th {
+	border-top: none
+}
+
+a.underline1 {
+	cursor: pointer;
+	line-height: 28px
+}
+
+.MissionRomm_page .settingBtn {
+	bottom: 0;
+	height: 3px;
+	left: 13%;
+	position: absolute;
+	width: 74%;
+	border-radius: 0;
+	padding: 0;
+	display: none
+}
+
+.MissionRomm_page i {
+	float: left;
+	height: 39px;
+	width: 18px
+}
+
+.MissionRomm_page li {
+	position: relative;
+	float: left;
+	padding: 0 !important;
+	text-align: center;
+	line-height: 40px;
+	width: 190px;
+	overflow: hidden;
+	height: 40px
+}
+
+.MissionRomm_page li:first-child {
+	padding: 0 20px !important;
+	width: 75px
+}
+
+.MissionRomm_page em {
+	background: url(../images/tourism.png) 0 7px no-repeat;
+	opacity: .8;
+	width: 18px;
+	height: 39px;
+	display: inline-block;
+	position: relative;
+	top: 4px;
+	margin-left: 10px
+}
+
+.bigImgShow_box, .bigImgShow_box li img {
+	width: 400px;
+	height: 566px
+}
+
+.MissionRomm_page em:hover {
+	opacity: 1
+}
+
+.MissionRomm_page span {
+	display: block;
+	font-size: 14px !important
+}
+
+.MissionRomm_page li.curNo {
+	color: #333 !important
+}
+
+.MissionRomm_page .cur .settingBtn {
+	display: block
+}
+
+.MissionRomm_page li.cur {
+	background: #fff
+}
+
+.MissionRomm_page li.pageWidth span {
+	display: inline-block;
+	overflow: hidden
+}
+
+.MissionRomm_page li:first-child.curNo .ico {
+	background-image: url(../images/icons.png);
+	background-repeat: no-repeat;
+	background-position: -184px -430px
+}
+
+.bigImgShow_box {
+	position: absolute;
+	top: 50%;
+	margin-top: 0;
+	left: 50%;
+	margin-left: 0;
+	overflow: hidden
+}
+
+.bigImgShow_box li {
+	display: none
+}
+
+.bigImgShow_box li.cur {
+	display: block
+}
+
+.bigImgShow_box_bg .left_btn, .bigImgShow_box_bg .right_btn {
+	width: 41px;
+	height: 70px;
+	background-image: url(../images/MissionRoom/imgBtn.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top: 50%;
+	cursor: pointer
+}
+
+.bigImgShow_box_bg .left_btn:hover, .bigImgShow_box_bg .right_btn:hover
+	{
+	background-image: url(../images/MissionRoom/imgBtn01.png)
+}
+
+.bigImgShow_box_bg .left_btn {
+	left: 110px;
+	margin-top: -35px
+}
+
+.bigImgShow_box_bg .right_btn {
+	right: 110px;
+	margin-top: -35px;
+	background-position: 0 -107px
+}
+
+.bigImgShow_box .close_btn {
+	background: url(../images/TFS/tfs_ico.png) -289px -66px no-repeat
+		#777779 !important;
+	border-radius: 0 0 0 55px;
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	cursor: pointer
+}
+
+.bigImgShow_box .close_btn:hover {
+	background: url(../images/TFS/tfs_ico.png) -289px -66px no-repeat #999
+		!important
+}
+
+.bj_f2f2f2 {
+	background-color: #f2f2f2
+}
+
+.RoomW {
+	background: url(../images/MissionRoom/tu01.png) center 0 no-repeat;
+	width: 800px;
+	margin-top: -180px;
+	margin-left: -400px;
+	height: 280px;
+	position: absolute;
+	top: 50%;
+	left: 50%
+}
+
+.RoomW .cw_img {
+	height: 190px
+}
+
+.RoomW .cw_c {
+	height: 50px;
+	background: url(../images/MissionRoom/travel_02.png) center 0 no-repeat;
+	padding-left: 63px;
+	padding-top: 29px
+}
+
+.RoomW .cw_c li {
+	font-size: 14px
+}
+
+.RoomW .cw_c li a {
+	text-decoration: none
+}
+
+.RoomW .cw_c li a:hover, .underline1 {
+	text-decoration: underline
+}
+
+.RoomW .cw_c li.w_182 {
+	width: 182px
+}
+
+.RoomW .cw_c li.w_201 {
+	width: 201px
+}
+
+.RoomW .cw_c li.w_197 {
+	width: 197px
+}
+
+.RoomW .cw_c li.w_154 {
+	width: 154px
+}
+
+.underline1 {
+	cursor: pointer;
+	line-height: 28px
+}
+
+.underline1:hover {
+	text-decoration: none
+}
+
+.m_r25 {
+	margin-right: 25px
+}
+
+.select {
+	text-align: left !important
+}
+
+.RoomTitel {
+	border-right: 1px solid #e1e1e1;
+	box-shadow: 1px 0 0 #fff;
+	cursor: pointer;
+	float: left;
+	padding: 0 20px;
+	position: relative;
+	font-size: 14px;
+	line-height: 38px;
+	background: #fff
+}
+
+.RoomTitel .settingBtn {
+	bottom: 0;
+	display: block;
+	height: 3px;
+	left: 15px;
+	position: absolute;
+	width: 74%;
+	border-radius: 0;
+	padding: 0
+}
+
+.RoomTitel i {
+	float: left;
+	height: 40px;
+	width: 18px
+}
+
+.md_order {
+	background-position: -166px -430px
+}
+
+.RoomO {
+	background-color: #fafbfb;
+	border-bottom: solid 1px #e2e2e2;
+	height: 37px;
+	padding-left: 10px;
+	padding-top: 8px;
+	box-shadow: 0 1px 2px #d9d7d7
+}
+
+.TF_box .bb_x, .bb_x {
+	border-bottom: solid 1px #ddd
+}
+
+.RoomO a {
+	font-size: 13px;
+	width: 125px;
+	padding-bottom: 9px;
+	position: relative;
+	line-height: 28px;
+	height: 28px;
+	display: inline-block;
+	float: left;
+	text-align: center
+}
+
+.RO_Nub, .RoomO a i, .TF_box .bb_x {
+	position: absolute
+}
+
+.RO_box {
+	color: #6b6b6b
+}
+
+.RoomO a i {
+	height: 14px;
+	top: 7px;
+	right: 0;
+	width: 1px;
+	background: #e1e1e1
+}
+
+.RoomO a:hover {
+	color: #333
+}
+
+html {
+	-webkit-text-size-adjust: none
+}
+
+.RO_Nub {
+	background: red;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 10px;
+	font-style: normal;
+	left: 94px;
+	line-height: 14px;
+	min-width: 9px;
+	padding: 0 3px;
+	top: 0
+}
+
+.RoomO a:first-child .RO_Nub {
+	left: 86px
+}
+
+.RoomO a:last-child .RO_Nub {
+	left: 100px
+}
+
+.RoomO a .settingBtn {
+	bottom: -1px;
+	height: 3px;
+	left: 12%;
+	position: absolute;
+	width: 76%;
+	border-radius: 0;
+	padding: 0;
+	display: none
+}
+
+.Note, .RoomO a.blue .settingBtn {
+	display: block
+}
+
+.w_450 {
+	width: 450px
+}
+
+.w_452 {
+	width: 452px
+}
+
+.m_l15 {
+	margin-left: 15px
+}
+
+.w430_h140 {
+	width: 430px;
+	height: 140px
+}
+
+.w380_h100 {
+	width: 370px;
+	height: 100px
+}
+
+.w380_h60 {
+	width: 370px;
+	height: 60px
+}
+
+.w450_h60 {
+	height: 80px;
+	width: 440px
+}
+
+.w450_h40 {
+	height: 40px;
+	width: 440px
+}
+
+.bb_x {
+	margin-top: 20px
+}
+
+.TF_box .bb_x {
+	bottom: 60px;
+	left: 0;
+	width: 100%;
+	margin-top: 0
+}
+
+.Note {
+	background: url(../images/MissionRoom/tu02.png) 9px 8px no-repeat;
+	cursor: pointer;
+	height: 25px;
+	width: 20px;
+	left: 0
+}
+
+.TF_box {
+	padding-bottom: 61px
+}
+
+.TF_box li {
+	line-height: 30px;
+	padding: 7px 0 7px 110px;
+	position: relative
+}
+
+.TF_box .TF_btn, .TF_btn {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #fff
+}
+
+.TF_box li .TF_t {
+	position: absolute;
+	margin-left: -120px;
+	width: 115px;
+	text-align: right
+}
+
+.TF_ATS li, .TF_box .TF_btn, .TF_btn {
+	text-align: center
+}
+
+.TF_box li .TF_text {
+	position: relative
+}
+
+.TF_box li .TF_text .currency {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	color: #999
+}
+
+.TF_box .TF_btn {
+	position: absolute;
+	bottom: 0;
+	width: 97%
+}
+
+.TF_btn .MDbtn {
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	height: 38px;
+	line-height: 36px;
+	border-radius: 4px
+}
+
+.TF_ATS {
+	height: 34px;
+	line-height: 34px;
+	margin: 0 auto 15px;
+	width: 570px
+}
+
+.TF_ATS li {
+	background: #ebebeb;
+	font-size: 14px;
+	width: 280px;
+	margin-right: 1px;
+	cursor: pointer;
+	color: #666
+}
+
+.TF_ATS li.bgColor {
+	color: #fff
+}
+
+.TF_ATS01 {
+	width: auto;
+	border-bottom: 1px solid #c1c1c1;
+	height: 35px;
+	margin-left: 45px
+}
+
+.TF_ATS01 li {
+	width: auto;
+	background: 0 0;
+	font-weight: 400;
+	padding: 0 12px;
+	border-bottom: 2px solid transparent;
+	font-size: 16px
+}
+
+.TF_ATS01 li.bgColor {
+	background: 0 0 !important;
+	color: #34a1f4;
+	border-bottom: 2px solid #34a1f4
+}
+
+.TF_ATS.TF_guest li {
+	width: 141px
+}
+
+.TF_tab .TF_tab_t {
+	color: #666;
+	font-weight: 700;
+	font-size: 14px;
+	height: 30px
+}
+
+.TF_label {
+	position: relative;
+	height: 20px;
+	padding: 7px 0 7px 110px
+}
+
+.TF_label .TF_t {
+	position: absolute;
+	margin-left: -120px;
+	width: 115px;
+	text-align: right
+}
+
+.TF_label label {
+	float: left
+}
+
+.TF_box .f_ui-radio-c3, .TF_label .f_ui-radio-c3 {
+	cursor: pointer
+}
+
+.TF_box li .currency1 {
+	position: absolute;
+	left: 528px;
+	top: 6px;
+	color: #999
+}
+
+.TF_box .select {
+	height: 28px
+}
+
+.saas_preview {
+	border-radius: 0;
+	border: none
+}
+
+.saas_preview .ui-dialog-header {
+	background: #787b7e;
+	border: none
+}
+
+.saas_preview .ui-dialog-title {
+	padding: 0 10px;
+	height: 32px;
+	line-height: 32px;
+	color: #fff
+}
+
+.saas_preview .ui-dialog-close {
+	color: #fff;
+	right: 1px;
+	top: -1px;
+	opacity: 1;
+	font-size: 25px;
+	font-weight: 400
+}
+
+.saas_preview .ui-dialog-close:hover {
+	opacity: .5
+}
+
+.saas_preview .ui-dialog-footer {
+	padding: 15px 0
+}
+
+.saas_preview .ui-dialog-footer .ui-dialog-button {
+	text-align: center;
+	float: none
+}
+
+.saas_preview .ui-dialog-footer .btn_grey {
+	padding: 0;
+	cursor: pointer;
+	border-radius: 4px;
+	display: inline-block;
+	line-height: 34px;
+	background: #5b5d60;
+	border: 1px solid #494a4d;
+	border-bottom: solid 2px #494a4d;
+	color: #fff;
+	height: 34px;
+	margin: 0 10px;
+	width: 100px
+}
+
+.saas_preview .ui-dialog-footer .btn_grey:hover {
+	background: #5b5d60;
+	opacity: .8;
+	border: 1px solid #494a4d;
+	border-bottom: solid 2px #494a4d
+}
+
+.Note_pop {
+	background: #f4f9fc;
+	width: 300px;
+	max-height: 175px;
+	overflow: auto;
+	display: none;
+	border: 1px solid #58c7ce;
+	line-height: 18px;
+	position: absolute;
+	text-align: left;
+	z-index: 100
+}
+
+.Note_pop li {
+	padding: 0 0 8px
+}
+
+.Note_pop li:last-child {
+	border-bottom: none
+}
+
+.Note_pop li .Np_s {
+	color: #333;
+	padding: 5px 0;
+	font-weight: 700;
+	background: #f0f0f0;
+	line-height: 12px;
+	text-indent: 10px;
+	border-top: 1px solid #d7d7d7;
+	box-shadow: 0 -1px 2px #e8e8e8
+}
+
+.cksl_box tbody tr:first-child, .cksl_box th {
+	background: 0 0
+}
+
+.Note_pop li .Np_c {
+	color: #999;
+	padding: 5px 10px 0
+}
+
+.Note_pop li .Np_s i {
+	margin-left: 20px;
+	border-left: 1px solid #c2c2c2;
+	display: inline-block;
+	padding-left: 15px;
+	text-indent: 0;
+	font-weight: 400
+}
+
+.DayNub {
+	font-style: normal
+}
+
+.cksl_box {
+	width: 500px
+}
+
+.cksl_box th {
+	height: 25px;
+	line-height: 25px
+}
+
+.cksl_box td {
+	height: 38px;
+	line-height: 38px
+}
+
+.cksl_box td, .cksl_box th {
+	border: dashed #e4e4e4;
+	border-width: 0 1px 1px 0;
+	padding-left: 10px
+}
+
+.cksl_box tr td:last-child, .cksl_box tr th:last-child {
+	border-right: 1px solid #e4e4e4
+}
+
+.cksl_box tr td:first-child, .cksl_box tr th:first-child {
+	padding-left: 0;
+	border-left: 1px solid #e4e4e4
+}
+
+.cksl_notice {
+	width: 250px;
+	margin-left: 15px;
+	padding-top: 37px
+}
+
+.cksl_notice p {
+	height: 39px
+}
+
+.cksl_notice p span {
+	line-height: 22px;
+	display: inline-block;
+	border: 1px solid #fd2626;
+	position: relative;
+	margin-top: 7px;
+	padding: 0 7px;
+	color: #fd2626;
+	border-radius: 3px
+}
+
+.cksl_notice p i {
+	position: absolute;
+	width: 5px;
+	height: 7px;
+	top: 7px;
+	left: -5px;
+	background: url(../images/MissionRoom/ico02.png) no-repeat #fff
+}
+
+.MissionRoom_Remark_notice {
+	color: #888;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 28px;
+	margin-top: 5px
+}
+
+.MissionRoom_Remark_notice a {
+	text-decoration: underline
+}
+
+.MissionRoom_Remark_notice a:hover {
+	text-decoration: none
+}
+
+.MissionRoom_annexList_img span {
+	display: none;
+	height: 15px;
+	background-color: rgba(0, 0, 0, .45);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: 5px 0;
+	cursor: default
+}
+
+.MissionRoom_annexList_img span i {
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
+	display: inline-block
+}
+
+.MissionRoom_deleteBtn {
+	background: url(../images/ico_list.png) -34px -35px no-repeat;
+	margin-left: 20px
+}
+
+.MissionRoom_dowloadBtn {
+	background: url(../images/ico_list.png) -132px -66px no-repeat
+}
+
+.w_200overFlow {
+	display: block;
+	width: 190px;
+	text-align: center;
+	overflow: hidden;
+	line-height: 20px;
+	margin-left: 5px
+}
+
+.finace_optionList {
+	margin: 10px 0 0 10px;
+	background: #f3f6f8;
+	padding: 5px 0
+}
+
+.finace_optionList1 {
+	line-height: 28px;
+	padding: 4px 0
+}
+
+.finace_Reset {
+	height: 26px;
+	line-height: 26px;
+	padding: 0 6px
+}
+
+.finace_bold {
+	font-weight: 700;
+	color: #9e9e9e;
+	display: inline-block
+}
+
+.label td .p_l10 {
+	padding-left: 10px
+}
+
+.p_t191 {
+	padding-top: 191px
+}
+
+.finace_Account_table i {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 0 6px;
+	color: #fff;
+	line-height: 18px;
+	margin-left: 5px
+}
+
+.bgRed {
+	background: #ff2b49
+}
+
+.bgYellow {
+	background: #f69522
+}
+
+.finace_Account_table span {
+	max-width: 200px;
+	overflow: hidden;
+	display: inline-block
+}
+
+.finance_AccountTitle {
+	font-size: 13px;
+	margin-left: 18px
+}
+
+.finance_AccountTd01 h3 {
+	font-size: 14px;
+	font-weight: 400;
+	color: #282828;
+	line-height: 20px
+}
+
+.finance_AccountTd01 p {
+	font-size: 12px;
+	color: #b4b4b4;
+	line-height: 18px;
+	text-align: left
+}
+
+.finance_AccountTd02 h3 {
+	font-size: 12px;
+	font-weight: 400;
+	color: #282828;
+	line-height: 20px;
+	max-height: 40px;
+	overflow: hidden
+}
+
+.finance_AccountTd02 p {
+	color: #b4b4b4;
+	margin-top: 3px;
+	line-height: 18px
+}
+
+.teamInfo_optionList {
+	display: none
+}
+
+.list_wrap .list_item tr td.tdl:first-child {
+	text-indent: 15px;
+	position: relative
+}
+
+.textIndent_15 {
+	text-indent: 15px
+}
+
+.locking_ico {
+	width: 12px;
+	height: 15px;
+	position: absolute;
+	background: url(../images/MissionRoom/locking_ico.png) no-repeat;
+	left: 3px;
+	top: 11px
+}
+
+.locking_box {
+	width: 420px;
+	margin: 0 auto;
+	padding-top: 140px
+}
+
+.locking_box h3 {
+	padding-left: 90px;
+	background: url(../images/MissionRoom/locking_ico01.png) left center
+		no-repeat;
+	line-height: 50px;
+	font-size: 20px;
+	font-weight: 400;
+	color: #3e3e3e
+}
+
+.btn_save_no, .btn_save_no:hover {
+	background: #eaeaea !important;
+	border: 1px solid #e4e4e4 !important
+}
+
+.colorYellow {
+	color: #f60
+}
+
+.locking_box p {
+	margin-top: 50px
+}
+
+.locking_box p a {
+	width: 160px !important;
+	height: 38px !important;
+	line-height: 38px !important;
+	padding: 0 !important;
+	text-align: center !important;
+	display: inline-block;
+	font-size: 14px !important;
+	margin: 0 20px
+}
+
+.btn_save_no {
+	padding: 10px 35px;
+	cursor: default
+}
+
+.btn_save_no i {
+	display: none
+}
+
+.MissionRoom_del01:hover {
+	background: url(../images/MissionRoom/del_ico.png) no-repeat
+}
+
+.MissionRoom_Unsubscribe span {
+	display: inline-block;
+	width: 280px;
+	padding-left: 30px
+}
+
+.MissionRoom_Unsubscribe em {
+	font-style: normal;
+	color: #999
+}
+
+.billing-type-wrap {
+	width: 1050px;
+	color: #222
+}
+
+.billing-type-wrap01 {
+	width: 825px
+}
+
+.billing-type-wrap th {
+	height: 30px;
+	text-align: left;
+	background: #f1f2f4;
+	border: 1px solid #f1f2f4;
+	box-sizing: border-box;
+	padding-left: 10px;
+	line-height: 30px;
+	font-weight: 400
+}
+
+.billing-type-text01 {
+	width: 80px !important;
+	height: 30px;
+	border: none;
+	padding-left: 10px
+}
+
+.billing-type-wrap td {
+	line-height: 40px;
+	border: 1px solid #E6E6E6;
+	padding-right: 10px
+}
+
+.billing-type-select, .billing-type-text {
+	/*background: url(http://hres.fangcang.com/css/saas/images/jtx.png) center*/
+		/*right no-repeat;*/
+	height: 40px;
+	border: none;
+	padding-left: 10px;
+	padding-right: 15px;
+	width: 100%;
+	box-sizing: border-box
+}
+
+.billing-type-select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none
+}
+
+.billing-type-wrap td.billing-type-box, .billing-type-wrap td.billing-type-box01
+	{
+	/*background: url(http://hres.fangcang.com/css/saas/images/jtx.png) 203px*/
+		/*center no-repeat;*/
+	padding-left: 0
+}
+
+.billing-type-wrap td.billing-type-box01 {
+	position: relative
+}
+
+.billing-type-common, .billing-type-price {
+	position: absolute;
+	top: 40px;
+	z-index: 999;
+	display: none;
+	left: 0
+}
+
+.billing-type-common {
+	width: 100%;
+	background: #fff;
+	box-shadow: 0 0 4px 0 rgba(109, 109, 109, .5)
+}
+
+.billing-type-common li {
+	line-height: 20px;
+	padding: 6px 10px;
+	border-bottom: 1px solid #DEE0E5
+}
+
+.billing-type-common li:hover {
+	background: #f5f5f5
+}
+
+.billing-type-price {
+	width: 510px;
+	padding: 10px 0 0;
+	border-radius: 10px;
+	box-shadow: 0 0 15px 0 rgba(109, 109, 109, .5);
+	background: #fff;
+	color: #3B3B3B;
+	overflow-y: auto
+}
+
+.billing-type-price-title {
+	font-size: 16px;
+	line-height: 22px;
+	margin-top: 7px;
+	font-weight: 400;
+	padding-left: 30px
+}
+
+.billing-type-price-content {
+	margin-top: 15px;
+	padding: 0 30px
+}
+
+.billing-type-price-content dl {
+	position: relative;
+	padding-left: 96px;
+	overflow: hidden
+}
+
+.billing-type-price-content dt {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 1px solid #DEE0E5;
+	background: #F5F5F5;
+	width: 96px
+}
+
+.billing-type-price-content dt span {
+	display: block;
+	border-bottom: 1px solid #DEE0E5;
+	line-height: 30px;
+	padding-left: 10px
+}
+
+.billing-type-price-content dt span:last-child {
+	border-bottom: 0
+}
+
+.billing-type-price-content dt span:nth-child(even) {
+	line-height: 40px
+}
+
+.billing-type-price-content dd {
+	width: 321px
+}
+
+.billing-type-price-content dd p:nth-child(1) span.billing-type-price-bg,
+	.billing-type-price-content dd p:nth-child(2) span.billing-type-price-bg,
+	.billing-type-price-content dd p:nth-child(3) span.billing-type-price-bg,
+	.billing-type-price-content dd p:nth-child(4) span.billing-type-price-bg
+	{
+	border-top: 1px solid #DEE0E5;
+	height: 32px
+}
+
+.room-price-date dl {
+	position: relative;
+	padding-left: 96px;
+	overflow: hidden
+}
+
+.room-price-date dt {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 1px solid #DEE0E5;
+	background: #F5F5F5;
+	width: 96px
+}
+
+.room-price-date dt span {
+	display: block;
+	border-bottom: 1px solid #DEE0E5;
+	line-height: 40px;
+	padding-left: 10px
+}
+
+.room-price-date dt span:last-child {
+	border-bottom: 0
+}
+
+.room-price-date dt span:nth-child(3n+1) {
+	line-height: 30px
+}
+
+.room-price-date dd {
+	width: 321px
+}
+
+.room-price-date dd p:nth-child(1) span.billing-type-price-bg,
+	.room-price-date dd p:nth-child(2) span.billing-type-price-bg,
+	.room-price-date dd p:nth-child(3) span.billing-type-price-bg,
+	.room-price-date dd p:nth-child(4) span.billing-type-price-bg {
+	border-top: 1px solid #DEE0E5;
+	height: 32px
+}
+
+.room-price-date p {
+	float: left;
+	width: 80px
+}
+
+.room-price-date p span {
+	border: solid #DEE0E5;
+	border-width: 0 0 1px 1px;
+	height: 41px;
+	box-sizing: border-box;
+	padding: 0 10px;
+	display: block
+}
+
+.room-price-date p:last-child span, .room-price-date p:nth-child(4n) span
+	{
+	border-right: 1px solid #DEE0E5;
+	width: 81px
+}
+
+.room-price-date p span.billing-type-price-bg {
+	background: #f5f5f5;
+	height: 31px;
+	line-height: 30px
+}
+
+.main-overflow {
+	overflow-y: auto;
+	position: initial;
+	padding-top: 0 !important
+}
+
+.room-price-date {
+	display: none
+}
+
+.additional-item-name {
+	position: relative
+}
+
+.billing-type-price-content p {
+	float: left;
+	width: 80px
+}
+
+.billing-type-price-content p span {
+	border: solid #DEE0E5;
+	border-width: 0 0 1px 1px;
+	height: 41px;
+	box-sizing: border-box;
+	padding: 0 10px;
+	display: block
+}
+
+.billing-type-price-content p:last-child span,
+	.billing-type-price-content p:nth-child(4n) span {
+	border: solid #DEE0E5;
+	border-width: 0 1px 1px;
+	width: 81px
+}
+
+.billing-type-price-content p span.billing-type-price-bg {
+	background: #f5f5f5;
+	height: 31px;
+	line-height: 30px
+}
+
+.billing-type-price-text {
+	height: 30px;
+	line-height: 30px;
+	border: none;
+	width: 70%
+}
+
+.billing-type-price-footer {
+	margin-top: 20px;
+	border-top: 1px solid #DEE0E5;
+	padding: 10px 10px 10px 30px;
+	line-height: 32px
+}
+
+.billing-type-price-footer a {
+	font-size: 13px
+}
+
+.billing-type-price-btn {
+	width: 60px;
+	line-height: 32px;
+	text-align: center;
+	color: #fff;
+	margin-left: 30px;
+	background: rgba(0, 154, 240, 1);
+	border-radius: 5px
+}
+
+.billing-type-price-btn:hover {
+	background: rgba(0, 154, 240, .8)
+}
+
+.f-s14 {
+	font-size: 14px
+}
+
+.billing-type-wrap .blue:hover {
+	text-decoration: underline
+}
+
+.billing-type-add {
+	padding-left: 20px;
+	/*background: url(http://hres.fangcang.com/css/saas/images/tianjia.png)*/
+		/*left 12px no-repeat;*/
+	color: #34a1f4;
+	background-size: 14px auto;
+	margin-left: 10px
+}
+
+.billing-type-delete {
+	margin-left: 10px
+}
+
+.datePopDiv {
+	width: 458px;
+	background: #fff;
+	border-radius: 6px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+	padding: 10px 20px 15px;
+	position: absolute;
+	z-index: 999999
+}
+
+.datePopDiv_list {
+	width: 224px
+}
+
+.datePopDiv_list p span, .datePopDiv_list_m span {
+	float: left;
+	width: 32px;
+	text-align: center
+}
+
+.datePopDiv_list h3 {
+	line-height: 26px;
+	text-align: center;
+	padding-bottom: 8px;
+	height: 26px;
+	font-size: 14px
+}
+
+.yearNub {
+	margin-right: 5px;
+	font-family: arial
+}
+
+.mouthNub {
+	margin: 0 5px;
+	font-family: arial
+}
+
+.datePopDiv_list p {
+	height: 20px;
+	line-height: 20px;
+	background: #f7f7f7
+}
+
+.datePopDiv_list_m {
+	margin-top: 5px
+}
+
+.datePopDiv_list_m span {
+	height: 24px;
+	line-height: 24px;
+	color: #747474;
+	padding-top: 5px;
+	font-family: arial
+}
+
+.datePopDiv_list_m span i {
+	display: block;
+	width: 24px;
+	margin: 0 auto
+}
+
+.datePopDiv_list_m span.date_out i {
+	color: #d4d4d4;
+	cursor: default !important
+}
+
+.datePopDiv_list_m span.date_dayNow i {
+	color: red
+}
+
+.datePopDiv_list_m span.date_StartCur i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 12px 0 0 12px;
+	padding-right: 4px;
+	float: right
+}
+
+.datePopDiv_list_m span.date_range i {
+	color: #fff;
+	background: #ff6000;
+	width: 32px
+}
+
+.datePopDiv_list_m span.date_EndCur i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 0 12px 12px 0;
+	padding-left: 4px;
+	float: left
+}
+
+.date_Optional {
+	cursor: pointer
+}
+
+.DcolorYellow {
+	color: #ff6000
+}
+
+.datePopDiv_list_m span.date_range1 i {
+	background: #ff6000;
+	color: #fff;
+	width: 32px
+}
+
+.datePopDiv_list_m span.date_Optional:hover i {
+	background: #eee;
+	border-radius: 12px
+}
+
+.datePopDiv_list_m span.date_range:hover i {
+	color: #fff;
+	background: #ff6000;
+	width: 32px;
+	border-radius: 0
+}
+
+.datePop_next, .datePop_prev {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 15px;
+	cursor: pointer
+}
+
+.datePopDiv_list_m span.date_StartCur:hover i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 12px 0 0 12px
+}
+
+.datePopDiv_list_m span.date_EndCur:hover i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 0 12px 12px 0
+}
+
+.datePopDiv_list_m span.date_StartCur1 i, .datePopDiv_list_m span.date_StartCur1:hover i
+	{
+	padding-right: 0;
+	float: none;
+	border-radius: 12px
+}
+
+.datePopDiv_list_m span.date_EndCur1 i, .datePopDiv_list_m span.date_EndCur1:hover i
+	{
+	padding-left: 0;
+	float: none;
+	border-radius: 12px
+}
+
+.datePopDiv_list_m span.date_range1:hover i {
+	background: #ff6000;
+	color: #fff;
+	border-radius: 0
+}
+
+.datePopDiv_list_m span.date_StartCur2 i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 12px 0 0 12px;
+	padding-right: 4px;
+	float: right
+}
+
+.datePopDiv_list_m span.date_EndCur2 i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 0 12px 12px 0;
+	padding-left: 4px;
+	float: left
+}
+
+.datePop_prev {
+	/*background:*/
+		/*url(http://hres.fangcang.com/css/saas/images/hotelSearch_btn.png)*/
+		/*-25px 0 no-repeat;*/
+	/*left: 40px*/
+}
+
+.datePop_next {
+	/*background:*/
+		/*url(http://hres.fangcang.com/css/saas/images/hotelSearch_btn.png)*/
+		/*-54px 0 no-repeat;*/
+	/*right: 40px*/
+}
+
+.datePopDiv_list_m span.date_StartCur3:hover i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 12px 0 0 12px;
+	padding-right: 4px;
+	float: right;
+	width: 24px
+}
+
+.datePopDiv_list_m span.date_EndCur3:hover i {
+	color: #fff;
+	background: #ff6000;
+	border-radius: 0 12px 12px 0;
+	padding-left: 4px;
+	float: left;
+	width: 24px
+}
+
+.datePopDiv_list_m span.date_EndCur4 i, .datePopDiv_list_m span.date_StartCur4 i
+	{
+	color: #fff;
+	background: #ff6000;
+	border-radius: 0;
+	padding: 0;
+	float: left;
+	width: 32px
+}
+
+.datePopDiv_list_m span.date_out:hover i {
+	background: 0 0
+}
+
+.date_item .type_adress .f_ui-valid-item:last-child .valid-tip b {
+	display: inline-block
+}
+
+.information .employee_tb td .spanOverflow {
+	overflow: hidden;
+	display: block;
+	width: 156px !important
+}
+
+.d_list .time_item {
+	padding-left: 0
+}
+
+.d_list .time_item .Order_pop_box02 {
+	width: 517px
+}
+
+.mission-room-info td, .mission-room-info th {
+	text-align: left;
+	padding-left: 10px;
+	word-break: break-all;
+	box-sizing: border-box;
+	border: solid #e2e2e2;
+	border-width: 0 1px 1px 0
+}
+
+.mission-room-info td a.underline {
+	cursor: pointer
+}
+
+.mission-room-info tr td:last-child, .mission-room-info tr th:last-child
+	{
+	border-right: 0
+}
+
+.mission-room-info tr:last-child td {
+	border-bottom: 0
+}
+
+.mission-room-info td {
+	min-height: 30px;
+	font-size: 13px;
+	line-height: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px
+}
+
+.pd-0 {
+	padding: 0 !important
+}
+
+.mission-room-info th {
+	height: 30px;
+	background: #f2f2f2;
+	color: #999
+}
+
+.mission-room-add {
+	padding-left: 20px;
+	/*background: url(http://hres.fangcang.com/css/saas/images/tianjia.png)*/
+		/*left 12px no-repeat;*/
+	color: #34a1f4;
+	background-size: 14px auto;
+	display: inline-block;
+	line-height: 40px
+}
+
+.additional-notice {
+	line-height: 40px;
+	color: #999;
+	padding-left: 10px;
+	border-bottom: 1px solid #e2e2e2
+}
+
+.mission-room-table td {
+	font-size: 13px;
+	height: 40px;
+	border: 1px solid #e4e4e4;
+	padding-left: 10px
+}
+
+.mission-room-bg {
+	background: #f1f2f4
+}
+
+.mission-room-table td.mission-room-td {
+	padding-left: 0;
+	padding-right: 10px
+}
+
+.billing-type-text02 {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0);
+	height: 40px;
+	border: none;
+	padding-left: 10px;
+	box-sizing: border-box
+}
+
+.room-price-date01 {
+	width: 100%;
+	font-size: 13px
+}
+
+.room-price-date-notice {
+	font-size: 13px;
+	line-height: 30px;
+	margin-top: 10px
+}
+
+.room-price-date01 dd {
+	width: 640px
+}
+
+.room-price-date01 dl {
+	position: relative;
+	padding-left: 119px;
+	overflow: hidden
+}
+
+.room-price-date01 dt {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 1px solid #DEE0E5;
+	background: #F5F5F5;
+	width: 119px
+}
+
+.room-price-date01 dt span {
+	display: block;
+	border-bottom: 1px solid #DEE0E5;
+	line-height: 40px;
+	padding-left: 10px
+}
+
+.room-price-date01 dt span:last-child {
+	border-bottom: 0
+}
+
+.room-price-date01 dt span:nth-child(3n+1) {
+	line-height: 30px
+}
+
+.room-price-date01 dd p:nth-child(1) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(2) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(3) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(4) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(5) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(6) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(7) span.billing-type-price-bg,
+	.room-price-date01 dd p:nth-child(8) span.billing-type-price-bg {
+	border-top: 1px solid #DEE0E5;
+	height: 32px
+}
+
+.room-price-date01 p {
+	float: left;
+	width: 79px
+}
+
+.room-price-date01 p span {
+	border: solid #DEE0E5;
+	border-width: 0 0 1px 1px;
+	height: 41px;
+	box-sizing: border-box;
+	padding: 0 10px;
+	display: block
+}
+
+.room-price-date01 p:last-child span, .room-price-date01 p:nth-child(8n) span
+	{
+	border-right: 1px solid #DEE0E5;
+	width: 80px
+}
+
+.room-price-date01 p span.billing-type-price-bg {
+	background: #f5f5f5;
+	height: 31px;
+	line-height: 30px
+}
+
+.textarea-contenteditable, .textarea-contenteditable01 {
+	min-height: 40px;
+	width: 100%;
+	line-height: 20px;
+	word-break: break-all;
+	box-sizing: border-box
+}
+
+.room-price-date-wrap {
+	display: none
+}
+
+.textarea-contenteditable {
+	padding: 10px 0 10px 10px
+}
+
+.textarea-contenteditable01 {
+	padding: 10px 0 10px 30px
+}
+
+.m-t20 {
+	margin-top: 20px
+}
+
+.pd-r10 {
+	padding-right: 10px
+}

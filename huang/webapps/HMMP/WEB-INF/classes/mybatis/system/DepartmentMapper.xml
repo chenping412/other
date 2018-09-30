@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.travel.system.dao.DepartmentMapper">
+
+    <resultMap id="BaseResultMap" type="com.travel.system.entity.Department">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+
+        <result column="creator" jdbcType="VARCHAR" property="creator"/>
+        <result column="create_date" jdbcType="TIMESTAMP" property="createDate"/>
+        <result column="modifier" jdbcType="VARCHAR" property="modifier"/>
+        <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+
+        <result column="dept_no" jdbcType="VARCHAR" property="deptNo"/>
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName"/>
+        <result column="parent" jdbcType="INTEGER" property="parent"/>
+        <result column="parent_dept_name" jdbcType="VARCHAR" property="parentDeptName"/>
+
+        <result column="email_username" jdbcType="VARCHAR" property="emailUsername"/>
+        <result column="email_host" jdbcType="VARCHAR" property="emailHost"/>
+        <result column="email_password" jdbcType="VARCHAR" property="emailPassword"/>
+        <result column="email_port" jdbcType="VARCHAR" property="emailPort"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, creator, create_date, modifier, modify_date, description, dept_no, dept_name,parent,email_username,email_host,email_password,email_port
+    </sql>
+
+    <select id="getDepartmentById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        t.id, t.creator, t.create_date, t.modifier, t.modify_date, t.description, t.dept_no, t.dept_name, t.parent, p.dept_name as parentDeptName,
+        t.email_username emailUsername,t.email_host emailHost,t.email_password emailPassword,t.email_port emailPort
+        from t_dept t left join t_dept p on t.parent = p.id
+        where t.id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <insert id="addDepartment" parameterType="com.travel.system.entity.Department" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        insert into t_dept (creator, create_date, modifier, modify_date, description, dept_no, dept_name, parent,email_username,email_host,email_password,email_port)
+        values (
+            #{creator,jdbcType=VARCHAR},
+            now(),
+            #{modifier,jdbcType=VARCHAR},
+            now(),
+            #{description,jdbcType=VARCHAR},
+            #{deptNo,jdbcType=VARCHAR},
+            #{deptName,jdbcType=VARCHAR},
+            #{parent,jdbcType=VARCHAR},
+            #{emailUsername,jdbcType=VARCHAR},
+            #{emailHost,jdbcType=VARCHAR},
+            #{emailPassword,jdbcType=VARCHAR},
+            #{emailPort,jdbcType=VARCHAR}
+        )
+         ]]>
+    </insert>
+
+    <delete id="deleteDepartment" parameterType="java.lang.Integer">
+        delete from t_dept
+        where id = #{deptId,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateDepartment" parameterType="com.travel.system.entity.Department">
+        update t_dept
+        <set>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+                modify_date = now(),
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="deptNo != null">
+                dept_no = #{deptNo,jdbcType=VARCHAR},
+            </if>
+            <if test="deptName != null">
+                dept_name = #{deptName,jdbcType=VARCHAR},
+            </if>
+            <if test="parent != null">
+                parent = #{parent,jdbcType=VARCHAR},
+            </if>
+            <if test="emailUsername != null">
+                email_username = #{emailUsername,jdbcType=VARCHAR},
+            </if>
+            <if test="emailHost != null">
+                email_host = #{emailHost,jdbcType=VARCHAR},
+            </if>
+            <if test="emailPassword != null">
+                email_password = #{emailPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="emailPort != null">
+                email_port = #{emailPort,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="queryDepartmentList" parameterType="com.travel.common.dto.system.query.DepartmentQueryDTO" resultMap="BaseResultMap">
+        select
+            distinct
+            td.id,
+            td.dept_no as deptNo,
+            td.dept_name as deptName,
+            td.parent,
+            td.description,
+            td.creator,
+            td.create_date as createDate,
+            td.modifier,
+            td.modify_date as modifyDate,
+            tp.dept_name as parentDeptName,
+        td.email_username emailUsername,
+        td.email_host emailHost,
+        td.email_password emailPassword,
+        td.email_port emailPort
+        from t_dept td left join t_dept tp on td.parent = tp.id
+        <where>
+            <if test="deptName != null" >
+                td.dept_name like concat('%', #{deptName}, '%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

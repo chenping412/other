@@ -1,0 +1,10 @@
+服务器   
+134.175.118.28    chenping/CHENping1688
+
+文件路劲   /usr/local/tomcat8/webapps
+
+
+测试服链接
+http://134.175.118.28:8080/HMMP
+账号密码  test01   test01
+

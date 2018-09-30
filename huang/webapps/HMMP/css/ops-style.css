@@ -1,0 +1,65 @@
+body {
+    font: 12px/100% "微软雅黑";
+    color: #333;
+    overflow-y: scroll;
+}
+
+*, body {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    line-height: 34px;
+    list-style: none;
+    padding-left: 50px;
+    font-size: 16px;
+}
+
+.top_container, .header_container, .main_container, .left_container, .right_container {
+    /*border: solid 1px #FF0000;*/
+    padding-top: 10px;
+}
+
+.top_container {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.header_container {
+    width: 100%;
+    max-height: 60px;
+    min-height: 60px;
+}
+
+.main_container {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.left_container {
+    width: 150px;
+    height: auto;
+    float: left;
+}
+
+.right_container {
+    width: 85%;
+    height: auto;
+    float: right;
+}
+
+.top_container .title {
+    font: 24px/100% "微软雅黑";
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.top_container .welcome {
+    font: 18px/100% "微软雅黑";
+    float: right;
+    margin: 10px;
+}
+
