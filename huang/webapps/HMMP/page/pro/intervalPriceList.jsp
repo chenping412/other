@@ -69,6 +69,10 @@
     	height: 30px;
     	line-height: 30px;
     }
+    #dynamicPriceList table .background-red{
+        background-color: #FF6B6B;
+        color: #ffffff;
+    }
 </style>
 <body>
 
@@ -158,7 +162,7 @@
         			<th>产品名称</th>
         			<c:if test="${not empty dateList}">
         				<c:forEach items="${dateList}" var="dt" varStatus="dtStatus">
-        					<th>
+        					<th <c:if test="${dt.weekDay == '周六' || dt.weekDay == '周五'}">class="background-red"</c:if> >
         						<p><fmt:formatDate value="${dt.saleDate}" pattern="yyyy-MM-dd"/></p>
         						<p>${dt.weekDay}</p>
         					</th>
