@@ -24,7 +24,7 @@
 		<div class="breadcrumb">
 			<div class="section-content"></div>
 		</div>
-		<div class="main-content" style="width: 1366px;">
+		<div class="main-content">
 <%-- 			<shiro:hasPermission name="finance:orderLock:query"> --%>
 
 		<div class="section-wrap section-wrap-function">
@@ -72,8 +72,8 @@
 <%-- 			</shiro:hasPermission> --%>
 			<div class="baseline"></div>
 			<div class="table-list">
-				<div class="table-list-header" style="width:1366px;">
-					<ul class="clearfix" style="width:1366px;">
+				<div class="table-list-header" style="width:100%;">
+					<ul class="clearfix">
 						<li style="width: 10%">分销商</li>
 						<li style="width: 10%">酒店</li>
 						<%--<li style="width: 5%">客人</li>--%>
@@ -95,11 +95,11 @@
 						<%--<li style="width: 15%">制单人</li>--%>
 					</ul>
 				</div>
-				<div class="table-list-content clearfix" style="width:1366px;">
+				<div class="table-list-content clearfix" style="width:100%;">
 					<c:if test="${not empty page}">
 						<c:forEach items="${page.recordList}" var="daliyProfit"
 							varStatus="status">
-							<ul class="row clearfix" style="width:1366px;">
+							<ul class="row clearfix">
 								<li style="width: 10%">${daliyProfit.agentName}</li>
 								<li style="width: 10%">${daliyProfit.hotelName}</li>
 								<%--<li style="width: 5%">${daliyProfit.guestName}</li>--%>

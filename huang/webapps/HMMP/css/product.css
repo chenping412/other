@@ -280,6 +280,9 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     color: #ffffff;
 }
+.filter-bar .search-btn{
+    line-height: 38px;
+}
 
 .filter-bar a:hover {
     opacity: 0.4;

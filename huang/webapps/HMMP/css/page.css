@@ -137,9 +137,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .main-content{  /* 每个页面主要内容 */
-    width: 100%;
+    /*width: 100%;*/
     height: auto;
     /*min-height: 600px;*/
+    margin-right: 20px;
     padding-top: 30px;
     padding-bottom: 30px;
     background-color: #fff;
@@ -255,6 +256,9 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 3px;
     position: absolute;
     top: 2px;
+}
+.filter-bar .search-btn{
+    line-height: 38px;
 }
 
 .filter-bar a:hover {
@@ -515,20 +519,25 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .table-list .table-list-header {
-    height: 13px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    background-color: #009BF1;
+    color: #ffffff;
+    text-align: center;
 }
 
 .table-list .table-list-content ul {
-    height: 38px;
     float: left;
 }
-
+.table-list .table-list-header>ul,
+.table-list .table-list-content .row{
+    padding:6px 0;
+}
 .table-list .table-list-header>ul>li,
 .table-list .table-list-content .row>li {
     float: left;
     white-space: nowrap;/* 超出不换行 */
-    height: 38px;
+    line-height: 26px;
+    min-height: 26px;
 }
 
 .table-list .table-list-content .row .copy{

@@ -56,8 +56,6 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-<style>
-</style>
 </style>
 <body>
 
@@ -132,7 +130,7 @@
                      <br/>
 
                     <li style="margin-left:28px;">
-                        <a class="search-btn" href="javascript:queryRoomTypeList(1);"><i class="iconfont icon-search" style="top: -6px;"></i></a>
+                        <a class="search-btn" href="javascript:queryRoomTypeList(1);"><i class="iconfont icon-search"></i></a>
                     </li>
                     <li style="margin-left:112px;">
 						<a href="javascript:void(0);" class="addbtn" style="color:#fff;">批量保存</a>
