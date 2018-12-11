@@ -1,0 +1,38 @@
+<!--pages/video/video.wxml-->
+<!--pages/detail/detail.wxml-->
+<view wx:if="{{!loading}}">
+
+  <view class='video'>
+    <video src="{{info.videoUrl}}" controls></video>
+    <view class='title'>{{info.title}}</view>
+    <view class="info">
+      <image class='img' src="{{info.headImgUrl}}"></image>
+      <view class="from">{{info.nickName}}</view>
+      <view class="time">{{info.time}}</view>
+    </view>
+
+  </view>
+
+  <view class='comment'>
+    <view class='title'>精选评论</view>
+    <view class='list'>
+
+      <view class='no-more' wx:if="{{hasNoComment}}">暂无评论</view>
+
+      <view class='item' wx:for="{{commentList}}">
+        <view class="info">
+          <image class='img' src="{{item.headImgUrl}}" wx:if="{{item.headImgUrl}}"></image>
+          <view class="author">{{item.nickName}}</view>
+        </view>
+        <view class="content">{{item.comment}}</view>
+        <view class="time">{{item.time}}</view>
+      </view>
+
+
+      <view class='no-more' wx:if="{{!hasNoComment && noMoreComment}}">已经到底了</view>
+      <view class='no-more' wx:if="{{!hasNoComment && !noMoreComment}}" bindtap='tapMoreComment'>点击加载更多</view>
+
+    </view>
+  </view>
+
+</view>

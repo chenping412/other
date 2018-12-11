@@ -1,0 +1,18 @@
+{
+  "pages": [
+
+
+"pages/index/index",
+"pages/video/video",
+"pages/detail/detail",
+
+
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#409EFF",
+    "navigationBarTitleText": "不与",
+    "navigationBarTextStyle": "white"
+  }
+}

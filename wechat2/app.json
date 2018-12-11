@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/video/video",
+    "pages/detail/detail",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#273E66",
+    "navigationBarTitleText": "写作机器人",
+    "navigationBarTextStyle": "white"
+  }
+}

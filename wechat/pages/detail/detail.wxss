@@ -1,0 +1,83 @@
+/* pages/detail/detail.wxss */
+
+.article {
+  padding: 13rpx 25rpx 30rpx;
+}
+
+.article .title {
+  font-size: 22px;
+  color: #333;
+  line-height: 60rpx;
+  padding-bottom: 18rpx;
+  font-weight: bolder;
+}
+
+.article .info {
+   margin-bottom: 30rpx; 
+  font-size: 11px;
+  color: #999;
+  line-height: 46rpx;
+  height: 46rpx;
+}
+
+.article .info .img {
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  float: left;
+  margin-right: 15rpx;
+}
+
+.article .info .from {
+  float: left;
+  margin-right: 15rpx;
+}
+
+.article .info .time {
+  float: left;
+}
+
+.article .content {
+  width: 700rpx;
+  margin: 0 auto;
+  font-size: 16px;
+  color: #333;
+  letter-spacing: 0;
+  line-height: 56rpx;
+  text-align: justify;
+}
+
+.article .content text, .article .content view {
+  font-size: 16px !important;
+  color: #333 !important;
+  letter-spacing: 0 !important;
+  line-height: 56rpx !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-indent: 0 !important;
+}
+
+.article .content .wxParse-p, .article .content .wxParse-img {
+  margin: 30rpx auto !important;
+}
+
+.article .content .wxParse-tr {
+  display: flex;
+}
+
+.article .content .wxParse-th, .article .content .wxParse-td {
+  flex: 1;
+  word-break: break-all;
+}
+
+.article .content .wxParse-inline {
+  display: inline;
+}
+
+.article .content image {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}

@@ -1,0 +1,73 @@
+/**app.wxss**/
+view{
+   font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif !important; 
+}
+
+
+.comment .title {
+  font-size: 16px;
+  color: #333;
+  font-weight: bolder;
+  letter-spacing: 0.7rpx;
+  line-height: 45rpx;
+  padding: 20rpx 50rpx;
+  border-top: 8rpx solid #f7f7f7;
+  border-bottom: 8rpx solid #f7f7f7;
+  position: relative;
+}
+
+.comment .title::after {
+  content: '';
+  position: absolute;
+  left: 25rpx;
+  top: 28rpx;
+  width: 6rpx;
+  height: 30rpx;
+  background: #f89144;
+}
+
+.comment .list .item {
+  padding: 35rpx 47rpx 44rpx;
+  border-bottom: 1rpx solid #d4dce1;
+}
+
+.comment .list .item .info {
+  padding-bottom: 20rpx;
+  height: 46rpx;
+}
+
+.comment .list .item .info .img {
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  margin-right: 18rpx;
+  float: left;
+
+}
+
+.comment .list .item .info .author {
+  font-size: 14px;
+  color: #0091EA;
+  line-height: 42rpx;
+  float: left;
+}
+
+.comment .list .item .content {
+  font-size: 14px;
+  color: #333;
+  line-height: 38rpx;
+  padding-bottom: 15rpx;
+  text-align: justify;
+}
+.comment .list .item .time {
+  font-size: 11px;
+color: #999999;
+line-height: 32rpx;
+}
+
+.no-more{
+  text-align: center;
+  font-size: 14px;
+  padding: 20rpx 0 40rpx;
+  color: #999999;
+}

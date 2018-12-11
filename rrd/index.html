@@ -1,0 +1,482 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<title>我昨天失眠了</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="full-screen" content="true">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="360-fullscreen" content="true">
+	<style type="text/css">
+		html {
+			font-size : 18px;
+		}
+		@media screen and (min-width: 320px) and (min-height: 368px) {
+			html {
+				font-size: 18px;
+			}
+		}
+		@media screen and (min-width: 320px) and (min-height: 414px) {
+			html {
+				font-size: 18px;
+			}
+		}
+		@media screen and (min-width: 320px) and (min-height: 458px) {
+			html {
+				font-size: 20px;
+			}
+		}
+		@media screen and (min-width: 320px) and (min-height: 504px) {
+			html {
+				font-size: 21.7px;
+			}
+		}
+		@media screen and (min-width: 360px) and (min-height: 567px) {
+			html {
+				font-size: 23.8px;
+			}
+		}
+		@media screen and (min-width: 360px) and (min-height: 570px) {
+			html {
+				font-size: 24.8px;
+			}
+		}
+		@media screen and (min-width: 375px) and (min-height: 557px) {
+			html {
+				font-size: 24px;
+			}
+		}
+		@media screen and (min-width: 375px) and (min-height: 603px) {
+			html {
+				font-size: 26px;
+			}
+		}
+		@media screen and (min-width: 393px) and (min-height: 579px) {
+			html {
+				font-size: 25px;
+			}
+		}
+		@media screen and (min-width: 393px) and (min-height: 631px) {
+			html {
+				font-size: 27.3px;
+			}
+		}
+		@media screen and (min-width: 414px) and (min-height: 626px) {
+			html {
+				font-size: 27px;
+			}
+		}
+		@media screen and (min-width: 480px) and (min-height: 650px) {
+			html {
+				font-size: 27px;
+			}
+		}
+		@media screen and (min-width: 412px) and (min-height: 658px) {
+			html {
+				font-size: 28.3px;
+			}
+		}
+		@media screen and (min-width: 412px) and (min-height: 668px) {
+			html {
+				font-size: 29px;
+			}
+		}
+		@media screen and (min-width: 414px) and (min-height: 672px) {
+			html {
+				font-size: 24px;
+			}
+		}
+		@media screen and (min-width: 480px) and (min-height: 730px) {
+			html {
+				font-size: 30px;
+			}
+		}
+		@media screen and (min-width: 480px) and (min-height: 853px) {
+			html {
+				font-size: 30px;
+			}
+		}
+		body{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #1a222e;
+		}
+		canvas{
+			width: 100%;
+		}
+		#arrow{
+			position: absolute;
+			width: 1.2rem;
+			left: 0;
+			right: 0;
+			bottom: 2rem;
+			margin: auto;
+			display: none;
+			animation: go 2s ease-in-out infinite;
+		}
+		@keyframes go{
+			0% {transform:translate3d(0,0,0);opacity: 0}
+			50%{opacity: 1}
+			100% {transform:translate3d(0,-1rem,0);opacity: 0}
+		}
+		#audio{
+			position: absolute;
+			width: 1rem;
+			height: 1rem;
+			overflow: hidden;
+			background-image: url(image/audio.png);
+			background-size: 100% 200%;
+			right: 1rem;
+			top: 1rem;
+			transition: opacity .3s;
+		}
+		.close{
+			background-position:0 100%;
+		}
+		#share{
+			position: absolute;
+			width: 1.6rem;
+			height: 1rem;
+			transition: opacity .3s;
+			right: .2rem;
+			top: 1.4rem;
+			opacity: 0;
+		}
+		.share-img{
+			position: absolute;
+			width: 100%;
+		}
+		.share-h{
+			position: absolute;
+			width: 40%;
+			right: 37%;
+			top: -47%;
+			animation: share-h 2s ease-in-out infinite;
+		}
+		@keyframes share-h{
+			0% {transform:translate3d(0,0,0);opacity: 0}
+			100% {transform:translate3d(0,-15px,0);opacity: 1}
+		}
+		#end{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			top: 0;
+			left: 0;
+			pointer-events: none;
+		}
+		.end-1{
+			position: absolute;
+			height: 1.2rem;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: -15rem;
+			bottom: 0;
+		}
+		.end-2{
+			position: absolute;
+			height: 1.2rem;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: -12rem;
+			bottom: 0;
+		}
+		.end-3{
+			position: absolute;
+			height: 1.2rem;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: -9rem;
+			bottom: 0;
+		}
+		.end-4{
+			position: absolute;
+			height: 1.2rem;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: -6rem;
+			bottom: 0;
+		}
+		.end-5{
+			position: absolute;
+			height: 1.2rem;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: -3rem;
+			bottom: 0;
+		}
+		.end-f{
+			width: 2.7rem;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: 2rem;
+			bottom: 0;
+		}
+		.end-6{
+			width: 5.5rem;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: 8.8rem;
+			bottom: 0;
+		}
+		.end-7{
+			width: 8.5rem;
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin: auto;
+			top: 12rem;
+			bottom: 0;
+		}
+		#btn{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-size: 200% 100%;
+			background-position: 0% 0%;
+			background-image: url(image/sheet.png);
+			animation: imageSheet infinite 1s steps(2,start);
+		}
+		#btn-wrap{
+			position: absolute;
+			top: 19rem;
+			bottom: 0;
+			margin: auto;
+			right: 0;
+			left: 0;
+			width: 7rem;
+			height: 6.24rem;
+			pointer-events: auto;
+			overflow: hidden;
+		}
+		@keyframes imageSheet{
+			0% {background-position: 200% 0%}
+			100% {background-position: 0% 0%}
+		}
+		.fade-in{
+			animation: fade-in .5s ease-in-out both;
+		}
+		@keyframes fade-in{
+			0% {opacity: 0}
+			100% {opacity: 1}
+		}
+		.delay-0{
+			animation-delay: 1.4s;
+		}
+		.delay-1{
+			animation-delay: 2.8s;
+		}
+		.delay-2{
+			animation-delay: 4.2s;
+		}
+		.delay-3{
+			animation-delay: 5.6s;
+		}
+		.hide{
+			display: none;
+		}
+		@media all and (orientation : landscape) {
+
+			#orientLayer {
+				display: block;
+			}
+
+		}
+
+		@media all and (orientation : portrait){
+			#orientLayer {
+				display: none;
+			}
+
+		}
+
+		.mod-orient-layer {
+			display: none;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: #000;
+			z-index: 999999999999999999999;
+			overflow: hidden;
+		}
+		.mod-orient-layer__content {
+			position: absolute;
+			width: 100%;
+			top: 45%;
+			margin-top: -75px;
+			text-align: center;
+		}
+		.mod-orient-layer__icon-orient {
+			background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIYAAADaCAMAAABU68ovAAAAXVBMVEUAAAD29vb////x8fH////////x8fH5+fn29vby8vL////5+fn39/f6+vr////x8fH////////+/v7////09PT////x8fH39/f////////////////////x8fH///+WLTLGAAAAHXRSTlMAIpML+gb4ZhHWn1c2gvHBvq1uKJcC6k8b187lQ9yhhboAAAQYSURBVHja7d3blpowFIDhTUIAOchZDkre/zE7ycySrbUUpsRN2/1fzO18KzEqxEVgTiZNfgmmtxRc8iaR8HNe8x4BtjQePKayYCIoyBSgvNNE1AkNSHqZyLqk97EgUCCHBzZ5mkg7ScvIJuIyOyXBRFxgpqWZyGsAZLB1KjsJi8nutHU4JCRbFRH8tmirI9k8Jx2sqNs8K/m0LQkrktO2crgcgXGB4AiTEsB0hJfo9MGgX7CGcYiYwQxmMOOvZwRhBG8tCoMXjBDeXvWCEcHbi14wgCBmMIMZzGAGM5jxETNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxA8cMHDNwzMAxY6E2rUQxnH2tz9cirlJFwFBJedaPnUv0M7++egPDE8iAJcIDmxwH5wwv9vUviw2kLbVO3TJU5uul/EyB0FoLp4x60PdGUd3qPurrWyjGGTc05u+1dcgI7/+tCCPARWGhH7o5Y7RCf+bH9ctXLp6v2BVDxfqz0oPXeSVaNtINo/1SXDv4dck8IIkbhtC2ol+iouEonTBCbYvVMnXOjxww6s/RFrBUpXHh/gw1rHj5d/qhYn9Gpk2FWh6xRBRX5Oj3Znh2Sq49/L6+y8pB26q9GbE2dbA2mVbx6I+7MfBglLCttm73ZQi7AD3iL4HqjFYJHSPRppqaUaJ3ATpGa+ckpGak2hRRMyqjGMkvl+xyFeSMwjAqcsZgGDdyhl0oNTnDN4yenJGZFGxNChP5/Y3efh6SM2rDOJMzboYxkDMqwyjIGcIw6F+io2FU1IxIm1JqRmgXSkvNKNCXeTpGrU0JNSO2c6LIGPgCS8AuDHz9ta0SXWDtxoDRH+MqlbC2Dt2G2JFRadtQZt2qq/orGowdGb2euxYiqWEpVWhTBnszoNAPdStuQwxqf0aocdWKW4Z+DfszIh8pxJqbuCE4YAC+4bm0evtipjpgJHeFnyyt1Ku2xa0bhjxr27p75rECNwyI9ZwvXkHq+7aTaMEV44YYy/spfgjgjNHaWW+GeUhGEX7tLlVinIFDDSgnOwhi1V6bU0b6tVS9eAERe863g4dRrtiHdc6o+nn5vtyVVgR79Cqt4uL6gfHPQyGqtP2vf7HADGbcYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JiBYwaOGThm4JjhtOM+J/AgT008yDMkN/dPP9hzS8zAMQN3OEYeekp5YU7KOKXwVXqiY+QS7smcinGKABWdiBgpPJTSMHJ4KidhhPBUSMLw4CmPhKHgKUXCkHsygum71ftNSgCX6bsl8FQyfbcL5EdYsDk0R3j7aiA5wpt5AjKg/2gLJEBD/0Hf2OOf/vRrj6z/7GtP4B3nMKyjHA12kIPSjnJs3FEO0TvKkYJHOWCR+rjJH0Vn6fI5PjNbAAAAAElFTkSuQmCC");
+			display: inline-block;
+			width: 67px;
+			height: 109px;
+			transform: rotate(90deg);
+			-webkit-transform: rotate(90deg);
+			-webkit-animation: rotation infinite 1.5s ease-in-out;
+			animation: rotation infinite 1.5s ease-in-out;
+			-webkit-background-size: 67px;
+			background-size: 67px;
+		}
+		.mod-orient-layer__desc {
+			margin-top: 20px;
+			font-size: 15px;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="canvas" width="750" height="1334" style="touch-action: none; cursor: inherit;"></canvas>
+<img id="arrow" src="./image/arrow.png" style="display: none;">
+<div id="share" style="opacity: 0;">
+	<img class="share-img" src="./image/share.png">
+	<img class="share-h" src="./image/share_h.png">
+</div>
+<div id="audio" style="opacity: 1; pointer-events: auto;"></div>
+<audio id="a1" class="hide" src="audio/bg1.mp3" loop=""></audio>
+<audio id="b4" class="hide" src="audio/3.mp3"></audio>
+<audio id="b5" class="hide" src="audio/4.mp3"></audio>
+<audio id="b7" class="hide" src="audio/6.mp3"></audio>
+<audio id="b9" class="hide" src="audio/8.mp3"></audio>
+<audio id="b10" class="hide" src="audio/9.mp3"></audio>
+<div id="end" class="hide" style="display: none;">
+	<img class="end-1 fade-in" src="./image/info_0.png">
+	<img class="end-2 fade-in delay-0" src="./image/info_1.png">
+	<img class="end-3 fade-in delay-1" src="./image/info_2.png">
+	<img class="end-4 fade-in delay-2" src="./image/info_3.png">
+	<img class="end-5 fade-in delay-3" src="./image/info_4.png">
+	<img class="end-f fade-in" src="./image/end_f.png">
+	<img class="end-6 fade-in" src="./image/end_text_1.png">
+	<img class="end-7 fade-in" src="./image/end_text_2.png">
+	<div id="btn-wrap" class="fade-in">
+		<div id="btn"></div>
+	</div>
+</div>
+
+<!-- 手机竖屏提醒 -->
+
+<div id="orientLayer" class="mod-orient-layer">
+
+	<div class="mod-orient-layer__content"><i class="icon-wx mod-orient-layer__icon-orient"></i>
+
+		<div class="mod-orient-layer__desc">为了更好的体验，请使用竖屏浏览</div>
+
+	</div>
+
+</div>
+
+<!-- 手机竖屏提醒  end -->
+
+<script src="./js/pixi.min.js"></script>
+<script src="./js/pixi-action.js"></script>
+<script src="./js/slide.js"></script>
+<script src="./js/f.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/WhaleNest.js"></script>
+<script>
+
+	WhaleNest.setShare({
+
+		title:'我昨天失眠了',
+
+		desc:'\b',
+
+		imgUrl:"https://h5.whalesgeek.net/cp/rrd/image/icon.jpg",
+
+		timeLineCallback:function(){
+
+			// 分享朋友圈成功回调
+			MtaH5.clickStat("3")
+
+		},
+
+		friendCallback:function(){
+
+			// 分享朋友成功回调
+			MtaH5.clickStat("4")
+
+		}
+
+	});
+
+
+	var con = document.getElementById('audio');
+	con.addEventListener('click',function(){
+
+		if(con.className.indexOf('close') != -1){
+			con.className = '';
+			f.open();
+		}else{
+			con.className = 'close';
+			f.close();
+		}
+
+	},false);
+
+	var obj = [
+		{s:'p2p',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=p2phbb&utm_medium=66951&utm_campaign=49&utm_content=-999071767&utm_term=-999071767_154278805827810'},
+		{s:'drsq',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=drsq&utm_medium=66951&utm_campaign=49&utm_content=1116765945&utm_term=1116765945_154278734484080'},
+		{s:'clb',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=clbshh&utm_medium=66951&utm_campaign=49&utm_content=26960504&utm_term=26960504_15427883901884'},
+		{s:'bksc',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=bkscshh&utm_medium=66951&utm_campaign=49&utm_content=927340339&utm_term=927340339_154278781045037'},
+		{s:'jrhyw',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=jrhywshh&utm_medium=66951&utm_campaign=49&utm_content=1182338151&utm_term=1182338151_154278793160441'},
+		{s:'zsxs',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=zsxs&utm_medium=66951&utm_campaign=49&utm_content=934337464&utm_term=934337464_154278748424229'},
+		{s:'rrd',u:'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=rrdcfsw&utm_medium=66951&utm_campaign=49&utm_content=-197218237&utm_term=-197218237_154279059782750'}
+
+	]
+
+
+	var btn = document.getElementById('btn-wrap');
+	btn.addEventListener('click',function(){
+
+		var url = window.location.href;
+		var now = 'https://m.renrendai.com/mo/pb/cv1/page/5b0659180f625d36226a9a58.html?utm_source=rrdcfsw&utm_medium=66951&utm_campaign=49&utm_content=-197218237&utm_term=-197218237_154279059782750';
+
+		var qur = f.getQueryString('adtag');
+
+		obj.forEach(function(el){
+
+			if(qur == el.s){
+				now = el.u;
+			};
+
+		});
+		console.log(now)
+
+		MtaH5.clickStat("2");
+		setTimeout(function(){
+
+			window.location.href = now;
+
+		},500)
+
+
+	},false);
+
+</script>
+<script>
+	var _mtac = {"senseQuery":1};
+	(function() {
+		var mta = document.createElement("script");
+		mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+		mta.setAttribute("name", "MTAH5");
+		mta.setAttribute("sid", "500657664");
+		mta.setAttribute("cid", "500657665");
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(mta, s);
+	})();
+</script>
+</body></html>

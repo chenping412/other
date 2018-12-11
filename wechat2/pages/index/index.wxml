@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class='main'>
+  这里是主要内容区
+</view>
+<view class='menu'>
+<view class='item'>写热点</view>
+<view class='item'>写股评</view>
+<view class='item'>写简报</view>
+<view class='item'>写报告</view>
+<view class='item'>我的</view>
+</view>

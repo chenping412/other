@@ -1,0 +1,56 @@
+<!--index.wxml-->
+<view class="list">
+  <view wx:for="{{newsList}}" wx:key="{{item.nid}}" data-nid="{{item.nid}}" data-mediatype="{{item.mediatype}}" data-url="{{item.detailUrl}}" bindtap="openDetail">
+
+    <view wx:if="{{item.mediatype == 0 && (!item.image.length || item.image.length == 0)}}" class="item">
+      <view class='title'>{{item.title}}</view>
+      <view class='bot'>
+        <view class='from'>{{item.site}}</view>
+        <image class='close' src='/images/icon_delete@3x.png' mode="aspectFit" catchtap="closeNews" data-nid="{{item.nid}}"></image>
+        <view class='time'>{{item.time}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{item.mediatype == 0 && item.image.length && item.image.length > 0 && item.image.length < 3}}" 
+    class="{{!item.hide ? 'item one' : 'item'}}">
+      <image class='img' binderror="imgError"  wx:if="{{!item.hide}}" data-nid="{{item.nid}}" src='{{item.image[0]}}' mode="aspectFill"></image>
+      <view class='title'>{{item.title}}</view>
+      <view class='bot'>
+        <view class='from'>{{item.site}}</view>
+        <image class='close' src='/images/icon_delete@3x.png' mode="aspectFit" catchtap="closeNews" data-nid="{{item.nid}}"></image>
+        <view class='time'>{{item.time}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{item.mediatype == 0 && item.image.length && item.image.length >= 3}}" class="item three">
+      <view class='title'>{{item.title}}</view>
+      <view class='pic'>
+        <image class='img' binderror="imgError"  wx:if="{{!item.hide}}" data-nid="{{item.nid}}" src='{{item.image[0]}}' mode="aspectFill"></image>
+        <image class='img' binderror="imgError"  wx:if="{{!item.hide}}" data-nid="{{item.nid}}" src='{{item.image[1]}}' mode="aspectFill"></image>
+        <image class='img' binderror="imgError"  wx:if="{{!item.hide}}" data-nid="{{item.nid}}" src='{{item.image[2]}}' mode="aspectFill"></image>
+      </view>
+      <view class='bot'>
+        <view class='from'>{{item.site}}</view>
+        <image class='close' src='/images/icon_delete@3x.png' mode="aspectFit" catchtap="closeNews" data-nid="{{item.nid}}"></image>
+        <view class='time'>{{item.time}}</view>
+      </view>
+    </view>
+
+     <view wx:if="{{item.mediatype == 1}}" class="item video">
+      <view class='inner'>
+        <image class='img' src='http://ogppwi4hs.bkt.clouddn.com/jp52fMq_nYnks6_GIS_1_w600_h480.JPEG' mode="aspectFill"></image>
+        <image class='play' src='/images/play-icon@1.5x.png' mode="aspectFit"></image>
+        <view class='bot'>
+          <image src='/images/play-num-icon@1.5x.png' mode="aspectFit"></image>
+          <view class='num'>397万次播放</view>
+          <view class='time'>03:38</view>
+        </view>
+      </view>
+    </view> 
+
+
+  </view>
+
+  <view class='no-more' wx:if="{{noMoreNews}}">已经到底了</view>
+  <view class='no-more' wx:if="{{!noMoreNews}}">正在加载……</view>
+</view>

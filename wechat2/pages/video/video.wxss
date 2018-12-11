@@ -1,0 +1,38 @@
+/* pages/video/video.wxss */
+
+.video video{
+  width: 100%;
+  height: 450rpx;
+}
+
+.video .title {
+  font-size: 16px;
+  color: #1E223D;
+  line-height: 45rpx;
+  padding:22rpx 25rpx 30rpx;
+}
+
+.video .info {
+  padding:0 25rpx 34rpx;
+  font-size: 11px;
+  color: #999;
+  line-height: 46rpx;
+  height: 46rpx;
+}
+
+.video .info .img {
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  float: left;
+  margin-right: 15rpx;
+}
+
+.video .info .from {
+  float: left;
+  margin-right: 15rpx;
+}
+
+.video .info .time {
+  float: left;
+}
