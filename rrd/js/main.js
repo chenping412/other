@@ -1173,5 +1173,8 @@ var loadCallback = function (loader, resources) {
 
         }
     });
+    slide.dataEls.forEach(function(el,i){
+        el.name=el.e._texture.baseTexture.imageUrl
+    });
     console.log(slide.dataEls)
 }
