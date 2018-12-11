@@ -181,7 +181,6 @@ window.onload = function () {
     });
 
     !f.isWeiXin() && initAudio();
-    if (!f.isWeiXin()) initAudio()
     f.timerFTP();
     animate();
 
