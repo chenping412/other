@@ -1,0 +1,109 @@
+.banner{
+    display: block;
+    height: 552px;
+    background: url("../images/index-img_02.jpg") no-repeat center;
+}
+
+
+.main .title{
+    height: 50px;
+    position: relative;
+}
+.main .title b{
+    font-size: 30px;
+    color: #a227be;
+    line-height: 50px;
+    float: left;
+}
+.main .title span{
+    font-size: 24px;
+    color: #737373;
+    line-height: 60px;
+    margin-left: 10px;
+    float: left;
+}
+.main .title i{
+    display: block;
+    border-bottom: 1px solid #a227be;
+    margin-left: 260px;
+    height: 40px;
+}
+.main .title a{
+    position: absolute;
+    right: 10px;
+    top:18px;
+    font-size: 14px;
+    color: #a227be;
+    font-weight: bolder;
+}
+
+
+.section1{
+    padding: 36px 0 66px;
+}
+.section1 .left{
+    width: 560px;
+}
+.section1 .right{
+    width: 560px;
+    padding-right: 30px;
+}
+.section1 .text{
+    padding: 20px 0 38px;
+    font-size: 14px;
+    line-height: 25px;
+    color: #000000;
+}
+.section1 img{
+    width: 100%;
+}
+.section1 ul{
+    margin-top: -10px;
+}
+.section1 ul li{
+    height: 48px;
+    line-height: 48px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.section1 ul li b{
+    font-size: 26px;
+    color: #000000;
+    margin-right: 10px;
+}
+.section1 ul li span{
+    font-size: 18px;
+    color: #a227be;
+    margin-right: 5px;
+}
+.section1 ul li i{
+    font-style: normal;
+    font-size: 18px;
+    color: #000000;
+}
+
+
+.section2{
+    height: 736px;
+    background: url("../images/index-section2-bj.jpg") no-repeat center;
+}
+.section2 .inner{
+    padding-top: 65px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
