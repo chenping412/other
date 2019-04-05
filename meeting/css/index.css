@@ -1,13 +1,14 @@
 .banner{
     display: block;
     height: 552px;
-    background: url("../images/index-img_02.jpg") no-repeat center;
+    background: url("../images/index-img_02.jpg") no-repeat center/cover;
 }
 
 
 .main .title{
     height: 50px;
     position: relative;
+    overflow: hidden;
 }
 .main .title b{
     font-size: 30px;
@@ -85,20 +86,409 @@
 
 
 .section2{
-    height: 736px;
-    background: url("../images/index-section2-bj.jpg") no-repeat center;
+    background: url("../images/index-section2-bj.jpg") no-repeat center/cover;
 }
 .section2 .inner{
-    padding-top: 65px;
+    padding: 65px 0 28px;
+}
+.section2 .list{
+    padding-top: 35px;
+}
+.section2 .list li{
+    float: left;
+    width: 350px;
+    height: 226px;
+    padding:5px;
+    background-color: rgba(0,0,0,0.8);
+    margin-bottom: 44px;
+}
+.section2 .list li.mid{
+    margin-left: 52px;
+    margin-right: 52px;
+}
+.section2 .list li .box{
+    border: 1px solid #ffffff;
+    height: 224px;
+    position: relative;
+    text-align: center;
+    color: #ffffff;
+}
+.section2 .list li .box .date{
+    position: absolute;
+    top:1px;
+    left: 6px;
+    width: 82px;
+}
+.section2 .list li .box h4{
+    font-size: 24px;
+    line-height: 42px;
+    font-weight: normal;
+    padding-top: 40px;
+}
+.section2 .list li .box h3{
+    font-size: 30px;
+    line-height:35px;
+    height: 70px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.section2 .list li .box p{
+    font-size: 18px;
+    line-height: 26px;
+}
+
+
+.section3{
+    background: url("../images/section3-bj.jpg") no-repeat center/cover;
+}
+.section3 .inner{
+    padding:46px 0 70px;
+}
+.section3 .title{
+    text-align: center;
+}
+.section3 .title b{
+    color: #ffffff;
+    float: none;
+}
+.section3 .title span{
+    color: #999999;
+    float: none;
+}
+.section3 .list{
+    padding-top: 30px;
+}
+.section3 .list li{
+    height: 400px;
+    width: 25%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    padding-top: 66px;
+    color: #ffffff;
+    position: relative;
+}
+.section3 .list li+li:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, #ffffff 50%, rgba(255,255,255,0.2) 100%);
+
+}
+.section3 .list li img{
+    margin-bottom: 17px;
+}
+.section3 .list li h3{
+    font-size: 30px;
+    line-height: 48px;
+    padding-bottom: 19px;
+}
+.section3 .list li p{
+    font-size: 24px;
+    line-height: 30px;
+}
+
+
+.section4{
+    padding:30px 0 75px;
+}
+.section4 .bottom{
+    padding-top: 30px;
+}
+.section4 .left{
+    width: 680px;
+}
+.section4 .left .title1{
+    font-size: 22px;
+    color: #000000;
+    line-height: 32px;
+    padding:5px;
+    text-align: center;
+}
+.section4 .left .info{
+    font-size: 12px;
+    color: #000000;
+    line-height: 24px;
+    text-align: right;
+}
+.section4 .left .summary{
+    font-size: 12px;
+    color: #000000;
+    line-height: 26px;
+}
+.section4 .left .title2{
+    font-size: 16px;
+    color: red;
+    line-height: 36px;
+    text-align: center;
+}
+.section4 .left .title3{
+    font-size: 16px;
+    color: #000000;
+    line-height: 36px;
+    text-align: center;
+}
+.section4 .left  .content{
+    font-size: 12px;
+    color: #000000;
+    line-height: 16px;
+}
+.section4 .left  .content p{
+    text-indent:2em;
+}
+.section4 .right{
+    width: 505px;
+}
+.section4 .right ul li{
+    margin-bottom: 20px;
+}
+.section4 .right ul li .time{
+    float: left;
+    width: 64px;
+    height:75px;
+    background-color: #a227be;
+    color: #ffffff;
+    text-align: center;
+    margin-right: 12px;
+}
+.section4 .right ul li .time h3{
+    font-size: 50px;
+    line-height: 50px;
+}
+.section4 .right ul li .time span{
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing:-1px;
+}
+.section4 .right ul li h2{
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 6px;
+}
+.section4 .right ul li p{
+    line-height: 24px;
+    font-size: 14px;
+    color: #7b7b7b;
+    height: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    border-bottom: 1px dotted #666666;
+    text-align: justify;
+}
+
+.section5{
+    background: url("../images/index-section2-bj.jpg") no-repeat center/cover;
+}
+.section5 .inner{
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    padding:100px 0 65px;
+}
+.section5 .content{
+    text-align: center;
+    width: 1058px;
+    position: relative;
+    margin:0 auto;
+    padding:14px 0;
+}
+.section5 .content:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 77px;
+    height: 77px;
+    border-left: 3px solid #ffffff;
+    border-top: 3px solid #ffffff;
+}
+.section5 .content:after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 77px;
+    height: 77px;
+    border-right: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+.section5 .content h3{
+    height: 48px;
+    line-height: 46px;
+    font-size: 32px;
+    color: #ffffff;
+    display: inline-block;
+    padding:0 28px;
+    border:1px solid #ffffff;
+    margin-bottom: 17px;
+}
+.section5 .content p{
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 34px;
+}
+
+
+.section6{
+    padding:58px 0 52px;
+}
+.section6 .imgs{
+    padding:30px 0 85px;
+}
+.section6 .imgs .img{
+    float: left;
+    width: 288px;
+    height: 190px;
+    margin:0 10px 10px 0;
+    overflow: hidden;
+}
+.section6 .imgs .img.img1{
+    width: 586px;
+    height: 390px;
+}
+.section6 .imgs .img img{
+    display: block;
+    width: 100%;
+}
+.section6 .form{
+    position: relative;
+    border:1px solid #a227be;
+    border-radius:7px;
+    padding:76px 42px 10px;
+}
+.section6 .form h3{
+    position: absolute;
+    left: 50%;
+    top:-23px;
+    margin-left: -97px;
+    width: 194px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #a227be;
+    border-radius:7px;
+}
+.section6 .form .list{
+    width: 490px;
+}
+.section6 .form .list li{
+    padding-bottom: 42px;
+}
+.section6 .form .list li input,
+.section6 .form .list li select{
+    height: 37px;
+    width: 100%;
+    border:1px solid #a227be;
+    border-radius:5px;
+    padding:0 14px;
+    font-size: 18px;
+    color: #9e9e9e;
+    box-sizing: border-box;
+}
+.section6 .btn{
+    width: 334px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #a227be;
+    border-radius:7px;
+    display: block;
+    margin: 50px auto 0;
+}
+
+
+.section7{
+    background-color: #aa48c1;
+    padding:46px 0 94px;
+}
+.section7 .left{
+    width: 28%;
+}
+.section7 dt{
+    font-size: 18px;
+    font-weight: bolder;
+    color: #ffffff;
+    line-height: 28px;
+}
+.section7 dd{
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 24px;
+}
+.section7 dt a{
+    display: inline-block;
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    margin-bottom: 10px;
+}
+.section7 dd a{
+    color: #ffffff;
+}
+.section7 dd a:before{
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 
 
 
-
-
-
-
+@media (max-width: 1280px) {
+    .section1 .left{
+        width: 470px;
+    }
+    .section1 .right{
+        width: 470px;
+    }
+    .section2 .list li{
+        width: 295px;
+    }
+    .section2 .list li.mid {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    .section2 .list li .box .date{
+        width: 65px;
+    }
+    .section4 .left{
+        width: 560px;
+    }
+    .section4 .right{
+        width: 420px;
+    }
+    .section5 .content{
+        width: 900px;
+    }
+    .section6 .imgs .img{
+        width: 240px;
+        height: 158px;
+    }
+    .section6 .imgs .img.img1{
+        width: 490px;
+        height: 326px;
+    }
+    .section6 .form .list{
+        width: 410px;
+    }
+}
 
 
 

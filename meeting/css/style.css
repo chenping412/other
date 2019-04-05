@@ -69,7 +69,7 @@ a {
 }
 
 a:hover {
-    color: #8e26a6 !important;
+    color: #8e26a6;
 }
 
 .inner{
@@ -81,6 +81,10 @@ a:hover {
 }
 .right{
     float: right;
+}
+
+body{
+    min-width: 1040px;
 }
 
 /*头部导航栏*/
@@ -102,14 +106,112 @@ a:hover {
     color: #8e26a6;
     border-bottom: 3px solid #8e26a6;
 }
-
-
-
-@media (max-width: 1550px) {
-
+.banner{
+    display: block;
+    height: 552px;
+    background: url("../images/index-img_02.jpg") no-repeat center;
 }
-@media (max-width: 1400px) {
 
+
+
+.main .sider{
+    width: 262px;
+    background: url("../images/synopsis-left-bj.png") no-repeat top center;
+    float: left;
+    margin-top: 30px;
+}
+.main .sider .top{
+    height: 50px;
+    padding:10px 0 0 12px;
+}
+.main .sider .top h3{
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bolder;
+    line-height: 30px;
+}
+.main .sider .top p{
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 24px;
+    opacity: 0.4;
+}
+.main .sider .list{
+    min-height: 400px;
+    padding: 49px 0 0 12px;
+    box-shadow: 3px 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+.main .sider .list li{
+    line-height: 29px;
+    padding-bottom: 17px;
+    font-size: 18px;
+    color: #000000;
+}
+.main .sider .list li a.active{
+    color: #733284;
+}
+.main .main-content{
+    float: right;
+    width: 876px;
+    margin-top: 30px;
+    padding-bottom: 80px;
+}
+.main .main-content .breadcrumb{
+    padding-top: 8px;
+    line-height: 35px;
+    font-size: 14px;
+    color: #333333;
+    border-bottom: 1px solid #733284;
+}
+.main .main-content .breadcrumb img{
+    vertical-align: text-top;
+    margin-right: 8px;
+}
+.main .main-content .pager{
+    padding:15px 0;
+    text-align: center;
+}
+.main .main-content .pager a{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: #8c28a4;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 20px;
+    color: #ffffff;
+}
+.main .main-content .pager span{
+    margin: 0 15px;
+}
+
+
+.footer{
+    padding: 28px 20px 55px;
+    background-color: #8f26a6;
+}
+.footer p{
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 34px;
+    text-align: center;
+}
+
+
+
+
+
+@media (max-width: 1280px) {
+    .inner{
+        width: 1000px;
+    }
+    .header a{
+        margin: 0 16px;
+    }
+    .main .main-content{
+        width: 710px;
+    }
 }
 
 
