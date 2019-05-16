@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/flexible.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
     <style type="text/css">
         .main-content .list{
@@ -10,7 +12,6 @@
         }
         .main-content .list li{
             margin-bottom: 75px;
-            height:222px;
             border:2px solid #bfbfbf;
             padding:13px 46px 13px 11px;
         }
@@ -42,7 +43,39 @@
             color: #ffffff;
             text-align: center;
         }
-
+        @media (max-width: 1040px) {
+            .main-content .list li{
+                margin-bottom: 30px;
+            }
+            .main-content .list li .img{
+                width: 200px;
+                height: 140px;
+                margin-right: 20px;
+            }
+            .main-content .list li p{
+                font-size: 20px;
+                line-height: 28px;
+                height: 108px;
+            }
+        }
+        @media (max-width: 780px) {
+            .main-content .list{
+                padding-top: 30px;
+            }
+            .main-content .list li{
+                padding: 10px;
+            }
+            .main-content .list li .img{
+                width: 4rem;
+                height: 2.8rem;
+                margin-right: 5px;
+            }
+            .main-content .list li p{
+                font-size: 16px;
+                line-height: 0.666rem;
+                height: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -84,27 +117,35 @@
             </div>
 
             <ul class="list">
-                <li>
+                <li class="clearfix">
                     <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
                     <p>第八届论坛会展现场图片新闻</p>
                     <a href="">查看更多</a>
-                </li><li>
+                </li><li class="clearfix">
                     <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
                     <p>第八届论坛会展现场图片新闻</p>
                     <a href="">查看更多</a>
-                </li><li>
+                </li><li class="clearfix">
                     <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
                     <p>第八届论坛会展现场图片新闻</p>
                     <a href="">查看更多</a>
-                </li><li>
+                </li><li class="clearfix">
                     <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
                     <p>第八届论坛会展现场图片新闻</p>
                     <a href="">查看更多</a>
-                </li><li>
+                </li><li class="clearfix">
                     <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
                     <p>第八届论坛会展现场图片新闻</p>
                     <a href="">查看更多</a>
-                </li><li>
+                </li><li class="clearfix">
+                    <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
+                    <p>第八届论坛会展现场图片新闻</p>
+                    <a href="">查看更多</a>
+                </li><li class="clearfix">
+                    <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
+                    <p>第八届论坛会展现场图片新闻</p>
+                    <a href="">查看更多</a>
+                </li><li class="clearfix">
                     <div class="img" style="background-image: url(images/index-img_05.jpg)"></div>
                     <p>第八届论坛会展现场图片新闻</p>
                     <a href="">查看更多</a>

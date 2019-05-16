@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/flexible.js"></script>
 </head>
 <body>
 
@@ -264,9 +266,16 @@
 
         <div class="form clearfix" id="form">
             <h3>参与报名</h3>
-            <ul class="list left">
+            <ul class="list clearfix">
                 <li>
                     <input type="text" placeholder="姓名">
+                </li>
+                <li>
+                    <select>
+                        <option value ="" selected="selected">性别</option>
+                        <option value ="男">男</option>
+                        <option value ="女">女</option>
+                    </select>
                 </li>
                 <li>
                     <select>
@@ -278,40 +287,22 @@
                     </select>
                 </li>
                 <li>
-                    <input type="text" placeholder="部门">
-                </li>
-                <li>
-                    <input type="text" placeholder="Email">
-                </li>
-                <li>
-                    <input type="text" placeholder="邮编">
-                </li>
-                <li>
-                    <input type="text" placeholder="发票抬头">
-                </li>
-                <li>
-                    <input type="text" placeholder="发票邮寄地址">
-                </li>
-                <li>
-                    <input type="text" placeholder="备注">
-                </li>
-            </ul>
-            <ul class="list right">
-                <li>
-                    <select>
-                        <option value ="" selected="selected">性别</option>
-                        <option value ="男">男</option>
-                        <option value ="女">女</option>
-                    </select>
-                </li>
-                <li>
                     <input type="text" placeholder="单位">
+                </li>
+                <li>
+                    <input type="text" placeholder="部门">
                 </li>
                 <li>
                     <input type="text" placeholder="职称">
                 </li>
                 <li>
+                    <input type="text" placeholder="Email">
+                </li>
+                <li>
                     <input type="text" placeholder="电话">
+                </li>
+                <li>
+                    <input type="text" placeholder="邮编">
                 </li>
                 <li>
                     <select>
@@ -322,10 +313,19 @@
                     </select>
                 </li>
                 <li>
+                    <input type="text" placeholder="发票抬头">
+                </li>
+                <li>
                     <input type="text" placeholder="纳税人识别号">
                 </li>
                 <li>
+                    <input type="text" placeholder="发票邮寄地址">
+                </li>
+                <li>
                     <input type="text" placeholder="计划入住天数">
+                </li>
+                <li>
+                    <input type="text" placeholder="备注">
                 </li>
             </ul>
         </div>

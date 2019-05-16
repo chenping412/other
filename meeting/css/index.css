@@ -130,11 +130,12 @@
     line-height:35px;
     height: 70px;
     overflow: hidden;
-    margin: 10px 0;
+    margin: 10px;
 }
 .section2 .list li .box p{
     font-size: 18px;
     line-height: 26px;
+    padding: 0 10px;
 }
 
 
@@ -209,13 +210,13 @@
     text-align: center;
 }
 .section4 .left .info{
-    font-size: 12px;
+    font-size: 14px;
     color: #000000;
     line-height: 24px;
     text-align: right;
 }
 .section4 .left .summary{
-    font-size: 12px;
+    font-size: 14px;
     color: #000000;
     line-height: 26px;
 }
@@ -232,7 +233,7 @@
     text-align: center;
 }
 .section4 .left  .content{
-    font-size: 12px;
+    font-size: 14px;
     color: #000000;
     line-height: 16px;
 }
@@ -380,11 +381,13 @@
     background-color: #a227be;
     border-radius:7px;
 }
-.section6 .form .list{
-    width: 490px;
-}
 .section6 .form .list li{
+    width: 48%;
     padding-bottom: 42px;
+    float: left;
+}
+.section6 .form .list li:nth-child(2n){
+    float: right;
 }
 .section6 .form .list li input,
 .section6 .form .list li select{
@@ -485,14 +488,134 @@
         width: 490px;
         height: 326px;
     }
-    .section6 .form .list{
-        width: 410px;
-    }
 }
 
 
+@media (max-width: 1040px) {
+    .banner{
+        height: 300px;
+    }
+    .section1 .left{
+        width: 365px;
+    }
+    .section1 .right{
+        width: 365px;
+        padding-right: 0;
+    }
+    .section2 .list li{
+        width: 232px;
+    }
+    .section2 .list li.mid {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .section2 .list li .box .date{
+        width: 50px;
+    }
+    .section3 .list li h3{
+        font-size: 24px;
+    }
+    .section3 .list li p{
+        font-size: 18px;
+        padding: 0 5px;
+    }
+    .section4 .left,.section4 .right{
+        width: 94%;
+        float: none;
+        margin: 0 auto 20px;
+    }
+    .section5 .content{
+        width: 748px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .section6 .imgs .img,.section6 .imgs .img.img1{
+        width: 238px;
+        height: 158px;
+    }
+    .section6 .form .list li{
+        padding-bottom: 20px;
+    }
+    .section7 .left dl{
+        padding-right: 20px;
+    }
+}
 
+@media (max-width: 780px) {
+    .banner{
+        height: 150px!important;
+    }
+    .main .title{
+        height: 35px;
+    }
+    .main .title b{
+        font-size: 24px;
+        line-height: 35px;
+    }
+    .main .title span{
+        font-size: 20px;
+        line-height: 40px;
+    }
+    .main .title i{
+        height: 30px;
+        margin-left: 216px;
+    }
+    .main .title a{
+        right: 0;
+        top: 8px;
+    }
+    .section1 .left,.section1 .right{
+        width: 100%;
+        float: none;
+        margin: 0 auto 20px;
+    }
 
+    .section2 .list li,.section2 .list li.mid{
+        float: none;
+        width: 96%;
+        height: auto;
+        margin:0 auto 20px;
+        box-sizing: border-box;
+    }
+    .section3 .list li{
+        width: 50%;
+        height: auto;
+    }
+    .section3 .list li:nth-child(3):after{
+        display: none;
+    }
+    .section3 .list li img{
+        width: 70%;
+    }
+    .section5 .content{
+        width: 94%;
+    }
+    .section6 .imgs .img,.section6 .imgs .img.img1{
+        width: 100%;
+        height: auto;
+    }
+    .section6 .form{
+        padding:40px 20px 10px;
+    }
+    .section6 .form .list li{
+        width: 100%;
+    }
+    .section6 .form .list li input, .section6 .form .list li select{
+        font-size: 16px;
+    }
+    .section6 .btn{
+        width: 80%;
+    }
+    .section7 .left{
+        width: 80% !important;
+        float: none;
+        margin: 0 auto;
+    }
+    .section7 .left dl{
+        margin-bottom: 20px !important;
+    }
+
+}
 
 
 
