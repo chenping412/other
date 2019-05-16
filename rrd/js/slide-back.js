@@ -125,6 +125,7 @@
 
 		if(slide.isDont){
 			slide.goPage();
+			MtaH5.clickStat("1")
 			return false;
 
 		}

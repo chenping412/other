@@ -64,7 +64,7 @@ app.stage.on('touchmove', function (e) {
 });
 
 app.stage.on('touchend', function (e) {
-
+    console.log('touchend')
     e.data.originalEvent.changedTouches.length == 1 && slide.touchendCallback(e.data.global);
 
 });
@@ -1172,8 +1172,8 @@ var loadCallback = function (loader, resources) {
 
         }
     });
-    slide.dataEls.forEach(function(el,i){
-        el.name=el.e._texture.baseTexture.imageUrl
+    slide.dataEls.forEach(function (el, i) {
+        el.name = el.e._texture.baseTexture.imageUrl
     });
     console.log(slide.dataEls)
 }

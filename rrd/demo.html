@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>我昨天失眠了</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="true">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+<canvas id="canvas" width="750" height="1334" style="touch-action: none; cursor: inherit;"></canvas>
+<img id="arrow" src="./image/arrow.png" style="display: none;">
+<div id="share" style="opacity: 0;">
+    <img class="share-img" src="./image/share.png">
+    <img class="share-h" src="./image/share_h.png">
+</div>
+<div id="audio" style="opacity: 1; pointer-events: auto;"></div>
+<audio id="a1" class="hide" src="audio/bg1.mp3" loop=""></audio>
+<audio id="b4" class="hide" src="audio/3.mp3"></audio>
+<audio id="b5" class="hide" src="audio/4.mp3"></audio>
+<audio id="b7" class="hide" src="audio/6.mp3"></audio>
+<audio id="b9" class="hide" src="audio/8.mp3"></audio>
+<audio id="b10" class="hide" src="audio/9.mp3"></audio>
+
+<script src="./js/pixi.min.js"></script>
+<script src="./js/pixi-action.js"></script>
+<script src="./js/slide.js"></script>
+<script src="./js/f.js"></script>
+<script src="./js/demo.js"></script>
+<script>
+
+    var con = document.getElementById('audio');
+    con.addEventListener('click', function () {
+
+        if (con.className.indexOf('close') != -1) {
+            con.className = '';
+            f.open();
+        } else {
+            con.className = 'close';
+            f.close();
+        }
+
+    }, false);
+
+</script>
+</body>
+</html>
