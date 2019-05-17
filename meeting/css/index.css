@@ -526,8 +526,6 @@
     }
     .section5 .content{
         width: 748px;
-        box-sizing: border-box;
-        padding: 10px;
     }
     .section6 .imgs .img,.section6 .imgs .img.img1{
         width: 238px;
@@ -541,7 +539,7 @@
     }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 750px) {
     .banner{
         height: 150px!important;
     }
@@ -585,10 +583,19 @@
         display: none;
     }
     .section3 .list li img{
-        width: 70%;
+        width: 50%;
+    }
+    .section5 .inner{
+        padding:60px 0;
     }
     .section5 .content{
         width: 94%;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+    .section5 .content p{
+        font-size: 16px;
+        line-height: 28px;
     }
     .section6 .imgs .img,.section6 .imgs .img.img1{
         width: 100%;
@@ -605,6 +612,10 @@
     }
     .section6 .btn{
         width: 80%;
+        margin-top: 30px;
+    }
+    .section7{
+        padding-bottom: 24px;
     }
     .section7 .left{
         width: 80% !important;

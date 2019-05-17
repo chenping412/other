@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/flexible.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
     <style type="text/css">
         .main-content .list{
@@ -62,12 +63,35 @@
                 line-height: 20px;
             }
         }
+        @media (max-width: 750px) {
+            .main-content .list li{
+                padding: 20px 10px;
+            }
+            .main-content .list li .img{
+                width: 4rem;
+                height: 2.8rem;
+                margin-right: 10px;
+            }
+            .main-content .list li h3{
+                font-size: 18px;
+                line-height: 0.74rem;
+            }
+            .main-content .list li p{
+                font-size: 16px;
+                line-height: 0.666rem;
+                height: 1.33333rem;
+            }
+            .main-content .list li span{
+                font-size: 12px;
+                line-height: 14px;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="inner">
+    <div id="header_nav" class="inner">
         <a href="index.html">首页</a>
         <a href="synopsis.html">会议简介</a>
         <a href="agenda.html">会议议程</a>
@@ -75,6 +99,9 @@
         <a href="">赞助合作</a>
         <a href="photos.html">会场图片</a>
         <a class="active" href="download.html">资料下载</a>
+    </div>
+    <div id="open_menu">
+        <i></i>
     </div>
 </div>
 
@@ -168,5 +195,7 @@
     <p>京 ICP 备 05069077 号 © 2014 - 2016 版权所有《现代教育技术》杂志社</p>
 </div>
 
+
+<script type="text/javascript" src="js/public.js"></script>
 </body>
 </html>

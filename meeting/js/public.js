@@ -1,22 +1,16 @@
-/**
- * Created by GIISO on 2018/7/20.
- */
 
+window.onload=function(){
+    var open_menu = document.getElementById('open_menu');
+    var header_nav = document.getElementById('header_nav');
+    open_menu.onclick=function(){
+        console.log(this.className)
+        if(!this.className){
+            this.className = 'show';
+            header_nav.className='inner show';
+        }else {
+            this.className = '';
+            header_nav.className='inner';
+        }
+    };
 
-//tab选项卡函数----------------------------------
-function tabChange(){
-    var tabChange=$('.tab-change');
-    var tabs=tabChange.find('.tabs').find('.tab');
-    var items=tabChange.find('.items').find('.item');
-
-    tabs.on('click',function(){
-        var index=$(this).index();
-        tabs.removeClass('active').eq(index).addClass('active');
-        items.hide().eq(index).show();
-    });
-}
-
-//弹窗浮层关闭按钮统一执行代码
-$('.model-view').find('.close').on('click',function(){
-    $(this).parents('.model-view').hide();
-});
+};
