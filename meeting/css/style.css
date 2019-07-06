@@ -94,6 +94,10 @@ a:hover {
 .header #open_menu{
     display: none;
 }
+.header li{
+    display: inline-block;
+    position: relative;
+}
 .header a{
     display: inline-block;
     width: 100px;
@@ -103,11 +107,36 @@ a:hover {
     text-align: center;
     font-size: 18px;
     color: #000000;
+    border-bottom: 3px solid transparent;
 }
 .header a.active{
     color: #8e26a6;
     border-bottom: 3px solid #8e26a6;
 }
+.header .children-nav{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top:66px;
+    background-color: #ffffff;
+    width: 120px;
+    margin-left: -60px;
+}
+.header li:hover .children-nav{
+    display: block;
+}
+.header .children-nav a{
+    display: block;
+    line-height: 34px;
+    height: 34px;
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+}
+
+
+
+
 .banner{
     display: block;
     height: 552px;
@@ -253,14 +282,36 @@ a:hover {
         border-left: 1px solid #dddddd;
         padding-top: 50px;
         transition: ease-in-out 0.3s;
+        overflow-y: scroll;
     }
     .header .inner.show{
         right: 0;
     }
-    .header .inner a{
+    .header .inner li{
+        height: auto;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto 10px;
     }
+    .header .inner li a{
+        margin-left: 10px;
+        text-align: left;
+        line-height: 34px;
+        height: 34px;
+        font-size: 16px;
+    }
+    .header .children-nav{
+        display: block;
+        position: static;
+        margin: 0 0 0 20px;
+    }
+    .header .inner .children-nav a{
+        font-size: 14px;
+        line-height: 30px;
+        height: 30px;
+        margin: 0;
+        padding-left: 10px;
+    }
+
     .header #open_menu{
         display: block;
         position:absolute;
