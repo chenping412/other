@@ -68,14 +68,6 @@ a {
     color: inherit;
 }
 
-a:hover {
-    color: #8e26a6;
-}
-
-.inner{
-    width: 1200px;
-    margin: 0 auto;
-}
 .left{
     float: left;
 }
@@ -85,4 +77,44 @@ a:hover {
 
 [v-cloak] {
     display: none;
+}
+body{
+    color: #333333;
+}
+
+
+
+
+.nav{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 19;
+    height: 1.4rem;
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+}
+.nav a{
+    display: block;
+    line-height: 1.4rem;
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    color: #333333;
+}
+
+
+.close{
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #000000;
 }

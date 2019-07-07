@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="telephone=yes,email=yes" name="format-detection">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <style type="text/css">
+        .main{
+            margin:20px 16px 80px;
+            color: #333333;
+        }
+        .list li{
+            width: 48%;
+            float: left;
+            margin-bottom: 10px;
+            border: 1px solid #dddddd;
+        }
+        .list li:nth-child(2n){
+            float: right;
+        }
+        .list li .img{
+            height: 4rem;
+            background: url("") no-repeat center/cover;
+        }
+        .list li p{
+            font-size: 13px;
+            line-height: 18px;
+            height: 36px;
+            margin: 7px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        .detail{
+            position: fixed;
+            top:0;
+            bottom:0;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            background-color: #ffffff;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding:0 0 20px;
+        }
+        .detail .close{
+            position: absolute;
+            right: 15px;
+            top:15px;
+            z-index: 98;
+        }
+        .detail .imgs{
+            height: 5rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .detail .imgs .img{
+            background: url("") no-repeat center/cover;
+        }
+        .detail h3{
+            font-size: 16px;
+            line-height: 30px;
+            padding: 10px 16px 0;
+        }
+        .detail p{
+            font-size: 13px;
+            line-height: 22px;
+            padding: 0 16px;
+        }
+        .swiper-pagination-bullet{
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main">
+   <ul class="list clearfix">
+       <li onclick="openDetail()">
+           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
+       </li> <li onclick="openDetail()">
+           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
+       </li> <li onclick="openDetail()">
+           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
+       </li> <li onclick="openDetail()">
+           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
+       </li>
+   </ul>
+
+
+    <div class="detail" id="detail" style="display: none;">
+        <a class="close" onclick="$('#detail').hide();">×</a>
+        <div class="imgs" id="detail-imgs">
+            <div class="swiper-wrapper">
+                <div class="img swiper-slide" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+                <div class="img swiper-slide" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+                <div class="img swiper-slide" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+                <div class="img swiper-slide" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <h3>产品名称</h3>
+        <p>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</p>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/touch.js"></script>
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    var mySwiper;
+    function openDetail(){
+        $('#detail').show();
+        if(!mySwiper){
+            mySwiper=new Swiper('#detail-imgs', {
+                autoplay: 4000,
+                autoplayDisableOnInteraction: false,
+                loop: true,
+                pagination: '.swiper-pagination',
+                paginationClickable: true
+            });
+        }else {
+            mySwiper.update(true);
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
     <meta content="telephone=yes,email=yes" name="format-detection">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=1">
     <script type="text/javascript" src="js/flexible.js"></script>
 </head>
 <body>
@@ -18,24 +18,109 @@
     </div>
 
     <div class="header">
-        <div class="icon">
-            <span>视频</span>
-            <span>画册</span>
-            <span>VR</span>
+        <div class="top clearfix">
+            <h3>深圳市一体数科科技集团有限公司</h3>
+            <div class="icon">
+                <span>视频</span>
+                <span>画册</span>
+                <span>VR</span>
+            </div>
         </div>
-        <h3>深圳市一体数科科技集团有限公司</h3>
         <div class="tags">
-            <span>企业标签</span>
             <span>高新企业</span>
             <span>管理方案开发</span>
             <span>物联网</span>
             <span>智能车</span>
         </div>
     </div>
+
+    <div class="main">
+        <div class="section section1">
+            <h3 class="title">企业简介</h3>
+            <div class="summary"  @tap="companyContentShow=true">
+                <p>深圳市一体数科科技有限公司于2013年12月26日在深圳市市场监督管理局登记成立。法定代表人刘丹宁，公司经营范围包括车队信息化管理方案开发、咨询与评估，车队管理软件的开发与销售等。</p>
+                <i></i>
+            </div>
+
+            <div class="content" v-show="companyContentShow">
+                <a class="close" @tap="companyContentShow=false">×</a>
+                <div class="text">
+                    <h3>企业介绍</h3>
+                    <p>深圳市一体数科科技有限公司于2013年12月26日在深圳市市场监督管理局登记成立。法定代表人刘丹宁，公司经营范围包括车队信息化管理方案开发、咨询与评估，车队管理软件的开发与销售等。</p>
+                    <p>
+                        <img src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg">
+                    </p>
+                    <p>为了承接创新项目成果应用发展，对接深圳“创新之都”的创新创业优势，推动襄阳经济高质量发展，襄阳市委、市政府于12月1日在中海信创新产业城举办了湖北襄阳2018年“隆中对”创客大赛深圳分赛。襄阳市委常委、组织部长成佳刚，市政协副主席罗琼玖参加本次会议。</p>
+                    <p>
+                        <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
+                    </p>
+                    <p>为了承接创新项目成果应用发展，对接深圳“创新之都”的创新创业优势，推动襄阳经济高质量发展，襄阳市委、市政府于12月1日在中海信创新产业城举办了湖北襄阳2018年“隆中对”创客大赛深圳分赛。襄阳市委常委、组织部长成佳刚，市政协副主席罗琼玖参加本次会议。</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section section2">
+            <a class="open" href="https://720yun.com/t/5abjvrmwvO0" target="_blank">打开VR</a>
+            <h3 class="title">企业VR</h3>
+            <!--<iframe src="https://720yun.com/t/5abjvrmwvO0"></iframe>-->
+        </div>
+
+        <div class="section section3">
+            <h3 class="title">企业视频</h3>
+            <div class="videos">
+                <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
+                <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
+                <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
+            </div>
+        </div>
+
+        <div class="section section4">
+            <h3 class="title">企业画册</h3>
+            <div class="books">
+                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
+                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
+                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
+                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
+                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
+            </div>
+
+            <div class="book-iframe" v-show="textDetailShow">
+                <a class="close" @tap="textDetailShow=false">×</a>
+                <iframe src="file/pdf.pdf"></iframe>
+            </div>
+        </div>
+
+        <div class="section section5">
+            <h3 class="title">联系方式</h3>
+            <div class="info">
+                <a class="phone" href="tel:10010"></a>
+                <p>0755-86186088</p>
+                <p>乔峰</p>
+                <p>深圳市南山高新南区深圳湾科技生态园1期2栋B座11楼</p>
+            </div>
+            <div class="map">
+                <div id="map"></div>
+                <a href="javascript:;" @tap="openMap()">打开导航</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="nav" id="nav">
+        <a href="">招才纳贤</a>
+        <a href="culture.html">企业文化</a>
+        <a href="">采购信息</a>
+        <a href="product.html">企业产品</a>
+    </div>
+
 </div>
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
+<script type="text/javascript" src="js/pub.js"></script>
+<script type="text/javascript" src="js/index.js?v=111"></script>
 </body>
 </html>
