@@ -12,11 +12,12 @@
 </head>
 <body>
 <div id="app" v-cloak>
-    <div class="banner" id="swiper-banner">
-        <div class="swiper-wrapper">
-            <div class="img swiper-slide" v-for="item in bannerList" :style="{'background-image':'url('+ imgHost+item +')'}"></div>
+    <div class="banner">
+        <div  id="swiper-banner">
+            <div class="swiper-wrapper">
+                <div class="img swiper-slide" v-for="item in bannerList" :style="{'background-image':'url('+ imgHost+item +')'}"></div>
+            </div>
         </div>
-
         <div class="logo" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
         <div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>
     </div>
@@ -61,7 +62,7 @@
         <div class="section section2" v-if="vrUrl">
             <a class="open" :href="vrUrl" target="_blank">打开VR</a>
             <h3 class="title">企业VR</h3>
-            <!--<iframe :src="vrUrl"></iframe>-->
+            <iframe :src="vrUrl"></iframe>
         </div>
 
         <div class="section section3">

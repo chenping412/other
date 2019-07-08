@@ -23,6 +23,9 @@
             margin:10px 0;
             text-align: justify;
         }
+        .main p img{
+            width: 100%;
+        }
         .main .imgs{
             margin: 10px 0;
             overflow-x: auto;
@@ -33,47 +36,65 @@
             height: 4rem;
             margin-right: 5px;
         }
+        .main .line{
+            height: 10px;
+        }
     </style>
 </head>
 <body>
 
 <div class="main">
     <h3>企业文化</h3>
-    <p>老子曰：“天下万物生于有，有生于无”，是说有形的东西受无形的东西支配。企业文化之于企业，相当于灵魂之于人。一体集团坚持做一个有灵魂的企业。</p>
+    <div id="content">
 
-    <h3>一体释义</h3>
-    <p>1、 “一体”内涵</p>
-    <p>源于我国春秋时期著名思想家，道家学派创始人老子的哲学思想：</p>
-    <p>·道生一，一生二，二生三，三生万物。万物之形虽异，其情一体。</p>
-    <p>·人法地，地法天，天法道，道法自然。天人合一，万物一体，宇宙生息矣。</p>
-    <p>·一体之道，在于仁，在于德，仁德一体， 生生不息。</p>
-    <p> 2、 “一体”外延</p>
-    <p>·遵循“道”的智慧指引，探寻产业发展之道与企业经营之道；践行“仁德一体”，走正道，行王道，得大道，打造“生生不息”的事业平台与受人尊敬的产业集团。</p>
-    <p>·遵循“天人合一，万物一体”之道法自然原则，把有利于企业发展的资源整合到“一体”，以人为本，把优秀的人才聚合到“一体”，追求“客户、员工、股东、社会”利益的四位“一体”。</p>
-
-    <div class="imgs">
-        <img src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg">
-        <img src="https://d1icd6shlvmxi6.cloudfront.net/gsc/5BUSIB/de/53/d1/de53d10bfa014c3a9c13cd442e3296da/images/%E4%BC%81%E4%B8%9A%E6%96%87%E5%8C%96/u127.jpg?token=e9acdc75e7db2baa0582568345ee2b0837a495d3c9c7dfa76cc3a23a6af0f62c">
-        <img src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg">
-        <img src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg">
     </div>
-
-    <h3>企业精神</h3>
-    <p>我们提倡恭敬，对人恭敬、对事恭敬，从内心恭敬出发，我们会看到世界更多的美好。</p>
-
-    <p>我们提倡宽容，接人待物如同大地一样深厚扎实，容载万物，赢得信赖，心宽天地宽。</p>
-
-    <p>我们提倡克己，按照“自重、自省、自律、自励”的要求来约束自己，满怀敬畏之心。</p>
-
-    <p>我们提倡诚信，人无信则不立，一体将诚信作为最基本的道德准则，诚信为立业之本。</p>
-
-    <p>我们提倡敏行，鼓励发挥聪明才智、敏捷行动，不必说得太多，而在于赶紧做出结果。</p>
-
-    <p>我们提倡厚道，恩惠之心，宽厚待人，接纳世界，勇于奉献自己，为人类造福的精神。</p>
 </div>
-
+<div class="loading" id="loading"></div>
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/pub.js"></script>
+<script>
+    var obj=searchOjb();
+    var id='';
+    if(obj.id) {
+        id=obj.id;
+        $.ajax({
+            url: apiHost + "/MM2/register/getWenHuaInfoH5.json",
+            type: 'POST',
+            data: JSON.stringify({
+                entid: id
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length>0) {
+                    var list=data.data;
+                    var content='';
+                    for(var i=0;i<list.length;i++){
+                        if(list[i].indexOf('.jpg')>-1 || list[i].indexOf('.jpeg')>-1 || list[i].indexOf('.png')>-1 || list[i].indexOf('.gif')>-1){
+                            var imgs=list[i].split(',');
+                            if(imgs.length<2){
+                                content+='<p><img src="'+imgHost+list[i]+'"></p>';
+                            }else {
+                                content+='<div class="imgs">';
+                                for(var k=0;k<imgs.length;k++){
+                                    content+= '<img src="'+imgHost+imgs[k]+'">';
+                                }
+                                content+= '</div>'
+                            }
+                        }else {
+                            content+='<p>'+list[i].replace(/\n/g,'</p><p>')+'</p>';
+                        }
+                        content+='<div class="line"></div>'
+                    }
+                    $('#content').html(content);
+                    $('#loading').hide();
+                }
+            },error:function(){
+                $('#loading').hide();
+            }
+        })
+    }
+
+</script>
 </body>
 </html>

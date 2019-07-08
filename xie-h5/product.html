@@ -119,6 +119,7 @@
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript">
     var mySwiper;
     function openDetail(){
@@ -136,6 +137,27 @@
         }
     }
 
+
+    var obj=searchOjb();
+    var id='';
+    if(obj.id) {
+        id=obj.id;
+        $.ajax({
+            url: apiHost + "/MM2/register/getEntFileListH5.json",
+            type: 'POST',
+            data: JSON.stringify({
+                entid: id,
+                filetype: '004'
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length > 0) {
+
+                }
+            }
+        })
+
+    }
 
 </script>
 </body>

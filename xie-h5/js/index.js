@@ -2,10 +2,8 @@ var vm = new Vue({
     el: '#app',
     data: function () {
         return {
-//                apiHost:'http://www.myqsl.cn',
-            apiHost: 'http://172.16.1.27:8090',
-            imgHost: 'http://www.myqsl.cn/MM2/img/',
-            pdfHost: 'http://www.myqsl.cn/MM2/img/',
+            imgHost: imgHost,
+            pdfHost: pdfHost,
 
             id: '',
             customerid: '',
@@ -84,7 +82,7 @@ var vm = new Vue({
             var self = this;
             self.loading = true;
             $.ajax({
-                url: self.apiHost + "/MM2/register/queryEntInfoByIdH5.json",
+                url: apiHost + "/MM2/register/queryEntInfoByIdH5.json",
                 type: 'POST',
                 data: JSON.stringify({
                     id: self.id
@@ -119,7 +117,7 @@ var vm = new Vue({
         getCollectInfo: function () {
             var self = this;
             $.ajax({
-                url: self.apiHost + "/MM2/register/iscollectH5.json",
+                url: apiHost + "/MM2/register/iscollectH5.json",
                 type: 'POST',
                 data: JSON.stringify({
                     entid: self.id,
@@ -137,7 +135,7 @@ var vm = new Vue({
         getBannerList: function () {
             var self = this;
             //$.ajax({
-            //    url: self.apiHost + "/MM2/register/getEntLoGoListH5.json",
+            //    url: apiHost + "/MM2/register/getEntLoGoListH5.json",
             //    type: 'POST',
             //    data: JSON.stringify({
             //        id: self.id,
@@ -154,7 +152,7 @@ var vm = new Vue({
         getBannerList2: function () {
             var self = this;
             $.ajax({
-                url: self.apiHost + "/MM2/register/queryAdvInfoImgH5.json",
+                url: apiHost + "/MM2/register/queryAdvInfoImgH5.json",
                 type: 'POST',
                 data: JSON.stringify({
                     "advType":"1",
@@ -176,7 +174,7 @@ var vm = new Vue({
         getVideoList: function () {
             var self = this;
             $.ajax({
-                url: self.apiHost + "/MM2/register/getEntFileListH5.json",
+                url: apiHost + "/MM2/register/getEntFileListH5.json",
                 type: 'POST',
                 data: JSON.stringify({
                     entid: self.id,
@@ -193,7 +191,7 @@ var vm = new Vue({
         getBookList: function () {
             var self = this;
             $.ajax({
-                url: self.apiHost + "/MM2/register/getEntFileListH5.json",
+                url: apiHost + "/MM2/register/getEntFileListH5.json",
                 type: 'POST',
                 data: JSON.stringify({
                     entid: self.id,
@@ -215,7 +213,7 @@ var vm = new Vue({
         getVrList: function () {
             var self = this;
             $.ajax({
-                url: self.apiHost + "/MM2/register/getEntFileListH5.json",
+                url: apiHost + "/MM2/register/getEntFileListH5.json",
                 type: 'POST',
                 data: JSON.stringify({
                     entid: self.id,
