@@ -1,6 +1,6 @@
 .banner{
     width: 100%;
-    height: 100px;
+    height: 4.26666rem;
     position: relative;
 }
 .banner .img{
@@ -12,15 +12,17 @@
     position: absolute;
     left: 30px;
     bottom: -15px;
+    z-index: 9;
     width: 50px;
     height: 50px;
-    border: 1px solid #ffffff;
-    background: #ffffff url("") no-repeat center /cover;
+    background: #ffffff url("") no-repeat center /contain;
+    border: 1px solid #dddddd;
 }
 .banner .num{
     position: absolute;
     right: 30px;
     bottom: 20px;
+    z-index: 9;
     height: 24px;
     border: 1px solid #dddddd;
     padding:0 10px;
@@ -30,7 +32,10 @@
     color: #333;
     line-height: 23px;
 }
-
+.banner .num.active{
+    background-color: red;
+    color: #ffffff;
+}
 
 .header{
     padding:20px 0 10px;
@@ -88,7 +93,7 @@
     position: relative;
 }
 .section1 .summary p{
-    font-size: 13px;
+    font-size: 14px;
     line-height: 22px;
     color: #333333;
     text-align: justify;
@@ -128,7 +133,7 @@
     margin-bottom: 15px;
 }
 .section1 .content p{
-    font-size: 13px;
+    font-size: 14px;
     line-height: 22px;
     text-align: justify;
     margin-bottom: 15px;
@@ -141,7 +146,7 @@
 
 .section2 .open{
     float: right;
-    font-size: 13px;
+    font-size: 14px;
     color: #ff4900;
     line-height: 24px;
 }

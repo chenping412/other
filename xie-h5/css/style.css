@@ -81,7 +81,9 @@ a {
 body{
     color: #333333;
 }
-
+.body-cloak{
+    overflow: hidden;
+}
 
 
 
@@ -117,4 +119,14 @@ body{
     font-weight: bold;
     text-align: center;
     background-color: #000000;
+}
+
+.loading {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#ffffff url("../images/loading-ico.gif") no-repeat center/1rem;
 }

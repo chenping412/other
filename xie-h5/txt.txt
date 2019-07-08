@@ -5,3 +5,31 @@ https://720yun.com/t/5abjvrmwvO0#scene_id=18106928
 
 
 http://localhost:8081/xie-h5/index.html?id=476&customerid=201810201710423
+
+1：查询企业详情(坐标字段：coordinate)
+http://www.myqsl.cn/MM2/register/queryEntInfoByIdH5.json
+{"id":"476"}
+
+:2：当前用户是否有收藏当前企业和企业被收藏的次数
+http://www.myqsl.cn/MM2/register/iscollectH5.json
+{"customerid":"201810201710423","entid":"483"}
+
+:3：企业画册
+http://www.myqsl.cn/MM2/register/getEntFileListH5.json
+{"entid":"476","filetype":"002"}
+
+4：企业VR
+http://www.myqsl.cn/MM2/register/getEntFileListH5.json
+{"entid":"476","filetype":"003"}
+
+:5：企业文化
+http://www.myqsl.cn/MM2/register/getWenHuaInfoH5.json
+{"entid":"476"}
+
+:6：详情页轮播图片
+http://www.myqsl.cn/MM2/register/getEntLoGoListH5.json
+{"id":"476"}
+
+:7：如果企业没有轮播图片，则调用下面的接口，使用主页的图片来代替
+http://www.myqsl.cn/MM2/register/queryAdvInfoImgH5.json
+{"advType":"1","positionId":"1"}

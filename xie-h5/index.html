@@ -5,32 +5,33 @@
     <title></title>
     <meta content="telephone=yes,email=yes" name="format-detection">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/flexible.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
     <link rel="stylesheet" type="text/css" href="css/index.css?v=1">
-    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
 </head>
 <body>
 <div id="app" v-cloak>
-    <div class="banner">
-        <div class="img" style="background-image: url('https://cworks.giiso.com/manage/dist/static/css/static/img/login-bj.16cf0a2.jpg')"></div>
-        <div class="logo" style="background-image: url('https://cworks.giiso.com/manage/dist/static/css/static/img/login-bj.16cf0a2.jpg')"></div>
-        <div class="num">5132</div>
+    <div class="banner" id="swiper-banner">
+        <div class="swiper-wrapper">
+            <div class="img swiper-slide" v-for="item in bannerList" :style="{'background-image':'url('+ imgHost+item +')'}"></div>
+        </div>
+
+        <div class="logo" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
+        <div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>
     </div>
 
     <div class="header">
         <div class="top clearfix">
-            <h3>深圳市一体数科科技集团有限公司</h3>
+            <h3>{{companyInfo.entName}}</h3>
             <div class="icon">
                 <span>视频</span>
                 <span>画册</span>
                 <span>VR</span>
             </div>
         </div>
-        <div class="tags">
-            <span>高新企业</span>
-            <span>管理方案开发</span>
-            <span>物联网</span>
-            <span>智能车</span>
+        <div class="tags" v-if="tags.length>0">
+            <span v-for="item in tags">{{item}}</span>
         </div>
     </div>
 
@@ -38,7 +39,7 @@
         <div class="section section1">
             <h3 class="title">企业简介</h3>
             <div class="summary"  @tap="companyContentShow=true">
-                <p>深圳市一体数科科技有限公司于2013年12月26日在深圳市市场监督管理局登记成立。法定代表人刘丹宁，公司经营范围包括车队信息化管理方案开发、咨询与评估，车队管理软件的开发与销售等。</p>
+                <p>{{companyInfo.summary}}</p>
                 <i></i>
             </div>
 
@@ -46,24 +47,21 @@
                 <a class="close" @tap="companyContentShow=false">×</a>
                 <div class="text">
                     <h3>企业介绍</h3>
-                    <p>深圳市一体数科科技有限公司于2013年12月26日在深圳市市场监督管理局登记成立。法定代表人刘丹宁，公司经营范围包括车队信息化管理方案开发、咨询与评估，车队管理软件的开发与销售等。</p>
-                    <p>
-                        <img src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg">
-                    </p>
-                    <p>为了承接创新项目成果应用发展，对接深圳“创新之都”的创新创业优势，推动襄阳经济高质量发展，襄阳市委、市政府于12月1日在中海信创新产业城举办了湖北襄阳2018年“隆中对”创客大赛深圳分赛。襄阳市委常委、组织部长成佳刚，市政协副主席罗琼玖参加本次会议。</p>
-                    <p>
-                        <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
-                    </p>
-                    <p>为了承接创新项目成果应用发展，对接深圳“创新之都”的创新创业优势，推动襄阳经济高质量发展，襄阳市委、市政府于12月1日在中海信创新产业城举办了湖北襄阳2018年“隆中对”创客大赛深圳分赛。襄阳市委常委、组织部长成佳刚，市政协副主席罗琼玖参加本次会议。</p>
-
+                    <p v-for="item in companyInfo.entDescArr">{{item}}</p>
                 </div>
             </div>
         </div>
+        <div class="section section1">
+            <h3 class="title">经营范围</h3>
+            <div class="summary">
+                <p style="margin: 0;">{{companyInfo.entRange}}</p>
+            </div>
+        </div>
 
-        <div class="section section2">
-            <a class="open" href="https://720yun.com/t/5abjvrmwvO0" target="_blank">打开VR</a>
+        <div class="section section2" v-if="vrUrl">
+            <a class="open" :href="vrUrl" target="_blank">打开VR</a>
             <h3 class="title">企业VR</h3>
-            <!--<iframe src="https://720yun.com/t/5abjvrmwvO0"></iframe>-->
+            <!--<iframe :src="vrUrl"></iframe>-->
         </div>
 
         <div class="section section3">
@@ -75,29 +73,26 @@
             </div>
         </div>
 
-        <div class="section section4">
+        <div class="section section4" v-if="bookList.length>0">
             <h3 class="title">企业画册</h3>
             <div class="books">
-                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
-                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
-                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
-                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
-                <a class="book" href="javascript:;" @tap="textDetailShow=true" style="background-image: url('http://s14.sinaimg.cn/middle/b178816btcaec6b1aa06d&690');"></a>
+                <a class="book" href="javascript:;" v-for="item in bookList" @tap="openBook(item)"
+                   :style="{'background-image':'url('+item.filetypeimg+')'}"></a>
             </div>
 
-            <div class="book-iframe" v-show="textDetailShow">
-                <a class="close" @tap="textDetailShow=false">×</a>
-                <iframe src="file/pdf.pdf"></iframe>
+            <div class="book-iframe" v-show="bookDetailShow">
+                <a class="close" @tap="bookDetailShow=false">×</a>
+                <!--<iframe :src="pdfHost+bookDetail.filetypeurl"></iframe>-->
             </div>
         </div>
 
         <div class="section section5">
             <h3 class="title">联系方式</h3>
             <div class="info">
-                <a class="phone" href="tel:10010"></a>
-                <p>0755-86186088</p>
-                <p>乔峰</p>
-                <p>深圳市南山高新南区深圳湾科技生态园1期2栋B座11楼</p>
+                <a class="phone" :href="'tel:'+companyInfo.entPhone"></a>
+                <p>{{companyInfo.entPhone}}</p>
+                <p>{{companyInfo.entContact}}</p>
+                <p>{{companyInfo.entAddress}}</p>
             </div>
             <div class="map">
                 <div id="map"></div>
@@ -115,12 +110,14 @@
         <a href="product.html">企业产品</a>
     </div>
 
+    <div class="loading" v-show="loading"></div>
 </div>
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/touch.js"></script>
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
 <script type="text/javascript" src="js/pub.js"></script>
-<script type="text/javascript" src="js/index.js?v=111"></script>
+<script type="text/javascript" src="js/index.js?v=111111"></script>
 </body>
 </html>
