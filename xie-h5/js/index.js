@@ -134,20 +134,24 @@ var vm = new Vue({
 
         getBannerList: function () {
             var self = this;
-            //$.ajax({
-            //    url: apiHost + "/MM2/register/getEntLoGoListH5.json",
-            //    type: 'POST',
-            //    data: JSON.stringify({
-            //        id: self.id,
-            //    }),
-            //    contentType: 'application/json; charset=utf-8',
-            //    success: function (data) {
-            //        if (data.code == 200 && data.data && data.data.length > 0) {
-            //            self.bannerList = data.data;
-            //        }
-            //    }
-            //})
-            self.getBannerList2();
+            $.ajax({
+                url: apiHost + "/MM2/register/getEntLoGoListH5.json",
+                type: 'POST',
+                data: JSON.stringify({
+                    id: self.id,
+                }),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.code == 200 && data.data && data.data.length > 0) {
+                        self.bannerList = data.data;
+                    }else {
+                        self.getBannerList2();
+                    }
+                },error:function(){
+                    self.getBannerList2();
+                }
+            })
+
         },
         getBannerList2: function () {
             var self = this;
@@ -178,6 +182,7 @@ var vm = new Vue({
                 type: 'POST',
                 data: JSON.stringify({
                     entid: self.id,
+                    id: self.id,
                     filetype: '001'
                 }),
                 contentType: 'application/json; charset=utf-8',
@@ -233,15 +238,19 @@ var vm = new Vue({
             var self = this;
             self.$nextTick(function () {
                 var map = new BMap.Map("map");    // 创建Map实例
-                var new_point = new BMap.Point(self.companyPosition.lng, self.companyPosition.lat);
-                map.centerAndZoom(new_point, 16);  // 初始化地图,设置中心点坐标和地图级别
                 map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-                var marker = new BMap.Marker(new_point);  // 创建标注
+                // 初始化地图,设置中心点坐标和地图级别
+                var new_point = new BMap.Point(self.companyPosition.lng, self.companyPosition.lat);
+                map.centerAndZoom(new_point, 16);
+                // 创建标注
+                var marker = new BMap.Marker(new_point);
                 map.addOverlay(marker);
                 map.panTo(new_point);
 
-                var myGeo = new BMap.Geocoder();
+
+
                 // 根据坐标得到地址描述
+                var myGeo = new BMap.Geocoder();
                 myGeo.getLocation(new_point, function (result) {
                     if (result && result.addressComponents) {
                         self.companyAddressComponents = result.addressComponents;

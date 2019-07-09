@@ -25,7 +25,11 @@ $('#nav').find('a').each(function(){
     });
     return res;
 }
-//var apiHost='http://www.myqsl.cn';
-var apiHost= 'http://localhost:8090';
-var imgHost= 'http://www.myqsl.cn/MM2/img/';
-var pdfHost= 'http://www.myqsl.cn/MM2/img/';
+var apiHost= '';
+var imgHost= '/MM2/img/';
+var pdfHost= '/MM2/img/';
+if (location.hostname == "172.16.1.27") {
+    apiHost= 'http://'+location.hostname+':8090';
+    imgHost= 'http://www.myqsl.cn/MM2/img/';
+    pdfHost= 'http://www.myqsl.cn/MM2/img/';
+}

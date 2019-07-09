@@ -26,9 +26,9 @@
         <div class="top clearfix">
             <h3>{{companyInfo.entName}}</h3>
             <div class="icon">
-                <span>视频</span>
-                <span>画册</span>
-                <span>VR</span>
+                <span v-if="videoList.length>0">视频</span>
+                <span v-if="bookList.length>0">画册</span>
+                <span v-if="vrUrl">VR</span>
             </div>
         </div>
         <div class="tags" v-if="tags.length>0">
@@ -65,12 +65,10 @@
             <iframe :src="vrUrl"></iframe>
         </div>
 
-        <div class="section section3">
+        <div class="section section3" v-if="videoList.length>0">
             <h3 class="title">企业视频</h3>
             <div class="videos">
-                <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
-                <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
-                <video src="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/525ea85bb75d429d86a8772f7706736c-54d7debe1cac445a2aadb21c7b90e1e9-ld.mp4" poster="http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg" controls="" preload="none"></video>
+                <video v-for="item in videoList" :src="item.filetypeurl" :poster="item.filetypeimg" controls="" preload="none"></video>
             </div>
         </div>
 
@@ -81,10 +79,10 @@
                    :style="{'background-image':'url('+item.filetypeimg+')'}"></a>
             </div>
 
-            <div class="book-iframe" v-show="bookDetailShow">
+            <!--<div class="book-iframe" v-show="bookDetailShow">
                 <a class="close" @tap="bookDetailShow=false">×</a>
-                <!--<iframe :src="pdfHost+bookDetail.filetypeurl"></iframe>-->
-            </div>
+                <iframe :src="pdfHost+bookDetail.filetypeurl"></iframe>
+            </div>-->
         </div>
 
         <div class="section section5">
@@ -118,7 +116,13 @@
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
+<script type="text/javascript" src="wechatshare.js"></script>
+<script type="text/javascript">
+    GIISO.shareInterface.shareInit();
+</script>
 <script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript" src="js/index.js?v=111111"></script>
+
+
 </body>
 </html>

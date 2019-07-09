@@ -1,6 +1,7 @@
  var  express = require("express");
 var  request = require("request");
 var  proxyUrl = "http://www.myqsl.cn";
+// var proxyUrl = 'https://api-panov2.720yun.com';
 var  proxy = express();
 proxy.use("/", function(req, res){
     res.header("Access-Control-Allow-Origin", req.headers.origin || '*');
