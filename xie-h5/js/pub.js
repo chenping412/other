@@ -29,7 +29,7 @@ var apiHost= '';
 var imgHost= '/MM2/img/';
 var pdfHost= '/MM2/img/';
 var mvHost= '/MM2/mv/';
-if (location.hostname == "172.16.1.27") {
+if (location.hostname == "172.16.1.27" || location.hostname == "localhost") {
     apiHost= 'http://'+location.hostname+':8090';
     imgHost= 'http://www.myqsl.cn/MM2/img/';
     pdfHost= 'http://www.myqsl.cn/MM2/img/';
