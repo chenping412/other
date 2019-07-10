@@ -101,7 +101,7 @@ var vm = new Vue({
                             };
                             self.mapInit();
                         }
-                        if (self.companyInfo.entRange)self.tags = self.companyInfo.entRange.split('、');
+                        if (self.companyInfo.labelname)self.tags = self.companyInfo.labelname.split(',');
                         if (self.companyInfo.entDesc) {
                             self.companyInfo.entDesc = self.companyInfo.entDesc.replace(/ /g, '');
                             self.companyInfo.entDescArr = self.companyInfo.entDesc.split('\n');

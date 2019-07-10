@@ -81,20 +81,8 @@
 <body>
 
 <div class="main">
-   <ul class="list clearfix">
-       <li onclick="openDetail()">
-           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
-           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
-       </li> <li onclick="openDetail()">
-           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
-           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
-       </li> <li onclick="openDetail()">
-           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
-           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
-       </li> <li onclick="openDetail()">
-           <div class="img" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
-           <p>产品名称产品名称产品名称产品名称产品名称产品名称产品名称产品名称</p>
-       </li>
+   <ul class="list clearfix" id="list">
+
    </ul>
 
 
@@ -107,11 +95,9 @@
                 <div class="img swiper-slide" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
                 <div class="img swiper-slide" style="background-image: url('http://video.xmrb.com/b6a781289ab649b5b689ea06988504eb/snapshots/033d486b347346f7b9f99e5384246539-00002.jpg')"></div>
             </div>
-            <div class="swiper-pagination"></div>
         </div>
-
-        <h3>产品名称</h3>
-        <p>产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍产品介绍</p>
+        <h3 id="detail-title"></h3>
+        <p id="detail-desc"></p>
     </div>
 </div>
 
@@ -121,25 +107,9 @@
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript">
-    var mySwiper;
-    function openDetail(){
-        $('#detail').show();
-        if(!mySwiper){
-            mySwiper=new Swiper('#detail-imgs', {
-                autoplay: 4000,
-                autoplayDisableOnInteraction: false,
-                loop: true,
-                pagination: '.swiper-pagination',
-                paginationClickable: true
-            });
-        }else {
-            mySwiper.update(true);
-        }
-    }
-
-
     var obj=searchOjb();
     var id='';
+    var list=[];
     if(obj.id) {
         id=obj.id;
         $.ajax({
@@ -152,11 +122,40 @@
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 if (data.code == 200 && data.data && data.data.length > 0) {
-
+                    list = data.data;
+                    var content='';
+                    for(var i=0;i<list.length;i++){
+                        list[i].filetypeimgList = list[i].filetypeimg.split(',');
+                        content+='<li onclick="openDetail('+i+')">'+
+                                '<div class="img" style="background-image: url('+imgHost+list[i].filetypeimgList[0]+')"></div>'+
+                                '<p>'+list[i].filetypename+'</p>'+
+                                '</li>'
+                    }
+                    $('#list').html(content);
+                    console.log(list)
                 }
             }
         })
 
+    }
+    function openDetail(index){
+        var item = list[index];
+        var content='';
+        for(var i=0;i<item.filetypeimgList.length;i++){
+            content+='<div class="img swiper-slide" style="background-image: url('+imgHost+item.filetypeimgList[i]+')"></div>'
+        }
+        $('#detail-imgs').html('<div class="swiper-wrapper">'+content+'</div>');
+        $('#detail-title').html(item.filetypename);
+        $('#detail-desc').html(item.filetypedesc);
+
+        $('#detail').show();
+        new Swiper('#detail-imgs', {
+            autoplay: 4000,
+            autoplayDisableOnInteraction: false,
+            loop: true,
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+        });
     }
 
 </script>

@@ -67,8 +67,8 @@
 
         <div class="section section3" v-if="videoList.length>0">
             <h3 class="title">企业视频</h3>
-            <div class="videos">
-                <video v-for="item in videoList" :src="item.filetypeurl" :poster="item.filetypeimg" controls="" preload="none"></video>
+            <div class="videos" :class="{'one':videoList.length==1}">
+                <video v-for="item in videoList" :src="mvHost+item.filetypeurl" :poster="imgHost+item.filetypeimg" controls="" preload="none"></video>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
             <h3 class="title">企业画册</h3>
             <div class="books">
                 <a class="book" href="javascript:;" v-for="item in bookList" @tap="openBook(item)"
-                   :style="{'background-image':'url('+item.filetypeimg+')'}"></a>
+                   :style="{'background-image':'url('+imgHost+item.filetypeimg+')'}"></a>
             </div>
 
             <!--<div class="book-iframe" v-show="bookDetailShow">
@@ -116,10 +116,7 @@
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
-<script type="text/javascript" src="wechatshare.js"></script>
-<script type="text/javascript">
-    GIISO.shareInterface.shareInit();
-</script>
+<script type="text/javascript" src="js/wechatshare.js"></script>
 <script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript" src="js/index.js?v=111111"></script>
 
