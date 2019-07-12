@@ -17,7 +17,6 @@ var vm = new Vue({
 
             companyContentShow: false,
 
-            bookDetailShow: false,
             bookList: [],
             bookDetail: {},
 
@@ -36,8 +35,6 @@ var vm = new Vue({
     },
     watch:{
         companyContentShow:function(val){
-            this.bodyChange(val);
-        },bookDetailShow:function(val){
             this.bodyChange(val);
         },
         bannerList:function(){
@@ -212,8 +209,7 @@ var vm = new Vue({
         },
         openBook: function (item) {
             this.bookDetail=item;
-            //this.bookDetailShow=true;
-            window.open(this.pdfHost+this.bookDetail.filetypeurl)
+            window.open('http://www.myqsl.cn/MM2/generic/web/viewer.html?file=/MM2/img/'+this.bookDetail.filetypeurl)
         },
         getVrList: function () {
             var self = this;

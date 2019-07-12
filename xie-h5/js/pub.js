@@ -26,9 +26,9 @@ $('#nav').find('a').each(function(){
     return res;
 }
 var apiHost= '';
-var imgHost= '/MM2/img/';
-var pdfHost= '/MM2/img/';
-var mvHost= '/MM2/mv/';
+var imgHost=apiHost+ '/MM2/img/';
+var pdfHost=apiHost+ '/MM2/img/';
+var mvHost=apiHost+ '/MM2/mv/';
 if (location.hostname == "172.16.1.27" || location.hostname == "localhost") {
     apiHost= 'http://'+location.hostname+':8090';
     imgHost= 'http://www.myqsl.cn/MM2/img/';

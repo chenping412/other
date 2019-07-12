@@ -18,7 +18,7 @@
                 <div class="img swiper-slide" v-for="item in bannerList" :style="{'background-image':'url('+ imgHost+item +')'}"></div>
             </div>
         </div>
-        <div class="logo" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
+        <div class="logo" v-if="companyInfo.picPath1" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
         <div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>
     </div>
 
@@ -78,11 +78,6 @@
                 <a class="book" href="javascript:;" v-for="item in bookList" @tap="openBook(item)"
                    :style="{'background-image':'url('+imgHost+item.filetypeimg+')'}"></a>
             </div>
-
-            <!--<div class="book-iframe" v-show="bookDetailShow">
-                <a class="close" @tap="bookDetailShow=false">×</a>
-                <iframe :src="pdfHost+bookDetail.filetypeurl"></iframe>
-            </div>-->
         </div>
 
         <div class="section section5">
@@ -117,8 +112,8 @@
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
 <script type="text/javascript" src="js/wechatshare.js"></script>
-<script type="text/javascript" src="js/pub.js"></script>
-<script type="text/javascript" src="js/index.js?v=111111"></script>
+<script type="text/javascript" src="js/pub.js?v=1"></script>
+<script type="text/javascript" src="js/index.js?v=1111111"></script>
 
 
 </body>
