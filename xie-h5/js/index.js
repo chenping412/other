@@ -203,10 +203,26 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.code == 200 && data.data && data.data.length > 0) {
                         self.bookList = data.data;
+                        self.$nextTick(function() {
+                            if (!self.bookSwiper) {
+                                var bookSwiper = new Swiper('#book-swiper', {
+                                    initialSlide :self.bookList.length>2 ? 1 : 0,
+                                    slidesPerView: 3,
+                                    spaceBetween: 0,
+                                    centeredSlides: true,
+                                });
+
+                            } else {
+                                self.bookSwiper.update(true);
+                            }
+                        })
                     }
                 }
             })
         },
+
+
+
         openBook: function (item) {
             this.bookDetail=item;
             window.open('http://www.myqsl.cn/MM2/generic/web/viewer.html?file=/MM2/img/'+this.bookDetail.filetypeurl)

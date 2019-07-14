@@ -4,7 +4,7 @@
 }
 #swiper-banner{
     width: 100%;
-    height: 3.2rem;
+    height: 3.3333rem;
     overflow: hidden;
 }
 .banner .img{
@@ -14,13 +14,13 @@
 }
 .banner .logo{
     position: absolute;
-    left: 30px;
-    bottom: -15px;
+    left: 0.6666rem;
+    bottom: -0.6666rem;
     z-index: 9;
-    width: 50px;
-    height: 50px;
+    width: 1.89333rem;
+    height: 1.89333rem;
     background: #ffffff url("") no-repeat center /contain;
-    border: 1px solid #dddddd;
+    border-radius: 4px;
 }
 .banner .num{
     position: absolute;
@@ -42,79 +42,64 @@
 }
 
 .header{
-    padding:20px 0 10px;
-    margin:0 15px;
-    border-bottom: 1px solid #dddddd;
-}
-.header .top{
-    margin-bottom: 10px;
+    padding:0.7rem 0.65rem 0.6rem;
+    border-bottom: 5px solid #f3f3f3;
 }
 .header h3{
-    font-size: 16px;
+    font-size: 18px;
     color: #000;
-    line-height: 30px;
-    margin-right: 5px;
-    float: left;
+    line-height: 20px;
+    padding:5px 0;
+    white-space: nowrap;
+}
+.header h3 img{
+    width: 15px;
+    vertical-align: middle;
 }
 .header .icon{
-    float: left;
+    padding:0.21333rem 0 0.293333rem;
 }
 .header .icon span{
     display: inline-block;
-    width: 28px;
     height:28px;
-    border:1px solid #dddddd;
-    border-radius: 50%;
-    font-size: 12px;
-    text-align: center;
-    line-height: 26px;
+    font-size: 9px;
+    color: #4d4d4d;
+    line-height: 28px;
+}
+.header .icon span img{
+    height: 9px;
+    vertical-align: middle;
+    margin-right: 7px;
+}
+.header .icon span+span{
+    margin-left: 0.6667rem;
 }
 .header .tags span{
     display: inline-block;
-    height:20px;
-    padding:0 10px;
-    border:1px solid #dddddd;
+    height:14px;
+    padding:0 12px;
+    border:1px solid #e6e6e6;
     border-radius: 3px;
-    font-size: 12px;
-    text-align: center;
-    line-height: 19px;
+    font-size: 9px;
+    color: #4d4d4d;
+    line-height: 13px;
     margin:0 5px 5px 0;
-    overflow: hidden;
 }
 
 
-.main{
-    padding:20px 16px 80px;
-}
-.main .title{
-    font-size: 15px;
-    line-height: 24px;
-    padding-bottom: 10px;
-}
+
+
+
 .section{
-    padding-bottom: 20px;
 }
-.section1 .summary{
-    position: relative;
-}
+
 .section1 .summary p{
     font-size: 14px;
-    line-height: 22px;
-    color: #333333;
+    line-height: 24px;
+    color: #000000;
     text-align: justify;
-    margin-right: 20px;
 }
-.section1 .summary>i{
-    position: absolute;
-    right: 0;
-    top:50%;
-    margin-top: -6px;
-    width: 8px;
-    height: 8px;
-    border-top:2px solid #333333;
-    border-right:2px solid #333333;
-    transform: rotate(45deg);
-}
+
 .section1 .content{
     position: fixed;
     left: 0;
@@ -139,7 +124,7 @@
 }
 .section1 .content p{
     font-size: 14px;
-    line-height: 22px;
+    line-height: 24px;
     text-align: justify;
     margin-bottom: 15px;
 }
@@ -147,18 +132,20 @@
 .section1 .content video{
     max-width: 100%;
 }
+.section1-2{
+    border-bottom: 5px solid #f3f3f3;
+    padding-bottom: 0.75rem;
+}
 
-
-.section2 .open{
-    float: right;
-    font-size: 14px;
-    color: #ff4900;
-    line-height: 24px;
+.section2 .iframe{
+    height: 12rem;
+    border-radius: 4px;
+    overflow: hidden;
 }
 .section2 iframe{
+    border:none;
     width: 100%;
-    height: 12rem;
-    border: 1px solid #dddddd;
+    height: 100%;
 }
 
 .section3 .videos{
@@ -170,6 +157,8 @@
 .section3 .videos video{
     width: 90%;
     height: 5rem;
+    border-radius: 4px;
+    overflow: hidden;
 }
 .section3 .videos video+video{
     margin-left: 10px;
@@ -183,59 +172,106 @@
 
 .section4 .books{
     width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
+    height: 3.5rem;
+    overflow: hidden;
 }
 .section4 .books .book{
-    display: inline-block;
-    width: 3.3rem;
-    height: 4.4rem;
+    display: block;
+    box-sizing: border-box;
+    background: url("") no-repeat center/cover;
+}
+.section4 .books .swiper-slide {
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    transition: 300ms;
+    transform: scale(0.9);
+    border: 1px solid transparent;
+}
+.section4 .books .swiper-slide.swiper-slide-active{
+    transform: scale(1);
     border: 1px solid #dddddd;
-    background: url("") no-repeat center/contain;
-}
-.section4 .books .book+.book{
-    margin-left: 10px;
-}
-.section4 .book-iframe{
-    position: fixed;
-    left: 0;
-    right: 0;
-    top:0;
-    bottom: 0;
-    z-index: 999;
-    background-color: #ffffff;
-}
-.section4 .book-iframe .close{
-    position: absolute;
-    right: 15px;
-    top:15px;
-}
-.section4 .book-iframe iframe{
-    border: none;
-    width: 100%;
-    height: 100%;
 }
 
-.section5 .info{
+
+.section4-5 .list li{
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid #ececec;
+    margin-bottom: 0.4rem;
+}
+.section4-5 .list li .img{
+    width: 47px;
+    height: 47px;
+    background: #ffffff url("") no-repeat center/contain;
+    float: left;
+    margin-right: 8px;
+}
+.section4-5 .list li .icon{
+    float: right;
+    width: 15px;
+}
+.section4-5 .list li h4{
     font-size: 14px;
-    line-height: 0.7rem;
+    color: #333333;
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+}
+.section4-5 .list li p{
+    font-size: 9px;
+    line-height: 14px;
+    height: 28px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+   -webkit-line-clamp: 2;
+}
+
+
+
+
+.section5 .info{
+
     margin-bottom:5px;
 }
-.section5 .phone{
-    float: right;
+.section5 .info a{
     display: block;
-    height: 1.35rem;
-    width: 2rem;
-    border-left: 1px solid #dddddd;
-    background: url("../images/icon-phone.jpg") no-repeat center;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 13px;
+}
+.section5 .info a img{
+    float: left;
+    width: 20px;
+    margin-bottom: 3px;
+    vertical-align: middle;
+    margin-right: 0.6rem;
+}
+.section5 .info a span+span{
+    margin-left: 10px;
 }
 .section5 .map{
-    border: 1px solid #dddddd;
     position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: rgba(0,0,0,0.3) 2px 2px 10px 0;
 }
 .section5 #map{
-    height: 6rem;
+    height: 5rem;
 }
 .section5 .map a{
     position: absolute;
@@ -247,7 +283,7 @@
     font-size: 12px;
     text-align: center;
     background: #ffffff;
-    border: 1px solid #dddddd;
+    border: 1px solid #d9d9d9;
     border-radius: 5px;
 }
 

@@ -3,7 +3,6 @@
  */
 
 var searchStr=location.search;
-
 $('#nav').find('a').each(function(){
 
     var href = $(this).attr('href')
@@ -11,6 +10,11 @@ $('#nav').find('a').each(function(){
         $(this).attr('href', href+searchStr)
     }
 });
+
+var infoHref =$('#company-info').attr('href');
+if(infoHref){
+    $('#company-info').attr('href', infoHref+searchStr);
+}
 
 
  function searchOjb() {

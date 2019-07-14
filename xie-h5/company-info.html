@@ -38,9 +38,20 @@
 <body>
 
 <div class="main">
+    <div class="section">
     <h3 class="title"><p>企业文化</p></h3>
     <div id="content">
 
+    </div>
+    </div>
+
+    <div class="section">
+        <h3 class="title">
+            <p>经营范围</p>
+        </h3>
+        <div class="summary" id="content2">
+            <p>{{companyInfo.entRange}}</p>
+        </div>
     </div>
 </div>
 <div class="loading" id="loading"></div>
@@ -53,35 +64,38 @@
     if(obj.id) {
         id=obj.id;
         $.ajax({
-            url: apiHost + "/MM2/register/getWenHuaInfoH5.json",
+            url: apiHost + "/MM2/register/queryEntInfoByIdH5.json",
             type: 'POST',
             data: JSON.stringify({
-                entid: id
+                id: id
             }),
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 if (data.code == 200 && data.data && data.data.length>0) {
-                    var list=data.data;
-                    var content='';
-                    for(var i=0;i<list.length;i++){
-                        if(list[i].indexOf('.jpg')>-1 || list[i].indexOf('.jpeg')>-1 || list[i].indexOf('.png')>-1 || list[i].indexOf('.gif')>-1){
-                            var imgs=list[i].split(',');
-                            if(imgs.length<2){
-                                content+='<p><img src="'+imgHost+list[i]+'"></p>';
-                            }else {
-                                content+='<div class="imgs">';
-                                for(var k=0;k<imgs.length;k++){
-                                    content+= '<img src="'+imgHost+imgs[k]+'">';
+                    var companyInfo = data.data[0];
+                    if (companyInfo.entDesc) {
+                        var list = companyInfo.entDesc.split('\n');
+                        var content='';
+                        for(var i=0;i<list.length;i++){
+                            if(list[i].indexOf('.jpg')>-1 || list[i].indexOf('.jpeg')>-1 || list[i].indexOf('.png')>-1 || list[i].indexOf('.gif')>-1){
+                                var imgs=list[i].split(',');
+                                if(imgs.length<2){
+                                    content+='<p><img src="'+imgHost+list[i]+'"></p>';
+                                }else {
+                                    content+='<div class="imgs">';
+                                    for(var k=0;k<imgs.length;k++){
+                                        content+= '<img src="'+imgHost+imgs[k]+'">';
+                                    }
+                                    content+= '</div>'
                                 }
-                                content+= '</div>'
+                            }else {
+                                content+='<p>'+list[i].replace(/\n/g,'</p><p>')+'</p>';
                             }
-                        }else {
-                            content+='<p>'+list[i].replace(/\n/g,'</p><p>')+'</p>';
                         }
-                        content+='<div class="line"></div>'
+                        $('#content').html(content);
+                        $('#content2').html('<p>'+companyInfo.entRange+'</p>');
+                        $('#loading').hide();
                     }
-                    $('#content').html(content);
-                    $('#loading').hide();
                 }
             },error:function(){
                 $('#loading').hide();
