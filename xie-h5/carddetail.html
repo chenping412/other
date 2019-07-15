@@ -3,8 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
@@ -16,82 +15,122 @@
     <link rel="icon" href="http://www.myqsl.cn/MM2/andios/favicon.png">
     <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/common.css" type="text/css">
     <!--该文件不能取消-->
+    <script src="http://www.myqsl.cn/MM2/h5/js/flexible.js"></script>
     <script src="http://www.myqsl.cn/MM2/assets/js/jquery.min.js"></script>
-
-</head>
-<body style="">
-<link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/company_detail.css" type="text/css">
-<div>
+    <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/company_detail.css" type="text/css">
     <style type="text/css">
-        .navtop {
-            width: 100%;
-            height: 52px;
-            background: #fff;
+        body{
+            background-color: #f3f3f3;
         }
-
-        .navtop .logo {
-            width: 80px;
-            margin-left: 15px;
-            margin-top: 12px;
-            line-height: 20px;
-            float: left;
+        .title{
+            padding-top: 0.48rem;
+            font-size: 16px;
+            color: #000000;
+            line-height: 1.04rem;
+            height: 1.04rem;
+            border-bottom: 1px solid #d4d4d4;
+            box-sizing: content-box;
+            margin-bottom: 0.56rem;
         }
-
-        .navtop .logo > img {
-            width: 100%;
-        }
-
-        .navtop a {
+        .title a{
             float: right;
-            text-decoration: none;
-            line-height: 32px;
-            margin-top: 10px;
+            font-size: 12px;
+            color: #556ddd;
+            margin-top: 0.186667rem;
+            line-height: 0.85333rem;
         }
-
-        .navtop .userinf {
-            color: #128bed;
-            margin-right: 15px;
+        .person-card{
+            margin: 6px 10px;
+            background-color: #ffffff;
+            border-radius: 7px;
+            padding:0 0.56rem 0.8rem;
         }
-
-        .navtop .app-btn {
-            width: 74px;
-            background: #128bed;
-            color: #fff;
-            border-radius: 4px;
-            text-align: center;
-            font-size: 14px;
-            margin-right: 15px;
+        .person-card .card{
+            position: relative;
+            width: 8.266667rem;
+            height: 4.37333rem;
+            margin: 0 auto;
         }
-
-        .navtop .app-btn:after {
-            content: " ";
-            width: 1px;
-            background: #eee;
-            height: 24px;
-            position: absolute;
-            margin-left: 21px;
-            margin-top: 4px;
-        }
-
-        .navtop clearfix .logo .search-company-surplus {
-            width: 200px;
-            float: left;
-            font-size: 18px;
-            color: #454545;
-            margin-top: 20px;
-        }
-
-        .content {
+        .person-card .card .bj{
+            display: block;
             width: 100%;
-            top: 52px;
-            bottom: 0px;
-            border-top: solid 1px #f1f3f4;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-            position: absolute
-            transform: translateY(10%); /**下移元素**/
-            -ms-transform: translateY(10%);
-            -webkit-transform: translateY(10%);
+        }
+        .person-card .card .logo{
+            position: absolute;
+            left: 0.5266rem;
+            top:0.64rem;
+            display: block;
+            width: 2.92rem;
+            height: 0.7rem;
+            object-fit: contain;
+        }
+        .person-card .card p{
+            padding: 0;
+            margin: 0;
+        }
+        .person-card .card .company{
+            position: absolute;
+            left: 0.4rem;
+            top:1.55rem;
+            width:3.2rem;
+            line-height: 0.56rem;
+            font-size: 9px;
+            color: #000000;
+            text-align: center;
+        }
+        .person-card .card .carimg{
+            position: absolute;
+            left: 1rem;
+            top:2.2rem;
+            display: block;
+            width: 1.89333rem;
+            height: 1.97333rem;
+            object-fit: contain;
+        }
+        .person-card .card .name{
+            position: absolute;
+            left:4.5rem;
+            top:0.333rem;
+            width:3.2rem;
+            line-height: 0.45333rem;
+            font-size: 12.5px;
+            color: #ffffff;
+        }
+        .person-card .card .post{
+            position: absolute;
+            left:4.5rem;
+            top:0.8rem;
+            width:3.2rem;
+            line-height: 0.45333rem;
+            font-size: 9px;
+            color: #cccccc;
+        }
+        .person-card .card .mobile{
+            position: absolute;
+            left:5.15rem;
+            top:1.44rem;
+            width:3.1rem;
+            line-height: 0.546666rem;
+            font-size: 8px;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+        .person-card .card .entEmail{
+            top:2.02666rem;
+        }
+        .person-card .card .web{
+            top:2.613333rem;
+        }
+        .person-card .card .location{
+            position: absolute;
+            left:5.15rem;
+            top:3.24rem;
+            line-height: 0.26666rem;
+            height: 0.53333rem;
+            overflow: hidden;
+            width:3.1rem;
+            font-size: 8px;
+            color: #ffffff;
         }
 
     </style>
@@ -239,78 +278,26 @@
         }
 
     </script>
-    <div class="content">
-        <div class="navtop clearfix" align="center" style="height: 0px; margin-bottom: 0px; visibility: none;"
-             id="typediv1" name="typediv1">
-            <a class="logo" style=" margin-left: 10px; margin-top: 20px;"><img id="imageId" name="imageId"
-                                                                               src="/MM2/andios/favicon.png"
-                                                                               style="background:#f1f3f4;border-radius:10px;">
-
-            </a>
-
-            <a class="userinf" href="javascript:void(0)" id="appEnt" onclick="openEntInfo()" type="1">
-                <div id="entname" name="entname" style="
-transform: translateY(50%); 
-    -ms-transform:translateY(50%);
-    -webkit-transform:translateY(50%); font-size:12px"></div>
-            </a>
-
+</head>
+<body>
+    <div class="person-card" id="typediv1">
+        <h3 class="title">
+            <span>个人名片</span>
+            <a id="appBtn" onclick="openApp()" type="2" href="javascript:void(0)">查看名片详情</a>
+        </h3>
+        <div class="card">
+            <img class="bj" src="images/card-bj.png">
+            <img class="logo" id="imageId" src="/MM2/andios/favicon.png">
+            <img class="carimg" id="carimg" src="/MM2/andios/favicon.png">
+            <p class="company" id="entname"></p>
+            <p class="name" id="name"></p>
+            <p class="post" id="post"></p>
+            <p class="mobile" id="mobile"></p>
+            <p class="mobile entEmail" id="entEmail"></p>
+            <p class="mobile web" id="web"></p>
+            <p class="location" id="location"></p>
         </div>
     </div>
-    <div class="content">
-        <div class="tab-content" style="margin-top: 0px;">
-            <div id="base" class="content-block">
-                <div class="block-title">
-                    个人名片信息
-                    <a class="oper" style="float: right" id="appBtn" onclick="openApp()" type="2"
-                       href="javascript:void(0)"><strong>查看名片详情</strong></a>
-                </div>
-                <div class="basic-wrap">
-
-                    <a class="basic-item"
-
-                       style="display: block;">
-
-
-                        <div class="basic-item-left">
-                            姓名
-                        </div>
-                        <div class="basic-item-right" style="width: 35%;" name="name" id="name">
-
-                        </div>
-                    </a>
-                    <div class="basic-item">
-                        <div class="basic-item-left">
-                            职位
-                        </div>
-                        <div class="basic-item-right" name="title" id="title">
-
-                        </div>
-                    </div>
-                    <div class="basic-item">
-                        <div class="basic-item-left">
-                            公司
-                        </div>
-                        <div class="basic-item-right" name="companyname" id="companyname">
-
-                        </div>
-                    </div>
-                    <div class="basic-item">
-                        <div class="basic-item-left">
-                            所在城市
-                        </div>
-                        <div class="basic-item-right" name="city" id="city">
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
 
 </body>
 </html>
@@ -322,7 +309,7 @@ transform: translateY(50%);
         var customerid = getParamer("customerid");   //获取html页面传值
         var cardid = getParamer("cardid");                  //获取html页面传值
         var path = getRootPath_dc();
-        if (location.hostname == "172.16.1.27" || location.hostname == "localhost") {
+        if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5") {
             path= 'http://'+location.hostname+':8090/MM2';
         }
         var user = {"cardid": cardid};
@@ -334,13 +321,10 @@ transform: translateY(50%);
             data: JSON.stringify(user), // Request body
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
-
-                $("div#entname").html(response.companyname);
-                $("div#companyname").html(response.companyname);
-                $("div#name").html(response.name);
-                $("div#title").html(response.title);
-                $("div#mobile").html(response.mobile);
-                $("div#city").html(response.city);
+                $("#name").html(response.name);
+                $("#post").html(response.title);
+                $("#mobile").html(response.mobile);
+                $("#carimg").attr("src", path + "/img/" + response.carimg);
             }
         })
 
@@ -355,8 +339,10 @@ transform: translateY(50%);
             data: JSON.stringify(entuser), // Request body
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
-                $("div#entname").html(response.entName);   //企业名字
-                //$("#entname1").html(response.entName);
+                $("#entname").html(response.entName);
+                $("#entEmail").html(response.entEmail);
+                $("#web").html(response.entWebsite);
+                $("#location").html(response.entAddress);
                 $("#imageId").attr("src", path + "/img/" + response.picPath1);//企业LOGO
 
             }
