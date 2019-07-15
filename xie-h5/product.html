@@ -10,8 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
     <style type="text/css">
         .main{
-            margin:20px 16px 80px;
-            color: #333333;
+            padding-bottom: 60px;
         }
         .list li{
             width: 48%;
@@ -81,6 +80,8 @@
 <body>
 
 <div class="main">
+    <h3 class="title"><p>企业产品</p></h3>
+
    <ul class="list clearfix" id="list">
 
    </ul>
@@ -140,6 +141,39 @@
     }
     function openDetail(index){
         var item = list[index];
+
+        $.ajax({
+            url: apiHost + "/MM2/register/getEntFileDetailList.json",
+            type: 'POST',
+            data: JSON.stringify({
+                tbentfileid: item.id
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length > 0) {
+                    list = data.data;
+                    var content='';
+                    for(var i=0;i<list.length;i++){
+                        list[i].filetypeimgList = list[i].filetypeimg.split(',');
+                        content+='<li onclick="openDetail('+i+')">'+
+                                '<div class="img" style="background-image: url('+imgHost+list[i].filetypeimgList[0]+')"></div>'+
+                                '<p>'+list[i].filetypename+'</p>'+
+                                '</li>'
+                    }
+                    $('#list').html(content);
+                    console.log(list)
+                }
+            }
+        })
+
+
+
+
+
+
+
+
+
         var content='';
         for(var i=0;i<item.filetypeimgList.length;i++){
             content+='<div class="img swiper-slide" style="background-image: url('+imgHost+item.filetypeimgList[i]+')"></div>'

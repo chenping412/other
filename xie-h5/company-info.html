@@ -39,7 +39,7 @@
 
 <div class="main">
     <div class="section">
-    <h3 class="title"><p>企业文化</p></h3>
+    <h3 class="title"><p id="title">企业简介</p></h3>
     <div id="content">
 
     </div>
@@ -60,6 +60,9 @@
 <script type="text/javascript" src="js/pub.js"></script>
 <script>
     var obj=searchOjb();
+    if(obj.groupstatus && obj.groupstatus=='1'){
+        $('#title').html('集团简介')
+    }
     var id='';
     if(obj.id) {
         id=obj.id;

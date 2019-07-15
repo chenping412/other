@@ -61,10 +61,9 @@
 }
 .header .icon span{
     display: inline-block;
-    height:28px;
     font-size: 9px;
     color: #4d4d4d;
-    line-height: 28px;
+    line-height: 14px;
 }
 .header .icon span img{
     height: 9px;
@@ -76,13 +75,12 @@
 }
 .header .tags span{
     display: inline-block;
-    height:14px;
     padding:0 12px;
     border:1px solid #e6e6e6;
     border-radius: 3px;
     font-size: 9px;
     color: #4d4d4d;
-    line-height: 13px;
+    line-height: 14px;
     margin:0 5px 5px 0;
 }
 
@@ -139,8 +137,9 @@
 
 .section2 .iframe{
     height: 12rem;
-    border-radius: 4px;
+    border-radius: 5px;
     overflow: hidden;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px 10px 0;
 }
 .section2 iframe{
     border:none;
@@ -156,15 +155,16 @@
 }
 .section3 .videos video{
     width: 90%;
-    height: 5rem;
-    border-radius: 4px;
+    height: 4.88rem;
+    border-radius: 5px;
     overflow: hidden;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px 10px 0;
 }
 .section3 .videos video+video{
     margin-left: 10px;
 }
 .section3 .videos.one{
-    overflow: hidden;
+    overflow: visible;
 }
 .section3 .videos.one video{
     width: 100%;
@@ -202,7 +202,17 @@
     transform: scale(1);
     border: 1px solid #dddddd;
 }
-
+.section4 .name{
+    text-align: center;
+    font-size: 12px;
+    color: #000000;
+    line-height: 16px;
+    padding-top: 13px;
+}
+.section4 .name img{
+    width: 11px;
+    margin-right: 8px;
+}
 
 .section4-5 .list li{
     padding-bottom: 5px;
@@ -210,8 +220,8 @@
     margin-bottom: 0.4rem;
 }
 .section4-5 .list li .img{
-    width: 47px;
-    height: 47px;
+    width: 50px;
+    height: 50px;
     background: #ffffff url("") no-repeat center/contain;
     float: left;
     margin-right: 8px;
@@ -245,7 +255,7 @@
 
 .section5 .info{
 
-    margin-bottom:5px;
+    margin-bottom:15px;
 }
 .section5 .info a{
     display: block;
@@ -259,7 +269,7 @@
     width: 20px;
     margin-bottom: 3px;
     vertical-align: middle;
-    margin-right: 0.6rem;
+    margin-right: 0.5rem;
 }
 .section5 .info a span+span{
     margin-left: 10px;
@@ -268,7 +278,7 @@
     position: relative;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: rgba(0,0,0,0.3) 2px 2px 10px 0;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px 10px 0;
 }
 .section5 #map{
     height: 5rem;
@@ -277,9 +287,8 @@
     position: absolute;
     right: 5px;
     top:5px;
-    width: 80px;
-    height: 22px;
-    line-height: 21px;
+    width: 50px;
+    line-height: 22px;
     font-size: 12px;
     text-align: center;
     background: #ffffff;

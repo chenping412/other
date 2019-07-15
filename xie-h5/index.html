@@ -6,8 +6,8 @@
     <meta content="telephone=yes,email=yes" name="format-detection">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <script type="text/javascript" src="js/flexible.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
-    <link rel="stylesheet" type="text/css" href="css/index.css?v=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=11111">
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
 </head>
 <body>
@@ -19,19 +19,19 @@
             </div>
         </div>
         <div class="logo" v-if="companyInfo.picPath1" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
-        <div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>
+        <!--<div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>-->
     </div>
 
     <div class="header">
             <h3>
                 <span>{{companyInfo.entName}}</span>
-                <img src="images/header-icon_03.png">
-                <img src="images/header-icon_04.png">
+                <img v-if="companyInfo.status==2" src="images/header-icon_03.png">
+                <img v-if="companyInfo.status==1" src="images/header-icon_04.png">
             </h3>
             <div class="icon">
-                <span v-if="vrUrl"><img src="images/header-icon_10.png">企业VR</span>
-                <span v-if="videoList.length>0"><img src="images/header-icon_12.png">企业视频</span>
-                <span v-if="bookList.length>0"><img src="images/header-icon_14.png">企业画册</span>
+                <span v-if="vrUrl"><img src="images/header-icon_10.png">{{groupstatusName}}VR</span>
+                <span v-if="videoList.length>0"><img src="images/header-icon_12.png">{{groupstatusName}}视频</span>
+                <span v-if="bookList.length>0"><img src="images/header-icon_14.png">{{groupstatusName}}画册</span>
             </div>
         <div class="tags" v-if="tags.length>0">
             <span v-for="item in tags">{{item}}</span>
@@ -39,10 +39,10 @@
     </div>
 
     <div class="main">
-        <div class="section section1">
+        <div class="section section1" v-if="companyInfo.summary">
             <h3 class="title">
-                <p>企业简介</p>
-                <a id="company-info" class="more" href="company-info.html">
+                <p>{{groupstatusName}}简介</p>
+                <a class="more" :href="'company-info.html'+urlSearch+'&groupstatus='+companyInfo.groupstatus">
                     <span>更多</span>
                     <img src="images/section-more_03.png">
                 </a>
@@ -51,7 +51,7 @@
                 <p>{{companyInfo.summary}}</p>
             </div>
         </div>
-        <div class="section section1 section1-2">
+        <div class="section section1 section1-2" v-if="companyInfo.entRange">
             <h3 class="title">
                 <p>经营范围</p>
             </h3>
@@ -64,7 +64,7 @@
 
         <div class="section section2" v-if="vrUrl">
             <h3 class="title">
-                <p>企业VR</p>
+                <p>{{groupstatusName}}VR</p>
                 <a class="more" :href="vrUrl">
                     <span>打开VR</span>
                     <img src="images/section-more_03.png">
@@ -76,65 +76,74 @@
         </div>
 
         <div class="section section3" v-if="videoList.length>0">
-            <h3 class="title"><p>企业视频</p></h3>
+            <h3 class="title"><p>{{groupstatusName}}视频</p></h3>
             <div class="videos" :class="{'one':videoList.length==1}">
                 <video v-for="item in videoList" :src="mvHost+item.filetypeurl" :poster="imgHost+item.filetypeimg" controls="" preload="none"></video>
             </div>
         </div>
 
+
         <div class="section section4" v-if="bookList.length>0">
-            <h3 class="title"><p>企业画册</p></h3>
+            <h3 class="title"><p>{{groupstatusName}}画册</p></h3>
             <div class="books" id="book-swiper">
                 <div class="swiper-wrapper">
                     <a class="swiper-slide book" href="javascript:;" v-for="item in bookList" @tap="openBook(item)" :style="{'background-image':'url('+imgHost+item.filetypeimg+')'}"></a>
                 </div>
             </div>
+            <p class="name" v-if="bookList[bookSwiperIndex]">
+                <img src="images/book-icon_01.png">
+                <span>{{bookList[bookSwiperIndex].filetypename}}</span>
+            </p>
         </div>
 
 
-        <div class="section section4-5">
+        <div class="section section4-5" v-if="childrenCompanyList.length>0">
             <h3 class="title">
                 <p>分属企业</p>
-                <a class="more">
+                <a class="more" :href="'children-company.html'+urlSearch" v-if="childrenCompanyList.length>5 || true">
                     <span>更多</span>
                     <img src="images/section-more_03.png">
                 </a>
             </h3>
             <ul class="list">
-                <li class="clearfix" v-for="item in bookList">
-                    <div class="img" :style="{'background-image':'url('+imgHost+item.filetypeimg+')'}"></div>
-                    <img class="icon" src="images/header-icon_03.png">
-                    <h4>深圳劲嘉新型智能包装有限公司深圳劲嘉新型智能包装有限公司</h4>
-                    <p>车队管理软件的开发与销售，车队管理硬、维护、销售与租赁；车辆远程信息处理系统、智能车辆管理信息处出；出理系统的研法与车辆远程信息处理系统、智能车辆管理信息处出；出理系统的研法与车辆远程信息处理系统、智能车辆管理信息处出；出理系统的研法与车辆远程信息处理系统、智能车辆管理信息处出；出理系统的研法与</p>
+                <li class="clearfix" v-for="item in childrenCompanyList">
+                    <a :href="'index.html?id='+item.id+'&customerid='+customerid">
+                    <div class="img" :style="{'background-image':'url('+imgHost+item.picPath1+')'}"></div>
+                    <img class="icon" src="images/header-icon_03.png" v-if="item.status == 2">
+                    <img class="icon" src="images/header-icon_04.png" v-if="item.status == 1">
+                    <h4>{{item.entName}}</h4>
+                    <p>{{item.entDesc}}</p>
+                    </a>
                 </li>
             </ul>
 
         </div>
 
 
-        <div class="section section5">
+        <div class="section section5" v-show="companyInfo.entName">
             <h3 class="title"><p>联系方式</p></h3>
             <div class="info">
-                <a :href="'tel:'+companyInfo.entPhone">
+                <a class="clearfix" :href="'tel:'+companyInfo.entPhone" v-if="companyInfo.entPhone">
                     <img src="images/conact-icon_03.png">
                     <span>{{companyInfo.entContact}}</span>
                     <span>{{companyInfo.entPhone}}</span>
                 </a>
-                <a>
+                <a class="clearfix" v-if="companyInfo.entEmail">
                     <img src="images/conact-icon_04.png">
                     <span>{{companyInfo.entEmail}}</span>
                 </a>
-                <a :href="companyInfo.entWebsite">
+                <a class="clearfix" :href="companyInfo.websiteflag == 1 ? companyInfo.entWebsite : null" v-if="companyInfo.entWebsite">
                     <img src="images/conact-icon_05.png">
                     <span>{{companyInfo.entWebsite}}</span>
-                </a><a>
+                </a>
+                <a class="clearfix" @tap="openMap()" v-if="companyInfo.entAddress">
                     <img src="images/conact-icon_07.png">
                     <span>{{companyInfo.entAddress}}</span>
                 </a>
             </div>
             <div class="map">
                 <div id="map"></div>
-                <a href="javascript:;" @tap="openMap()">打开导航</a>
+                <a href="javascript:;" @tap="openMap()">导航</a>
             </div>
         </div>
 
@@ -169,7 +178,7 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
 <script type="text/javascript" src="js/wechatshare.js"></script>
 <script type="text/javascript" src="js/pub.js?v=1"></script>
-<script type="text/javascript" src="js/index.js?v=1111111"></script>
+<script type="text/javascript" src="js/index.js?v=11111111"></script>
 
 
 </body>

@@ -11,10 +11,6 @@ $('#nav').find('a').each(function(){
     }
 });
 
-var infoHref =$('#company-info').attr('href');
-if(infoHref){
-    $('#company-info').attr('href', infoHref+searchStr);
-}
 
 
  function searchOjb() {

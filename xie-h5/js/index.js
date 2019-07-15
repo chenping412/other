@@ -2,6 +2,7 @@ var vm = new Vue({
     el: '#app',
     data: function () {
         return {
+            urlSearch:location.search,
             imgHost: imgHost,
             pdfHost: pdfHost,
 
@@ -13,12 +14,15 @@ var vm = new Vue({
             bannerList: [],
             videoList: [],
             vrUrl: '',
+            childrenCompanyList: [],
 
+            groupstatusName:'企业',
 
             companyContentShow: false,
 
             bookList: [],
             bookDetail: {},
+            bookSwiperIndex:0,
 
             companyPosition: {
                 lng: 113.960415,
@@ -72,6 +76,7 @@ var vm = new Vue({
                 self.getVideoList();
                 self.getBookList();
                 self.getVrList();
+                self.getChildrenCompanyList();
             }
         },
 
@@ -104,6 +109,8 @@ var vm = new Vue({
                             self.companyInfo.entDescArr = self.companyInfo.entDesc.split('\n');
                             self.companyInfo.summary = self.companyInfo.entDescArr[0];
                         }
+                        if (self.companyInfo.groupstatus) self.groupstatusName='集团'
+
 
                     }
                 }, error: function () {
@@ -203,13 +210,19 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.code == 200 && data.data && data.data.length > 0) {
                         self.bookList = data.data;
+                        if(self.bookList.length>2) self.bookSwiperIndex=1;
+
                         self.$nextTick(function() {
                             if (!self.bookSwiper) {
                                 var bookSwiper = new Swiper('#book-swiper', {
-                                    initialSlide :self.bookList.length>2 ? 1 : 0,
+                                    initialSlide :self.bookSwiperIndex,
                                     slidesPerView: 3,
                                     spaceBetween: 0,
                                     centeredSlides: true,
+                                    onSlideChangeEnd: function(swiper){
+                                        console.log(swiper.activeIndex)
+                                        self.bookSwiperIndex=swiper.activeIndex;
+                                    }
                                 });
 
                             } else {
@@ -240,6 +253,24 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.code == 200 && data.data && data.data[0] && data.data[0].filetypeurl) {
                         self.vrUrl = data.data[0].filetypeurl;
+                    }
+                }
+            })
+        },
+        getChildrenCompanyList: function () {
+            var self = this;
+            $.ajax({
+                url: apiHost + "/MM2/register/queryBelongGroupList.json",
+                type: 'POST',
+                data: JSON.stringify({
+                    id: self.id,
+                    page:1,
+                    size:5
+                }),
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data.code == 200 && data.data && data.data.length>0) {
+                        self.childrenCompanyList = data.data;
                     }
                 }
             })
