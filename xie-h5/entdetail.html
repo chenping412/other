@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="leslie">
+    <title>深圳企示录信息科技有限公司</title>
+    <meta name="keywords" content="深圳企示录信息科技有限公司">
+    <meta name="applicable-device" content="mobile">
+    <link rel="icon" href="http://www.myqsl.cn/MM2/andios/favicon.png">
+    <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/common.css" type="text/css">
+    <!--该文件不能取消-->
+    <script src="http://www.myqsl.cn/MM2/assets/js/jquery.min.js"></script>
+
+</head>
+<body style="">
+<link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/company_detail.css" type="text/css">
+<div>
+    <style type="text/css">
+        .navtop {
+            width: 100%;
+            height: 52px;
+            background: #fff;
+        }
+
+        .navtop .logo {
+            width: 100px;
+            margin-left: 15px;
+            margin-top: 12px;
+            line-height: 20px;
+            float: left;
+        }
+
+        .navtop .logo > img {
+            width: 100%;
+        }
+
+        .navtop a {
+            float: right;
+            text-decoration: none;
+            line-height: 24px;
+            margin-top: 10px;
+        }
+
+        .navtop .userinf {
+            color: #128bed;
+            margin-right: 15px;
+        }
+
+        .navtop .app-btn {
+            width: 74px;
+            background: #128bed;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 14px;
+            margin-right: 15px;
+        }
+
+        .navtop .app-btn:after {
+            content: " ";
+            width: 1px;
+            background: #eee;
+            height: 24px;
+            position: absolute;
+            margin-left: 21px;
+            margin-top: 4px;
+        }
+
+        .navtop clearfix .logo .search-company-surplus {
+            width: 200px;
+            float: left;
+            font-size: 18px;
+            color: #454545;
+            margin-top: 20px;
+        }
+
+        .content {
+            width: 100%;
+            top: 52px;
+            bottom: 0px;
+            border-top: solid 1px #f1f3f4;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            position: absolute
+            transform: translateY(10%); /**下移元素**/
+            -ms-transform: translateY(10%);
+            -webkit-transform: translateY(10%);
+        }
+
+    </style>
+    <script type="text/javascript">
+
+        var jcompanykey;
+        var jpersonid;
+        var jpersonname;
+        var jindex;
+
+        var isWeixn;
+        var isAndroid;
+        var isiOS;
+        var timer;
+        jcompanykey = '9ab70a65890b7519388413097b3397c0';
+
+        $(function () {
+            var entid = getParamer("id");//企业id
+            var u = navigator.userAgent, app = navigator.appVersion;
+            isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+            isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);    //ios终端
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {  //判断微信内置浏览器
+                isWeixn = true;
+            } else {
+                isWeixn = false;
+            }
+
+            if (isAndroid) {
+                var jumpUrl;
+                if (jcompanykey) {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (jpersonid) {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+                $('#appBtn').attr('href', jumpUrl);
+            }
+            firstJump();
+        })
+
+
+        function firstJump() {
+            var entid = getParamer("id");//企业id
+
+            if (jcompanykey) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            } else if (jpersonid) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            } else if (jindex) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            }
+        }
+
+        function openApp() {
+            if (isWeixn) {
+                alert('请点击右上角,选择在浏览器中打开.');
+            } else {
+                if (isiOS) {
+                    window.location.href = "https://itunes.apple.com/cn/app/%E4%BC%81%E7%A4%BA%E5%BD%95/id1367096301?mt=8";
+                } else if (isAndroid) {
+                    var hasApp = true, t = 1000;
+
+                    timer = setTimeout(function () {
+
+                        if (!hasApp) {
+
+                            //没有安装app
+                            var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
+                            if (r == true) {
+                                window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
+                            }
+
+                        }
+                    }, 2000);
+                    var t1 = Date.now();
+                    setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
+
+                        var t2 = Date.now();
+                        hasApp = !(!t1 || t2 - t1 < t + 150);
+                    }, t);
+                }
+            }
+        }
+
+        $(document).on('visibilitychange webkitvisibilitychange', function () {
+            var tag = document.hidden || document.webkitHidden;
+            if (tag) {
+                clearTimeout(timer);
+            }
+        })
+
+        $(window).on('pagehide', function () {
+            clearTimeout(timer);
+        })
+
+
+    </script>
+
+
+    <div class="navtop clearfix" align="center" style="height: 0px; margin-bottom: 0px; visibility: none;" id="typediv1"
+         name="typediv1">
+        <a class="logo" style=" margin-left: 10px; margin-top: 15px;"><img id="imageId" name="imageId"
+                                                                           src=""
+                                                                           style="background:#f1f3f4;border-radius:10px;">
+
+        </a>
+
+        <a class="userinf" href="javascript:void(0)" id="appEnt" onclick="openEntInfo()" type="1">
+            <div id="entname" name="entname" style="
+transform: translateY(50%); 
+    -ms-transform:translateY(50%);
+    -webkit-transform:translateY(50%);font-size:12px"></div>
+        </a>
+
+
+    </div>
+    <div class="content">
+
+        <div class="tab-content" style="margin-top: 0px;">
+            <div id="base" class="content-block" style="margin-left: 0;padding-bottom:20px">
+                <div class="block-title">
+                    基本信息
+                    <a class="oper" style="float: right" id="appBtn" onclick="openApp()" type="2"
+                       href="javascript:void(0)"><strong>查看企业详情</strong></a>
+                </div>
+
+                <div class="basic-item" style="padding:0 10px">
+                    <div class="basic-item-left">
+                        联系电话
+                    </div>
+                    <div class="basic-item-right" name="entPhone" id="entPhone">
+
+                    </div>
+                </div>
+                <div class="basic-item" style="padding:0 10px">
+                    <div class="basic-item-left">
+                        企业简介
+                    </div>
+                    <div class="basic-item-right" name="entDesc" id="entDesc">
+
+                    </div>
+                </div>
+                <div class="basic-item" style="padding:0 10px">
+                    <div class="basic-item-left">
+                        公司住所
+                    </div>
+                    <div class="basic-item-right" name="entAddress" id="entAddress">
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+</body>
+</html>
+
+<script>
+
+
+    $(document).ready(function () {
+        var customerid = getParamer("customerid");   //获取html页面传值
+        var entid = getParamer("id");                  //获取html页面传值
+        var path = getRootPath_dc();
+        if (location.hostname == "172.16.1.27" || location.hostname == "localhost") {
+            path= 'http://'+location.hostname+':8090/MM2';
+        }
+        var entuser = {"id": entid};
+        $.ajax({
+            type: 'post',
+            url: path + '/register/queryEntDetailByIdH5.json',
+            dataType: 'json',
+            data: JSON.stringify(entuser), // Request body
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                $("div#entname").html(response.entName);   //企业名字
+                //$("#entname1").html(data.entName);
+                if (response.entDesc.length > 400) {//如果长度超过400,截取显示
+                    $("div#entDesc").html(cutstr(response.entDesc, 400));  //企业介绍
+                } else {
+                    $("div#entDesc").html(response.entDesc);  //企业介绍
+                }
+                $("#entLegalperson1").html(response.entLegalperson);   //法人
+                $("div#entLegalperson").html(response.entLegalperson); //法人
+                $("div#entAddress").html(response.entAddress);         //企业联系地址
+                $("div#entPhone").html(response.entPhone);             //企业联系电话
+                $("#imageId").attr("src", path + "/img/" + response.picPath1);//企业LOGO
+
+            }
+        })
+
+
+    });
+
+    function getRootPath_dc() {
+        var pathName = window.location.pathname.substring(1);
+        var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
+        if (webName == "") {
+            return window.location.protocol + '//' + window.location.host;
+        }
+        else {
+            return window.location.protocol + '//' + window.location.host + '/' + webName;
+        }
+    }
+
+    //获取传过来的值
+    function getParamer(paramer) {
+
+        var url = window.location.href.split("?")[1];
+        /*获取url里"?"后面的值*/
+        if (url.indexOf("&") > 0) {                                      /*判断是否是一个参数还是多个参数*/
+            urlParamArry = url.split("&");
+            /*分开每个参数，并放到数组里*/
+            for (var i = 0; i < urlParamArry.length; i++) {
+                var paramerName = urlParamArry[i].split("=");
+                /*把每个参数名和值分开，并放到数组里*/
+                if (paramer == paramerName[0]) {                     /*匹配输入的参数和数组循环出来的参数是否一样*/
+                    return paramerName[1];
+                    /*返回想要的参数值*/
+                }
+            }
+        } else {                                                              /*判断只有个参数*/
+            var paramerValue = url.split("=")[1];
+            return paramerValue;
+        }
+
+    }
+
+    /**
+     * js截取字符串，中英文都能用
+     * @param str：需要截取的字符串
+     * @param len: 需要截取的长度
+     */
+    function cutstr(str, len) {
+        var str_length = 0;
+        var str_len = 0;
+        str_cut = new String();
+        str_len = str.length;
+        for (var i = 0; i < str_len; i++) {
+            a = str.charAt(i);
+            str_length++;
+            if (escape(a).length > 4) {
+                //中文字符的长度经编码之后大于4  
+                str_length++;
+            }
+            str_cut = str_cut.concat(a);
+            if (str_length >= len) {
+                str_cut = str_cut.concat("......");
+                return str_cut;
+            }
+        }
+        //如果给定字符串小于指定长度，则返回源字符串；  
+        if (str_length < len) {
+            return str;
+        }
+    }
+</script>
