@@ -17,6 +17,7 @@
             <div class="swiper-wrapper">
                 <div class="img swiper-slide" v-for="item in bannerList" :style="{'background-image':'url('+ imgHost+item +')'}"></div>
             </div>
+            <div class="swiper-pagination"></div>
         </div>
         <div class="logo" v-if="companyInfo.picPath1" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
         <!--<div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>-->

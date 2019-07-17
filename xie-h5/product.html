@@ -102,7 +102,7 @@
     </div>
 </div>
 
-
+<div class="loading" id="loading"></div>
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
@@ -135,31 +135,16 @@
                     $('#list').html(content);
                     console.log(list)
                 }
+                $('#loading').hide();
+            },error:function(){
+                $('#loading').hide();
             }
         })
 
     }
     function openDetail(index){
-        var item = list[index];
-
-        var content='';
-        for(var i=0;i<item.filetypeimgList.length;i++){
-            content+='<div class="img swiper-slide" style="background-image: url('+imgHost+item.filetypeimgList[i]+')"></div>'
-        }
-        $('#detail-imgs').html('<div class="swiper-wrapper">'+content+'</div>');
-        $('#detail-title').html(item.filetypename);
-        $('#detail-desc').html(item.filetypedesc);
-
-        $('#detail').show();
-        new Swiper('#detail-imgs', {
-            autoplay: 4000,
-            autoplayDisableOnInteraction: false,
-            loop: true,
-            pagination: '.swiper-pagination',
-            paginationClickable: true
-        });
-
-        $.ajax({
+        var item =list[index]
+                $.ajax({
             url: apiHost + "/MM2/register/getEntFileDetailList.json",
             type: 'POST',
             data: JSON.stringify({
@@ -168,22 +153,39 @@
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 if (data.code == 200 && data.data && data.data.length > 0) {
-                    list = data.data;
-                    var content='';
-                    for(var i=0;i<list.length;i++){
-                        list[i].filetypeimgList = list[i].filetypeimg.split(',');
-                        content+='<li onclick="openDetail('+i+')">'+
-                                '<div class="img" style="background-image: url('+imgHost+list[i].filetypeimgList[0]+')"></div>'+
-                                '<p>'+list[i].filetypename+'</p>'+
-                                '</li>'
-                    }
-                    $('#list').html(content);
-                    console.log(list)
+                    item = data.data[0];
+                    if(item.filetypeurl) item.filetypeimgList=item.filetypeurl.split(',');
                 }
+
+                var content='';
+                for(var i=0;i<item.filetypeimgList.length;i++){
+                    content+='<div class="img swiper-slide" style="background-image: url('+imgHost+item.filetypeimgList[i]+')"></div>'
+                }
+                $('#detail-imgs').find('.swiper-wrapper').html(content);
+                $('#detail-title').html(item.filetypename);
+                $('#detail-desc').html(item.filetypedesc);
+
+                $('#detail').show();
+                location.hash = 'detail';
+                var bannerSwiper = new Swiper('#detail-imgs', {
+                    autoplay: 4000,
+                    autoplayDisableOnInteraction: false,
+                    loop: true,
+                    pagination: '.swiper-pagination',
+                    paginationClickable: true
+                });
             }
         })
     }
 
+    window.onpopstate = function () {
+        var hash = location.hash.slice(1);
+        if(hash == 'detail'){
+            $('#detail').show();
+        }else {
+            $('#detail').hide();
+        }
+    }
 </script>
 </body>
 </html>

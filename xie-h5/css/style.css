@@ -164,3 +164,14 @@ body{
     bottom: 0;
     background:#ffffff url("../images/loading-ico.gif") no-repeat center/1rem;
 }
+
+
+body .swiper-pagination-bullet{
+    background-color: #999999;
+    opacity: 0.7;
+}
+body .swiper-pagination-bullet-active{
+    background-color: #ffffff;
+    transform: scale(1.2);
+    opacity: 1;
+}

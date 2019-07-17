@@ -49,6 +49,8 @@ var vm = new Vue({
                         autoplay: 4000,
                         autoplayDisableOnInteraction: false,
                         loop: true,
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true
                     });
                 } else {
                     self.bannerSwiper.update(true);

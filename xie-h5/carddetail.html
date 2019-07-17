@@ -13,282 +13,22 @@
     <meta name="keywords" content="深圳企示录信息科技有限公司">
     <meta name="applicable-device" content="mobile">
     <link rel="icon" href="http://www.myqsl.cn/MM2/andios/favicon.png">
-    <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/common.css" type="text/css">
     <!--该文件不能取消-->
-    <script src="http://www.myqsl.cn/MM2/h5/js/flexible.js"></script>
-    <script src="http://www.myqsl.cn/MM2/assets/js/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/company_detail.css" type="text/css">
-    <style type="text/css">
-        body{
-            background-color: #f3f3f3;
-        }
-        .title{
-            padding-top: 0.48rem;
-            font-size: 16px;
-            color: #000000;
-            line-height: 1.04rem;
-            height: 1.04rem;
-            border-bottom: 1px solid #d4d4d4;
-            box-sizing: content-box;
-            margin-bottom: 0.56rem;
-        }
-        .title a{
-            float: right;
-            font-size: 12px;
-            color: #556ddd;
-            margin-top: 0.186667rem;
-            line-height: 0.85333rem;
-        }
-        .person-card{
-            margin: 6px 10px;
-            background-color: #ffffff;
-            border-radius: 7px;
-            padding:0 0.56rem 0.8rem;
-        }
-        .person-card .card{
-            position: relative;
-            width: 8.266667rem;
-            height: 4.37333rem;
-            margin: 0 auto;
-        }
-        .person-card .card .bj{
-            display: block;
-            width: 100%;
-        }
-        .person-card .card .logo{
-            position: absolute;
-            left: 0.5266rem;
-            top:0.64rem;
-            display: block;
-            width: 2.92rem;
-            height: 0.7rem;
-            object-fit: contain;
-        }
-        .person-card .card p{
-            padding: 0;
-            margin: 0;
-        }
-        .person-card .card .company{
-            position: absolute;
-            left: 0.4rem;
-            top:1.55rem;
-            width:3.2rem;
-            line-height: 0.56rem;
-            font-size: 9px;
-            color: #000000;
-            text-align: center;
-        }
-        .person-card .card .carimg{
-            position: absolute;
-            left: 1rem;
-            top:2.2rem;
-            display: block;
-            width: 1.89333rem;
-            height: 1.97333rem;
-            object-fit: contain;
-        }
-        .person-card .card .name{
-            position: absolute;
-            left:4.5rem;
-            top:0.333rem;
-            width:3.2rem;
-            line-height: 0.45333rem;
-            font-size: 12.5px;
-            color: #ffffff;
-        }
-        .person-card .card .post{
-            position: absolute;
-            left:4.5rem;
-            top:0.8rem;
-            width:3.2rem;
-            line-height: 0.45333rem;
-            font-size: 9px;
-            color: #cccccc;
-        }
-        .person-card .card .mobile{
-            position: absolute;
-            left:5.15rem;
-            top:1.44rem;
-            width:3.1rem;
-            line-height: 0.546666rem;
-            font-size: 8px;
-            color: #ffffff;
-            white-space: nowrap;
-        }
-        .person-card .card .entEmail{
-            top:2.02666rem;
-        }
-        .person-card .card .web{
-            top:2.613333rem;
-        }
-        .person-card .card .location{
-            position: absolute;
-            left:5.15rem;
-            top:3.24rem;
-            line-height: 0.26666rem;
-            height: 0.53333rem;
-            overflow: hidden;
-            width:3.1rem;
-            font-size: 8px;
-            color: #ffffff;
-        }
-
-    </style>
-    <script type="text/javascript">
-
-        var jcompanykey;
-        var jpersonid;
-        var jpersonname;
-        var jindex;
-
-        var isWeixn;
-        var isAndroid;
-        var isiOS;
-        var timer;
-        var entid;
-        jcompanykey = '9ab70a65890b7519388413097b3397c0';
-
-        $(function () {
-            var cardid = getParamer("cardid");//名片id
-            entid = getParamer("id");//企业id
-            if (entid == "undefined" || entid == null || entid == "" || entid == 0) {
-                document.getElementById("typediv1").style.display = "none";//隐藏
-
-            } else {
-                document.getElementById("typediv1").style.display = "";//隐藏
-            }
-
-            var u = navigator.userAgent, app = navigator.appVersion;
-            isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-            isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);    //ios终端
-            var ua = navigator.userAgent.toLowerCase();
-            if (ua.match(/MicroMessenger/i) == "micromessenger") {  //判断微信内置浏览器
-                isWeixn = true;
-            } else {
-                isWeixn = false;
-            }
-
-            if (isAndroid) {
-                var jumpUrl;
-                if (jcompanykey) {
-                    jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                } else if (jpersonid) {
-                    jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                } else {
-                    jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                }
-                $('#appBtn').attr('href', jumpUrl);
-            }
-            firstJump();
-        })
-
-
-        function firstJump() {
-            var cardid = getParamer("cardid");//名片id
-
-            if (jcompanykey) {
-                if (isAndroid) {
-                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                } else if (isiOS) {
-                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                }
-            } else if (jpersonid) {
-                if (isAndroid) {
-                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                } else if (isiOS) {
-                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                }
-            } else if (jindex) {
-                if (isAndroid) {
-                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                } else if (isiOS) {
-                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-                }
-            }
-        }
-
-        function openApp() {
-            if (isWeixn) {
-                alert('请点击右上角,选择在浏览器中打开.');
-            } else {
-                if (isiOS) {
-
-                    var hasApp = true, t = 1000;
-
-                    timer = setTimeout(function () {
-
-                        if (!hasApp) {
-
-                            //没有安装app
-                            var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
-                            if (r == true) {
-                                window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
-                                //window.location.href = "https://itunes.apple.com/cn/app/%E4%BC%81%E7%A4%BA%E5%BD%95/id1367096301?mt=8";
-                            }
-
-                        }
-                    }, 2000);
-                    var t1 = Date.now();
-                    setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
-
-                        var t2 = Date.now();
-                        hasApp = !(!t1 || t2 - t1 < t + 150);
-                    }, t);
-
-                } else if (isAndroid) {
-                    var hasApp = true, t = 1000;
-
-                    timer = setTimeout(function () {
-
-                        if (!hasApp) {
-
-                            //没有安装app
-                            var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
-                            if (r == true) {
-                                window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
-                            }
-
-                        }
-                    }, 2000);
-                    var t1 = Date.now();
-                    setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
-
-                        var t2 = Date.now();
-                        hasApp = !(!t1 || t2 - t1 < t + 150);
-                    }, t);
-                }
-            }
-        }
-
-        $(document).on('visibilitychange webkitvisibilitychange', function () {
-            var tag = document.hidden || document.webkitHidden;
-            if (tag) {
-                clearTimeout(timer);
-            }
-        })
-
-        $(window).on('pagehide', function () {
-            clearTimeout(timer);
-        })
-
-        function openEntInfo() {
-
-            location.href = "http://www.myqsl.cn/MM2/andios/entdetail.html?id=" + entid;
-
-        }
-
-    </script>
+    <script src="js/flexible.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <link rel="stylesheet" href="css/share-detail.css" type="text/css">
 </head>
 <body>
-    <div class="person-card" id="typediv1">
+<div class="main" id="typediv1">
+    <div class="box section1" id="section-card" style="display: none;">
         <h3 class="title">
             <span>个人名片</span>
-            <a id="appBtn" onclick="openApp()" type="2" href="javascript:void(0)">查看名片详情</a>
+            <a class="appBtn" onclick="openApp()" type="2" href="javascript:void(0)">查看名片详情</a>
         </h3>
         <div class="card">
             <img class="bj" src="images/card-bj.png">
-            <img class="logo" id="imageId" src="/MM2/andios/favicon.png">
-            <img class="carimg" id="carimg" src="/MM2/andios/favicon.png">
+            <img class="logo" id="imageId" src="" style="display: none;">
+            <img class="carimg" id="carimg" src="" style="display: none;">
             <p class="company" id="entname"></p>
             <p class="name" id="name"></p>
             <p class="post" id="post"></p>
@@ -299,91 +39,34 @@
         </div>
     </div>
 
+    <div class="box section2" id="section-summary" style="display: none;">
+        <h3 class="title">
+            <span>企业简介</span>
+            <a class="appBtn" onclick="openApp()" type="2" href="javascript:void(0)">查看企业详情</a>
+        </h3>
+        <div id="summary" class="summary"></div>
+    </div>
+
+    <div class="box section3" id="section-vr" style="display: none;">
+        <h3 class="title">
+            <span>企业VR</span>
+        </h3>
+        <div class="iframe">
+            <iframe id="vr-iframe" src=""></iframe>
+        </div>
+    </div>
+
+    <div class="box section4" id="section-video" style="display: none;">
+        <h3 class="title">
+            <span>企业视频</span>
+        </h3>
+        <div class="videos" :class="{'one':videoList.length==1}">
+            <video id="video" src="mvHost+item.filetypeurl" poster="imgHost+item.filetypeimg" controls="" preload="none"></video>
+        </div>
+    </div>
+</div>
+<div class="loading" id="loading"></div>
+<script type="text/javascript" src="js/share-detail.js"></script>
 </body>
 </html>
 
-<script>
-
-
-    $(document).ready(function () {
-        var customerid = getParamer("customerid");   //获取html页面传值
-        var cardid = getParamer("cardid");                  //获取html页面传值
-        var path = getRootPath_dc();
-        if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5") {
-            path= 'http://'+location.hostname+':8090/MM2';
-        }
-        var user = {"cardid": cardid};
-
-        $.ajax({
-            type: 'post',
-            url: path + '/register/queryBusinessCardByIdH5.json',
-            dataType: 'json',
-            data: JSON.stringify(user), // Request body
-            contentType: 'application/json; charset=utf-8',
-            success: function (response) {
-                $("#name").html(response.name);
-                $("#post").html(response.title);
-                $("#mobile").html(response.mobile);
-                $("#carimg").attr("src", path + "/img/" + response.carimg);
-            }
-        })
-
-        var entid = getParamer("id"); //企业的id
-
-        var entuser = {"id": entid};
-        $.ajax({
-            type: 'post',
-            url: path + '/register/queryEntDetailByIdH5.json',
-            dataType: 'json',
-
-            data: JSON.stringify(entuser), // Request body
-            contentType: 'application/json; charset=utf-8',
-            success: function (response) {
-                $("#entname").html(response.entName);
-                $("#entEmail").html(response.entEmail);
-                $("#web").html(response.entWebsite);
-                $("#location").html(response.entAddress);
-                $("#imageId").attr("src", path + "/img/" + response.picPath1);//企业LOGO
-
-            }
-        })
-
-
-    });
-
-    function getRootPath_dc() {
-        var pathName = window.location.pathname.substring(1);
-        var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
-        if (webName == "") {
-            return window.location.protocol + '//' + window.location.host;
-        }
-        else {
-            return window.location.protocol + '//' + window.location.host + '/' + webName;
-        }
-    }
-
-
-    //获取传过来的值
-    function getParamer(paramer) {
-
-        var url = window.location.href.split("?")[1];
-        /*获取url里"?"后面的值*/
-        if (url.indexOf("&") > 0) {                                      /*判断是否是一个参数还是多个参数*/
-            urlParamArry = url.split("&");
-            /*分开每个参数，并放到数组里*/
-            for (var i = 0; i < urlParamArry.length; i++) {
-                var paramerName = urlParamArry[i].split("=");
-                /*把每个参数名和值分开，并放到数组里*/
-                if (paramer == paramerName[0]) {                     /*匹配输入的参数和数组循环出来的参数是否一样*/
-                    return paramerName[1];
-                    /*返回想要的参数值*/
-                }
-            }
-        } else {                                                              /*判断只有个参数*/
-            var paramerValue = url.split("=")[1];
-            return paramerValue;
-        }
-
-    }
-
-</script>
