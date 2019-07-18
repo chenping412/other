@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <script type="text/javascript" src="js/flexible.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
-    <link rel="stylesheet" type="text/css" href="css/index.css?v=11111">
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=1111111">
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <div class="main">
+    <div class="main" style="border-bottom: 5px solid #f3f3f3;">
         <div class="section section1" v-if="companyInfo.summary">
             <h3 class="title">
                 <p>{{groupstatusName}}简介</p>
@@ -101,7 +101,7 @@
         <div class="section section4-5" v-if="childrenCompanyList.length>0">
             <h3 class="title">
                 <p>分属企业</p>
-                <a class="more" :href="'children-company.html'+urlSearch" v-if="childrenCompanyList.length>5 || true">
+                <a class="more" :href="'children-company.html'+urlSearch" v-if="childrenCompanyList.length>5">
                     <span>更多</span>
                     <img src="images/section-more_03.png">
                 </a>
@@ -137,22 +137,32 @@
                     <img src="images/conact-icon_05.png">
                     <span>{{companyInfo.entWebsite}}</span>
                 </a>
-                <a class="clearfix" @tap="openMap()" v-if="companyInfo.entAddress">
+                <a class="clearfix" @tap="mapCheckModel=true" v-if="companyInfo.entAddress">
                     <img src="images/conact-icon_07.png">
                     <span>{{companyInfo.entAddress}}</span>
                 </a>
             </div>
             <div class="map">
                 <div id="map"></div>
-                <a href="javascript:;" @tap="openMap()">导航</a>
+                <a href="javascript:;" @tap="mapCheckModel=true">导航</a>
             </div>
         </div>
 
     </div>
 
 
+
+    <div class="map-check-model" v-show="mapCheckModel" @tap="mapCheckModel=false"></div>
+    <ul class="map-check-list" :class="{'show':mapCheckModel}">
+        <li @tap="openBaiduMap()">百度地图</li>
+        <li @tap="openGaodeMap()">高德地图</li>
+        <li @tap="openQQMap()">腾讯地图</li>
+        <li class="close-model" @tap="mapCheckModel=false">取消</li>
+    </ul>
+
+
     <div class="nav" id="nav">
-        <a href="">
+        <a href="http://www.myqsl.cn/MM2/h5/zhipin.html">
             <img src="images/nav-icon-01.png">
             <span>招才纳贤</span>
         </a>
@@ -160,7 +170,7 @@
             <img src="images/nav-icon-02.png">
             <span>企业文化</span>
         </a>
-        <a href="">
+        <a href="http://www.myqsl.cn/MM2/h5/caigou.html">
             <img src="images/nav-icon-03.png">
             <span>采购信息</span>
         </a>
@@ -176,11 +186,19 @@
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
-<script type="text/javascript" src="js/wechatshare.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vLoMdKTEte3IG3cAygdFXxbhs24RBsXY"></script>
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF&libraries=convertor"></script>
 <script type="text/javascript" src="js/pub.js?v=1"></script>
-<script type="text/javascript" src="js/index.js?v=11111111"></script>
+<script type="text/javascript" src="js/index.js?v=425345"></script>
 
-
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?19e7c4eeea8df37cdcd28782b5071cde";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 </body>
 </html>

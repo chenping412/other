@@ -2,7 +2,7 @@ var vm = new Vue({
     el: '#app',
     data: function () {
         return {
-            urlSearch:location.search,
+            urlSearch: location.search,
             imgHost: imgHost,
             pdfHost: pdfHost,
 
@@ -16,13 +16,13 @@ var vm = new Vue({
             vrUrl: '',
             childrenCompanyList: [],
 
-            groupstatusName:'企业',
+            groupstatusName: '企业',
 
             companyContentShow: false,
 
             bookList: [],
             bookDetail: {},
-            bookSwiperIndex:0,
+            bookSwiperIndex: 0,
 
             companyPosition: {
                 lng: 113.960415,
@@ -34,16 +34,24 @@ var vm = new Vue({
                 lat: ''
             },
 
+            isQQ: !!navigator.userAgent.match(/QQ\//i),
+            isWeixin: !!navigator.userAgent.match(/MicroMessenger/gi),
+            isAndroid: navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('android') > -1 || navigator.userAgent.indexOf('Adr') > -1,
+            isIos: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+
+
+            mapCheckModel: false,
+
             loading: false
         }
     },
-    watch:{
-        companyContentShow:function(val){
+    watch: {
+        companyContentShow: function (val) {
             this.bodyChange(val);
         },
-        bannerList:function(){
+        bannerList: function () {
             var self = this;
-            self.$nextTick(function() {
+            self.$nextTick(function () {
                 if (!self.bannerSwiper) {
                     self.bannerSwiper = new Swiper('#swiper-banner', {
                         autoplay: 4000,
@@ -70,7 +78,7 @@ var vm = new Vue({
             var obj = self.searchOjb();
             console.log(obj);
             if (obj.id) {
-            if (obj.id) self.customerid = obj.customerid;
+                if (obj.customerid) self.customerid = obj.customerid;
                 self.id = obj.id;
                 self.getCompanyInfo();
                 self.getCollectInfo();
@@ -111,7 +119,7 @@ var vm = new Vue({
                             self.companyInfo.entDescArr = self.companyInfo.entDesc.split('\n');
                             self.companyInfo.summary = self.companyInfo.entDescArr[0];
                         }
-                        if (self.companyInfo.groupstatus) self.groupstatusName='集团'
+                        if (self.companyInfo.groupstatus) self.groupstatusName = '集团'
 
 
                     }
@@ -150,10 +158,10 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.code == 200 && data.data && data.data.length > 0) {
                         self.bannerList = data.data;
-                    }else {
+                    } else {
                         self.getBannerList2();
                     }
-                },error:function(){
+                }, error: function () {
                     self.getBannerList2();
                 }
             })
@@ -165,17 +173,17 @@ var vm = new Vue({
                 url: apiHost + "/MM2/register/queryAdvInfoImgH5.json",
                 type: 'POST',
                 data: JSON.stringify({
-                    "advType":"1",
-                    "positionId":"1"
+                    "advType": "1",
+                    "positionId": "1"
                 }),
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
                     if (data.code == 200 && data.data && data.data.length > 0) {
                         var arr = [];
-                        for(var i=0;i<data.data.length;i++){
+                        for (var i = 0; i < data.data.length; i++) {
                             arr.push(data.data[i].picPath)
                         }
-                        self.bannerList =arr;
+                        self.bannerList = arr;
                     }
                 }
             })
@@ -212,18 +220,18 @@ var vm = new Vue({
                 success: function (data) {
                     if (data.code == 200 && data.data && data.data.length > 0) {
                         self.bookList = data.data;
-                        if(self.bookList.length>2) self.bookSwiperIndex=1;
+                        if (self.bookList.length > 2) self.bookSwiperIndex = 1;
 
-                        self.$nextTick(function() {
+                        self.$nextTick(function () {
                             if (!self.bookSwiper) {
                                 var bookSwiper = new Swiper('#book-swiper', {
-                                    initialSlide :self.bookSwiperIndex,
+                                    initialSlide: self.bookSwiperIndex,
                                     slidesPerView: 3,
                                     spaceBetween: 0,
                                     centeredSlides: true,
-                                    onSlideChangeEnd: function(swiper){
+                                    onSlideChangeEnd: function (swiper) {
                                         console.log(swiper.activeIndex)
-                                        self.bookSwiperIndex=swiper.activeIndex;
+                                        self.bookSwiperIndex = swiper.activeIndex;
                                     }
                                 });
 
@@ -237,10 +245,9 @@ var vm = new Vue({
         },
 
 
-
         openBook: function (item) {
-            this.bookDetail=item;
-            window.open('http://www.myqsl.cn/MM2/generic/web/viewer.html?file=/MM2/img/'+this.bookDetail.filetypeurl)
+            this.bookDetail = item;
+            window.open('http://www.myqsl.cn/MM2/generic/web/viewer.html?file=/MM2/img/' + this.bookDetail.filetypeurl)
         },
         getVrList: function () {
             var self = this;
@@ -266,17 +273,20 @@ var vm = new Vue({
                 type: 'POST',
                 data: JSON.stringify({
                     id: self.id,
-                    page:1,
-                    size:5
+                    page: 1,
+                    size: 5
                 }),
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    if (data.code == 200 && data.data && data.data.length>0) {
+                    if (data.code == 200 && data.data && data.data.length > 0) {
                         self.childrenCompanyList = data.data;
                     }
                 }
             })
         },
+
+
+
 
 
         mapInit: function () {
@@ -293,7 +303,6 @@ var vm = new Vue({
                 map.panTo(new_point);
 
 
-
                 // 根据坐标得到地址描述
                 var myGeo = new BMap.Geocoder();
                 myGeo.getLocation(new_point, function (result) {
@@ -303,33 +312,129 @@ var vm = new Vue({
                 });
             })
         },
-        openMap: function () {
+        openBaiduMap: function () {
             var self = this;
-            //获取当前位置经纬度
-            var geolocation = new BMap.Geolocation();
-            geolocation.getCurrentPosition(function (r) {
-                if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-                    self.myPosition = r.point;
-                    var url = "http://api.map.baidu.com/direction?origin=" + self.myPosition.lat + "," + self.myPosition.lng +
-                        "&destination=" + self.companyPosition.lat + "," + self.companyPosition.lng +
-                        "&mode=driving&region=" + self.companyAddressComponents.city + "&output=html";
-                    console.log(url);
-                    location.href = url;
+            self.mapCheckModel=false;
+            function openH5Map() {
+                //获取当前位置经纬度
+                var geolocation = new BMap.Geolocation();
+                geolocation.getCurrentPosition(function (r) {
+                    if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+                        self.myPosition = r.point;
+                        window.location.href = "http://api.map.baidu.com/direction" +
+                            "?origin=" + self.myPosition.lat + "," + self.myPosition.lng +
+                            "&destination=" + self.companyPosition.lat + "," + self.companyPosition.lng +
+                            "&mode=driving&region=" + self.companyAddressComponents.city + "&output=html";
+                    }
+                    else {
+                        alert('获取手机定位失败：' + this.getStatus());
+                    }
+                }, {enableHighAccuracy: true});
+            }
+
+            if (self.isWeixin || self.isQQ) {
+                openH5Map();
+            } else {
+                var url = '';
+                if (self.isIos) {
+                    url = "baidumap://map/direction?origin=&destination=" + self.companyPosition.lat + "," + self.companyPosition.lng + "&coord_type=bd09ll&mode=driving&src=ios.baidu.openAPIdemo";
+                } else {
+                    url = "bdapp://map/direction?origin=&destination=" + self.companyPosition.lat + "," + self.companyPosition.lng + "&coord_type=bd09ll&mode=driving&src=ios.baidu.openAPIdemo";
                 }
-                else {
-                    alert('failed' + this.getStatus());
-                }
-            }, {enableHighAccuracy: true});
+                window.location.href = url;
+
+                self.hasNoAppAndOpenH5Map(function () {
+                    openH5Map();
+                })
+            }
 
         },
 
-        bodyChange:function(val){
+        openGaodeMap: function () {
             var self = this;
-            self.$nextTick(function(){
-                if(val){
-                    $('body').css('overflow','hidden');
-                }else {
-                    $('body').css('overflow','auto');
+            self.mapCheckModel=false;
+            var gaodeScript = document.createElement('script');
+            gaodeScript.src = "https://webapi.amap.com/maps?v=1.4.15&key=5a188543a02ebf98638debdc59683279&plugin=AMap.Geocoder";
+            document.getElementsByTagName('body')[0].appendChild(gaodeScript);
+            gaodeScript.onload = gaodeScript.onredystatechange = function () {
+                if (!this.redyState || this.readyState == 'loaded' || this.readyState == 'complete') {
+
+                    AMap.convertFrom([self.companyPosition.lng, self.companyPosition.lat], 'baidu', function (status, result) {
+                        if (result.info === 'ok') {
+
+                            var gaodePosition = result.locations[0];
+                            console.log(self.companyPosition, gaodePosition)
+                            if (self.isWeixin || self.isQQ) {
+                                window.location.href = "https://uri.amap.com/navigation?from=&to=" + gaodePosition.lng + "," + gaodePosition.lat + ",终点&src=mypage&coordinate=gaode";
+                            } else {
+                                var url = '';
+                                if (self.isIos) {
+                                    url = "iosamap://path?sourceApplication=mo&slat=&slon=&sname=&dlat=" + gaodePosition.lat + "&dlon=" + gaodePosition.lng + "&dname=终点&dev=0&m=0&t=0";
+                                } else {
+                                    url = "androidamap://route?sourceApplication=mo&slat=&slon=&sname=&dlat=" + gaodePosition.lat + "&dlon=" + gaodePosition.lng + "&dname=终点&dev=0&m=0&t=2";
+                                }
+                                window.location.href = url;
+                                self.hasNoAppAndOpenH5Map(function () {
+                                    window.location.href = "https://uri.amap.com/navigation?from=&to=" + gaodePosition.lng + "," + gaodePosition.lat + ",终点&src=mypage&coordinate=gaode";
+                                })
+                            }
+                        }
+                    });
+                }
+            };
+        },
+        openQQMap: function () {
+            var self = this;
+            self.mapCheckModel=false;
+            qq.maps.convertor.translate(new qq.maps.LatLng(self.companyPosition.lat, self.companyPosition.lng), 3, function (result) {
+                if (result[0]) {
+                    var gaodePosition = result[0];
+                    console.log(self.companyPosition, gaodePosition)
+                    if (self.isWeixin) {
+                        window.location.href = "https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=终点&tocoord=" + gaodePosition.lat + "," + gaodePosition.lng + "&coord_type=1&policy=0&referer=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF";
+                    } else {
+                        window.location.href = "qqmap://map/routeplan?type=drive&fromcoord=CurrentLocation&to=终点&tocoord=" + gaodePosition.lat + "," + gaodePosition.lng + "&referer=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF";
+                        self.hasNoAppAndOpenH5Map(function () {
+                            window.location.href = "https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=终点&tocoord=" + gaodePosition.lat + "," + gaodePosition.lng + "&coord_type=1&policy=0&referer=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF";
+                        })
+                    }
+                }
+            });
+        },
+
+        hasNoAppAndOpenH5Map: function (callback) {
+            document.onvisibilitychange = document.webkitvisibilitychange = function () {
+                if (timer && (document.hidden || document.webkitHidden)) clearTimeout(timer);
+            };
+            window.onpagehide = function () {
+                if (timer) clearTimeout(timer);
+            };
+
+            var hasApp = true, t = 1000;
+            var timer = setTimeout(function () {
+                if (!hasApp) {
+                    //没有安装app
+                    var r = confirm("是否继续使用网页版导航？");
+                    if (r == true) {
+                        if (callback) callback();
+                    }
+                }
+            }, 2000);
+            var t1 = Date.now();
+            setTimeout(function () {
+                var t2 = Date.now();
+                hasApp = !(!t1 || t2 - t1 < t + 150);
+            }, t);
+        },
+
+
+        bodyChange: function (val) {
+            var self = this;
+            self.$nextTick(function () {
+                if (val) {
+                    $('body').css('overflow', 'hidden');
+                } else {
+                    $('body').css('overflow', 'auto');
                 }
             })
         },
