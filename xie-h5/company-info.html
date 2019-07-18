@@ -17,8 +17,9 @@
             margin:10px 0;
             text-align: justify;
         }
-        .main p img{
+        .main img{
             width: 100%;
+            border-radius: 5px;
         }
         .main .imgs{
             margin: 10px 0;
@@ -30,9 +31,6 @@
             height: 4rem;
             margin-right: 5px;
         }
-        .main .line{
-            height: 10px;
-        }
     </style>
 </head>
 <body>
@@ -40,18 +38,16 @@
 <div class="main">
     <div class="section">
     <h3 class="title"><p id="title">企业简介</p></h3>
-    <div id="content">
-
-    </div>
+    <div id="content"></div>
+        <img class="other-img" id="img1" style="display: none;" src="">
     </div>
 
     <div class="section">
-        <h3 class="title">
+        <h3 class="title" style="padding-top: 0.3rem;">
             <p>经营范围</p>
         </h3>
-        <div class="summary" id="content2">
-            <p>{{companyInfo.entRange}}</p>
-        </div>
+        <div class="summary" id="content2"></div>
+        <img class="other-img" id="img2" style="display: none;" src="">
     </div>
 </div>
 <div class="loading" id="loading"></div>
@@ -103,7 +99,28 @@
             },error:function(){
                 $('#loading').hide();
             }
+        });
+
+        $.ajax({
+            url: apiHost + "/MM2/register/getEntFileListH5.json",
+            type: 'POST',
+            data: JSON.stringify({
+                entid: id,
+                filetype: '005'
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length > 0) {
+                    if(data.data[0]){
+                        $('#img1').attr('src',imgHost+data.data[0].filetypeurl).show();
+                    }
+                    if(data.data[1]){
+                        $('#img2').attr('src',imgHost+data.data[1].filetypeurl).show();
+                    }
+                }
+            }
         })
+
     }
 
 </script>

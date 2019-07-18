@@ -34,10 +34,13 @@ var vm = new Vue({
                 lat: ''
             },
 
-            isWeixn: navigator.userAgent.match(/MicroMessenger/i) == "micromessenger", //微信中
-            isAndroid: navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1, //android终端
-            isIos: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            isQQ: !!navigator.userAgent.match(/QQ\//i),
+            isWeixin: !!navigator.userAgent.match(/MicroMessenger/gi),
+            isAndroid: navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('android') > -1 || navigator.userAgent.indexOf('Adr') > -1,
+            isIos: !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
 
+
+            mapCheckModel: false,
 
             loading: false
         }
@@ -283,6 +286,9 @@ var vm = new Vue({
         },
 
 
+
+
+
         mapInit: function () {
             var self = this;
             self.$nextTick(function () {
@@ -308,7 +314,8 @@ var vm = new Vue({
         },
         openBaiduMap: function () {
             var self = this;
-            function openH5Map(){
+            self.mapCheckModel=false;
+            function openH5Map() {
                 //获取当前位置经纬度
                 var geolocation = new BMap.Geolocation();
                 geolocation.getCurrentPosition(function (r) {
@@ -325,31 +332,82 @@ var vm = new Vue({
                 }, {enableHighAccuracy: true});
             }
 
-            if (self.isWeixn) {
+            if (self.isWeixin || self.isQQ) {
                 openH5Map();
-            }else {
+            } else {
                 var url = '';
                 if (self.isIos) {
-                    url = "baidumap://map/geocoder?location=" + self.companyPosition.lat + "," + self.companyPosition.lng + "&coord_type=bd09ll&zoom=16&src=ios.baidu.openAPIdemo";
+                    url = "baidumap://map/direction?origin=&destination=" + self.companyPosition.lat + "," + self.companyPosition.lng + "&coord_type=bd09ll&mode=driving&src=ios.baidu.openAPIdemo";
                 } else {
-                    url = "bdapp://map/geocoder?location=" + self.companyPosition.lat + "," + self.companyPosition.lng + "&coord_type=bd09ll&zoom=16&src=andr.baidu.openAPIdemo";
+                    url = "bdapp://map/direction?origin=&destination=" + self.companyPosition.lat + "," + self.companyPosition.lng + "&coord_type=bd09ll&mode=driving&src=ios.baidu.openAPIdemo";
                 }
                 window.location.href = url;
 
-                self.hasNoAppAndOpenH5Map(function(){
+                self.hasNoAppAndOpenH5Map(function () {
                     openH5Map();
                 })
             }
 
         },
 
+        openGaodeMap: function () {
+            var self = this;
+            self.mapCheckModel=false;
+            var gaodeScript = document.createElement('script');
+            gaodeScript.src = "https://webapi.amap.com/maps?v=1.4.15&key=5a188543a02ebf98638debdc59683279&plugin=AMap.Geocoder";
+            document.getElementsByTagName('body')[0].appendChild(gaodeScript);
+            gaodeScript.onload = gaodeScript.onredystatechange = function () {
+                if (!this.redyState || this.readyState == 'loaded' || this.readyState == 'complete') {
 
-        hasNoAppAndOpenH5Map:function(callback){
-            document.onvisibilitychange = document.webkitvisibilitychange = function(){
-                if(timer && (document.hidden || document.webkitHidden)) clearTimeout(timer);
+                    AMap.convertFrom([self.companyPosition.lng, self.companyPosition.lat], 'baidu', function (status, result) {
+                        if (result.info === 'ok') {
+
+                            var gaodePosition = result.locations[0];
+                            console.log(self.companyPosition, gaodePosition)
+                            if (self.isWeixin || self.isQQ) {
+                                window.location.href = "https://uri.amap.com/navigation?from=&to=" + gaodePosition.lng + "," + gaodePosition.lat + ",终点&src=mypage&coordinate=gaode";
+                            } else {
+                                var url = '';
+                                if (self.isIos) {
+                                    url = "iosamap://path?sourceApplication=mo&slat=&slon=&sname=&dlat=" + gaodePosition.lat + "&dlon=" + gaodePosition.lng + "&dname=终点&dev=0&m=0&t=0";
+                                } else {
+                                    url = "androidamap://route?sourceApplication=mo&slat=&slon=&sname=&dlat=" + gaodePosition.lat + "&dlon=" + gaodePosition.lng + "&dname=终点&dev=0&m=0&t=2";
+                                }
+                                window.location.href = url;
+                                self.hasNoAppAndOpenH5Map(function () {
+                                    window.location.href = "https://uri.amap.com/navigation?from=&to=" + gaodePosition.lng + "," + gaodePosition.lat + ",终点&src=mypage&coordinate=gaode";
+                                })
+                            }
+                        }
+                    });
+                }
             };
-            window.onpagehide=function(){
-                if(timer) clearTimeout(timer);
+        },
+        openQQMap: function () {
+            var self = this;
+            self.mapCheckModel=false;
+            qq.maps.convertor.translate(new qq.maps.LatLng(self.companyPosition.lat, self.companyPosition.lng), 3, function (result) {
+                if (result[0]) {
+                    var gaodePosition = result[0];
+                    console.log(self.companyPosition, gaodePosition)
+                    if (self.isWeixin) {
+                        window.location.href = "https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=终点&tocoord=" + gaodePosition.lat + "," + gaodePosition.lng + "&coord_type=1&policy=0&referer=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF";
+                    } else {
+                        window.location.href = "qqmap://map/routeplan?type=drive&fromcoord=CurrentLocation&to=终点&tocoord=" + gaodePosition.lat + "," + gaodePosition.lng + "&referer=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF";
+                        self.hasNoAppAndOpenH5Map(function () {
+                            window.location.href = "https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=终点&tocoord=" + gaodePosition.lat + "," + gaodePosition.lng + "&coord_type=1&policy=0&referer=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF";
+                        })
+                    }
+                }
+            });
+        },
+
+        hasNoAppAndOpenH5Map: function (callback) {
+            document.onvisibilitychange = document.webkitvisibilitychange = function () {
+                if (timer && (document.hidden || document.webkitHidden)) clearTimeout(timer);
+            };
+            window.onpagehide = function () {
+                if (timer) clearTimeout(timer);
             };
 
             var hasApp = true, t = 1000;
@@ -358,7 +416,7 @@ var vm = new Vue({
                     //没有安装app
                     var r = confirm("是否继续使用网页版导航？");
                     if (r == true) {
-                        if(callback) callback();
+                        if (callback) callback();
                     }
                 }
             }, 2000);

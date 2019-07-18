@@ -95,48 +95,19 @@
     font-size: 14px;
     line-height: 24px;
     color: #000000;
-    text-align: justify;
+    max-height: 96px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
 }
 
-.section1 .content{
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top:0;
-    z-index: 9999;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    background-color: #ffffff;
-}
-.section1 .content .close{
-    float: right;
-    margin: 15px 15px 0 0;
-}
-.section1 .content .text{
-    padding:20px 15px;
-}
-.section1 .content h3{
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-.section1 .content p{
-    font-size: 14px;
-    line-height: 24px;
-    text-align: justify;
-    margin-bottom: 15px;
-}
-.section1 .content img,
-.section1 .content video{
-    max-width: 100%;
-}
 .section1-2{
-    border-bottom: 5px solid #f3f3f3;
     padding-bottom: 0.75rem;
 }
 
 .section2 .iframe{
-    height: 12rem;
+    height: 5rem;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: rgba(0,0,0,0.2) 2px 2px 10px 0;
@@ -297,3 +268,35 @@
 }
 
 
+.map-check-model{
+    position: fixed;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom:0;
+    z-index: 999999999;
+    background-color: rgba(0,0,0,0.2);
+}
+.map-check-list{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999999999;
+    background-color: #ffffff;
+    transition: all 0.2s;
+    transform: translateY(100%);
+}
+.map-check-list.show{
+    transform: translateY(0);
+}
+.map-check-list li{
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+    line-height: 50px;
+    border-top: 1px solid #dddddd;
+}
+.map-check-list li.close-model{
+    border-top: 4px solid #dddddd;
+}

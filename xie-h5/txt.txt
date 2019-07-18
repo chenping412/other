@@ -34,3 +34,10 @@ http://www.myqsl.cn/MM2/register/getEntLoGoListH5.json
 :7：如果企业没有轮播图片，则调用下面的接口，使用主页的图片来代替
 http://www.myqsl.cn/MM2/register/queryAdvInfoImgH5.json
 {"advType":"1","positionId":"1"}
+
+百度地图：
+ key： vLoMdKTEte3IG3cAygdFXxbhs24RBsXY
+腾讯地图;
+key :QBSBZ-DFAH4-MMKUF-DXTDV-AC223-6LB6T
+高德地图：
+ key： 2de64b97e2d903111d9a13291f9ca84c
