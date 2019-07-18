@@ -3,11 +3,11 @@
  */
 
 var searchStr=location.search;
+var obj=searchOjb();
 $('#nav').find('a').each(function(){
-
-    var href = $(this).attr('href')
+    var href = $(this).attr('href');
     if(href && href!=''){
-        $(this).attr('href', href+searchStr)
+        $(this).attr('href', href+searchStr +'&entid='+obj.id);
     }
 });
 
@@ -29,7 +29,7 @@ var apiHost= '';
 var imgHost=apiHost+ '/MM2/img/';
 var pdfHost=apiHost+ '/MM2/img/';
 var mvHost=apiHost+ '/MM2/mv/';
-if (location.hostname == "172.16.1.27" || location.hostname == "localhost") {
+if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5") {
     apiHost= 'http://'+location.hostname+':8090';
     imgHost= 'http://www.myqsl.cn/MM2/img/';
     pdfHost= 'http://www.myqsl.cn/MM2/img/';

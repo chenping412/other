@@ -137,14 +137,14 @@
                     <img src="images/conact-icon_05.png">
                     <span>{{companyInfo.entWebsite}}</span>
                 </a>
-                <a class="clearfix" @tap="openMap()" v-if="companyInfo.entAddress">
+                <a class="clearfix" @tap="openBaiduMap()" v-if="companyInfo.entAddress">
                     <img src="images/conact-icon_07.png">
                     <span>{{companyInfo.entAddress}}</span>
                 </a>
             </div>
             <div class="map">
                 <div id="map"></div>
-                <a href="javascript:;" @tap="openMap()">导航</a>
+                <a href="javascript:;" @tap="openBaiduMap()">导航</a>
             </div>
         </div>
 
@@ -152,7 +152,7 @@
 
 
     <div class="nav" id="nav">
-        <a href="">
+        <a href="http://www.myqsl.cn/MM2/h5/zhipin.html">
             <img src="images/nav-icon-01.png">
             <span>招才纳贤</span>
         </a>
@@ -160,7 +160,7 @@
             <img src="images/nav-icon-02.png">
             <span>企业文化</span>
         </a>
-        <a href="">
+        <a href="http://www.myqsl.cn/MM2/h5/caigou.html">
             <img src="images/nav-icon-03.png">
             <span>采购信息</span>
         </a>
@@ -176,11 +176,19 @@
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vLoMdKTEte3IG3cAygdFXxbhs24RBsXY"></script>
 <script type="text/javascript" src="js/wechatshare.js"></script>
 <script type="text/javascript" src="js/pub.js?v=1"></script>
-<script type="text/javascript" src="js/index.js?v=11111111"></script>
+<script type="text/javascript" src="js/index.js?v=3212412"></script>
 
-
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?19e7c4eeea8df37cdcd28782b5071cde";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 </body>
 </html>
