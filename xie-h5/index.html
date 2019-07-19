@@ -79,7 +79,7 @@
         <div class="section section3" v-if="videoList.length>0">
             <h3 class="title"><p>{{groupstatusName}}视频</p></h3>
             <div class="videos" :class="{'one':videoList.length==1}">
-                <video v-for="item in videoList" :src="mvHost+item.filetypeurl" :poster="imgHost+item.filetypeimg" controls="" preload="none"></video>
+                <video v-for="item in videoList" :src="mvHost+item.filetypeurl" :poster="imgHost+item.filetypeimg" controls="" preload="none" webkit-playsinline="true" x5-playsinline="true" playsinline="true"></video>
             </div>
         </div>
 
