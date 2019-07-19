@@ -1,0 +1,228 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: #2577FF;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+ol, ul, li, button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    *zoom: 1;
+}
+.inner{
+    width: 1200px;
+    margin: 0 auto;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    min-width: 1280px;
+    background-color: #f0f1f4;
+}
+body{
+    position: relative;
+}
+
+/*头部导航栏*/
+.header-view{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 15px -4px rgba(183,183,183,0.50);
+    z-index: 9999;
+}
+.header-view .logo{
+    width: 263px;
+    height: 100%;
+    float: left;
+    background: #1674C9;
+}
+.header-view .logo img{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    left: 27px;
+    top:17px;
+}
+.header-view .logo p{
+    padding:20px 0 0 72px;
+    font-size: 20px;
+    color: #FFFFFF;
+    font-weight: bolder;
+    line-height: 28px;
+}
+.header-view .fast-nav{
+    float: left;
+    font-size: 14px;
+    color: #2B2B2B;
+    font-weight: bolder;
+    padding:24px 0 0 18px;
+}
+.header-view .control{
+    float: right;
+    padding: 21px 28px 0 0;
+}
+.header-view .control .menu,
+.header-view .control>a{
+    margin-left: 23px;
+    font-size: 14px;
+    color: #8196AD;
+    line-height: 26px;
+    letter-spacing: 0;
+}
+.header-view .control>a:hover {
+    color: #2577FF;
+}
+.header-view .control a.layout{
+    font-weight: bolder;
+    color: #2577FF;
+    border-bottom: 1px solid #2577FF;
+}
+.header-view .control .line{
+    display: inline-block;
+    vertical-align: middle;
+    width: 2px;
+    height: 20px;
+    background: #dcdcdc;
+    margin-left: 23px;
+}
+
+
+.main-view{
+    padding:68px 0 20px;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+.main-view .bread{
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 0;
+    line-height: 24px;
+    padding:15px 0 10px;
+}
+
+.main-view .bottom{
+    margin-bottom: 20px;
+}
+.main-view .bottom .box{
+    width: 49%;
+    background: #FFFFFF;
+    box-shadow: 0 0 6px 0 rgba(197,197,197,0.50);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+}
+.main-view .bottom .box h3{
+    font-size: 16px;
+    color: #2B2B2B;
+    font-weight: normal;
+    line-height: 25px;
+    height: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E5E5E5;
+}
+.main-view .bottom .box h3 b{
+    color: #005CCC;
+    margin: 0 3px;
+}
+.main-view .bottom .box .list{
+    position: relative;
+    padding-top: 5px;
+}
+.main-view .bottom .box .list .item{
+    display: block;
+    font-size: 14px;
+    color: #2B2B2B;
+    line-height: 32px;
+    position: relative;
+}
+.main-view .bottom .box .list .item p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    margin-right: 100px;
+}
+.main-view .bottom .box .list .item p i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 19px;
+    color: #FFFFFF;
+    text-align: center;
+    font-style: normal;
+    background-color: #999;
+    vertical-align: text-top;
+}
+.main-view .bottom .box .list .item p i.first{
+    background-color: #ff4c4c;
+}.main-view .bottom .box .list .item p i.second{
+    background-color: #3598dd;
+}.main-view .bottom .box .list .item p i.third{
+    background-color: #99c902;
+}
+.main-view .bottom .box .list .item b{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 90px;
+    text-align: right;
+    color: #005CCC;
+}
+.main-view .echart-box{
+    padding-top: 20px;
+    background: #FFFFFF;
+    box-shadow: 0 0 6px 0 rgba(197,197,197,0.50);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+
+.btn{
+    background: #1674C9;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 14px;
+    color: #FFFFFF;
+    line-height: 30px;
+    text-align: center;
+    padding:0 20px;
+}
+.btn:hover{
+    background: #3791e3;
+}
