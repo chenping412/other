@@ -91,6 +91,9 @@
 .section{
 }
 
+.section1 .summary{
+    padding-bottom: 0.75rem;
+}
 .section1 .summary p{
     font-size: 14px;
     line-height: 24px;
@@ -100,7 +103,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
-    padding-bottom: 0.75rem;
 }
 
 .section1-2{
@@ -301,3 +303,83 @@
 .map-check-list li.close-model{
     border-top: 4px solid #dddddd;
 }
+
+
+
+
+.phone-model{
+    position: fixed;
+    left: 0;
+    top:0;
+    right: 0;
+    bottom:0;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.3);
+}
+.phone-model .content{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    background-color: #ffffff;
+    width: 5.26667rem;
+    padding:0.9333rem 0.48rem 0.52rem;
+    border-radius: 0.2rem;
+}
+.phone-model .content .logo{
+    margin: 0 auto;
+    width: 1.36rem;
+    height: 1.36rem;
+    border-radius: 50%;
+    border:1px solid #dddddd;
+    background: url("") no-repeat center/contain;
+}
+.phone-model .content .phone-num{
+    line-height: 1.2rem;
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
+    font-size: 18px;
+    color: #000000;
+    margin-bottom: 0.24rem;
+}
+.phone-model .content .btn{
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.09rem;
+    color: #000000;
+}
+.phone-model .content .btn img{
+    width: 16px;
+    margin-right: 0.5rem;
+    vertical-align: baseline;
+}
+.phone-model .content .close{
+    position: absolute;
+    left: 50%;
+    bottom: -1.4rem;
+    transform: translateX(-50%);
+    width: 0.66667rem;
+    height: 0.66667rem;
+    border:2px solid #ffffff;
+    background-color: transparent;
+}
+.phone-model .content .close:after,
+.phone-model .content .close:before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+    width: 2px;
+    height: 0.4rem;
+    background-color: #ffffff;
+}
+.phone-model .content .close:before{
+    transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+
+
+
+

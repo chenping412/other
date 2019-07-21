@@ -89,13 +89,14 @@ body {
 }
 .section1 .card .company{
     position: absolute;
-    left: 0.4rem;
+    left:0;
     top:1.55rem;
-    width:3.2rem;
+    width:4rem;
     line-height: 0.56rem;
     font-size: 9px;
     color: #000000;
     text-align: center;
+    white-space: nowrap;
 }
 .section1 .card .carimg{
     position: absolute;

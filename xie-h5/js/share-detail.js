@@ -213,7 +213,7 @@ $(document).ready(function () {
     var entid = getParamer("id"); //企业的id
 
     var path = getRootPath_dc();
-    if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5") {
+    if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5" || location.hostname == "localhost") {
         path= 'http://'+location.hostname+':8090/MM2';
     }
 
@@ -227,7 +227,7 @@ $(document).ready(function () {
             $("#name").html(response.name);
             $("#post").html(response.title);
             $("#mobile").html(response.mobile);
-            $("#carimg").attr("src", path + "/img/" + response.carimg).show();
+            $("#carimg").attr("src", path + "/cardimg/" + response.carimg).show();
             $('#section-card').show();
         }
     });

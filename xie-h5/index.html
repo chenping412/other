@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <script type="text/javascript" src="js/flexible.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
-    <link rel="stylesheet" type="text/css" href="css/index.css?v=111111121">
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=11111112111">
     <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
 </head>
 <body>
@@ -49,7 +49,7 @@
                 </a>
             </h3>
             <div class="summary">
-                <p>{{companyInfo.summary}}</p>
+                <p>{{companyInfo.entDesc}}</p>
             </div>
         </div>
         <!--<div class="section section1 section1-2" v-if="companyInfo.entRange">
@@ -124,7 +124,7 @@
         <div class="section section5" v-show="companyInfo.entName">
             <h3 class="title"><p>联系方式</p></h3>
             <div class="info">
-                <a class="clearfix" :href="'tel:'+companyInfo.entPhone" v-if="companyInfo.entPhone">
+                <a class="clearfix" v-if="companyInfo.entPhone" @tap="phoneModel=true">
                     <img src="images/conact-icon_03.png">
                     <span>{{companyInfo.entContact}}</span>
                     <span>{{companyInfo.entPhone}}</span>
@@ -161,6 +161,24 @@
     </ul>
 
 
+    <div class="phone-model" v-show="phoneModel">
+        <div class="content">
+            <div class="logo" v-if="companyInfo.picPath1" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
+            <p class="phone-num">{{companyInfo.entPhone}}</p>
+            <a class="btn" :href="'tel:'+companyInfo.entPhone">
+                <img src="images/phone-model-icon_03.png">
+                <span>拨打</span>
+            </a>
+            <a class="btn" id="copy-phone" href="javascript:;" :data-clipboard-text="companyInfo.entPhone">
+                <img src="images/phone-model-icon_08.png">
+                <span>复制</span>
+            </a>
+            <a class="close" @tap="phoneModel=false"></a>
+        </div>
+
+    </div>
+
+
     <div class="nav" id="nav">
         <a href="culture.html">
             <img src="images/nav-icon-02.png">
@@ -185,11 +203,12 @@
 <script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/touch.js"></script>
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="js/clipboard.min.js"></script>
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
 <script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF&libraries=convertor"></script>
 <script type="text/javascript" src="js/pub.js?v=1"></script>
-<script type="text/javascript" src="js/index.js?v=4253451"></script>
+<script type="text/javascript" src="js/index.js?v=42534511213"></script>
 
 <script>
     var _hmt = _hmt || [];

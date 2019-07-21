@@ -41,6 +41,7 @@ var vm = new Vue({
 
 
             mapCheckModel: false,
+            phoneModel: false,
 
             loading: false
         }
@@ -70,7 +71,7 @@ var vm = new Vue({
         this.inti();
     },
     mounted: function () {
-
+        this.copy();
     },
     methods: {
         inti: function () {
@@ -425,6 +426,18 @@ var vm = new Vue({
                 var t2 = Date.now();
                 hasApp = !(!t1 || t2 - t1 < t + 150);
             }, t);
+        },
+
+
+        copy:function(){
+          var self=this;
+            self.clipboard = new ClipboardJS('#copy-phone');
+            self.clipboard.on('success', function(e) {
+                alert('复制成功：'+e.text)
+            });
+            self.clipboard.on('error', function(e) {
+                alert('复制失败，浏览器不支持复制！')
+            });
         },
 
 
