@@ -1,0 +1,155 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    font-family:  Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+ol,
+ul,
+li,
+button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+a {
+    color: inherit;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
+[v-cloak] {
+    display: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background:#0b3873;
+}
+.main{
+    width: 1920px;
+    height: 100%;
+    min-height: 994px;
+    background:#0b3873 url("../images/beij.png") no-repeat center top/1879px;
+    position: relative;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+}
+.main .echart-text{
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+.main .icon{
+    position: absolute;
+    left: 50%;
+    top:70px;
+    margin-left: -500px;
+}
+.main .line-y{
+    position: absolute;
+    top:72px;
+    left: 50%;
+    margin-left: 595px;
+    width: 1px;
+    height: 16px;
+    background-color: #ffffff;
+}
+.main .echart{
+    position: absolute;
+    left: 50%;
+}
+.main .echart-pie1{
+    margin-left: -879px;
+    top:209px;
+    width: 200px;
+    height: 210px;
+}
+.main .echart-pie2{
+    margin-left: -679px;
+    top:209px;
+    width: 235px;
+    height: 210px;
+}
+.main .echart-pie3{
+    margin-left:600px;
+    top:480px;
+    width: 280px;
+    height: 220px;
+}
+.main .echart-bar1{
+    margin-left:-879px;
+    top:480px;
+    width: 435px;
+    height: 222px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

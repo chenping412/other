@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=1011">
     <style>
-        html,body{
-            width: 100%;
-            height: 100%;
-        }
-        .main{
-            width: 100%;
-            height: 100%;
-            background: url("images/beij.png") no-repeat center;
-        }
-        video{
-            display: block;
-            margin: 0;
-        }
+
     </style>
 </head>
-<body style="background-color: #cccccc;">
-<div class="main">
-    <video src="videos/aaa.mp4" autoplay="autoPlay" loop="loop" muted="muted"></video>
-    
-    <img src="images/donghua.gif">
-</div>
+<body>
 
+<div class="main" id="main" style="transform: scale(1)">
+    <div class="echart-text" id="echart-text"></div>
+    <img class="icon" style="margin-left: -500px;" src="images/icon_01.png">
+    <img class="icon" style=" margin-left: 405px;" src="images/icon_03.png">
+
+    <div class="line-y" style=" margin-left: 527px;"></div>
+    <div class="line-y" style=" margin-left: 642px;"></div>
+
+    <div class="echart echart-pie1" id="echart-pie1"></div>
+    <div class="echart echart-pie2" id="echart-pie2"></div>
+    <div class="echart echart-pie3" id="echart-pie3"></div>
+
+
+    <div class="echart echart-bar1" id="echart-bar1"></div>
+
+
+    <!--<video src="videos/aaa.mp4" autoplay="autoPlay" loop="loop" muted="muted"></video>-->
+    <!--<img src="images/donghua.gif">-->
+</div>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
