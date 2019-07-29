@@ -690,16 +690,6 @@ if (document.getElementById('echart-line1')) {
 }
 
 
-function mainScale() {
-    var windowWidth = window.screen.width;
-    var offsetWidth = document.documentElement.clientWidth;
-    console.log(windowWidth,offsetWidth);
-    document.getElementById('main').style.transform = "scale(" + offsetWidth / windowWidth + ")";
-}
-mainScale();
-window.onresize = function () {
-    mainScale()
-}
 
 var wutangMapImages=document.getElementById('wutang-map').getElementsByTagName('img');
 
