@@ -1,0 +1,177 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    font-family:  Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+ol,
+ul,
+li,
+button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+a {
+    color: inherit;
+}
+
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+
+[v-cloak] {
+    display: none;
+}
+body{
+    color: #333333;
+}
+
+
+.main{
+    padding:0 0.65rem;
+}
+.main .title{
+    line-height: 23px;
+    padding:0.8rem 0 0.32rem;
+    position: relative;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 0.5333rem;
+}
+.main .title p{
+    font-size: 18px;
+    color: #1a1a1a;
+    padding-left: 13px;
+    border-left: 5px solid #6863df;
+}
+.main .title .more{
+    position: absolute;
+    right: 0;
+    top:0.8rem;
+    font-size: 12px;
+    color: #999999;
+    line-height: 23px;
+    font-weight: normal;
+}
+.main .title .more img{
+    width: 10px;
+    vertical-align: sub;
+    margin-left: 6px;
+}
+
+.nav{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 19;
+    height: 50px;
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+}
+.nav a{
+    display: block;
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+.nav a img{
+    display: block;
+    height: 32px;
+    margin: 2px auto 0;
+}
+.nav a img span{
+    font-size: 9px;
+    color: #000000;
+    font-weight: bold;
+    line-height: 15px;
+}
+
+.close{
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 15px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #000000;
+}
+
+.loading {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:#ffffff url("../images/loading-ico.gif") no-repeat center/1rem;
+}
+
+
+body .swiper-pagination-bullet{
+    background-color: #999999;
+    opacity: 0.7;
+}
+body .swiper-pagination-bullet-active{
+    background-color: #ffffff;
+    transform: scale(1.2);
+    opacity: 1;
+}

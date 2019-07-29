@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="telephone=yes,email=yes" name="format-detection">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <style type="text/css">
+        .main{
+            padding-bottom: 60px;
+        }
+        .main p{
+            font-size: 14px;
+            line-height: 24px;
+            margin:10px 0;
+            text-align: justify;
+        }
+        .main p img{
+            width: 100%;
+            border-radius: 5px;
+        }
+        .main .imgs{
+            margin: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        .main .imgs img{
+            height: 4rem;
+            margin-right: 5px;
+        }
+        .main .line{
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main">
+    <h3 class="title"><p>企业文化</p></h3>
+    <div id="content">
+
+    </div>
+</div>
+<div class="loading" id="loading"></div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/touch.js"></script>
+<script type="text/javascript" src="js/pub.js"></script>
+<script>
+    var obj=searchOjb();
+    var id='';
+    if(obj.id) {
+        id=obj.id;
+        $.ajax({
+            url: apiHost + "/MM2/register/getWenHuaInfoH5.json",
+            type: 'POST',
+            data: JSON.stringify({
+                entid: id
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length>0) {
+                    var list=data.data;
+                    var content='';
+                    for(var i=0;i<list.length;i++){
+                        if(list[i].indexOf('.jpg')>-1 || list[i].indexOf('.jpeg')>-1 || list[i].indexOf('.png')>-1 || list[i].indexOf('.gif')>-1){
+                            var imgs=list[i].split(',');
+                            if(imgs.length<2){
+                                content+='<p><img src="'+imgHost+list[i]+'"></p>';
+                            }else {
+                                content+='<div class="imgs">';
+                                for(var k=0;k<imgs.length;k++){
+                                    content+= '<img src="'+imgHost+imgs[k]+'">';
+                                }
+                                content+= '</div>'
+                            }
+                        }else {
+                            content+='<p>'+list[i].replace(/\n/g,'</p><p>')+'</p>';
+                        }
+                        content+='<div class="line"></div>'
+                    }
+                    $('#content').html(content);
+                    $('#loading').hide();
+                }
+            },error:function(){
+                $('#loading').hide();
+            }
+        })
+    }
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?19e7c4eeea8df37cdcd28782b5071cde";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="leslie">
+    <title>深圳企示录信息科技有限公司</title>
+    <meta name="keywords" content="深圳企示录信息科技有限公司">
+    <meta name="applicable-device" content="mobile">
+    <link rel="icon" href="http://www.myqsl.cn/MM2/andios/favicon.png">
+    <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/common.css" type="text/css">
+    <!--该文件不能取消-->
+    <script src="http://www.myqsl.cn/MM2/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://www.myqsl.cn/MM2/assets/css/company_detail.css" type="text/css">
+    <style type="text/css">
+        .content{
+            margin-bottom: 30px;
+        }
+        .tab-content {
+            margin: 6px 10px;
+            background-color: #ffffff;
+            border-radius: 7px;
+            padding: 0 21px 20px;
+        }
+
+        .tab-content .block-title {
+            padding: 10px 0 0;
+            font-size: 18px;
+            color: #000000;
+            font-weight: bolder;
+            line-height: 38px;
+            border-bottom: 1px solid #d4d4d4;
+            box-sizing: content-box;
+            margin-bottom: 21px;
+        }
+        .tab-content .basic-item-left {
+            font-size: 10px;
+        }
+        .tab-content .basic-item{
+            margin: 10px 0;
+        }
+
+    </style>
+
+</head>
+<body style="">
+
+<div class="content">
+
+    <div class="tab-content">
+        <div id="base" class="content-block">
+            <div class="block-title" name="caigouname" id="caigouname"></div>
+            <div class="basic-item" >
+                <div class="basic-item-left">
+                    采购数量:
+                </div>
+                <div class="basic-item-right" name="caigoucount" id="caigoucount"
+                     style="font-size: 15px; color:#2558e8">
+
+                </div>
+
+
+            </div>
+            <div class="basic-item" >
+                <div class="basic-item-left">
+                    需求时间:
+                </div>
+                <div class="basic-item-right" name="remark" id="remark" style="color:#e82525">
+
+                </div>
+
+
+            </div>
+            <div class="basic-item" >
+                <div class="basic-item-left">
+                    采购价格:
+                </div>
+                <div class="basic-item-right" name="caigouprice" id="caigouprice">
+
+                </div>
+            </div>
+            <div class="basic-item" >
+                <div class="basic-item-left" style="font-size: 10px">
+                    产品描述:
+                </div>
+
+                <div class="basic-item-right" name="caigoudesc" id="caigoudesc">
+
+                </div>
+
+
+            </div>
+            <div class="basic-item" >
+                <div class="basic-item-left" style="font-size: 10px">
+                    发票要求:
+                </div>
+
+                <div class="basic-item-right" name="fapiao" id="fapiao">
+
+                </div>
+
+
+            </div>
+
+            <div class="basic-item" >
+                <div class="basic-item-left" style="font-size: 10px">
+                    联系电话:
+                </div>
+                <div class="basic-item-right" name="caigoutel" id="caigoutel">
+
+                </div>
+            </div>
+            <!--
+            <div class="basic-item" >
+                <div class="basic-item-left">
+                    任职要求:
+                </div>
+                <div class="basic-item-right" name="renzhiyaoqiu" id="renzhiyaoqiu">
+
+                 </div>
+            </div>
+
+
+        <div class="basic-item">
+                <div   style="font-size: 10px">
+                    简历请发送到：
+                </div>
+
+        </div>
+            <div class="basic-item-left">
+                         邮箱:
+            </div>
+             <div class="basic-item-right" name="youxiang" id="youxiang">
+
+              </div>
+        </div>
+             -->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script>
+
+    //加载职位详情信息
+    $(document).ready(function () {
+        var caigouid = getParamer("id");                     //采购id，获取详情信息
+        var entid = getParamer("entid");                  //采购id， 获取详情信息
+        var path = getRootPath_dc();
+        if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5" || location.hostname == "localhost") {
+            path = 'http://' + location.hostname + ':8090/MM2';
+        }
+
+        var entuser = {"id": caigouid};
+        $.ajax({
+            type: 'post',
+            url: path + '/register/getCaiGouInfoByEntidH5.json',
+            dataType: 'json',
+            data: JSON.stringify(entuser), // Request body
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                $("div#caigouname").html(response.data[0].caigouname);   //采购名称
+                $("div#caigoucount").html(response.data[0].caigoucount);   //采购数量
+                $("div#remark").html(response.data[0].remark);   //需求时间段
+
+                $("div#caigouprice").html(response.data[0].caigouprice);   //采购价格
+                $("div#caigoudesc").html(response.data[0].caigoudesc);   //产品描述
+                $("div#fapiao").html(response.data[0].fapiao);   //产品描述
+                $("div#caigoutel").html(response.data[0].caigoutel);   //产品描述
+
+
+            }
+        })
+
+
+        var entuser = {"id": entid};
+        $.ajax({
+            type: 'post',
+            url: path + '/register/queryEntDetailByIdH5.json',
+            dataType: 'json',
+
+            data: JSON.stringify(entuser), // Request body
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                $("div#entname").html(response.entName);   //企业名字
+                $("#imageId").attr("src", path + "/img/" + response.picPath1);//企业LOGO
+
+            }
+        })
+
+
+    });
+
+    function getRootPath_dc() {
+        var pathName = window.location.pathname.substring(1);
+        var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
+        if (webName == "") {
+            return window.location.protocol + '//' + window.location.host;
+        }
+        else {
+            return window.location.protocol + '//' + window.location.host + '/' + webName;
+        }
+    }
+
+    //获取传过来的值
+    function getParamer(paramer) {
+
+        var url = window.location.href.split("?")[1];
+        /*获取url里"?"后面的值*/
+        if (url.indexOf("&") > 0) {                                      /*判断是否是一个参数还是多个参数*/
+            urlParamArry = url.split("&");
+            /*分开每个参数，并放到数组里*/
+            for (var i = 0; i < urlParamArry.length; i++) {
+                var paramerName = urlParamArry[i].split("=");
+                /*把每个参数名和值分开，并放到数组里*/
+                if (paramer == paramerName[0]) {                     /*匹配输入的参数和数组循环出来的参数是否一样*/
+                    return paramerName[1];
+                    /*返回想要的参数值*/
+                }
+            }
+        } else {                                                              /*判断只有个参数*/
+            var paramerValue = url.split("=")[1];
+            return paramerValue;
+        }
+
+    }
+
+    /**
+     * js截取字符串，中英文都能用
+     * @param str：需要截取的字符串
+     * @param len: 需要截取的长度
+     */
+    function cutstr(str, len) {
+        var str_length = 0;
+        var str_len = 0;
+        str_cut = new String();
+        str_len = str.length;
+        for (var i = 0; i < str_len; i++) {
+            a = str.charAt(i);
+            str_length++;
+            if (escape(a).length > 4) {
+                //中文字符的长度经编码之后大于4  
+                str_length++;
+            }
+            str_cut = str_cut.concat(a);
+            if (str_length >= len) {
+                str_cut = str_cut.concat("......");
+                return str_cut;
+            }
+        }
+        //如果给定字符串小于指定长度，则返回源字符串；  
+        if (str_length < len) {
+            return str;
+        }
+    }
+</script>

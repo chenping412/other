@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="telephone=yes,email=yes" name="format-detection">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=11111112111">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="banner">
+        <div  id="swiper-banner">
+            <div class="swiper-wrapper">
+                <div class="img swiper-slide" v-for="item in bannerList" :style="{'background-image':'url('+ imgHost+item +')'}"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="logo" v-if="companyInfo.picPath1" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
+        <!--<div class="num" :class="{'active':collectInfo.iscollect != '0'}" v-if="collectInfo.countentid">{{collectInfo.countentid}}</div>-->
+    </div>
+
+    <div class="header">
+            <h3>
+                <span>{{companyInfo.entName}}</span>
+                <img v-if="companyInfo.status==2" src="images/header-icon_03.png">
+                <img v-if="companyInfo.status==1" src="images/header-icon_04.png">
+            </h3>
+            <div class="icon">
+                <span v-if="vrUrl"><img src="images/header-icon_10.png">{{groupstatusName}}VR</span>
+                <span v-if="videoList.length>0"><img src="images/header-icon_12.png">{{groupstatusName}}视频</span>
+                <span v-if="bookList.length>0"><img src="images/header-icon_14.png">{{groupstatusName}}画册</span>
+            </div>
+        <div class="tags" v-if="tags.length>0">
+            <span v-for="item in tags">{{item}}</span>
+        </div>
+    </div>
+
+    <div class="main" style="border-bottom: 5px solid #f3f3f3;">
+        <div class="section section1" v-if="companyInfo.summary">
+            <h3 class="title">
+                <p>{{groupstatusName}}简介</p>
+                <a class="more" :href="'company-info.html'+urlSearch+'&groupstatus='+companyInfo.groupstatus">
+                    <span>更多</span>
+                    <img src="images/section-more_03.png">
+                </a>
+            </h3>
+            <div class="summary">
+                <p>{{companyInfo.entDesc}}</p>
+            </div>
+        </div>
+        <!--<div class="section section1 section1-2" v-if="companyInfo.entRange">
+            <h3 class="title">
+                <p>经营范围</p>
+            </h3>
+            <div class="summary">
+                <p>{{companyInfo.entRange}}</p>
+            </div>
+        </div>-->
+    </div>
+    <div class="main" style="padding-bottom: 80px;">
+
+        <div class="section section2" v-if="vrUrl">
+            <h3 class="title">
+                <p>{{groupstatusName}}VR</p>
+                <a class="more" :href="vrUrl">
+                    <span>打开VR</span>
+                    <img src="images/section-more_03.png">
+                </a>
+            </h3>
+            <div class="iframe">
+                <iframe :src="vrUrl"></iframe>
+            </div>
+        </div>
+
+        <div class="section section3" v-if="videoList.length>0">
+            <h3 class="title"><p>{{groupstatusName}}视频</p></h3>
+            <div class="videos" :class="{'one':videoList.length==1}">
+                <video v-for="item in videoList" :src="mvHost+item.filetypeurl" :poster="imgHost+item.filetypeimg" controls="" preload="none" webkit-playsinline="true" x5-playsinline="true" playsinline="true"></video>
+            </div>
+        </div>
+
+
+        <div class="section section4" v-if="bookList.length>0">
+            <h3 class="title"><p>{{groupstatusName}}画册</p></h3>
+            <div class="books" id="book-swiper">
+                <div class="swiper-wrapper">
+                    <a class="swiper-slide book" href="javascript:;" v-for="item in bookList" @tap="openBook(item)" :style="{'background-image':'url('+imgHost+item.filetypeimg+')'}"></a>
+                </div>
+            </div>
+            <p class="name" v-if="bookList[bookSwiperIndex]">
+                <img src="images/book-icon_01.png">
+                <span>{{bookList[bookSwiperIndex].filetypename}}</span>
+            </p>
+        </div>
+
+
+        <div class="section section4-5" v-if="childrenCompanyList.length>0">
+            <h3 class="title">
+                <p>分属企业</p>
+                <a class="more" :href="'children-company.html'+urlSearch" v-if="childrenCompanyList.length>5">
+                    <span>更多</span>
+                    <img src="images/section-more_03.png">
+                </a>
+            </h3>
+            <ul class="list">
+                <li class="clearfix" v-for="item in childrenCompanyList">
+                    <a :href="'index.html?id='+item.id+'&customerid='+customerid">
+                    <div class="img" :style="{'background-image':'url('+imgHost+item.picPath1+')'}"></div>
+                    <img class="icon" src="images/header-icon_03.png" v-if="item.status == 2">
+                    <img class="icon" src="images/header-icon_04.png" v-if="item.status == 1">
+                    <h4>{{item.entName}}</h4>
+                    <p>{{item.entDesc}}</p>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+        <div class="section section5" v-show="companyInfo.entName">
+            <h3 class="title"><p>联系方式</p></h3>
+            <div class="info">
+                <a class="clearfix" v-if="companyInfo.entPhone" @tap="phoneModel=true">
+                    <img src="images/conact-icon_03.png">
+                    <span>{{companyInfo.entContact}}</span>
+                    <span>{{companyInfo.entPhone}}</span>
+                </a>
+                <a class="clearfix" v-if="companyInfo.entEmail">
+                    <img src="images/conact-icon_04.png">
+                    <span>{{companyInfo.entEmail}}</span>
+                </a>
+                <a class="clearfix" :href="companyInfo.websiteflag == 1 ? companyInfo.entWebsite : null" v-if="companyInfo.entWebsite">
+                    <img src="images/conact-icon_05.png">
+                    <span>{{companyInfo.entWebsite}}</span>
+                </a>
+                <a class="clearfix" @tap="mapCheckModel=true" v-if="companyInfo.entAddress">
+                    <img src="images/conact-icon_07.png">
+                    <span>{{companyInfo.entAddress}}</span>
+                </a>
+            </div>
+            <div class="map">
+                <div id="map"></div>
+                <a href="javascript:;" @tap="mapCheckModel=true">导航</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="map-check-model" v-show="mapCheckModel" @tap="mapCheckModel=false"></div>
+    <ul class="map-check-list" :class="{'show':mapCheckModel}">
+        <li @tap="openBaiduMap()">百度地图</li>
+        <li @tap="openGaodeMap()">高德地图</li>
+        <li @tap="openQQMap()">腾讯地图</li>
+        <li class="close-model" @tap="mapCheckModel=false">取消</li>
+    </ul>
+
+
+    <div class="phone-model" v-show="phoneModel">
+        <div class="content">
+            <div class="logo" v-if="companyInfo.picPath1" :style="{'background-image':'url('+imgHost+companyInfo.picPath1+')'}"></div>
+            <p class="phone-num">{{companyInfo.entPhone}}</p>
+            <a class="btn" :href="'tel:'+companyInfo.entPhone">
+                <img src="images/phone-model-icon_03.png">
+                <span>拨打</span>
+            </a>
+            <a class="btn" id="copy-phone" href="javascript:;" :data-clipboard-text="companyInfo.entPhone">
+                <img src="images/phone-model-icon_08.png">
+                <span>复制</span>
+            </a>
+            <a class="close" @tap="phoneModel=false"></a>
+        </div>
+
+    </div>
+
+
+    <div class="nav" id="nav">
+        <a href="culture.html">
+            <img src="images/nav-icon-02.png">
+            <span>企业文化</span>
+        </a>
+        <a href="http://www.myqsl.cn/MM2/h5/zhipin.html">
+            <img src="images/nav-icon-01.png">
+            <span>招才纳贤</span>
+        </a>
+        <a href="http://www.myqsl.cn/MM2/h5/caigou.html">
+            <img src="images/nav-icon-03.png">
+            <span>采购信息</span>
+        </a>
+        <a href="product.html">
+            <img src="images/nav-icon-04.png">
+            <span>企业产品</span>
+        </a>
+    </div>
+
+    <div class="loading" v-show="loading"></div>
+</div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/touch.js"></script>
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="js/clipboard.min.js"></script>
+<script type="text/javascript" src="js/vue.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=tvotsotHaVajkyLqUxbHshnSQj5AZ8E2"></script>
+<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=TXCBZ-K453S-MQVOX-6UQZP-EYWJF-SZFZF&libraries=convertor"></script>
+<script type="text/javascript" src="js/pub.js?v=1"></script>
+<script type="text/javascript" src="js/index.js?v=42534511213"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?19e7c4eeea8df37cdcd28782b5071cde";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="leslie">
+    <title>深圳企示录信息科技有限公司</title>
+    <meta name="keywords" content="深圳企示录信息科技有限公司">
+    <meta name="applicable-device" content="mobile">
+    <link rel="icon" href="http://www.myqsl.cn/MM2/andios/favicon.png">
+    <!--该文件不能取消-->
+    <script src="js/flexible.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <link rel="stylesheet" href="css/share-detail.css?v=32" type="text/css">
+
+</head>
+<body>
+<div class="top-logo">
+    <div class="logo" id="entdetail-logo"></div>
+    <p id="entname" class="entname"></p>
+</div>
+
+<div class="main" id="typediv1" style="margin-top: -1.7rem;">
+
+    <div class="box section2" id="section-summary" style="display: none;">
+        <h3 class="title">
+            <span>企业简介</span>
+            <a class="appBtn" onclick="openApp()" type="2" href="javascript:void(0)">查看企业详情</a>
+        </h3>
+        <div id="summary" class="summary"></div>
+    </div>
+
+    <div class="box section3" id="section-vr" style="display: none;">
+        <h3 class="title">
+            <span>企业VR</span>
+        </h3>
+        <div class="iframe">
+            <iframe id="vr-iframe" src=""></iframe>
+        </div>
+    </div>
+
+    <div class="box section4" id="section-video" style="display: none;">
+        <h3 class="title">
+            <span>企业视频</span>
+        </h3>
+        <div class="videos" :class="{'one':videoList.length==1}">
+            <video id="video" src="mvHost+item.filetypeurl" poster="imgHost+item.filetypeimg" controls="" preload="none" webkit-playsinline="true" x5-playsinline="true" playsinline="true"></video>
+        </div>
+    </div>
+
+    <div class="box section5" id="section-info" style="display: none;">
+        <h3 class="title">
+            <span>联系方式</span>
+        </h3>
+        <div class="info">
+            <a class="clearfix" style="display:none;">
+                <img src="images/conact-icon_03.png">
+                <span id="entContact" style="display:none;margin-right: 10px;">{{companyInfo.entContact}}</span>
+                <span id="entPhone">{{companyInfo.entPhone}}</span>
+            </a>
+            <a class="clearfix" style="display:none;">
+                <img src="images/conact-icon_04.png">
+                <span id="entEmail">{{companyInfo.entEmail}}</span>
+            </a>
+            <a class="clearfix" style="display:none;">
+                <img src="images/conact-icon_05.png">
+                <span id="entWebsite">{{companyInfo.entWebsite}}</span>
+            </a>
+            <a class="clearfix" style="display:none;">
+                <img src="images/conact-icon_07.png">
+                <span id="entAddress">{{companyInfo.entAddress}}</span>
+            </a>
+        </div>
+    </div>
+
+</div>
+<div class="loading" id="loading"></div>
+<script type="text/javascript" src="js/share-detail.js"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?19e7c4eeea8df37cdcd28782b5071cde";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>

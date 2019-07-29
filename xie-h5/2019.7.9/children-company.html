@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta content="telephone=yes,email=yes" name="format-detection">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=101">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <style type="text/css">
+        .main{
+            padding-bottom: 60px;
+        }
+
+        .section4-5 .list li{
+            padding-bottom: 5px;
+            border-bottom: 0.5px solid #ececec;
+            margin-bottom: 0.4rem;
+        }
+        .section4-5 .list li .img{
+            width: 50px;
+            height: 50px;
+            background: #ffffff url("") no-repeat center/contain;
+            float: left;
+            margin-right: 8px;
+        }
+        .section4-5 .list li .icon{
+            float: right;
+            width: 15px;
+        }
+        .section4-5 .list li h4{
+            font-size: 14px;
+            color: #333333;
+            height: 18px;
+            line-height: 18px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-bottom: 3px;
+        }
+        .section4-5 .list li p{
+            font-size: 9px;
+            line-height: 14px;
+            height: 28px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main">
+    <div class="section section4-5">
+        <h3 class="title">
+            <p>分属企业</p>
+        </h3>
+        <ul class="list" id="list"></ul>
+    </div>
+
+</div>
+<div class="loading" id="loading"></div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/touch.js"></script>
+<script type="text/javascript" src="js/pub.js"></script>
+<script>
+    var obj=searchOjb();
+    var id='';
+    var customerid='';
+    if(obj.id) {
+        id=obj.id;
+        if(obj.customerid) customerid=obj.customerid;
+        $.ajax({
+            url: apiHost + "/MM2/register/queryBelongGroupList.json",
+            type: 'POST',
+            data: JSON.stringify({
+                id: self.id,
+                page:1,
+                size:100000
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length>0) {
+
+                    var list = data.data;
+                    var content='';
+                    for(var i=0;i<list.length;i++){
+                        var item=list[i];
+                        content+='<li class="clearfix" v-for="item in childrenCompanyList">' +
+                                '<a href="index.html?id='+item.id+'&customerid='+customerid+'">'+
+                                '<div class="img" style="background-image: url('+imgHost+item.picPath1+')"></div>';
+                        if(item.status == 2){
+                            content+='<img class="icon" src="images/header-icon_03.png">';
+                        }else if(item.status == 1){
+                            content+='<img class="icon" src="images/header-icon_04.png">';
+                        }
+                        content+='<h4>'+item.entName+'</h4>'+
+                                '<p>'+item.entDesc+'</p>'+
+                                '</a></li>';
+                    }
+                    $('#list').html(content);
+                    $('#loading').hide();
+                }
+            },error:function(){
+                $('#loading').hide();
+            }
+        })
+    }
+
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?19e7c4eeea8df37cdcd28782b5071cde";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
