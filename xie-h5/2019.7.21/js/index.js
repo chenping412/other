@@ -691,7 +691,7 @@ if (document.getElementById('echart-line1')) {
 
 
 
-var wutangMapImages=document.getElementById('wutang-map').getElementsByTagName('img');
+/*var wutangMapImages=document.getElementById('wutang-map').getElementsByTagName('img');
 
 var wutangMapImagesIndex=0;
 setInterval(function(){
@@ -701,7 +701,7 @@ setInterval(function(){
     wutangMapImages[wutangMapImagesIndex].className='active';
     wutangMapImagesIndex++;
     if(wutangMapImagesIndex>=wutangMapImages.length) wutangMapImagesIndex=0;
-},1500);
+},1500);*/
 
 
 

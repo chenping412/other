@@ -49,6 +49,13 @@ html,body{
     mix-blend-mode: screen;
     width: 770px;
 }
+.main .video3{
+    position: absolute;
+    right: 189px;
+    top: 448px;
+    mix-blend-mode: screen;
+    width:510px;
+}
 
 .main .echart-text{
     margin: 0 auto;
