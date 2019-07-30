@@ -6,13 +6,50 @@ html,body{
 }
 .main{
     width: 1920px;
-    height: 100%;
-    min-height: 994px;
+    height: 1080px;
     background:#0b3873 url("../images/beij.png") no-repeat center top/1879px;
     position: relative;
     -webkit-transform-origin: left top;
     transform-origin: left top;
+    overflow: hidden;
 }
+.main .map-title{
+    position: absolute;
+    left: 50%;
+    top:210px;
+    margin-left: -360px;
+    color: #05f9f9;
+    font-size: 30px;
+}
+.main .map-title b{
+    margin-right: 20px;
+}
+.main .map-title i{
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    background-color: #05f9f9;
+    color: #09447e;
+    font-style: normal;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.main .video1{
+    position: absolute;
+    left: 0;
+    top:-50px;
+    mix-blend-mode: screen;
+    width: 1920px;
+}
+.main .video2{
+    position: absolute;
+    right: -57px;
+    top: 94px;
+    mix-blend-mode: screen;
+    width: 770px;
+}
+
 .main .echart-text{
     margin: 0 auto;
     height: 100%;

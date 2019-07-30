@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
+    <style type="text/css">
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 1920px;
+            height: 1080px;
+            background: url("images/pin1-2_img.png") no-repeat center top/cover;
+            position: relative;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+        .main .btn{
+            position: absolute;
+            left: 50%;
+            top: 190px;
+            width: 480px;
+            height: 310px;
+            cursor: pointer;
+        }
+        .main #detail-model{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom:0;
+            z-index: 999;
+            background: url("images/pin1-2_img_02.png") no-repeat center top/cover;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+            transform: scale(0);
+            transition: all 0.3s;
+        }
+        .main #detail-model.show{
+            transform: scale(1);
+        }
+        .main #detail-model .close{
+            position: absolute;
+            left: 304px;
+            top: 122px;
+            width: 75px;
+            height: 75px;
+            cursor: pointer;
+        }
+        .main #detail-model .title{
+            position: absolute;
+            left: 405px;
+            top: 202px;
+            font-size: 48px;
+            color: #ffffff;
+            letter-spacing: 12px;
+        }
+        .main #detail-model .content{
+            position: absolute;
+            left: 405px;
+            top: 314px;
+            width: 1090px;
+            font-size: 22px;
+            color: #ffffff;
+            line-height: 32px;
+            letter-spacing: 3.3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main" id="main" style="transform: scale(1)">
+    <div id="btn1" class="btn" style="margin-left: -837px;"></div>
+    <div id="btn2" class="btn" style="margin-left: -242px;"></div>
+    <div id="btn3" class="btn" style="margin-left: 350px;"></div>
+
+    <div id="detail-model">
+        <div class="close" onclick="document.getElementById('detail-model').className='';"></div>
+        <div class="title" id="title"></div>
+        <div class="content" id="content">
+            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
+            <p>滚阳红。白发渔樵江渚上，都付笑谈中。</p>
+            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
+            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
+            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
+            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
+            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
+            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
+            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
+            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东</p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/pub.js"></script>
+<script type="text/javascript">
+    var detailModel=document.getElementById('detail-model');
+
+    document.getElementById('btn1').onclick=function(){
+        document.getElementById('title').innerHTML='抓党建促脱贫攻坚';
+
+        detailModel.className='show';
+    };
+    document.getElementById('btn2').onclick=function(){
+        document.getElementById('title').innerHTML='强化党建引领';
+
+        detailModel.className='show';
+    };
+    document.getElementById('btn3').onclick=function(){
+        document.getElementById('title').innerHTML='强化政治建设';
+
+        detailModel.className='show';
+    };
+
+</script>
+</body>
+</html>

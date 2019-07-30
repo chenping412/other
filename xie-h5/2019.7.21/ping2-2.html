@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
+    <style type="text/css">
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 1920px;
+            height: 1080px;
+            background: url("images/ping2-2_img.png") no-repeat center top/cover;
+            position: relative;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+        .main .btn{
+            position: absolute;
+            left: 50%;
+            top: 63px;
+            width: 222px;
+            height: 70px;
+            cursor: pointer;
+        }
+        .main .detail-model{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom:0;
+            z-index: 999;
+            background: url("images/ping2-2_img_01.png") no-repeat center top/cover;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+            transform: scale(0);
+            transition: all 0.3s;
+        }
+        .main .detail-model.show{
+            transform: scale(1);
+        }
+        .main .detail-model .close{
+            position: absolute;
+            left: 304px;
+            top: 122px;
+            width: 75px;
+            height: 75px;
+            cursor: pointer;
+        }
+
+        #detail-model1{
+            background-image: url("images/ping2-2_img_01.png");
+        }
+        #detail-model1 .icon1{
+            position: absolute;
+            left: 1113px;
+            top: 440px;
+            width: 98px;
+            height: 116px;
+            background: url("images/ping2-2_icon_01.png") no-repeat center top/contain;
+            animation: move-up ease 1.5s infinite;
+        }
+        #detail-model1 .icon2{
+            position: absolute;
+            left: 1253px;
+            top: 513px;
+            width: 98px;
+            height: 116px;
+            background: url("images/ping2-2_icon_02.png") no-repeat center top/contain;
+            animation: move-down ease 1.5s infinite;
+        }
+        @keyframes move-up {
+            0% {
+                transform:translate(0,0);
+                opacity: 1;
+            }
+            100% {
+                transform:translate(-20px,-30px);
+                opacity: 0;
+            }
+        }
+        @keyframes move-down {
+            0% {
+                transform:translate(0,0);
+                opacity: 1;
+            }
+            100% {
+                transform:translate(20px,30px);
+                opacity: 0;
+            }
+        }
+
+
+        #detail-model2{
+            background-image: url("images/ping2-2_img_02.png");
+        }
+
+        #detail-model4{
+            background-image: url("images/ping2-2_img_04.png");
+        }
+        #detail-model4 .icon1{
+            position: absolute;
+            left: 1154px;
+            top: 412px;
+            width: 215px;
+            height: 215px;
+            background: url("images/ping2-2_icon_03.png") no-repeat center top/contain;
+            transform: scale(1.05785);
+            animation: rotate-luan linear 3s infinite;
+        }
+        @keyframes rotate-luan {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            10% {
+                transform:rotate(45deg) scale(1.05785);
+            }
+            20% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            30% {
+                transform:rotate(-20deg) scale(1.05785);
+            }
+            40% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(30deg) scale(1.05785);
+            }
+            60% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            70% {
+                transform:rotate(-60deg) scale(1.05785);
+            }
+            80% {
+                transform:rotate(10deg) scale(1.05785);
+            }
+            90% {
+                transform:rotate(-10deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+        }
+
+        #detail-model5{
+            background-image: url("images/ping2-2_img_05.png");
+        }
+        #detail-model5 .content{
+            position: absolute;
+            left: 383px;
+            top: 275px;
+            width: 1153px;
+            height: 645px;
+            overflow-y: scroll;
+        }
+        #detail-model5 .content img{
+            width: 100%;
+        }
+        #detail-model5 .icon1{
+            position: absolute;
+            left: 1535px;
+            top: 782px;
+            width: 105px;
+            height: 69px;
+            background: url("images/ping2-2_icon_04.png") no-repeat center top/contain;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main" id="main" style="transform: scale(1)">
+    <div id="btn1" class="btn" style="left: 614px;" onclick="document.getElementById('detail-model1').className='detail-model show';"></div>
+    <div id="btn2" class="btn" style="left: 853px;" onclick="document.getElementById('detail-model2').className='detail-model show';"></div>
+    <div id="btn3" class="btn" style="left: 1092px;" onclick="document.getElementById('detail-model2').className='detail-model show';"></div>
+    <div id="btn4" class="btn" style="left: 1331px;" onclick="document.getElementById('detail-model4').className='detail-model show';"></div>
+    <div id="btn5" class="btn" style="left: 1569px;" onclick="document.getElementById('detail-model5').className='detail-model show';"></div>
+
+    <div class="detail-model" id="detail-model1">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <div class="icon1"></div>
+        <div class="icon2"></div>
+    </div>
+
+    <div class="detail-model" id="detail-model2">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+    </div>
+
+    <div class="detail-model" id="detail-model4">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <div class="icon1"></div>
+    </div>
+
+    <div class="detail-model" id="detail-model5">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <div class="content scroll">
+            <img src="images/ping2-2_img_05-2.png">
+        </div>
+        <div class="icon1"></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/pub.js"></script>
+</body>
+</html>

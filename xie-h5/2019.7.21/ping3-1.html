@@ -13,35 +13,30 @@
         .main{
             width: 1920px;
             height: 1080px;
-            min-height: 994px;
-            background: url("images/pin1-1_img.png") no-repeat center top/cover;
+            background: url("images/ping3-1_img.png") no-repeat center top/cover;
             position: relative;
             -webkit-transform-origin: left top;
             transform-origin: left top;
         }
+
         .main .icon{
             position: absolute;
             left: 50%;
+            top: 478px;
+            margin-left: -163px;
+            width: 279px;
+            height: 280px;
             transform: scale(1.05785);
         }
-        .main .icon1{
-            top: 420px;
-            margin-left: -597px;
-            animation: rotate-ni linear 5s infinite;
-        }
-        .main .icon1-2{
-            top: 355px;
-            margin-left: -658px;
-            animation: rotate-shun linear 4s infinite;
+        .main .icon img{
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
         }
         .main .icon2{
-            top: 420px;
-            margin-left: 208px;
-            animation: rotate-ni linear 5s infinite;
-        }
-        .main .icon2-2{
-            top: 355px;
-            margin-left: 148px;
+            animation: rotate-ni linear 4s infinite;
+        }.main .icon3{
             animation: rotate-shun linear 4s infinite;
         }
         @keyframes rotate-shun {
@@ -83,10 +78,11 @@
 <body>
 
 <div class="main" id="main" style="transform: scale(1)">
-    <img class="icon icon1" src="images/pin1-1_icon_01.png">
-    <img class="icon icon1-2" src="images/pin1-1_icon_01-2.png">
-    <img class="icon icon2" src="images/pin1-1_icon_02.png">
-    <img class="icon icon2-2" src="images/pin1-1_icon_02-2.png">
+    <div class="icon">
+        <img class="icon1" src="images/ping3-1_icon_01.png">
+        <img class="icon2" src="images/ping3-1_icon_02.png">
+        <img class="icon3" src="images/ping3-1_icon_03.png">
+    </div>
 </div>
 <script type="text/javascript" src="js/pub.js"></script>
 </body>
