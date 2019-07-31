@@ -2,6 +2,34 @@
  * Created by Administrator on 2019/7/28.
  */
 
+//时钟
+function setTime() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var m = now.getMonth()+1;
+    if(m<10) m='0'+m;
+    var d=now.getDate();
+    if(d<10) d='0'+d;
+
+    var hh=now.getHours();
+    if(hh<10) hh='0'+hh;
+    var MM=now.getMinutes();
+    if(MM<10) MM='0'+MM;
+    var ss=now.getSeconds();
+    if(ss<10) ss='0'+ss;
+
+    var w=now.getDay();
+    var weekList=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+    var week=weekList[w];
+
+    //console.log(y,m,d,hh,MM,ss,week);
+    return y+' / '+m+' / '+d + '   '+week+'     '+hh+' : '+MM+' : '+ss;
+}
+document.getElementById('time').innerHTML=setTime();
+setInterval(function(){
+    document.getElementById('time').innerHTML=setTime();
+},1000);
+
 
 //标题等文字展示
 var echartText = echarts.init(document.getElementById('echart-text'));
@@ -42,7 +70,8 @@ drawText('五塘', xCenter + 470, 454, '#00D7FB', 19);
 drawText('地铁线路', xCenter + 470, 732, '#00D7FB', 19);
 
 
-drawText('2018 / 07 / 11   星期日    13 : 15 : 45', xCenter - 746, 75, '#fff', 13);
+//drawText(setTime(), xCenter - 746, 75, '#fff', 13);
+
 drawText('南宁市兴宁区', xCenter - 478, 75, '#fff', 11);
 
 drawText('小雨 / 11-25℃', xCenter + 430, 75, '#fff', 11);
@@ -56,7 +85,7 @@ if (document.getElementById('echart-pie1')) {
 
     var echartPie1 = echarts.init(document.getElementById('echart-pie1'));
 
-    var optionPie1={
+    var optionPie1 = {
         title: {
             text: '兴宁区贸易第三产业\n占GDP的80%',
             left: 'center',
@@ -100,7 +129,7 @@ if (document.getElementById('echart-pie1')) {
     setInterval(function () {
         echartPie1.clear();
         echartPie1.setOption(optionPie1);
-    },5000);
+    }, 5000);
 
 
     var echartPie1_zr = echartPie1.getZr();
@@ -122,7 +151,7 @@ if (document.getElementById('echart-pie1')) {
 if (document.getElementById('echart-pie2')) {
 
     var echartPie2 = echarts.init(document.getElementById('echart-pie2'));
-    var optionPie2={
+    var optionPie2 = {
         title: {
             text: '第三产业全市居首\n占比20%',
             left: 'center',
@@ -140,17 +169,17 @@ if (document.getElementById('echart-pie2')) {
         legend: {
             orient: 'vertical',
             left: 158,
-            top:'40%',
+            top: '40%',
             icon: 'circle',
             itemWidth: 10,
             itemHeight: 10,
-            data: ['兴宁区','其他区'],
+            data: ['兴宁区', '其他区'],
             textStyle: {
                 fontSize: 11,
                 color: '#fff',
                 lineHeight: 18
             },
-            formatter: function(name) {
+            formatter: function (name) {
                 return "" + name + ""
             },
             padding: [2, 2]
@@ -210,15 +239,14 @@ if (document.getElementById('echart-pie2')) {
     setInterval(function () {
         echartPie2.clear();
         echartPie2.setOption(optionPie2);
-    },4000);
+    }, 4000);
 }
-
 
 
 //echart-pie3
 if (document.getElementById('echart-pie3')) {
     var echartPie3 = echarts.init(document.getElementById('echart-pie3'));
-    var optionPie3={
+    var optionPie3 = {
         title: {
             text: '规划用地',
             left: 40,
@@ -236,17 +264,17 @@ if (document.getElementById('echart-pie3')) {
         legend: {
             orient: 'vertical',
             left: 178,
-            top:'30%',
+            top: '30%',
             icon: 'circle',
             itemWidth: 10,
             itemHeight: 10,
-            data: ['工业净用地','物流用地','道路用地','绿化及其他'],
+            data: ['工业净用地', '物流用地', '道路用地', '绿化及其他'],
             textStyle: {
                 fontSize: 11,
                 color: '#fff',
                 lineHeight: 18
             },
-            formatter: function(name) {
+            formatter: function (name) {
                 return "" + name + ""
             },
             padding: [2, 2]
@@ -331,30 +359,29 @@ if (document.getElementById('echart-pie3')) {
     setInterval(function () {
         echartPie3.clear();
         echartPie3.setOption(optionPie3);
-    },4500);
+    }, 4500);
 }
-
 
 
 //echart-bar1
 if (document.getElementById('echart-bar1')) {
 
-    var dataListBar1=[
+    var dataListBar1 = [
         {
-            name:'2017',
-            data: [800,300,600,1000],
-        },{
-            name:'2018',
-            data: [900,400, 800,1200],
-        },{
-            name:'2019',
-            data: [1000, 500, 1000,1400],
+            name: '2017',
+            data: [800, 300, 600, 1000],
+        }, {
+            name: '2018',
+            data: [900, 400, 800, 1200],
+        }, {
+            name: '2019',
+            data: [1000, 500, 1000, 1400],
         },
     ];
-    var xAxisDataBar1=['地区生产总值', '财政收入', '固定资产投资', '社会消费零售总额'];
+    var xAxisDataBar1 = ['地区生产总值', '财政收入', '固定资产投资', '社会消费零售总额'];
 
     var echartBar1 = echarts.init(document.getElementById('echart-bar1'));
-    var optionBar1={
+    var optionBar1 = {
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -364,9 +391,9 @@ if (document.getElementById('echart-bar1')) {
         legend: {
             orient: 'vertical',
             right: 15,
-            top:50,
+            top: 50,
             icon: 'circle',
-            selectedMode:false,
+            selectedMode: false,
             itemWidth: 10,
             itemHeight: 10,
             data: ['2017', '2018', '2019'],
@@ -377,10 +404,10 @@ if (document.getElementById('echart-bar1')) {
             },
         },
         grid: {
-            left:25,
+            left: 25,
             right: 80,
             bottom: 25,
-            top:25,
+            top: 25,
             containLabel: true
         },
         xAxis: {
@@ -396,7 +423,7 @@ if (document.getElementById('echart-bar1')) {
                 // rotate: -30,
                 textStyle: {
                     color: '#fff',
-                    fontSize:8,
+                    fontSize: 8,
                 }
             },
         },
@@ -413,12 +440,12 @@ if (document.getElementById('echart-bar1')) {
             splitLine: {
                 show: false,
             },
-            max:'dataMax'
+            max: 'dataMax'
         },
         series: [{
             name: dataListBar1[0].name,
             type: 'bar',
-            barWidth:16,
+            barWidth: 16,
             data: dataListBar1[0].data,
             itemStyle: {
                 normal: {
@@ -434,7 +461,7 @@ if (document.getElementById('echart-bar1')) {
         }, {
             name: dataListBar1[1].name,
             type: 'bar',
-            barWidth:16,
+            barWidth: 16,
             data: dataListBar1[1].data,
             itemStyle: {
                 normal: {
@@ -450,7 +477,7 @@ if (document.getElementById('echart-bar1')) {
         }, {
             name: dataListBar1[2].name,
             type: 'bar',
-            barWidth:16,
+            barWidth: 16,
             data: dataListBar1[2].data,
             itemStyle: {
                 normal: {
@@ -469,51 +496,51 @@ if (document.getElementById('echart-bar1')) {
     setInterval(function () {
         echartBar1.clear();
         echartBar1.setOption(optionBar1);
-    },5500);
+    }, 5500);
 
 
-    var maxData=1;
-    for(var i=0;i<dataListBar1.length;i++){
-        for(var j=0;j<dataListBar1[i].data.length;j++){
-            if(dataListBar1[i].data[j]>maxData) maxData = dataListBar1[i].data[j];
+    var maxData = 1;
+    for (var i = 0; i < dataListBar1.length; i++) {
+        for (var j = 0; j < dataListBar1[i].data.length; j++) {
+            if (dataListBar1[i].data[j] > maxData) maxData = dataListBar1[i].data[j];
         }
     }
-    var echartBar1Height =152;
-    console.log(maxData,echartBar1Height);
+    var echartBar1Height = 152;
+    console.log(maxData, echartBar1Height);
 
-    var rateListBar1=[
+    var rateListBar1 = [
         {
-            rate:Math.round((dataListBar1[1].data[0]-dataListBar1[0].data[0])/dataListBar1[0].data[0]*1000)/10+'%',
-            x:50,
-            y:dataListBar1[0].data[0]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[2].data[0]-dataListBar1[1].data[0])/dataListBar1[1].data[0]*1000)/10+'%',
-            x:75,
-            y:dataListBar1[1].data[0]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[1].data[1]-dataListBar1[0].data[1])/dataListBar1[0].data[1]*1000)/10+'%',
-            x:133,
-            y:dataListBar1[0].data[1]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[2].data[1]-dataListBar1[1].data[1])/dataListBar1[1].data[1]*1000)/10+'%',
-            x:158,
-            y:dataListBar1[1].data[1]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[1].data[2]-dataListBar1[0].data[2])/dataListBar1[0].data[2]*1000)/10+'%',
-            x:213,
-            y:dataListBar1[0].data[2]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[2].data[2]-dataListBar1[1].data[2])/dataListBar1[1].data[2]*1000)/10+'%',
-            x:237,
-            y:dataListBar1[1].data[2]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[1].data[3]-dataListBar1[0].data[3])/dataListBar1[0].data[3]*1000)/10+'%',
-            x:295,
-            y:dataListBar1[0].data[3]/maxData*echartBar1Height
-        },{
-            rate:Math.round((dataListBar1[2].data[3]-dataListBar1[1].data[3])/dataListBar1[1].data[3]*1000)/10+'%',
-            x:320,
-            y:dataListBar1[1].data[3]/maxData*echartBar1Height
+            rate: Math.round((dataListBar1[1].data[0] - dataListBar1[0].data[0]) / dataListBar1[0].data[0] * 1000) / 10 + '%',
+            x: 50,
+            y: dataListBar1[0].data[0] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[2].data[0] - dataListBar1[1].data[0]) / dataListBar1[1].data[0] * 1000) / 10 + '%',
+            x: 75,
+            y: dataListBar1[1].data[0] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[1].data[1] - dataListBar1[0].data[1]) / dataListBar1[0].data[1] * 1000) / 10 + '%',
+            x: 133,
+            y: dataListBar1[0].data[1] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[2].data[1] - dataListBar1[1].data[1]) / dataListBar1[1].data[1] * 1000) / 10 + '%',
+            x: 158,
+            y: dataListBar1[1].data[1] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[1].data[2] - dataListBar1[0].data[2]) / dataListBar1[0].data[2] * 1000) / 10 + '%',
+            x: 213,
+            y: dataListBar1[0].data[2] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[2].data[2] - dataListBar1[1].data[2]) / dataListBar1[1].data[2] * 1000) / 10 + '%',
+            x: 237,
+            y: dataListBar1[1].data[2] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[1].data[3] - dataListBar1[0].data[3]) / dataListBar1[0].data[3] * 1000) / 10 + '%',
+            x: 295,
+            y: dataListBar1[0].data[3] / maxData * echartBar1Height
+        }, {
+            rate: Math.round((dataListBar1[2].data[3] - dataListBar1[1].data[3]) / dataListBar1[1].data[3] * 1000) / 10 + '%',
+            x: 320,
+            y: dataListBar1[1].data[3] / maxData * echartBar1Height
         },
     ]
     console.log(rateListBar1);
@@ -524,7 +551,7 @@ if (document.getElementById('echart-bar1')) {
                 style: {
                     text: text,
                     x: x,
-                    y: 222-y - 80,
+                    y: 222 - y - 80,
                     textFill: '#fff',
                     textAlign: 'center',
                     font: '8px Microsoft Yahei'
@@ -532,21 +559,20 @@ if (document.getElementById('echart-bar1')) {
             }
         ));
     }
-    for(var i=0;i<rateListBar1.length;i++){
-        echartBar1DrawText(rateListBar1[i].rate,rateListBar1[i].x,rateListBar1[i].y)
+
+    for (var i = 0; i < rateListBar1.length; i++) {
+        echartBar1DrawText(rateListBar1[i].rate, rateListBar1[i].x, rateListBar1[i].y)
     }
 }
-
-
 
 
 //echart-pie3
 if (document.getElementById('echart-line1')) {
     var echartLine1 = echarts.init(document.getElementById('echart-line1'));
     var dataIPSxAxis = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-    var dataIPS = [100, 60, 50, 40, 80, 120,50, 30, 80, 80, 120, 100];
-    var dataIPS2 = [80, 30, 60, 80, 100, 90,20, 70, 60, 80, 100, 90];
-    var dataIPS3 = [30, 50, 80, 40, 50, 70,120, 40, 80, 60, 80, 50];
+    var dataIPS = [100, 60, 50, 40, 80, 120, 50, 30, 80, 80, 120, 100];
+    var dataIPS2 = [80, 30, 60, 80, 100, 90, 20, 70, 60, 80, 100, 90];
+    var dataIPS3 = [30, 50, 80, 40, 50, 70, 120, 40, 80, 60, 80, 50];
     var optionLine1 = {
         tooltip: {
             trigger: 'axis',
@@ -561,16 +587,16 @@ if (document.getElementById('echart-line1')) {
         grid: {
             left: 30,
             right: 100,
-            top:80,
+            top: 80,
             bottom: 10,
             containLabel: true
         },
         legend: {
             orient: 'vertical',
             right: 15,
-            top:80,
+            top: 80,
             icon: 'circle',
-            selectedMode:false,
+            selectedMode: false,
             itemWidth: 10,
             itemHeight: 10,
             data: ['4A', '3A', '休闲'],
@@ -581,7 +607,7 @@ if (document.getElementById('echart-line1')) {
             },
         },
         xAxis: [{
-            name:'月',
+            name: '月',
             nameTextStyle: {
                 color: "#fff"
             },
@@ -602,13 +628,13 @@ if (document.getElementById('echart-line1')) {
             }
         }],
         yAxis: [{
-            name:'人数         ',
+            name: '人数         ',
             nameTextStyle: {
                 color: "#fff"
             },
             type: 'value',
             axisLine: {
-                show:false
+                show: false
             },
             axisLabel: {
                 show: true,
@@ -617,9 +643,9 @@ if (document.getElementById('echart-line1')) {
                     fontSize: 11,
                 }
             },
-            splitLine:{
-                show:true,
-                lineStyle:{
+            splitLine: {
+                show: true,
+                lineStyle: {
                     color: 'rgba(255,255,255,0.3)',
                     width: 0.5
                 }
@@ -678,7 +704,6 @@ if (document.getElementById('echart-line1')) {
             },
 
 
-
         ]
     };
     echartLine1.setOption(optionLine1);
@@ -686,22 +711,21 @@ if (document.getElementById('echart-line1')) {
     setInterval(function () {
         echartLine1.clear();
         echartLine1.setOption(optionLine1);
-    },6000);
+    }, 6000);
 }
-
 
 
 /*var wutangMapImages=document.getElementById('wutang-map').getElementsByTagName('img');
 
-var wutangMapImagesIndex=0;
-setInterval(function(){
-    for(var i=0;i<wutangMapImages.length;i++){
-        wutangMapImages[i].className='';
-    }
-    wutangMapImages[wutangMapImagesIndex].className='active';
-    wutangMapImagesIndex++;
-    if(wutangMapImagesIndex>=wutangMapImages.length) wutangMapImagesIndex=0;
-},1500);*/
+ var wutangMapImagesIndex=0;
+ setInterval(function(){
+ for(var i=0;i<wutangMapImages.length;i++){
+ wutangMapImages[i].className='';
+ }
+ wutangMapImages[wutangMapImagesIndex].className='active';
+ wutangMapImagesIndex++;
+ if(wutangMapImagesIndex>=wutangMapImages.length) wutangMapImagesIndex=0;
+ },1500);*/
 
 
 

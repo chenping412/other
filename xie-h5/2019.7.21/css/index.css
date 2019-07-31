@@ -13,6 +13,15 @@ html,body{
     transform-origin: left top;
     overflow: hidden;
 }
+.main #time{
+    position: absolute;
+    left: 50%;
+    top:71px;
+    margin-left: -746px;
+    color: #ffffff;
+    font-size: 13px;
+    white-space: pre;
+}
 .main .map-title{
     position: absolute;
     left: 50%;
