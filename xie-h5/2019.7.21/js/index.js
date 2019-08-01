@@ -53,13 +53,6 @@ function drawText(text, x, y, color, size, postiton) {
 
 
 drawText('数 据 可 视 化 大 屏', xCenter, 77, '#fff', 38, 'center');
-//drawText('据', xCenter - 100, 75, '#fff', 38);
-//drawText('可', xCenter - 50, 75, '#fff', 38);
-//drawText('视', xCenter, 75, '#fff', 38);
-//drawText('化', xCenter + 50, 75, '#fff', 38);
-//drawText('大', xCenter + 100, 75, '#fff', 38);
-//drawText('屏', xCenter + 150, 75, '#fff', 38);
-
 
 drawText('产业优势', xCenter - 853, 182, '#00D7FB', 19);
 drawText('产业增长', xCenter - 853, 454, '#00D7FB', 19);
@@ -69,9 +62,6 @@ drawText('三塘', xCenter + 470, 182, '#00D7FB', 19);
 drawText('五塘', xCenter + 470, 454, '#00D7FB', 19);
 drawText('地铁线路', xCenter + 470, 732, '#00D7FB', 19);
 
-
-//drawText(setTime(), xCenter - 746, 75, '#fff', 13);
-
 drawText('南宁市兴宁区', xCenter - 478, 75, '#fff', 11);
 
 drawText('小雨 / 11-25℃', xCenter + 430, 75, '#fff', 11);
@@ -79,6 +69,22 @@ drawText('室外温度', xCenter + 550, 75, '#fff', 9);
 drawText('26℃', xCenter + 597, 75, '#fff', 11);
 drawText('室内温度', xCenter + 665, 75, '#fff', 9);
 drawText('21℃', xCenter + 710, 75, '#fff', 11);
+
+$.ajax({
+    url: "http://www.myqsl.cn/MM2/register/queryNanNingList.json",
+    type: 'POST',
+    data: JSON.stringify({
+        id: 1
+    }),
+    contentType: 'application/json; charset=utf-8',
+    success: function (data) {
+        console.log(data)
+    }
+});
+
+
+
+
 
 //echart-pie1
 if (document.getElementById('echart-pie1')) {
@@ -248,7 +254,7 @@ if (document.getElementById('echart-pie3')) {
     var echartPie3 = echarts.init(document.getElementById('echart-pie3'));
     var optionPie3 = {
         title: {
-            text: '规划用地',
+            text: '规划用地（亩）',
             left: 40,
             top: 20,
             textStyle: {
@@ -290,10 +296,10 @@ if (document.getElementById('echart-pie3')) {
                 label: {
                     normal: {
                         position: 'inner',
-                        formatter: '{c}亩',
+                        formatter: '{c}',
                         textStyle: {
                             color: '#fff',
-                            fontSize: 13
+                            fontSize: 11
                         }
                     }
                 },
@@ -304,7 +310,7 @@ if (document.getElementById('echart-pie3')) {
                 },
                 data: [
                     {
-                        value: 80,
+                        value: 2609.2,
                         name: '工业净用地',
                         itemStyle: {
                             normal: {
@@ -315,7 +321,7 @@ if (document.getElementById('echart-pie3')) {
                         }
                     },
                     {
-                        value: 30,
+                        value: 592.8,
                         name: '物流用地',
                         selected: true,
                         itemStyle: {
@@ -327,7 +333,7 @@ if (document.getElementById('echart-pie3')) {
                         }
                     },
                     {
-                        value: 25,
+                        value: 464,
                         name: '道路用地',
                         selected: true,
                         itemStyle: {
@@ -339,7 +345,7 @@ if (document.getElementById('echart-pie3')) {
                         }
                     },
                     {
-                        value: 20,
+                        value: 530.9,
                         name: '绿化及其他',
                         selected: true,
                         itemStyle: {
@@ -368,14 +374,14 @@ if (document.getElementById('echart-bar1')) {
 
     var dataListBar1 = [
         {
+            name: '2016',
+            data: [371.5, 38.6, 251.4, 415.5],
+        }, {
             name: '2017',
-            data: [800, 300, 600, 1000],
+            data: [401.22, 41.15, 274, 461.5],
         }, {
             name: '2018',
-            data: [900, 400, 800, 1200],
-        }, {
-            name: '2019',
-            data: [1000, 500, 1000, 1400],
+            data: [425.29, 44.5, 317.8, 498.4],
         },
     ];
     var xAxisDataBar1 = ['地区生产总值', '财政收入', '固定资产投资', '社会消费零售总额'];
@@ -385,7 +391,10 @@ if (document.getElementById('echart-bar1')) {
         tooltip: {
             trigger: 'axis',
             axisPointer: {
-                type: 'shadow'
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985',
+                },
             }
         },
         legend: {
@@ -396,7 +405,7 @@ if (document.getElementById('echart-bar1')) {
             selectedMode: false,
             itemWidth: 10,
             itemHeight: 10,
-            data: ['2017', '2018', '2019'],
+            data: ['2016','2017', '2018'],
             textStyle: {
                 fontSize: 11,
                 color: '#fff',
@@ -551,7 +560,7 @@ if (document.getElementById('echart-bar1')) {
                 style: {
                     text: text,
                     x: x,
-                    y: 222 - y - 80,
+                    y: 222 - y - 70,
                     textFill: '#fff',
                     textAlign: 'center',
                     font: '8px Microsoft Yahei'
@@ -569,10 +578,13 @@ if (document.getElementById('echart-bar1')) {
 //echart-pie3
 if (document.getElementById('echart-line1')) {
     var echartLine1 = echarts.init(document.getElementById('echart-line1'));
-    var dataIPSxAxis = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-    var dataIPS = [100, 60, 50, 40, 80, 120, 50, 30, 80, 80, 120, 100];
-    var dataIPS2 = [80, 30, 60, 80, 100, 90, 20, 70, 60, 80, 100, 90];
-    var dataIPS3 = [30, 50, 80, 40, 50, 70, 120, 40, 80, 60, 80, 50];
+    var dataIPSxAxis = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017'];
+    var dataIPS = [190.61, 380.21, 171.18, 297.57, 541.61, 554.92, 688.17, 774.47];
+    var dataIPS2 = [26.3, 80.02, 46.46, 64.65, 95.77, 220.12, 370.67, 483.52];
+    var dataIPS3 = [];
+    for(var i=0;i<dataIPS.length;i++){
+        dataIPS3.push(Math.round((dataIPS[i]+dataIPS2[i])*100)/100);
+    }
     var optionLine1 = {
         tooltip: {
             trigger: 'axis',
@@ -593,13 +605,13 @@ if (document.getElementById('echart-line1')) {
         },
         legend: {
             orient: 'vertical',
-            right: 15,
+            right: 5,
             top: 80,
             icon: 'circle',
             selectedMode: false,
             itemWidth: 10,
             itemHeight: 10,
-            data: ['4A', '3A', '休闲'],
+            data: ['总和','本地一日游', '外地一日游'],
             textStyle: {
                 fontSize: 11,
                 color: '#fff',
@@ -607,7 +619,7 @@ if (document.getElementById('echart-line1')) {
             },
         },
         xAxis: [{
-            name: '月',
+            name: '年',
             nameTextStyle: {
                 color: "#fff"
             },
@@ -628,7 +640,7 @@ if (document.getElementById('echart-line1')) {
             }
         }],
         yAxis: [{
-            name: '人数         ',
+            name: '人数（万人次）',
             nameTextStyle: {
                 color: "#fff"
             },
@@ -651,10 +663,27 @@ if (document.getElementById('echart-line1')) {
                 }
 
             },
+            //max: 'dataMax'
         }],
         series: [
             {
-                name: '4A',
+                name: '总和',
+                type: 'line',
+                smooth: true,
+                symbol: "none",
+                lineStyle: {
+                    width: 1,
+                    color: "#4AA3FF"
+                },
+                areaStyle: {
+                    normal: {
+                        color: 'rgba(74,163,255,0.15)'
+                    },
+                },
+                data: dataIPS3,
+            },
+            {
+                name: '本地一日游',
                 type: 'line',
                 smooth: true,
                 symbol: "none",
@@ -671,7 +700,7 @@ if (document.getElementById('echart-line1')) {
             },
 
             {
-                name: '3A',
+                name: '外地一日游',
                 type: 'line',
                 smooth: true,
                 symbol: "none",
@@ -686,22 +715,7 @@ if (document.getElementById('echart-line1')) {
                 },
                 data: dataIPS2,
             },
-            {
-                name: '休闲',
-                type: 'line',
-                smooth: true,
-                symbol: "none",
-                lineStyle: {
-                    width: 1,
-                    color: "#4AA3FF"
-                },
-                areaStyle: {
-                    normal: {
-                        color: 'rgba(74,163,255,0.15)'
-                    },
-                },
-                data: dataIPS3,
-            },
+
 
 
         ]

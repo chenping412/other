@@ -46,10 +46,10 @@ html,body{
 
 .main .video1{
     position: absolute;
-    left: 0;
-    top:-50px;
+    left: 445px;
+    top: 180px;
     mix-blend-mode: screen;
-    width: 1920px;
+    width: 900px;
 }
 .main .video2{
     position: absolute;

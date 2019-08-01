@@ -17,3 +17,9 @@ var imgs = document.getElementsByTagName('img');
 for (var i = imgs.length - 1; i >= 0; i--) {
     imgs[i].setAttribute('draggable',"false");
 }
+
+
+var apiHost= 'http://www.myqsl.cn';
+if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5" || location.hostname == "localhost") {
+    apiHost= 'http://'+location.hostname+':8090';
+}
