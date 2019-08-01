@@ -46,24 +46,24 @@ html,body{
 
 .main .video1{
     position: absolute;
-    left: 445px;
-    top: 180px;
+    left: 619px;
+    top: 200px;
     mix-blend-mode: screen;
-    width: 900px;
+    width: 670px;
 }
 .main .video2{
     position: absolute;
-    right: -57px;
-    top: 94px;
+    right: 80px;
+    top: 178px;
     mix-blend-mode: screen;
-    width: 770px;
+    width: 420px;
 }
 .main .video3{
     position: absolute;
-    right: 189px;
-    top: 448px;
+    right: 345px;
+    top: 540px;
     mix-blend-mode: screen;
-    width:510px;
+    width:180px;
 }
 
 .main .echart-text{
