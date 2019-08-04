@@ -1,0 +1,342 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    font-family:  Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+ol,
+ul,
+li,
+button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: #dc0000;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #999;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #999;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #999;
+}
+
+.inner{
+    width: 1210px;
+    margin: 0 auto;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.red{
+    color: #dc0000;
+}
+body{
+    font-size: 14px;
+    color: #333333;
+    background-color: #f3f3f3;
+}
+
+
+
+/*头部搜索和导航栏*/
+.header .top{
+    background-color: #e3e4e5;
+    font-size: 12px;
+    color: #999999;
+    line-height: 18px;
+    padding:6px 0;
+    height: 18px;
+}
+.header .top .right a{
+    margin: 0 15px;
+}
+.header .top .right .line{
+    display: inline-block;
+    overflow: hidden;
+    width: 1px;
+    height: 10px;
+    background-color: #999;
+}
+
+.header .mid{
+    min-height: 140px;
+}
+.header .mid .logo{
+    float: left;
+    padding: 25px 0 0 16px;
+    line-height: 54px;
+    font-size: 30px;
+    font-family: "Adobe 楷体 Std R";
+    color: #666666;
+    letter-spacing: 3px;
+    background: url("../images/index_icon_06.png") no-repeat center bottom;
+}
+.header .mid .search{
+    padding:52px 0 0 412px;
+}
+.header .mid .search .input{
+    border:2px solid #da0000;
+    height: 32px;
+    width: 535px;
+    position: relative;
+}
+.header .mid .search .input input{
+    display: block;
+    float: left;
+    height: 100%;
+    border:none;
+    width: 475px;
+    box-sizing: border-box;
+    padding:0 20px 0 35px;
+}
+.header .mid .search .input button{
+    display: block;
+    float: right;
+    background-color: #da0000;
+    height: 100%;
+    width: 60px;
+    border: none;
+    border-radius: 0;
+    line-height: 1;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.header .mid .search .input .icon{
+    position: absolute;
+    left:5px;
+    top:5px;
+    width: 24px;
+    height: 24px;
+    background: url("../images/index_icon_03.png") no-repeat center;
+}
+.header .mid .search .keywords{
+    font-size: 12px;
+    color: #999999;
+    line-height: 18px;
+    padding: 2px 0 0 3px;
+}
+.header .mid .search .keywords a{
+    margin-right: 20px;
+}
+
+.header .bottom{
+    height: 40px;
+    background-color: #d2d2d2;
+}
+.header .bottom .nav{
+    width: 200px;
+    float: left;
+    position: relative;
+}
+.header .bottom .nav .all-classtify{
+    display: block;
+    background-color: #da0000;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bolder;
+}
+.header .bottom .nav .nav-children{
+    display: none;
+    position: absolute;
+    top:40px;
+    left: 0;
+    width: 100%;
+    height: 384px;
+    box-sizing: border-box;
+    border:1px solid #da0000;
+    background-color: #ffffff;
+}
+.header .bottom .nav:hover .nav-children,
+.header .bottom .nav .nav-children.show{
+    display: block;
+}
+.header .bottom .nav .nav-children a{
+    display: block;
+    line-height: 40px;
+    font-size: 16px;
+    padding-left: 38px;
+    position: relative;
+    border-bottom: 1px solid #f3f3f3;
+}
+.header .bottom .nav .nav-children a:before{
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #da0000;
+    position: absolute;
+    left: 24px;
+    top:17px;
+}
+
+.header .bottom .other-link{
+    float: left;
+    font-size: 18px;
+    color: #333333;
+    line-height: 40px;
+    padding-left: 20px;
+    max-width: 980px;
+    overflow: hidden;
+}
+.header .bottom .other-link a{
+    float: left;
+    padding:0 20px;
+}
+
+
+
+
+/*main主要内容区*/
+.main{
+    padding-bottom: 100px;
+}
+
+
+
+/*pagination分页通用样式*/
+.pagination{
+    text-align: center;
+    font-size: 16px;
+    color: #555555;
+    line-height: 37px;
+}
+.pagination button{
+     padding:0 18px;
+     line-height: 1;
+     height: 35px;
+     border:1px solid #bfbfbf;
+     background-color: #dcdcdc;
+    margin: 0 6px;
+ }
+.pagination button.active{
+    background-color: transparent;
+    border-color: transparent;
+}
+.pagination button:disabled{
+    background-color: #f3f3f3;
+    color: #aaaaaa;
+    cursor: not-allowed;
+}
+.pagination input{
+    line-height: 1;
+    width: 58px;
+    height: 35px;
+    border:1px solid #bfbfbf;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+.pagination .margin{
+    margin: 0 15px;
+}
+
+
+/*footer底部区*/
+.footer{
+    border-top:1px solid #da0000;
+    padding:36px 0 60px;
+}
+.footer .link{
+    font-size: 12px;
+    line-height: 16px;
+    color: #999999;
+    text-align: center;
+}
+.footer .link a{
+    margin: 0 50px;
+}
+.footer .link .line{
+    display: inline-block;
+    overflow: hidden;
+    width: 1px;
+    height: 16px;
+    background-color: #999;
+    vertical-align: middle;
+}
+.footer .text{
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+    color: #999999;
+    padding-top: 15px;
+}
+
+
+
+
+
+

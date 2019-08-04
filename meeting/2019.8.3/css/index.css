@@ -1,0 +1,135 @@
+.banner{
+    width: 1210px;
+    height: 384px;
+    margin: 0 auto;
+}
+.banner .swiper{
+    width: 557px;
+    height: 100%;
+    float: left;
+    margin-left: 200px;
+    overflow: hidden;
+    position: relative;
+}
+.banner .swiper .swiper-slide{
+    display: block;
+    background: url("") no-repeat center/cover;
+}
+.banner .swiper .swiper-pagination-bullet{
+    width: 22px;
+    height: 5px;
+    background-color: #ffffff;
+    opacity: 1;
+    border-radius: 0;
+}
+.banner .swiper .swiper-pagination-bullet-active{
+    background-color: #da0000;
+}
+.banner .pic{
+    float: left;
+    width: 200px;
+    height: 100%;
+}
+.banner .pic .img{
+    display: block;
+    background: url("") no-repeat center/cover;
+    width: 100%;
+    height: 33.3333%;
+}
+.banner .info{
+    float: left;
+    width: 253px;
+    height: 100%;
+    background-color: #ffffff;
+}
+.banner .info .user{
+    padding:14px 0 0;
+    height: 96px;
+    text-align: center;
+}
+.banner .info .user .icon{
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: url("") no-repeat center/cover;
+    margin-bottom: 10px;
+}
+.banner .info .user .btn a{
+    display: inline-block;
+    width: 53px;
+    border-radius: 3px;
+    background-color: #da0000;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    line-height: 21px;
+}
+.banner .info .user .btn a+a{
+    margin-left: 30px;
+}
+.banner .info .message{
+    height: 274px;
+    overflow: hidden;
+}
+.banner .info .message h3{
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 32px;
+    padding:0 9px;
+    background-color: #da0000;
+}
+.banner .info .message h3 a{
+    font-size: 12px;
+    color: #ffffff;
+    float: right;
+}
+.banner .info .message .list{
+    padding-top: 10px;
+    height: 220px;
+    overflow: hidden;
+}
+.banner .info .message .list a{
+    display: block;
+    padding:0 10px 0 20px;
+    color: #666;
+    font-size: 12px;
+    line-height: 18px;
+    max-height: 36px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    position: relative;
+}
+.banner .info .message .list a:before{
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #da0000;
+    position: absolute;
+    left: 9px;
+    top:5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

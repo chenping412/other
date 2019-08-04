@@ -1,0 +1,182 @@
+.search-detail{
+    width: 1210px;
+    margin: 0 auto 140px;
+}
+.search-detail .text{
+    font-size: 16px;
+    color: #444444;
+    line-height: 52px;
+}
+.search-detail .control .title{
+    background-color: #d2d2d2;
+    font-size: 16px;
+    color: #444444;
+    line-height: 38px;
+    border-top:1px solid #a0a0a0;
+    border-bottom:1px solid #a0a0a0;
+    padding:0 15px;
+    font-weight: normal;
+}
+.search-detail .control .row{
+    padding:19px 15px;
+    border-bottom:1px solid #d2d2d2;
+    line-height: 22px;
+    font-size: 16px;
+    color: #666666;
+    line-height: 24px;
+}
+.search-detail .control .row .key{
+    float: left;
+    display: block;
+    width: 105px;
+    min-height: 24px;
+    line-height: 24px;
+}
+.search-detail .control .row .value{
+    float: left;
+    max-width: 920px;
+    color: #024443;
+}
+.search-detail .control .row.brand .value{
+    height: 97px;
+    overflow: hidden;
+    padding:1px;
+}
+.search-detail .control .row.brand .value.show{
+    height: auto;
+}
+.search-detail .control .row.brand .value .img{
+    cursor: pointer;
+    float: left;
+    border:1px solid #d2d2d2;
+    width: 128px;
+    height: 48px;
+    margin: -1px 0 0 -1px;
+    background:#FFFFFF url("") no-repeat center;
+}
+
+.search-detail .control .row.price .value{
+    max-width: 1050px;
+}
+.search-detail .control .row.price .value a{
+    margin-right: 40px;
+    float: left;
+}
+.search-detail .control .row.price .price-area{
+    float: left;
+}
+.search-detail .control .row.price .price-area input{
+    width: 46px;
+    height: 22px;
+    border:1px solid #d2d2d2;
+    padding:0 10px;
+}
+.search-detail .control .row.price .price-area button{
+    width: 46px;
+    height: 24px;
+    border: none;
+    background-color: #d2d2d2;
+    font-size: 12px;
+    color: #024443;
+}
+.search-detail .control .sort{
+    margin-top:18px;
+    background-color: #d2d2d2;
+    padding:5px 13px;
+    border-top:1px solid #a0a0a0;
+    border-bottom:1px solid #a0a0a0;
+}
+.search-detail .control .sort a{
+    display: block;
+    float: left;
+    padding:0 10px;
+    height: 26px;
+    line-height: 27px;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    color: #444444;
+    border:1px solid #a0a0a0;
+    margin: -1px 0 0 -1px;
+}
+.search-detail .control .sort a.active{
+    color: #FFFFFF;
+    background-color: #da0000;
+    border-color: #da0000;
+}
+
+.search-detail .product-list{
+    margin-top: 23px;
+    margin-bottom: 40px;
+    padding: 1px;
+}
+.search-detail .product-list li{
+    background-color: #FFFFFF;
+    border:1px solid #a0a0a0;
+    margin: -1px 0 0 -1px;
+    width: 303px;
+    height: 400px;
+    float: left;
+    box-sizing: border-box;
+}
+.search-detail .product-list li .img{
+    height: 230px;
+    background: url("") no-repeat center/contain;
+    margin-bottom: 5px;
+}
+.search-detail .product-list li .info{
+    padding:0 20px;
+    color: #666666;
+}
+.search-detail .product-list li .price{
+    line-height: 36px;
+    float: left;
+    font-size: 30px;
+    color: #da0000;
+}
+.search-detail .product-list li  .scale{
+    float: right;
+    font-size: 12px;
+    margin-top: 10px;
+}
+.search-detail .product-list li .title{
+    font-size: 16px;
+    line-height: 26px;
+    height: 26px;
+   text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.search-detail .product-list li .shop{
+    font-size: 14px;
+    line-height: 26px;
+}
+.search-detail .product-list li .btns{
+    padding-top: 15px;
+}
+.search-detail .product-list li .btns a{
+    display: block;
+    float: left;
+    line-height: 26px;
+    padding:0 12px;
+    border:1px solid #a0a0a0;
+    font-size: 13px;
+}
+.search-detail .product-list li .btns a.cart{
+    color: #da0000;
+    margin-left: -1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
