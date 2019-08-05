@@ -4,7 +4,7 @@
     margin: 0 auto;
 }
 .banner .swiper{
-    width: 557px;
+    width: 760px;
     height: 100%;
     float: left;
     margin-left: 200px;
@@ -25,20 +25,9 @@
 .banner .swiper .swiper-pagination-bullet-active{
     background-color: #da0000;
 }
-.banner .pic{
-    float: left;
-    width: 200px;
-    height: 100%;
-}
-.banner .pic .img{
-    display: block;
-    background: url("") no-repeat center/cover;
-    width: 100%;
-    height: 33.3333%;
-}
 .banner .info{
     float: left;
-    width: 253px;
+    width: 250px;
     height: 100%;
     background-color: #ffffff;
 }

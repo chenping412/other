@@ -216,32 +216,116 @@ body{
     top:40px;
     left: 0;
     width: 100%;
-    height: 384px;
+    min-height: 384px;
     box-sizing: border-box;
     border:1px solid #da0000;
     background-color: #ffffff;
+    z-index: 9999;
 }
 .header .bottom .nav:hover .nav-children,
 .header .bottom .nav .nav-children.show{
     display: block;
 }
-.header .bottom .nav .nav-children a{
+.header .bottom .nav .nav-children>li>.nav-1{
     display: block;
-    line-height: 40px;
+    line-height: 30px;
     font-size: 16px;
-    padding-left: 38px;
+    padding:5px 0 5px 35px;
     position: relative;
     border-bottom: 1px solid #f3f3f3;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 10px;
 }
-.header .bottom .nav .nav-children a:before{
+.header .bottom .nav .nav-children>li>.nav-1:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.header .bottom .nav .nav-children>li>.nav-1:before{
     content: '';
     width: 6px;
     height: 6px;
     border-radius: 50%;
     background-color: #da0000;
     position: absolute;
-    left: 24px;
+    left: 20px;
     top:17px;
+}
+.header .bottom .nav .nav-children>li>.nav-1 a,
+.header .bottom .nav .nav-children>li>.nav-1 span{
+    float: left;
+}
+
+.header .bottom .nav .nav-children>li:hover .nav-2{
+    display: block;
+}
+.header .bottom .nav .nav-children .nav-2{
+    display: none;
+    position: absolute;
+    left: 198px;
+    top:-1px;
+    width: 800px;
+    min-height: 384px;
+    padding:20px;
+    box-sizing: border-box;
+    border: 1px solid #f7f7f7;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+
+    font-size: 12px;
+    color: #666;
+    line-height: 17px;
+    white-space: nowrap;
+}
+.header .bottom .nav .nav-children .nav-2>li{
+    padding:3px 0;
+}
+.header .bottom .nav .nav-children .nav-2>li:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.header .bottom .nav .nav-children .nav-2>li a{
+    display: block;
+    float: left;
+    margin: 3px 7px;
+}
+.header .bottom .nav .nav-children .nav-2>li>a{
+    width: 70px;
+    min-height: 16px;
+    font-weight: bolder;
+    color: #666;
+    position: relative;
+    margin: 3px 0;
+    padding-right: 15px;
+    text-align: right;
+    overflow: hidden;
+}
+.header .bottom .nav .nav-children .nav-2>li>a:after{
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    top:4px;
+    width: 6px;
+    height: 9px;
+    background: url("../images/icon_right.png") no-repeat center/contain;
+}
+.header .bottom .nav .nav-children .nav-3{
+   margin-left: 90px;
+}
+.header .bottom .nav .nav-children .nav-3:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
 
 .header .bottom .other-link{

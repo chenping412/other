@@ -1,146 +1,6 @@
 /**
  * Created by GIISO on 2019/7/17.
  */
-
-var jcompanykey;
-var jpersonid;
-var jpersonname;
-var jindex;
-
-var isWeixn;
-var isAndroid;
-var isiOS;
-var timer;
-var entid;
-jcompanykey = '9ab70a65890b7519388413097b3397c0';
-
-$(function () {
-    var cardid = getParamer("cardid");//名片id
-    entid = getParamer("id");//企业id
-    if (entid == "undefined" || entid == null || entid == "" || entid == 0) {
-        document.getElementById("typediv1").style.display = "none";//隐藏
-
-    } else {
-        document.getElementById("typediv1").style.display = "";//隐藏
-    }
-
-    var u = navigator.userAgent, app = navigator.appVersion;
-    isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-    isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);    //ios终端
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.match(/MicroMessenger/i) == "micromessenger") {  //判断微信内置浏览器
-        isWeixn = true;
-    } else {
-        isWeixn = false;
-    }
-
-    if (isAndroid) {
-        var jumpUrl;
-        if (jcompanykey) {
-            jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        } else if (jpersonid) {
-            jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        } else {
-            jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        }
-        $('.appBtn').attr('href', jumpUrl);
-    }
-    firstJump();
-})
-
-
-function firstJump() {
-    var cardid = getParamer("cardid");//名片id
-
-    if (jcompanykey) {
-        if (isAndroid) {
-            window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        } else if (isiOS) {
-            window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        }
-    } else if (jpersonid) {
-        if (isAndroid) {
-            window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        } else if (isiOS) {
-            window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        }
-    } else if (jindex) {
-        if (isAndroid) {
-            window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        } else if (isiOS) {
-            window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-        }
-    }
-}
-
-function openApp() {
-    if (isWeixn) {
-        alert('请点击右上角,选择在浏览器中打开.');
-    } else {
-        if (isiOS) {
-
-            var hasApp = true, t = 1000;
-
-            timer = setTimeout(function () {
-
-                if (!hasApp) {
-
-                    //没有安装app
-                    var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
-                    if (r == true) {
-                        window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
-                        //window.location.href = "https://itunes.apple.com/cn/app/%E4%BC%81%E7%A4%BA%E5%BD%95/id1367096301?mt=8";
-                    }
-
-                }
-            }, 2000);
-            var t1 = Date.now();
-            setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
-
-                var t2 = Date.now();
-                hasApp = !(!t1 || t2 - t1 < t + 150);
-            }, t);
-
-        } else if (isAndroid) {
-            var hasApp = true, t = 1000;
-
-            timer = setTimeout(function () {
-
-                if (!hasApp) {
-
-                    //没有安装app
-                    var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
-                    if (r == true) {
-                        window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
-                    }
-
-                }
-            }, 2000);
-            var t1 = Date.now();
-            setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
-
-                var t2 = Date.now();
-                hasApp = !(!t1 || t2 - t1 < t + 150);
-            }, t);
-        }
-    }
-}
-
-$(document).on('visibilitychange webkitvisibilitychange', function () {
-    var tag = document.hidden || document.webkitHidden;
-    if (tag) {
-        clearTimeout(timer);
-    }
-})
-
-$(window).on('pagehide', function () {
-    clearTimeout(timer);
-})
-
-function openEntInfo() {
-    location.href = "http://www.myqsl.cn/MM2/andios/entdetail.html?id=" + entid;
-}
-
 function getRootPath_dc() {
     var pathName = window.location.pathname.substring(1);
     var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
@@ -175,7 +35,6 @@ function getParamer(paramer) {
     }
 
 }
-
 /**
  * js截取字符串，中英文都能用
  * @param str：需要截取的字符串
@@ -205,9 +64,164 @@ function cutstr(str, len) {
     }
 }
 
+try {
+    var jcompanykey;
+    var jpersonid;
+    var jpersonname;
+    var jindex;
+
+    var isWeixn;
+    var isAndroid;
+    var isiOS;
+    var timer;
+    var entid;
+    jcompanykey = '9ab70a65890b7519388413097b3397c0';
+
+    $(function () {
+        var cardid = getParamer("cardid");//名片id
+        entid = getParamer("id");//企业id
+        if (entid == "undefined" || entid == null || entid == "" || entid == 0) {
+            document.getElementById("typediv1").style.display = "none";//隐藏
+
+        } else {
+            document.getElementById("typediv1").style.display = "";//隐藏
+        }
+
+        var u = navigator.userAgent, app = navigator.appVersion;
+        isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+        isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);    //ios终端
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {  //判断微信内置浏览器
+            isWeixn = true;
+        } else {
+            isWeixn = false;
+        }
+
+        if (isAndroid) {
+            var jumpUrl;
+            if(cardid!=null &&cardid!=""&&cardid!="undefined"&&cardid!=0){
+                if (jcompanykey) {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                } else if (jpersonid) {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                } else {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                }
+            }
+            else{
+                if (jcompanykey) {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (jpersonid) {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else {
+                    jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            }
+
+            $('.appBtn').attr('href', jumpUrl);
+        }
+        firstJump();
+    })
 
 
-$(document).ready(function () {
+    function firstJump() {
+        var cardid = getParamer("cardid");//名片id
+
+        if (jcompanykey) {
+            if (isAndroid) {
+                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+            } else if (isiOS) {
+                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+            }
+        } else if (jpersonid) {
+            if (isAndroid) {
+                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+            } else if (isiOS) {
+                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+            }
+        } else if (jindex) {
+            if (isAndroid) {
+                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+            } else if (isiOS) {
+                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+            }
+        }
+    }
+
+    function openApp() {
+        if (isWeixn) {
+            alert('请点击右上角,选择在浏览器中打开.');
+        } else {
+            if (isiOS) {
+
+                var hasApp = true, t = 1000;
+
+                timer = setTimeout(function () {
+
+                    if (!hasApp) {
+
+                        //没有安装app
+                        var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
+                        if (r == true) {
+                            window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
+                            //window.location.href = "https://itunes.apple.com/cn/app/%E4%BC%81%E7%A4%BA%E5%BD%95/id1367096301?mt=8";
+                        }
+
+                    }
+                }, 2000);
+                var t1 = Date.now();
+                setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
+
+                    var t2 = Date.now();
+                    hasApp = !(!t1 || t2 - t1 < t + 150);
+                }, t);
+
+            } else if (isAndroid) {
+                var hasApp = true, t = 1000;
+
+                timer = setTimeout(function () {
+
+                    if (!hasApp) {
+
+                        //没有安装app
+                        var r = confirm("您没有安装企示录APP，请先安装企示录APP!");
+                        if (r == true) {
+                            window.location.href = "http://www.myqsl.cn/MM2/andios/myh5.html";//在指定时间内没有拉起APP，可以判断：用户没有安装app,直接跳转到H5下载页面
+                        }
+
+                    }
+                }, 2000);
+                var t1 = Date.now();
+                setTimeout(function () {    //t的时间就是触发APP启动的时间，若APP启动了，再次返回页面时t2这行代码执行，hasApp即为true。反之若APP没有启动即为false
+
+                    var t2 = Date.now();
+                    hasApp = !(!t1 || t2 - t1 < t + 150);
+                }, t);
+            }
+        }
+    }
+
+    $(document).on('visibilitychange webkitvisibilitychange', function () {
+        var tag = document.hidden || document.webkitHidden;
+        if (tag) {
+            clearTimeout(timer);
+        }
+    })
+
+    $(window).on('pagehide', function () {
+        clearTimeout(timer);
+    })
+
+    function openEntInfo() {
+        location.href = "http://www.myqsl.cn/MM2/andios/entdetail.html?id=" + entid;
+    }
+
+}catch (e){
+
+}
+
+
+(function () {
     var customerid = getParamer("customerid");   //获取html页面传值
     var cardid = getParamer("cardid");                  //获取html页面传值
     var entid = getParamer("id"); //企业的id
@@ -229,6 +243,10 @@ $(document).ready(function () {
             $("#mobile").html(response.mobile);
             $("#carimg").attr("src", path + "/cardimg/" + response.carimg).show();
             $('#section-card').show();
+
+            $('#loading').hide();
+        },error:function(){
+            $('#loading').hide();
         }
     });
 
@@ -308,4 +326,4 @@ $(document).ready(function () {
         }
     })
 
-});
+})();
