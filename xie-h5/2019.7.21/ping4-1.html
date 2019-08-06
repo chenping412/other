@@ -13,19 +13,72 @@
         .main{
             width: 1920px;
             height: 1080px;
-            background: url("images/ping4-1_img.png") no-repeat center top/cover;
+            background: url("images/ping4-1_img_01.png") no-repeat center top/cover;
             position: relative;
             -webkit-transform-origin: left top;
             transform-origin: left top;
         }
+        .main .icon{
+            position: absolute;
+            right: 190px;
+            top: 445px;
+            transform: scale(1.05785);
+        }
+        .main .icon1{
+            animation: rotate-ni linear 5s infinite;
+        }
+        .main .icon2{
+            animation: rotate-shun linear 5s infinite;
+        }
+        .main .icon3{
+            top: 510px;
+            right: 137px;
+        }
 
+
+        @keyframes rotate-shun {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(360deg) scale(1.05785);
+            }
+        }
+        @keyframes rotate-ni {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(-90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(-180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(-270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(-360deg) scale(1.05785);
+            }
+        }
 
     </style>
 </head>
 <body>
 
 <div class="main" id="main" style="transform: scale(1)">
-
+    <img class="icon icon1" src="images/ping4-1_icon_01.png">
+    <img class="icon icon2" src="images/ping4-1_icon_02.png">
+    <img class="icon icon3" src="images/ping4-1_icon_03.png">
 </div>
 <script type="text/javascript" src="js/pub.js"></script>
 </body>
