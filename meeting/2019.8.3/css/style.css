@@ -350,6 +350,11 @@ body{
     padding-bottom: 100px;
 }
 
+ .breadcrumb{
+    font-size: 14px;
+    color: #666666;
+    padding:20px 0 16px;
+}
 
 
 /*pagination分页通用样式*/
