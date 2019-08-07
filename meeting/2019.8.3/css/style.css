@@ -49,7 +49,10 @@ button {
 button{
     cursor: pointer;
 }
-
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
 
 .clearfix:after {
     content: ".";

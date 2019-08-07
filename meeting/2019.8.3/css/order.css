@@ -1,0 +1,214 @@
+.order-view{
+    padding-bottom: 100px;
+    color: #444444;
+    font-size: 14px;
+}
+.order-view .tab{
+    border-bottom: 2px solid #d2d2d2;
+    margin-bottom: 24px;
+}
+.order-view .tab a{
+    display: block;
+    float: left;
+    width: 140px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    position: relative;
+}
+.order-view .tab a:after{
+    content: '';
+    width: 1px;
+    height: 16px;
+    background-color: #bfbfbf;
+    position: absolute;
+    right: 0;
+    top:11px;
+}
+.order-view .tab a.active{
+    color: #da0000;
+}
+.order-view .tab a.active:before{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: #da0000;
+    position: absolute;
+    right: 0;
+    bottom: -2px;
+}
+.order-view .search{
+    margin-bottom: 24px;
+    border: 1px solid #d2d2d2;
+    width: 330px;
+    background-color: #ffffff;
+}
+.order-view .search input{
+    background-color: #ffffff;
+    height: 24px;
+    padding:0 10px;
+    width: 225px;
+    border: none;
+    float: left;
+}
+.order-view .search button{
+    float: right;
+    width: 80px;
+    height: 24px;
+    border: none;
+    border-left: 1px solid #d2d2d2;
+    background-color: #eeeeee;
+}
+.order-list table{
+    border:1px solid #bfbfbf;
+}
+.order-list table th,
+.order-list table td{
+    text-align: center;
+    font-size: 14px;
+    color: #444444;
+    line-height: 20px;
+    padding:10px 15px;
+    border-bottom:1px solid #bfbfbf;
+    width: 125px;
+}
+.order-list th:first-child,
+.order-list td:first-child{
+    width: 400px;
+}
+.order-list table th{
+    background-color: #dddddd;
+}
+.order-list table td{
+    background-color: #ffffff;
+    vertical-align: top;
+}
+.order-list td.border-left{
+    border-left:1px solid #bfbfbf;
+}
+
+.order-list .list-header{
+    padding-bottom: 17px;
+}
+.order-list .page-btn{
+    text-align: right;
+    padding-top: 12px;
+
+}
+.order-list .page-btn button{
+    width: 63px;
+    height: 22px;
+    border:1px solid #d2d2d2;
+    background-color: #ffffff;
+    margin-right: 22px;
+}
+.order-list .page-btn button:disabled{
+    cursor: not-allowed;
+    color: #d2d2d2;
+}
+
+
+.order-list .list-body>li{
+    margin-bottom: 30px;
+}
+.order-list .list-body .date{
+    margin-left: 25px;
+}
+.order-list .list-body .order-num{
+    margin-left: 34px;
+    font-weight: normal;
+}
+.order-list .list-body .delete{
+    display: inline-block;
+    height: 20px;
+}
+.order-list .list-body .delete img{
+    margin-top: -3px;
+}
+.order-list .list-body  .info .img{
+    float: left;
+    width: 124px;
+    height: 94px;
+    border:1px solid #bfbfbf;
+    background: #FFFFFF url("") no-repeat center /contain;
+    margin-right: 15px;
+}
+.order-list .list-body  .info h3{
+    font-weight: normal;
+    height: 40px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+.order-list .list-body  .info p{
+    font-size: 12px;
+    color: #999999;
+    text-align: left;
+}
+
+
+
+.order-detail .order-info{
+    margin-bottom: 20px;
+}
+.order-detail .order-info .hh{
+    width: 330px;
+    background-color: #dddddd;
+    text-align: left;
+    font-weight: bolder;
+    padding-left: 36px;
+}
+.order-detail .order-info .rr{
+    background-color: #ffffff;
+    font-weight: bolder;
+    width: 900px;
+}
+.order-detail .order-info .rr span{
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 15px;
+}
+.order-detail .order-info .bb{
+    background-color: #eeeeee;
+    text-align: left;
+    padding-left: 36px;
+    width: 330px;
+}
+.order-detail .order-info .bb p{
+    padding:8px 0;
+}
+
+.order-detail table th,
+.order-detail table td{
+    vertical-align: middle;
+    width: 190px;
+}
+.order-detail table .total-money{
+    background-color: #dddddd;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #da0000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

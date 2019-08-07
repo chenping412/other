@@ -175,7 +175,12 @@
     color: #FFFFFF;
     background-color: #da0000;
 }
-
+.detail-bottom .tab-item{
+    display: none;
+}
+.detail-bottom .tab-item.show{
+    display: block;
+}
 .detail-bottom .config-small{
     padding:17px 30px;
     border-bottom:1px solid #d2d2d2;
@@ -201,6 +206,103 @@
     margin: 0 auto;
     display: block;
 }
+.detail-bottom .comment-tag{
+    border-top:1px solid #d2d2d2;
+    border-bottom:1px solid #d2d2d2;
+    margin-top: 2px;
+}
+.detail-bottom .comment-tag .num{
+    float: left;
+    width: 78px;
+    text-align: center;
+    border-right:1px solid #d2d2d2;
+}
+.detail-bottom .comment-tag .num span{
+    display: block;
+    height: 59px;
+    line-height: 59px;
+    font-size: 48px;
+    color: #da0000;
+    font-weight: bolder;
+}
+.detail-bottom .comment-tag .num p{
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 20px;
+    background-color: #da0000;
+}
+.detail-bottom .comment-tag .tags{
+    width: 900px;
+    float: left;
+    margin-left: 20px;
+    padding:14px 30px 0 85px;
+    position: relative;
+}
+.detail-bottom .comment-tag .tags p{
+    position: absolute;
+    left: 0;
+    top:14px;
+    font-size: 14px;
+    color: #888888;
+    line-height: 20px;
+}
+.detail-bottom .comment-tag .tags  span{
+    display: block;
+    float: left;
+    line-height: 18px;
+    border: 1px solid #da0000;
+    font-size: 14px;
+    color: #da0000;
+    padding:0 15px;
+    margin: 0 7px 12px 0;
+}
+.detail-bottom .comment-list{
+    padding-bottom: 50px;
+}
+.detail-bottom .comment-list th,
+.detail-bottom .comment-list td{
+   border-bottom: 1px dashed #d2d2d2;
+    color: #444444;
+}
+.detail-bottom .comment-list th{
+    font-size: 14px;
+    text-align: center;
+    background-color: #d2d2d2;
+    line-height: 24px;
+}
+.detail-bottom .comment-list td{
+    font-size: 12px;
+    text-align: left;
+    line-height: 20px;
+    padding:15px 10px;
+}
+.detail-bottom .comment-list td:first-child,
+.detail-bottom .comment-list td:last-child{
+    text-align: center;
+}
+.detail-bottom .comment-list td.comment-text{
+    width: 460px;
+}
+.detail-bottom .comment-list td.attribute{
+    width: 220px;
+}
+.detail-bottom .comment-list td.attribute p{
+    padding:3px 0;
+}
+.detail-bottom .comment-list td.attribute p span{
+    color: #888888;
+}
+.detail-bottom .comment-list td.comment-num{
+    width: 150px;
+    font-size: 30px;
+    color: #da0000;
+    line-height: 36px;
+}
+.detail-bottom .pagination{
+    padding-bottom: 75px;
+}
+
+
 
 
 
