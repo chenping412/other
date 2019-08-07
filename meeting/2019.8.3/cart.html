@@ -320,7 +320,6 @@
                 </ul>
 
 
-
             </div>
             <div class="other-link clearfix">
                 <a href="">政策法规</a>
@@ -337,7 +336,6 @@
 </div>
 
 
-
 <div class="cart-view inner">
     <div class="breadcrumb">
         <span>当前位置：</span>
@@ -352,7 +350,7 @@
             <tr>
                 <th>
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox"/>
                         <span>全选</span>
                     </label>
 
@@ -366,12 +364,15 @@
             </thead>
             <tbody>
             <tr>
-                <td><input type="checkbox" /></td>
+                <td><input type="checkbox"/></td>
                 <td>
                     <div class="info clearfix">
-                        <div class="img" style="background-image: url(https://img12.360buyimg.com/n7/jfs/t1/49259/35/4834/243670/5d280111E19cbe7cb/9c2d3dff5a821433.jpg)"></div>
-                        <h3>小米(MI)RedmiBook 14英寸全金属超轻薄笔记本电脑(第八代英特尔酷睿i5-8265U</h3>
-                        <p>商品规格：<span>14英寸64G版</span></p>
+                        <a href="">
+                            <div class="img"
+                                 style="background-image: url(https://img12.360buyimg.com/n7/jfs/t1/49259/35/4834/243670/5d280111E19cbe7cb/9c2d3dff5a821433.jpg)"></div>
+                            <h3>小米(MI)RedmiBook 14英寸全金属超轻薄笔记本电脑(第八代英特尔酷睿i5-8265U</h3>
+                            <p>商品规格：<span>14英寸64G版</span></p>
+                        </a>
                     </div>
                 </td>
                 <td>
@@ -390,13 +391,17 @@
                 <td>
                     <a href="javascript:;">删除</a>
                 </td>
-            </tr><tr>
-                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
                 <td>
                     <div class="info clearfix">
-                        <div class="img" style="background-image: url(https://img12.360buyimg.com/n7/jfs/t1/49259/35/4834/243670/5d280111E19cbe7cb/9c2d3dff5a821433.jpg)"></div>
-                        <h3>小米(MI)RedmiBook 14英寸全金属超轻薄笔记本电脑(第八代英特尔酷睿i5-8265U</h3>
-                        <p>商品规格：<span>14英寸64G版</span></p>
+                        <a href="">
+                            <div class="img"
+                                 style="background-image: url(https://img12.360buyimg.com/n7/jfs/t1/49259/35/4834/243670/5d280111E19cbe7cb/9c2d3dff5a821433.jpg)"></div>
+                            <h3>小米(MI)RedmiBook 14英寸全金属超轻薄笔记本电脑(第八代英特尔酷睿i5-8265U</h3>
+                            <p>商品规格：<span>14英寸64G版</span></p>
+                        </a>
                     </div>
                 </td>
                 <td>
@@ -415,13 +420,17 @@
                 <td>
                     <a href="javascript:;">删除</a>
                 </td>
-            </tr><tr>
-                <td><input type="checkbox" /></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"/></td>
                 <td>
                     <div class="info clearfix">
-                        <div class="img" style="background-image: url(https://img12.360buyimg.com/n7/jfs/t1/49259/35/4834/243670/5d280111E19cbe7cb/9c2d3dff5a821433.jpg)"></div>
-                        <h3>小米(MI)RedmiBook 14英寸全金属超轻薄笔记本电脑(第八代英特尔酷睿i5-8265U</h3>
-                        <p>商品规格：<span>14英寸64G版</span></p>
+                        <a href="">
+                            <div class="img"
+                                 style="background-image: url(https://img12.360buyimg.com/n7/jfs/t1/49259/35/4834/243670/5d280111E19cbe7cb/9c2d3dff5a821433.jpg)"></div>
+                            <h3>小米(MI)RedmiBook 14英寸全金属超轻薄笔记本电脑(第八代英特尔酷睿i5-8265U</h3>
+                            <p>商品规格：<span>14英寸64G版</span></p>
+                        </a>
                     </div>
                 </td>
                 <td>
@@ -450,7 +459,7 @@
                 <tr>
                     <th>
                         <label>
-                            <input type="checkbox" />
+                            <input type="checkbox"/>
                             <span>全选</span>
                         </label>
 
@@ -476,7 +485,6 @@
     </div>
 
 </div>
-
 
 
 <div class="footer">
@@ -505,45 +513,47 @@
 
     //购买数量加减
     (function () {
-        var cartList=$('#cart-list');
+        var cartList = $('#cart-list');
 
         //计算总商品件数和总价格
-        function getTotal(){
-            var rows=cartList.find('tbody tr');
-            var totalNum=0;
-            var totalMoney=0;
-            rows.each(function(){
-                var price=$(this).find(".price").attr('data-price')*1;
-                var buyNum=$(this).find(".num-input").val()*1;
-                totalNum+=buyNum;
-                totalMoney+=price*buyNum;
+        function getTotal() {
+            var rows = cartList.find('tbody tr');
+            var totalNum = 0;
+            var totalMoney = 0;
+            rows.each(function () {
+                var price = $(this).find(".price").attr('data-price') * 1;
+                var buyNum = $(this).find(".num-input").val() * 1;
+                totalNum += buyNum;
+                totalMoney += price * buyNum;
             });
             $('#total-num').html(totalNum);
-            $('#total-money').html('￥'+totalMoney.toFixed(2));
+            $('#total-money').html('￥' + totalMoney.toFixed(2));
         }
+
         getTotal();
 
-        var nums=cartList.find('.num');
-        nums.each(function(index){
-           console.log(index);
-            var numInput = nums.eq(index).find('.num-input').attr('index',index);
-            var numAdd = nums.eq(index).find(".num-add").attr('index',index);
-            var numCut = nums.eq(index).find(".num-cut").attr('index',index);
+        var nums = cartList.find('.num');
+        nums.each(function (index) {
+            console.log(index);
+            var numInput = nums.eq(index).find('.num-input').attr('index', index);
+            var numAdd = nums.eq(index).find(".num-add").attr('index', index);
+            var numCut = nums.eq(index).find(".num-cut").attr('index', index);
 
 
-            function numButtonCheck(i){
-                var n = numInput.val()*1;
+            function numButtonCheck(i) {
+                var n = numInput.val() * 1;
                 if (n <= 1) {
-                    numCut.attr('disabled','disabled');
-                }else{
+                    numCut.attr('disabled', 'disabled');
+                } else {
                     numCut.removeAttr('disabled');
                 }
 
                 //计算价格
-                var price=cartList.find(".price").eq(i).attr('data-price')*1;
-                var buyNum=cartList.find(".num-input").eq(i).val()*1;
-                cartList.find(".money").eq(i).html('￥'+(price*buyNum).toFixed(2));
+                var price = cartList.find(".price").eq(i).attr('data-price') * 1;
+                var buyNum = cartList.find(".num-input").eq(i).val() * 1;
+                cartList.find(".money").eq(i).html('￥' + (price * buyNum).toFixed(2));
             }
+
             numButtonCheck(index);
 
             numAdd.click(function () {
@@ -554,22 +564,21 @@
             });
             numCut.click(function () {
                 var m = numInput.val() * 1;
-                if(m<=1) return;
+                if (m <= 1) return;
                 numInput.val(m - 1);
                 numButtonCheck($(this).attr('index'));
                 getTotal();
             });
 
-            numInput.keyup(function(){
-                var value=$(this).val();
-                if(!value || value.replace(/[0-9]/g, '').length > 0){
+            numInput.keyup(function () {
+                var value = $(this).val();
+                if (!value || value.replace(/[0-9]/g, '').length > 0) {
                     $(this).val(1);
                 }
                 numButtonCheck($(this).attr('index'));
                 getTotal();
             })
         });
-
 
 
     })();
