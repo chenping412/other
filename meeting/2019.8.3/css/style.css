@@ -19,6 +19,7 @@ fieldset,
 legend,
 input,
 button,
+select,
 textarea,
 p,
 blockquote,
@@ -30,7 +31,7 @@ td {
     outline: none;
 }
 
-a {
+a{
     text-decoration: none;
 }
 
