@@ -1,21 +1,14 @@
-.cart-view{
+.place-view{
     padding-bottom: 100px;
 }
-.cart-view input[type="checkbox"]{
-    background-color: #FFFFFF;
-    width: 15px;
-    height: 15px;
-    vertical-align: middle;
-}
-
-.cart-view .shop-cart table{
+.place-view .shop-place table{
     border-collapse: collapse;
     width: 100%;
     border-left:1px solid #bfbfbf;
     border-right:1px solid #bfbfbf;
 }
-.cart-view .shop-cart th,
-.cart-view .shop-cart td{
+.place-view .shop-place th,
+.place-view .shop-place td{
     border-bottom:1px solid #bfbfbf;
     border-top:1px solid #bfbfbf;
     color: #444444;
@@ -23,40 +16,24 @@
     line-height: 20px;
     padding:10px 0;
     text-align: center;
+    width: 130px;
 }
-.cart-view .shop-cart th{
+.place-view .shop-place th{
     background-color: #dddddd;
 }
-.cart-view .shop-cart td{
+.place-view .shop-place td{
     background-color: #FFFFFF;
 }
-.cart-view .shop-cart th:first-child,
-.cart-view .shop-cart td:first-child{
-    text-align: left;
-    width: 50px;
-    padding:10px 0 10px 15px;
+.place-view .shop-place th:first-child,
+.place-view .shop-place td:first-child{
+    width: 350px;
+    padding-left: 30px;
 }
-.cart-view .shop-cart th:nth-child(2),
-.cart-view .shop-cart td:nth-child(2){
-    width: 420px;
+.place-view .shop-place th:nth-child(4),
+.place-view .shop-place td:nth-child(4){
+    width: 200px;
 }
-.cart-view .shop-cart th:nth-child(3),
-.cart-view .shop-cart td:nth-child(3){
-    width: 140px;
-}
-.cart-view .shop-cart th:nth-child(4),
-.cart-view .shop-cart td:nth-child(4){
-    width: 140px;
-}
-.cart-view .shop-cart th:nth-child(5),
-.cart-view .shop-cart td:nth-child(5){
-    width: 140px;
-}
-.cart-view .shop-cart th:last-child,
-.cart-view .shop-cart td:last-child{
-    width: 290px;
-}
-.cart-view .shop-cart table .info .img{
+.place-view .shop-place table .info .img{
     float: left;
     width: 124px;
     height: 94px;
@@ -64,7 +41,7 @@
     background: #FFFFFF url("") no-repeat center /contain;
     margin-right: 15px;
 }
-.cart-view .shop-cart table .info h3{
+.place-view .shop-place table .info h3{
     font-weight: normal;
     height: 48px;
     display: -webkit-box;
@@ -75,19 +52,19 @@
     font-size: 14px;
     line-height: 24px;
 }
-.cart-view .shop-cart table .info p{
+.place-view .shop-place table .info p{
     font-size: 12px;
     color: #999999;
     text-align: left;
     line-height: 24px;
 }
 
-.cart-view .shop-cart table .num{
+.place-view .shop-place table .num{
     display: inline-block;
     border: 1px solid #d2d2d2;
     vertical-align: middle;
 }
-.cart-view .shop-cart table .num button{
+.place-view .shop-place table .num button{
     width: 18px;
     height: 18px;
     border: none;
@@ -98,12 +75,12 @@
     float: left;
     line-height: 1;
 }
-.cart-view .shop-cart table .num button:disabled{
+.place-view .shop-place table .num button:disabled{
     cursor: not-allowed;
     background-color: #dddddd;
     color: #999;
 }
-.cart-view .shop-cart table .num input{
+.place-view .shop-place table .num input{
     width: 38px;
     height: 18px;
     border: none;
@@ -114,19 +91,40 @@
     float: left;
     line-height: 1;
 }
-.cart-view .shop-cart .control{
-    padding-top: 19px;
+
+
+.place-view .shop-place .plan-chose{
+    border:1px solid #bfbfbf;
+    background-color: #FFFFFF;
+    margin-top: 15px;
+    padding:20px 30px;
 }
-.cart-view .shop-cart .control .btns{
-    position: relative;
+.place-view .shop-place .plan-chose .title{
+    margin-bottom: 10px;
 }
-.cart-view .shop-cart .control .buy-btns{
-    position: absolute;
-    right: 0px;
-    top:0px;
+.place-view .shop-place .plan-chose .item{
+    padding:0 30px;
 }
-.cart-view .shop-cart .control .buy-btn{
-    display: block;
+.place-view .shop-place .plan-chose .item label{
+    display: inline-block;
+    padding:6px 0;
+}
+.place-view .shop-place .plan-chose .item span{
+    margin-left: 10px;
+}
+.place-view .shop-place .plan-chose .item .children{
+    padding:0 35px;
+}
+.place-view .shop-place .plan-chose .item .children p{
+    padding:6px 0;
+}
+
+.place-view .shop-place .control{
+    text-align: right;
+    margin-top: 15px;
+}
+.place-view .shop-place .control .buy-btn{
+    display: inline-block;
     width: 143px;
     height: 39px;
     background-color: #da0000;
@@ -134,8 +132,6 @@
     line-height: 39px;
     font-size: 16px;
     color: #FFFFFF;
-    float: left;
-    margin-right: 1px;
 }
 
 

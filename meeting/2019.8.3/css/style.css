@@ -54,7 +54,11 @@ table{
     border-collapse: collapse;
     width: 100%;
 }
-
+input[type="radio"]{
+    width: 18px;
+    height: 18px;
+    vertical-align: bottom;
+}
 .clearfix:after {
     content: ".";
     display: block;

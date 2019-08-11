@@ -89,11 +89,6 @@
     font-size: 16px;
     color: #444444;
 }
-.supplier-register .form-box .box .item .radio-box input[type="radio"]{
-    width: 20px;
-    height: 20px;
-    vertical-align: bottom;
-}
 
 .supplier-register .form-box .file-list .file{
     width: 283px;
