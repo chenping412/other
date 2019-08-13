@@ -50,7 +50,9 @@
     </style>
 </head>
 <body style="">
-
+<div class="ban-n">
+    <a class="go-back" href="javascript:history.go(-1);"></a>
+</div>
 <div class="content">
 
     <div class="tab-content">
@@ -138,15 +140,16 @@
             data: JSON.stringify(entuser), // Request body
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
-                $("#zhiwei").html(response.data[0].jobname);   //职位名称
-                $("#city").html(response.data[0].jobcity + "  " + response.data[0].jobworklife + "        " + response.data[0].education);   //工作地点
-                $("#yuexin").html(response.data[0].jobxinshui);   //薪水
-                //$("div#jobcity").html(response.data[0].jobcity);   //工作地点
-                $("#jobaddress").html(response.data[0].jobaddress);   //公司地点
-                $("#zhiweimiaoshu").html(response.data[0].jobgangwei);   //公司地点
-                $("#renzhiyaoqiu").html(response.data[0].jobyaoqiu);   //公司地点
-                $("#youxiang").html(response.data[0].jobbiaoqian);   //邮箱
-
+                if(response.data[0]){
+                    $("#zhiwei").html(response.data[0].jobname);   //职位名称
+                    $("#city").html(response.data[0].jobcity + "  " + response.data[0].jobworklife + "        " + response.data[0].education);   //工作地点
+                    $("#yuexin").html(response.data[0].jobxinshui);   //薪水
+                    //$("div#jobcity").html(response.data[0].jobcity);   //工作地点
+                    $("#jobaddress").html(response.data[0].jobaddress);   //公司地点
+                    $("#zhiweimiaoshu").html(response.data[0].jobgangwei);   //公司地点
+                    $("#renzhiyaoqiu").html(response.data[0].jobyaoqiu);   //公司地点
+                    $("#youxiang").html(response.data[0].jobbiaoqian);   //邮箱
+                }
             }
         })
 

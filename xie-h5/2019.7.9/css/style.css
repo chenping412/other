@@ -166,6 +166,28 @@ body{
 }
 
 
+.ban-n{
+    background-color: #6863df;
+}
+.go-back{
+    display: block;
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    z-index: 99999;
+}
+.go-back:before{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    transform:rotate(-45deg);
+
+}
+
 body .swiper-pagination-bullet{
     background-color: #999999;
     opacity: 0.7;

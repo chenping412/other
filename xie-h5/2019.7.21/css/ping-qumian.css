@@ -1,0 +1,89 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.main{
+    width: 1920px;
+    height: 1080px;
+    /*background: url("../images/ping-qumian-img1.jpg") no-repeat center top/cover;*/
+    background: url("../images/ping-qumian-img0.png") no-repeat center top/cover;
+    position: relative;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+}
+.main .icon{
+    position: absolute;
+}
+.main .icon1{
+    left: 1016px;
+    top: 428px;
+    width: 108px;
+    animation: rotate-shun linear 5s infinite;
+}
+.main .icon2{
+    left: 1461px;
+    top: 709px;
+    width: 113px;
+    animation: rotate-shun linear 4s infinite;
+}
+
+.main .text{
+    position: absolute;
+}
+.main .text span{
+    position: absolute;
+    display: block;
+    white-space: nowrap;
+    font-size: 18px;
+    color: #ffffff;
+    font-family: sans-serif;
+}
+.main .text1{
+    left: 986px;
+    top:176px;
+}
+.main .text2{
+    left: 986px;
+    top:586px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes rotate-shun {
+    0% {
+        transform:rotate(0deg) scale(1.05785);
+    }
+    25% {
+        transform:rotate(90deg) scale(1.05785);
+    }
+    50% {
+        transform:rotate(180deg) scale(1.05785);
+    }
+    75% {
+        transform:rotate(270deg) scale(1.05785);
+    }
+    100% {
+        transform:rotate(360deg) scale(1.05785);
+    }
+}

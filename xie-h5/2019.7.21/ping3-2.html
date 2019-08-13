@@ -142,11 +142,15 @@
 <script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript" src="js/swiper.jquery.min.js"></script>
 <script type="text/javascript">
+
+
     var handleLeft=document.getElementById('handle-left');
     var swiper = new Swiper('#swiper', {
         autoplay: 4000,
         autoplayDisableOnInteraction: false,
         loop: true,
+        nextButton: '.handle-right',
+        prevButton: '.handle-left',
         onTouchMove: function(swiper,event){
             var e;
             if(event.changedTouches && event.changedTouches[0]){
