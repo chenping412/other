@@ -70,9 +70,8 @@ setInterval(function(){
     }else{
         lineIndex=random
     }
-    if(lineIndex>=10) lineIndex=10;
+    if(lineIndex>10) lineIndex=1;
     lineLamp(lineIndex);
-    lineIndex++;
 },3000);
 
 
