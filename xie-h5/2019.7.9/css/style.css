@@ -166,10 +166,20 @@ body{
 }
 
 
+/*返回按钮*/
 .ban-n{
-    background-color: #6863df;
+    background-color: #556DDD;
+    text-align: center;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    color: #ffffff;
+    font-size: 16px;
 }
-.go-back{
+.ban-n .go-back{
+    position: absolute;
+    left: 0;
+    top:0;
     display: block;
     width: 20px;
     height: 40px;
@@ -177,7 +187,7 @@ body{
     padding: 0 20px;
     z-index: 99999;
 }
-.go-back:before{
+.ban-n .go-back:before{
     content: '';
     display: inline-block;
     width: 10px;
@@ -185,7 +195,6 @@ body{
     border-left: 2px solid #ffffff;
     border-top: 2px solid #ffffff;
     transform:rotate(-45deg);
-
 }
 
 body .swiper-pagination-bullet{

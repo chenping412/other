@@ -6,7 +6,7 @@ var searchStr=location.search;
 var obj=searchOjb();
 $('#nav').find('a').each(function(){
     var href = $(this).attr('href');
-    if(href && href!=''){
+    if(href && href!='' && searchStr){
         $(this).attr('href', href+searchStr +'&entid='+obj.id);
     }
     $(this).on('tap',function(){

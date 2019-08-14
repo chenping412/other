@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="telephone=no" name="format-detection">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+          name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Expires" content="0">
+    <meta name="referrer" content="always">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="description" content="企业采购">
+    <title>企业采购</title>
+
+    <!--该文件不能取消-->
+    <script src="/MM2/assets/js/jquery.min.js"></script>
+
+    <style type="text/css">
+        html, body, p, form, ul, h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            padding: 0
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+            font-size: 14px
+        }
+
+        th, td {
+            padding: 0
+        }
+
+        a {
+            color: #f2f2f5;
+            text-decoration: none;
+        }
+
+        em, i, b {
+            font-weight: normal;
+            font-style: normal
+        }
+
+        li {
+            list-style: none
+        }
+
+        html, body {
+            position: relative;
+            max-width: 500px;
+            height: 100%;
+            margin: 0 auto
+        }
+
+        body {
+            line-height: 20px;
+            font-size: 14px;
+            font-family: "Microsoft YaHei";
+            color: #444;
+            background-color: #f6f6f5
+        }
+
+        /*整体页面架构*/
+        #pageWp {
+            position: relative;
+            min-height: 100%;
+            padding: 0px 0 231px 0;
+            background-color: #ebebeb
+        }
+
+        /*采购列表*/
+        .items .e h3, .items .e h3 span, .items .e aside, .items .e i, .items .e em {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden
+        }
+
+        .items {
+            background-color: #fff
+        }
+
+        .items .collect_tip span {
+            color: #ff773e
+        }
+
+        .items .e {
+            position: relative;
+            display: block;
+            color: #868686;
+            padding: 11px 21px
+        }
+
+        .items .e h3 {
+            position: relative;
+            font-size: 15px;
+            margin-bottom: 2px;
+            padding-right: 115px;
+            line-height: 22px;
+            color: #686868;
+            font-weight: bold;
+        }
+
+        .items .e .c_red {
+            color: #d20000
+        }
+
+        .items .e h3 span {
+            float: left;
+            display: inline-block;
+            max-width: 100%;
+            line-height: 17px
+        }
+
+        e aside {
+            min-height: 22px;
+            padding-right: 100px;
+            line-height: 22px;
+            font-size: 13px
+        }
+
+        .items .e i, .items .e em {
+            position: absolute;
+            width: 100px;
+            right: 21px;
+            top: 11px;
+            text-align: right
+        }
+
+        .items .e i {
+            width: 80px;
+            top: 35px;
+            font-size: 12px
+        }
+
+        .items .e font {
+            position: absolute;
+            width: 80px;
+            font-size: 12px;
+            text-align: right;
+            bottom: 11px;
+            right: 21px
+        }
+
+        .items .e .adr {
+            width: 80px;
+            top: 11px
+        }
+
+        .items .e em {
+            font-size: 15px;
+            color: #ff6000
+        }
+
+        .items .eck {
+            padding-left: 52px;
+        }
+
+        /*模块标题*/
+        .t {
+            position: relative;
+            height: 48px;
+            padding-left: 30px;
+            line-height: 48px;
+            font-size: 15px;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .t1:before {
+            background-position: 0 -19px
+        }
+
+        /*为您推荐(招聘列表)*/
+        .rec {
+            margin-bottom: 5px;
+            background-color: #fff
+        }
+
+        .rec .t {
+            padding: 0 11px 0 38px;
+            border: 0 none
+        }
+
+        .rec .t:before {
+            left: 11px
+        }
+
+        .rec .t:after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            content: '\00a0';
+            right: 11px;
+            bottom: 0;
+            left: 11px;
+            background-color: #e6e6e6
+        }
+
+        /*内容描述*/
+        .ain {
+            padding: 10px 0
+        }
+
+        .aox {
+            position: relative;
+            padding: 10px 0;
+            max-height: 308px;
+            overflow: hidden
+        }
+
+        /*返回按钮*/
+        .ban-n{
+            background-color: #556DDD;
+            text-align: center;
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        .ban-n .go-back{
+            position: absolute;
+            left: 0;
+            top:0;
+            display: block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            z-index: 99999;
+        }
+        .ban-n .go-back:before{
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #ffffff;
+            border-top: 2px solid #ffffff;
+            transform:rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body>
+<div class="ban-n">
+    <a class="go-back" href="javascript:history.go(-1);"></a>
+    <p>采购信息</p>
+</div>
+
+<div id="pageWp" class="bb hfloat">
+
+    <div class="rec">
+
+        <div class="items" id="caigoudiv">
+            <a href="" class="e"><h3>
+
+            </h3>
+                <aside></aside>
+                <aside></aside>
+                <i> </i><em> </em>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+<script language="javascript" type="text/jscript">
+	 //获取请求地址  
+	function getRootPath_dc() {
+            var pathName = window.location.pathname.substring(1);
+            var webName = pathName == '' ? '' : pathName.substring(0, pathName.indexOf('/'));
+            if (webName == "") {
+                return window.location.protocol + '//' + window.location.host;
+            }
+            else {
+                return window.location.protocol + '//' + window.location.host + '/' + webName;
+            }
+        }
+     //动态加载企业采购列表
+	 $(document).ready(function() {
+   	   
+   	    var path =getRootPath_dc();
+   	    var entid= getParamer("entid");  
+   	     
+   	    var entuser = {"entid":entid};
+   	    
+   	    $.ajax({
+        			type: 'post',
+        			url: path+'/register/getCaiGogListByEntidH5.json',
+        			dataType:'json',
+        			data : JSON.stringify(entuser), 
+        			contentType : 'application/json; charset=utf-8',       
+        			success:function(response){
+        					//alert(response.data.length);
+        					var strHTML = "";
+        					if(response.data.length>0){
+        						
+        						var list = response.data;
+        						 for (var i = 0; i <list.length; i++) {
+        						    //strHTML += "<a href='http://localhost:8089/MM2/cardimg/zpxqdetail.html?id=651&cardid=1' class='e'><h3>" + list[i].jobgangwei + "</h3><aside>"+list[i].jobname+"</aside><i>" + list[i].jobcity+" </i><em> " + list[i].jobxinshui+"</em></a>";
+        						    //strHTML += "<a href='"+path+"/cardimg/zpxqdetail.html?id="+list[i].id+"' class='e'><h3>" + list[i].jobname + "</h3><aside>"+list[i].jobentname+"</aside><i>" + list[i].jobcity+" </i><em> " + list[i].jobxinshui+"</em></a>";
+        						    strHTML += "<a href='"+path+"/h5/caigoudetail.html?id="+list[i].id+"&entid="+list[i].entid+"' class='e'><h3>" + list[i].caigouname + "</h3><aside></aside><br><aside>"+list[i].remark+"</aside><em> " + list[i].caigoucount+"</em></a>";
+        						 
+        						 }
+        					}else{
+         						strHTML+="该企业没有发布采购招聘信息.";
+        					}
+        					document.getElementById("caigoudiv").innerHTML = strHTML;
+        				}
+                  })
+   	    });
+	
+            
+   
+    //获取传过来的值
+ 	function getParamer(paramer){
+
+  var url=window.location.href.split("?")[1];            /*获取url里"?"后面的值*/
+  if(url.indexOf("&")>0){                                      /*判断是否是一个参数还是多个参数*/
+     urlParamArry=url.split("&");                            /*分开每个参数，并放到数组里*/
+     for(var i=0; i<urlParamArry.length; i++){
+     var paramerName=urlParamArry[i].split("=");   /*把每个参数名和值分开，并放到数组里*/
+     if(paramer==paramerName[0]){                     /*匹配输入的参数和数组循环出来的参数是否一样*/
+          return paramerName[1];                           /*返回想要的参数值*/
+     	}
+  	}
+	}else{                                                              /*判断只有个参数*/
+   var paramerValue=url.split("=")[1];
+   return paramerValue;
+  }
+
+} 
+   
+            
+     
+
+
+</script>

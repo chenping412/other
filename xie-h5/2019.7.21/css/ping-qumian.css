@@ -26,6 +26,23 @@ html,body{
     width: 113px;
     animation: rotate-shun linear 4s infinite;
 }
+@keyframes rotate-shun {
+    0% {
+        transform:rotate(0deg) scale(1.05785);
+    }
+    25% {
+        transform:rotate(90deg) scale(1.05785);
+    }
+    50% {
+        transform:rotate(180deg) scale(1.05785);
+    }
+    75% {
+        transform:rotate(270deg) scale(1.05785);
+    }
+    100% {
+        transform:rotate(360deg) scale(1.05785);
+    }
+}
 
 .main .text{
     position: absolute;
@@ -42,48 +59,181 @@ html,body{
     left: 986px;
     top:176px;
 }
+.main .text1 .echart-pie2{
+    width: 150px;
+    height: 140px;
+    position: absolute;
+    left: 170px;
+    top:238px;
+}
 .main .text2{
     left: 986px;
     top:586px;
+}
+.main .text2 .lamp{
+    position: absolute;
+    left: 131px;
+    overflow: hidden;
+}
+.main .text2 .lamp img{
+    display: block;
+    width: 153px;
+}
+.main .text2 .lamp2 img{
+    width: 135px;
+}
+
+.main .text2 .lamp1{
+    top:88px;
+}
+.main .text2 .lamp2{
+    top:140px;
+}
+.main .text2 .lamp3{
+    top:201px;
+}
+.main .text2 .lamp4{
+    top:257px;
+}
+.main .text2 .lamp5{
+    top:312px;
+}
+.main .text2 .lamp6{
+    top:368px;
 }
 
 
 
 
 
+.main .map{
+    position: absolute;
+    left: 496px;
+    top: 446px;
+}
+.main .map .line{
+    display: block;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 2px;
+    background-color: #ffffff;
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+}
+.main .map .line1{
+    height: 167px;
+    transform: rotate(70deg);
+}
+.main .map .line2{
+    height: 92px;
+    transform: rotate(52deg);
+}
+.main .map .line3{
+    height: 42px;
+    transform: rotate(52deg);
+}
+.main .map .line4{
+    height: 146px;
+    transform: rotate(34deg);
+}
+.main .map .line5{
+    height: 284px;
+    transform: rotate(15deg);
+}
+.main .map .line6{
+    height: 163px;
+    transform: rotate(11deg);
+}
+.main .map .line7{
+    height: 312px;
+    transform: rotate(8.5deg);
+}
+.main .map .line8{
+    height: 440px;
+    transform: rotate(-1.5deg);
+}
+.main .map .line9{
+    height: 307px;
+    transform: rotate(-21.5deg);
+}
+.main .map .line10{
+    height: 202px;
+    transform: rotate(-57.5deg);
+}
 
 
+.main .map .circle{
+    display: block;
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 14px;
+    height: 14px;
+    background-color: #8CC63F;
+    border:2px solid #ffffff;
+    border-radius: 50%;
+    margin: -9px 0 0 -9px;
+}
+.main .map .circle.red{
+    background-color: #FF0000;
+}
+.main .map .green1{
+    left: -161px;
+    top:61px;
+}
+.main .map .green2{
+    left: -78px;
+    top:62px;
+}
+.main .map .green3{
+    left: -38px;
+    top:29px;
+}
+.main .map .green4{
+     left: -85px;
+     top:127px;
+ }
+.main .map .green5{
+    left: -74px;
+    top:282px;
+}
+.main .map .green6{
+    left: -33px;
+    top: 167px;
+}
+.main .map .green7{
+    left: -46px;
+    top:317px;
+}
+.main .map .green8{
+    left: 12px;
+    top: 447px;
+}
+.main .map .green9{
+    left: 117px;
+    top: 292px;
+}
+.main .map .green10{
+    left: 178px;
+    top: 113px;
+}
 
+.main .map .green.active{
+    animation: flicker linear 1.3s;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@keyframes rotate-shun {
+@keyframes flicker {
     0% {
-        transform:rotate(0deg) scale(1.05785);
+        box-shadow: 0 0 0 0 rgba(255,255,255,0);
     }
     25% {
-        transform:rotate(90deg) scale(1.05785);
+        box-shadow: 0 0 15px 10px #b2ff1a;
     }
-    50% {
-        transform:rotate(180deg) scale(1.05785);
-    }
-    75% {
-        transform:rotate(270deg) scale(1.05785);
+    80% {
+        box-shadow: 0 0 50px 10px #1affff;
     }
     100% {
-        transform:rotate(360deg) scale(1.05785);
+        box-shadow: 0 0 50px 10px rgba(255,255,255,0);
     }
 }

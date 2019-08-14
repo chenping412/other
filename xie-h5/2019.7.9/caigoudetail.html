@@ -46,12 +46,44 @@
             margin: 10px 0;
         }
 
+        /*返回按钮*/
+        .ban-n{
+            background-color: #556DDD;
+            text-align: center;
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        .ban-n .go-back{
+            position: absolute;
+            left: 0;
+            top:0;
+            display: block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            z-index: 99999;
+            box-sizing: content-box;
+        }
+        .ban-n .go-back:before{
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #ffffff;
+            border-top: 2px solid #ffffff;
+            transform:rotate(-45deg);
+        }
     </style>
 
 </head>
 <body style="">
 <div class="ban-n">
     <a class="go-back" href="javascript:history.go(-1);"></a>
+    <p>采购详情</p>
 </div>
 <div class="content">
 
