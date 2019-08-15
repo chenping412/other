@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="css/style.css?v=1011">
     <link rel="stylesheet" type="text/css" href="css/index.css?v=1011">
 </head>
@@ -14,9 +15,11 @@
 
     <div class="map-title">
         <b>总面积</b>
-        <i>7</i>
-        <i>5</i>
-        <i>1</i>
+        <span id="zongmianji">
+            <i>7</i>
+            <i>5</i>
+            <i>1</i>
+        </span>
         <span>km²</span>
     </div>
 
@@ -44,21 +47,31 @@
     </div>-->
 
 
-    <div class="echart echart-bar1" id="echart-bar1"></div>
+    <div class="echart echart-bar1">
+        <div id="echart-bar1" class="canvas"></div>
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+        <img class="echart-bar1-up-img" src="images/index-icon-up.png">
+    </div>
 
     <div class="echart echart-line1" id="echart-line1"></div>
 
     <ul class="echart echart-line1-data" id="echart-line1-data">
         <li>
-            <h3>6</h3>
+            <h3 id="jingqu-4a"></h3>
             <p>4A</p>
         </li>
         <li>
-            <h3>3</h3>
+            <h3 id="jingqu-3a" style="color: #00FFCC;"></h3>
             <p>3A</p>
         </li>
         <li>
-            <h3>10</h3>
+            <h3 id="jingqu-xiuxian"></h3>
             <p>休闲</p>
         </li>
     </ul>
@@ -148,6 +161,7 @@
 <script type="text/javascript" src="js/echarts.min.js"></script>
 <script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/json.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

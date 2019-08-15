@@ -6,29 +6,29 @@
 function setTime() {
     var now = new Date();
     var y = now.getFullYear();
-    var m = now.getMonth()+1;
-    if(m<10) m='0'+m;
-    var d=now.getDate();
-    if(d<10) d='0'+d;
+    var m = now.getMonth() + 1;
+    if (m < 10) m = '0' + m;
+    var d = now.getDate();
+    if (d < 10) d = '0' + d;
 
-    var hh=now.getHours();
-    if(hh<10) hh='0'+hh;
-    var MM=now.getMinutes();
-    if(MM<10) MM='0'+MM;
-    var ss=now.getSeconds();
-    if(ss<10) ss='0'+ss;
+    var hh = now.getHours();
+    if (hh < 10) hh = '0' + hh;
+    var MM = now.getMinutes();
+    if (MM < 10) MM = '0' + MM;
+    var ss = now.getSeconds();
+    if (ss < 10) ss = '0' + ss;
 
-    var w=now.getDay();
-    var weekList=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
-    var week=weekList[w];
+    var w = now.getDay();
+    var weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+    var week = weekList[w];
 
     //console.log(y,m,d,hh,MM,ss,week);
-    return y+' / '+m+' / '+d + '   '+week+'     '+hh+' : '+MM+' : '+ss;
+    return y + ' / ' + m + ' / ' + d + '   ' + week + '     ' + hh + ' : ' + MM + ' : ' + ss;
 }
-document.getElementById('time').innerHTML=setTime();
-setInterval(function(){
-    document.getElementById('time').innerHTML=setTime();
-},1000);
+document.getElementById('time').innerHTML = setTime();
+setInterval(function () {
+    document.getElementById('time').innerHTML = setTime();
+}, 1000);
 
 
 //标题等文字展示
@@ -62,28 +62,25 @@ drawText('三塘', xCenter + 470, 182, '#00D7FB', 19);
 drawText('五塘', xCenter + 470, 454, '#00D7FB', 19);
 drawText('地铁线路', xCenter + 470, 732, '#00D7FB', 19);
 
-drawText('南宁市兴宁区', xCenter - 478, 75, '#fff', 11);
+drawText(diqu, xCenter - 478, 75, '#fff', 11);
 
-drawText('小雨 / 11-25℃', xCenter + 430, 75, '#fff', 11);
+drawText(tianqi, xCenter + 430, 75, '#fff', 11);
 drawText('室外温度', xCenter + 550, 75, '#fff', 9);
-drawText('26℃', xCenter + 597, 75, '#fff', 11);
+drawText(shiwaiwendu, xCenter + 597, 75, '#fff', 11);
 drawText('室内温度', xCenter + 665, 75, '#fff', 9);
-drawText('21℃', xCenter + 710, 75, '#fff', 11);
+drawText(shineiwendu, xCenter + 710, 75, '#fff', 11);
 
-$.ajax({
-    url: "http://www.myqsl.cn/MM2/register/queryNanNingList.json",
-    type: 'POST',
-    data: JSON.stringify({
-        id: 1
-    }),
-    contentType: 'application/json; charset=utf-8',
-    success: function (data) {
-        console.log(data)
-    }
-});
-
-
-
+/*$.ajax({
+ url: "http://www.myqsl.cn/MM2/register/queryNanNingList.json",
+ type: 'POST',
+ data: JSON.stringify({
+ id: 1
+ }),
+ contentType: 'application/json; charset=utf-8',
+ success: function (data) {
+ console.log(data)
+ }
+ });*/
 
 
 //echart-pie1
@@ -125,8 +122,8 @@ if (document.getElementById('echart-pie1')) {
                     }
                 },
                 data: [
-                    {value: 20, name: '其他产业', itemStyle: {color: "rgba(102,102,102,0.3)"}},
-                    {value: 80, name: '第三产业', itemStyle: {color: "#00FFCE"}},
+                    {value: xingningqudisanchanye.qita, name: '其他产业', itemStyle: {color: "rgba(102,102,102,0.3)"}},
+                    {value: xingningqudisanchanye.disan, name: '第三产业', itemStyle: {color: "#00FFCE"}},
                 ]
             }
         ]
@@ -144,7 +141,7 @@ if (document.getElementById('echart-pie1')) {
                 x: 100,
                 y: 88,
                 textFill: '#fff',
-                text: '80%',
+                text: xingningqudisanchanye.disan + '%',
                 textAlign: 'center',
                 textFont: '16px verdana'
             }
@@ -215,7 +212,7 @@ if (document.getElementById('echart-pie2')) {
                 },
                 data: [
                     {
-                        value: 80,
+                        value: disanxingningquzhanbi.qita,
                         name: '其他区',
                         itemStyle: {
                             normal: {
@@ -226,7 +223,7 @@ if (document.getElementById('echart-pie2')) {
                         }
                     },
                     {
-                        value: 20,
+                        value: disanxingningquzhanbi.xingningqu,
                         name: '兴宁区',
                         selected: true,
                         itemStyle: {
@@ -310,7 +307,7 @@ if (document.getElementById('echart-pie3')) {
                 },
                 data: [
                     {
-                        value: 2609.2,
+                        value: guihuayongdi.gongye,
                         name: '工业净用地',
                         itemStyle: {
                             normal: {
@@ -321,7 +318,7 @@ if (document.getElementById('echart-pie3')) {
                         }
                     },
                     {
-                        value: 592.8,
+                        value: guihuayongdi.wuliu,
                         name: '物流用地',
                         selected: true,
                         itemStyle: {
@@ -333,7 +330,7 @@ if (document.getElementById('echart-pie3')) {
                         }
                     },
                     {
-                        value: 464,
+                        value: guihuayongdi.daolu,
                         name: '道路用地',
                         selected: true,
                         itemStyle: {
@@ -345,7 +342,7 @@ if (document.getElementById('echart-pie3')) {
                         }
                     },
                     {
-                        value: 530.9,
+                        value: guihuayongdi.lvhuaqita,
                         name: '绿化及其他',
                         selected: true,
                         itemStyle: {
@@ -372,18 +369,7 @@ if (document.getElementById('echart-pie3')) {
 //echart-bar1
 if (document.getElementById('echart-bar1')) {
 
-    var dataListBar1 = [
-        {
-            name: '2016',
-            data: [371.5, 38.6, 251.4, 415.5],
-        }, {
-            name: '2017',
-            data: [401.22, 41.15, 274, 461.5],
-        }, {
-            name: '2018',
-            data: [425.29, 44.5, 317.8, 498.4],
-        },
-    ];
+    var dataListBar1 = chanyezengzhang;
     var xAxisDataBar1 = ['地区生产总值', '财政收入', '固定资产投资', '社会消费零售总额'];
 
     var echartBar1 = echarts.init(document.getElementById('echart-bar1'));
@@ -405,7 +391,7 @@ if (document.getElementById('echart-bar1')) {
             selectedMode: false,
             itemWidth: 10,
             itemHeight: 10,
-            data: ['2016','2017', '2018'],
+            data: ['2016', '2017', '2018'],
             textStyle: {
                 fontSize: 11,
                 color: '#fff',
@@ -560,7 +546,7 @@ if (document.getElementById('echart-bar1')) {
                 style: {
                     text: text,
                     x: x,
-                    y: 222 - y - 70,
+                    y: 222 - y - 75,
                     textFill: '#fff',
                     textAlign: 'center',
                     font: '8px Microsoft Yahei'
@@ -569,8 +555,14 @@ if (document.getElementById('echart-bar1')) {
         ));
     }
 
+    var echartBar1UpImgs = $('.echart-bar1-up-img');
+
     for (var i = 0; i < rateListBar1.length; i++) {
-        echartBar1DrawText(rateListBar1[i].rate, rateListBar1[i].x, rateListBar1[i].y)
+        echartBar1DrawText(rateListBar1[i].rate, rateListBar1[i].x, rateListBar1[i].y);
+        echartBar1UpImgs.eq(i).css({
+            left: rateListBar1[i].x - 6,
+            bottom: rateListBar1[i].y + 55
+        })
     }
 }
 
@@ -578,12 +570,12 @@ if (document.getElementById('echart-bar1')) {
 //echart-pie3
 if (document.getElementById('echart-line1')) {
     var echartLine1 = echarts.init(document.getElementById('echart-line1'));
-    var dataIPSxAxis = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017'];
-    var dataIPS = [190.61, 380.21, 171.18, 297.57, 541.61, 554.92, 688.17, 774.47];
-    var dataIPS2 = [26.3, 80.02, 46.46, 64.65, 95.77, 220.12, 370.67, 483.52];
+    var dataIPSxAxis = youkequshifenxi.nianfen;
+    var dataIPS = youkequshifenxi.bendi;
+    var dataIPS2 = youkequshifenxi.waidi;
     var dataIPS3 = [];
-    for(var i=0;i<dataIPS.length;i++){
-        dataIPS3.push(Math.round((dataIPS[i]+dataIPS2[i])*100)/100);
+    for (var i = 0; i < dataIPS.length; i++) {
+        dataIPS3.push(Math.round((dataIPS[i] + dataIPS2[i]) * 100) / 100);
     }
     var optionLine1 = {
         tooltip: {
@@ -598,20 +590,20 @@ if (document.getElementById('echart-line1')) {
         color: ["#00CBFE", "#00FFCC", "#4AA3FF"],
         grid: {
             left: 30,
-            right: 100,
+            right: 140,
             top: 80,
             bottom: 10,
             containLabel: true
         },
         legend: {
             orient: 'vertical',
-            right: 5,
+            right: 15,
             top: 80,
             icon: 'circle',
             selectedMode: false,
             itemWidth: 10,
             itemHeight: 10,
-            data: ['总和','本地一日游', '外地一日游'],
+            data: ['总人数', '本地一日游人数', '外地一日游人数'],
             textStyle: {
                 fontSize: 11,
                 color: '#fff',
@@ -619,9 +611,11 @@ if (document.getElementById('echart-line1')) {
             },
         },
         xAxis: [{
-            name: '年',
+            name: ' \n \n 年',
             nameTextStyle: {
-                color: "#fff"
+                color: "#fff",
+                fontSize: 11,
+                lineHeight: 19,
             },
             type: 'category',
             boundaryGap: false,
@@ -632,6 +626,7 @@ if (document.getElementById('echart-line1')) {
                     color: '#fff',
                     fontSize: 11,
                 },
+                margin: 15,
             },
             axisLine: {
                 lineStyle: {
@@ -640,9 +635,10 @@ if (document.getElementById('echart-line1')) {
             }
         }],
         yAxis: [{
-            name: '人数（万人次）',
+            name: '万人次                  ',
             nameTextStyle: {
-                color: "#fff"
+                color: "#fff",
+                fontSize: 11,
             },
             type: 'value',
             axisLine: {
@@ -653,7 +649,8 @@ if (document.getElementById('echart-line1')) {
                 textStyle: {
                     color: '#fff',
                     fontSize: 11,
-                }
+                },
+                margin: 15,
             },
             splitLine: {
                 show: true,
@@ -667,7 +664,7 @@ if (document.getElementById('echart-line1')) {
         }],
         series: [
             {
-                name: '总和',
+                name: '总人数',
                 type: 'line',
                 smooth: true,
                 symbol: "none",
@@ -683,7 +680,7 @@ if (document.getElementById('echart-line1')) {
                 data: dataIPS3,
             },
             {
-                name: '本地一日游',
+                name: '本地一日游人数',
                 type: 'line',
                 smooth: true,
                 symbol: "none",
@@ -700,7 +697,7 @@ if (document.getElementById('echart-line1')) {
             },
 
             {
-                name: '外地一日游',
+                name: '外地一日游人数',
                 type: 'line',
                 smooth: true,
                 symbol: "none",
@@ -717,7 +714,6 @@ if (document.getElementById('echart-line1')) {
             },
 
 
-
         ]
     };
     echartLine1.setOption(optionLine1);
@@ -727,6 +723,19 @@ if (document.getElementById('echart-line1')) {
         echartLine1.setOption(optionLine1);
     }, 6000);
 }
+
+
+document.getElementById('jingqu-4a').innerHTML = jingqu4A + '个';
+document.getElementById('jingqu-3a').innerHTML = jingqu3A + '个';
+document.getElementById('jingqu-xiuxian').innerHTML = jingquxiuxian + '个';
+
+
+var zongmianjiHtml='';
+var zongmianjiStr=zongmianji.toString();
+for(var i=0;i<zongmianjiStr.length;i++){
+    zongmianjiHtml+='<i>'+zongmianjiStr[i]+'</i>'
+}
+document.getElementById('zongmianji').innerHTML = zongmianjiHtml;
 
 
 /*var wutangMapImages=document.getElementById('wutang-map').getElementsByTagName('img');

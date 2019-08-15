@@ -42,6 +42,10 @@ html,body{
     font-style: normal;
     text-align: center;
     font-weight: bolder;
+    font-family: auto;
+}
+.main .map-title i+i{
+    margin-left: 6px;
 }
 
 .main .video1{
@@ -121,6 +125,16 @@ html,body{
     width: 435px;
     height: 222px;
 }
+.main .echart-bar1 .canvas{
+    width: 100%;
+    height: 100%;
+}
+.main .echart-bar1 .echart-bar1-up-img{
+    position: absolute;
+    left: 0;
+    bottom:0;
+    height: 10px;
+}
 .main .echart-line1{
     margin-left:-400px;
     top:756px;
@@ -128,9 +142,9 @@ html,body{
     height: 224px;
 }
 .main .echart-line1-data{
-    margin-left: -325px;
+    margin-left: -287px;
     top: 763px;
-    width: 628px;
+    width: 580px;
 }
 .main .echart-line1-data li{
     text-align: center;
