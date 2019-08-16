@@ -1,6 +1,4 @@
-/**
- * Created by Administrator on 2019/7/28.
- */
+
 
 //时钟
 function setTime() {
@@ -132,7 +130,7 @@ if (document.getElementById('echart-pie1')) {
     setInterval(function () {
         echartPie1.clear();
         echartPie1.setOption(optionPie1);
-    }, 5000);
+    }, 240000);
 
 
     var echartPie1_zr = echartPie1.getZr();
@@ -242,7 +240,7 @@ if (document.getElementById('echart-pie2')) {
     setInterval(function () {
         echartPie2.clear();
         echartPie2.setOption(optionPie2);
-    }, 4000);
+    }, 280000);
 }
 
 
@@ -362,7 +360,7 @@ if (document.getElementById('echart-pie3')) {
     setInterval(function () {
         echartPie3.clear();
         echartPie3.setOption(optionPie3);
-    }, 4500);
+    }, 260000);
 }
 
 
@@ -491,7 +489,7 @@ if (document.getElementById('echart-bar1')) {
     setInterval(function () {
         echartBar1.clear();
         echartBar1.setOption(optionBar1);
-    }, 5500);
+    }, 250000);
 
 
     var maxData = 1;
@@ -721,7 +719,7 @@ if (document.getElementById('echart-line1')) {
     setInterval(function () {
         echartLine1.clear();
         echartLine1.setOption(optionLine1);
-    }, 6000);
+    }, 270000);
 }
 
 

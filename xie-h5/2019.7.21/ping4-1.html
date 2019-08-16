@@ -13,7 +13,7 @@
         .main{
             width: 1920px;
             height: 1080px;
-            background: url("images/ping4-1_img_01.png") no-repeat center top/cover;
+            background: url("images/ping4-1_img_0.png") no-repeat center top/cover;
             position: relative;
             -webkit-transform-origin: left top;
             transform-origin: left top;
@@ -71,11 +71,129 @@
             }
         }
 
+
+        .main .map .item{
+            position: absolute;
+            width: 54px;
+            height: 95px;
+            transform: scale(1.05785);
+        }
+        .main .map .item .quan{
+            position: absolute;
+            left: -26px;
+            bottom: -3px;
+            transform:scale(1);
+            opacity: 1;
+            transition: all 0.3s;
+            animation: scale-out linear 2s infinite;
+        }
+        @keyframes scale-out {
+            0% {
+                transform:scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform:scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform:scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .main .map .item .ren{
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100%;
+            z-index: 1;
+        }
+
+
+        .main .map .item1{
+            left: 370px;
+            top: 528px;
+        }
+        .main .map .item2{
+            left: 290px;
+            top: 780px;
+        }
+        .main .map .item3{
+            left: 489px;
+            top: 703px;
+        }
+        .main .map .item4{
+            left: 457px;
+            top: 852px;
+        }
+        .main .map .item5{
+            left: 598px;
+            top: 583px;
+        }
+        .main .map .item6{
+            left: 630px;
+            top: 793px;
+        }
+        .main .map .item7{
+            left: 807px;
+            top: 386px;
+        }
+        .main .map .item8{
+            left: 833px;
+            top: 650px;
+        }
+        .main .map .item9{
+            left: 1010px;
+            top: 490px;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="main" id="main" style="transform: scale(1)">
+    <div class="map" id="map-icon">
+        <div class="item item1">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item2">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item3">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item4">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item5">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item6">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item7">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item8">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item9">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+    </div>
+    
+    
+    
     <img class="icon icon1" src="images/ping4-1_icon_01.png">
     <img class="icon icon2" src="images/ping4-1_icon_02.png">
     <img class="icon icon3" src="images/ping4-1_icon_03.png">

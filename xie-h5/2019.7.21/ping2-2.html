@@ -34,7 +34,7 @@
             top:0;
             bottom:0;
             z-index: 999;
-            background: url("images/ping2-2_img_01.png") no-repeat center top/cover;
+            background: #0b3873 url("images/ping2-2_img_01.png") no-repeat center top/cover;
             -webkit-transform-origin: left top;
             transform-origin: left top;
             transform: scale(0);
@@ -98,6 +98,15 @@
         #detail-model2{
             background-image: url("images/ping2-2_img_02.png");
         }
+        #detail-model2 .video3{
+            position: absolute;
+            right: 494px;
+            top: 389px;
+            width: 340px;
+            z-index: 1;
+            mix-blend-mode: screen;
+        }
+
 
         #detail-model4{
             background-image: url("images/ping2-2_img_04.png");
@@ -228,6 +237,7 @@
 
     <div class="detail-model" id="detail-model2">
         <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <video class="video3" src="videos/map_03.mp4" autoplay="autoPlay" loop="loop" muted="muted"></video>
     </div>
 
     <div class="detail-model" id="detail-model4">
