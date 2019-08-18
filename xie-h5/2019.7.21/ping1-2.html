@@ -33,7 +33,7 @@
             top:0;
             bottom:0;
             z-index: 999;
-            background: url("images/pin1-2_img_02.png") no-repeat center top/cover;
+            background: url("images/ping-bg.png") no-repeat center top/cover;
             -webkit-transform-origin: left top;
             transform-origin: left top;
             transform: scale(0);
@@ -49,6 +49,11 @@
             width: 75px;
             height: 75px;
             cursor: pointer;
+        }
+        .main #detail-model .img-show{
+            width: 100%;
+            height: 100%;
+            background: url("") no-repeat center top/cover;
         }
         .main #detail-model .title{
             position: absolute;
@@ -79,40 +84,53 @@
 
     <div id="detail-model">
         <div class="close" onclick="document.getElementById('detail-model').className='';"></div>
-        <div class="title" id="title"></div>
-        <div class="content" id="content">
-            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
-            <p>滚阳红。白发渔樵江渚上，都付笑谈中。</p>
-            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
-            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
-            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
-            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
-            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
-            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。</p>
-            <p>滚滚长江东逝水，浪花淘尽英雄。是非成败转头空，青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢，古今多少事，都付笑谈中。</p>
-            <p>是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东</p>
-        </div>
+        <div class="img-show" style="background-image: url('images/pin1-2_img_03.png')"></div>
+        <div class="img-show" style="background-image: url('images/pin1-2_img_04.png')"></div>
+        <div class="img-show" style="background-image: url('images/pin1-2_img_05.png')"></div>
     </div>
 </div>
 <script type="text/javascript" src="js/pub.js"></script>
 <script type="text/javascript">
     var detailModel=document.getElementById('detail-model');
 
-    document.getElementById('btn1').onclick=function(){
-        document.getElementById('title').innerHTML='抓党建促脱贫攻坚';
+    var btns=document.getElementsByClassName('btn');
+
+    for(var i=0;i<btns.length;i++){
+        btns[i].index=i;
+        btns[i].onclick=function(){
+            var index=this.index;
+            console.log(index)
+            var imgs=document.getElementsByClassName('img-show');
+            for(var i=0;i<imgs.length;i++){
+                console.log( imgs[i])
+                imgs[i].style.display='none';
+                if(imgs[index]){
+                    imgs[index].style.display='block';
+                }
+            }
+            detailModel.className='show';
+        };
+    }
+
+   /* document.getElementById('btn1').onclick=function(){
+        var imgs=document.getElementsByClassName('img-show');
+        for(var i=0;i<imgs.length;i++){
+            imgs[i].style.display='none';
+            if(i==0){
+                imgs.style.display='block';
+            }
+        }
 
         detailModel.className='show';
     };
     document.getElementById('btn2').onclick=function(){
-        document.getElementById('title').innerHTML='强化党建引领';
-
+        document.getElementById('img-show').style.backgroundImage='url("images/pin1-2_img_04.png")';
         detailModel.className='show';
     };
     document.getElementById('btn3').onclick=function(){
-        document.getElementById('title').innerHTML='强化政治建设';
-
+        document.getElementById('img-show').style.backgroundImage='url("images/pin1-2_img_05.png")';
         detailModel.className='show';
-    };
+    };*/
 
 </script>
 </body>
