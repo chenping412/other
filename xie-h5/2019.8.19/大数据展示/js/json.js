@@ -1,12 +1,19 @@
 
+
+//天气接口调用限制： 15次/小时
+var weatherKey="s8dvwdhmb99c74qe";
+var cityCode="CH300101";
+
+
+
 /*以下配置，均改 "" 引号之间的内容即可正确配置*/
 /*如果是文字，一定要被引号包含，如果是数字，可以不需要引号*/
 
 
 var diqu = "南宁市兴宁区";   //位置地区
 var tianqi = "小雨 / 11-25℃";   //天气
-var shiwaiwendu = "26℃";   //室外温度
-var shineiwendu = "26℃";   //室内温度
+var shiwaiwendu = "32℃";   //室外温度
+var shineiwendu = "25℃";   //室内温度
 var zongmianji = 751;   //总面积
 
 

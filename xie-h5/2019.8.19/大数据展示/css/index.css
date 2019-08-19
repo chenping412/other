@@ -22,6 +22,33 @@ html,body{
     font-size: 13px;
     white-space: pre;
 }
+.main #weather{
+    position: absolute;
+    left: 50%;
+    top:71px;
+    margin-left: 430px;
+    color: #ffffff;
+    font-size: 11px;
+    white-space: pre;
+}
+.main #wendu-shiwai{
+    position: absolute;
+    left: 50%;
+    top:70px;
+    margin-left: 597px;
+    color: #ffffff;
+    font-size: 11px;
+    white-space: pre;
+}
+.main #wendu-shinei{
+    position: absolute;
+    left: 50%;
+    top:70px;
+    margin-left: 710px;
+    color: #ffffff;
+    font-size: 11px;
+    white-space: pre;
+}
 .main .map-title{
     position: absolute;
     left: 50%;

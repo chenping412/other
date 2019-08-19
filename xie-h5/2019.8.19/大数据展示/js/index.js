@@ -1,5 +1,3 @@
-
-
 //时钟
 function setTime() {
     var now = new Date();
@@ -20,7 +18,11 @@ function setTime() {
     var weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
     var week = weekList[w];
 
-    //console.log(y,m,d,hh,MM,ss,week);
+    if(MM == '30' || MM == '00'){
+        getWeatherData();
+        console.log(y,m,d,hh,MM,ss,week);
+    }
+
     return y + ' / ' + m + ' / ' + d + '   ' + week + '     ' + hh + ' : ' + MM + ' : ' + ss;
 }
 document.getElementById('time').innerHTML = setTime();
@@ -62,24 +64,45 @@ drawText('地铁线路', xCenter + 470, 732, '#00D7FB', 19);
 
 drawText(diqu, xCenter - 478, 75, '#fff', 11);
 
-drawText(tianqi, xCenter + 430, 75, '#fff', 11);
+
 drawText('室外温度', xCenter + 550, 75, '#fff', 9);
-drawText(shiwaiwendu, xCenter + 597, 75, '#fff', 11);
+
 drawText('室内温度', xCenter + 665, 75, '#fff', 9);
-drawText(shineiwendu, xCenter + 710, 75, '#fff', 11);
+document.getElementById('wendu-shinei').innerHTML=shineiwendu;
 
-/*$.ajax({
- url: "http://www.myqsl.cn/MM2/register/queryNanNingList.json",
- type: 'POST',
- data: JSON.stringify({
- id: 1
- }),
- contentType: 'application/json; charset=utf-8',
- success: function (data) {
- console.log(data)
- }
- });*/
-
+function getWeatherData(){
+    //当天天气查询
+    $.ajax({
+        url: "http://api.yytianqi.com/forecast7d?city="+cityCode+"&key="+weatherKey,
+        type: 'GET',
+        dataType:'json',
+        success: function (data) {
+            console.log(data)
+            if(data.code == 1 && data.data && data.data.list && data.data.list[0]){
+                tianqi=data.data.list[0].tq1 + " / "+data.data.list[0].qw2+"-"+data.data.list[0].qw1 +"℃";
+            }
+            document.getElementById('weather').innerHTML=tianqi;
+        },error:function(){
+            document.getElementById('weather').innerHTML=tianqi;
+        }
+    });
+    //室外温度查询
+    $.ajax({
+        url: "http://api.yytianqi.com/observe?city="+cityCode+"&key="+weatherKey,
+        type: 'GET',
+        dataType:'json',
+        success: function (data) {
+            console.log(data)
+            if(data.code == 1 && data.data){
+                shiwaiwendu=data.data.qw+"℃";
+            }
+            document.getElementById('wendu-shiwai').innerHTML=shiwaiwendu;
+        },error:function(){
+            document.getElementById('wendu-shiwai').innerHTML=shiwaiwendu;
+        }
+    });
+}
+getWeatherData();
 
 //echart-pie1
 if (document.getElementById('echart-pie1')) {
@@ -728,10 +751,10 @@ document.getElementById('jingqu-3a').innerHTML = jingqu3A + '个';
 document.getElementById('jingqu-xiuxian').innerHTML = jingquxiuxian + '个';
 
 
-var zongmianjiHtml='';
-var zongmianjiStr=zongmianji.toString();
-for(var i=0;i<zongmianjiStr.length;i++){
-    zongmianjiHtml+='<i>'+zongmianjiStr[i]+'</i>'
+var zongmianjiHtml = '';
+var zongmianjiStr = zongmianji.toString();
+for (var i = 0; i < zongmianjiStr.length; i++) {
+    zongmianjiHtml += '<i>' + zongmianjiStr[i] + '</i>'
 }
 document.getElementById('zongmianji').innerHTML = zongmianjiHtml;
 
