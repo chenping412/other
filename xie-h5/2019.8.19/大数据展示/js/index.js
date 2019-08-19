@@ -18,7 +18,7 @@ function setTime() {
     var weekList = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
     var week = weekList[w];
 
-    if(MM == '30' || MM == '00'){
+    if((MM == '30' || MM == '00') && ss == '01'){
         getWeatherData();
         console.log(y,m,d,hh,MM,ss,week);
     }
@@ -92,7 +92,6 @@ function getWeatherData(){
         type: 'GET',
         dataType:'json',
         success: function (data) {
-            console.log(data)
             if(data.code == 1 && data.data){
                 shiwaiwendu=data.data.qw+"℃";
             }
