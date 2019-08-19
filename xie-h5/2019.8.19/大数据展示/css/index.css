@@ -1,0 +1,283 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    /*overflow-x: hidden;*/
+    background:#0b3873;
+}
+.main{
+    width: 1920px;
+    height: 1080px;
+    background:#0b3873 url("../images/beij.png") no-repeat center top/1879px;
+    position: relative;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    overflow: hidden;
+}
+.main #time{
+    position: absolute;
+    left: 50%;
+    top:71px;
+    margin-left: -746px;
+    color: #ffffff;
+    font-size: 13px;
+    white-space: pre;
+}
+.main .map-title{
+    position: absolute;
+    left: 50%;
+    top:210px;
+    margin-left: -360px;
+    color: #05f9f9;
+    font-size: 30px;
+}
+.main .map-title b{
+    margin-right: 20px;
+}
+.main .map-title i{
+    display: inline-block;
+    width: 30px;
+    line-height: 30px;
+    background-color: #05f9f9;
+    color: #09447e;
+    font-style: normal;
+    text-align: center;
+    font-weight: bolder;
+    font-family: auto;
+}
+.main .map-title i+i{
+    margin-left: 6px;
+}
+
+.main .video1{
+    position: absolute;
+    left: 619px;
+    top: 200px;
+    mix-blend-mode: screen;
+    width: 670px;
+}
+.main .video2{
+    position: absolute;
+    right: 80px;
+    top: 178px;
+    mix-blend-mode: screen;
+    width: 420px;
+}
+.main .video3{
+    position: absolute;
+    right: 345px;
+    top: 540px;
+    mix-blend-mode: screen;
+    width:180px;
+}
+.main .video4{
+    position: absolute;
+    right: 230px;
+    top: 762px;
+    mix-blend-mode: screen;
+    width: 275px;
+}
+
+.main .echart-text{
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+.main .icon{
+    position: absolute;
+    left: 50%;
+    top:70px;
+    margin-left: -500px;
+}
+.main .line-y{
+    position: absolute;
+    top:72px;
+    left: 50%;
+    margin-left: 595px;
+    width: 1px;
+    height: 16px;
+    background-color: #ffffff;
+}
+.main .echart{
+    position: absolute;
+    left: 50%;
+}
+.main .echart-pie1{
+    margin-left: -879px;
+    top:209px;
+    width: 200px;
+    height: 210px;
+}
+.main .echart-pie2{
+    margin-left: -679px;
+    top:209px;
+    width: 235px;
+    height: 210px;
+}
+.main .echart-pie3{
+    margin-left:600px;
+    top:480px;
+    width: 280px;
+    height: 220px;
+}
+.main .echart-bar1{
+    margin-left:-879px;
+    top:480px;
+    width: 435px;
+    height: 222px;
+}
+.main .echart-bar1 .canvas{
+    width: 100%;
+    height: 100%;
+}
+.main .echart-bar1 .echart-bar1-up-img{
+    position: absolute;
+    left: 0;
+    bottom:0;
+    height: 10px;
+}
+.main .echart-line1{
+    margin-left:-400px;
+    top:756px;
+    width: 800px;
+    height: 224px;
+}
+.main .echart-line1-data{
+    margin-left: -287px;
+    top: 763px;
+    width: 580px;
+}
+.main .echart-line1-data li{
+    text-align: center;
+    width: 90px;
+    margin: 0 auto;
+}
+.main .echart-line1-data li:first-child{
+    position: absolute;
+    top:0;
+    left: 0;
+}.main .echart-line1-data li:last-child{
+     position: absolute;
+     top:0;
+    right: 0;
+}
+.main .echart-line1-data li h3{
+    font-size: 16px;
+    color: #4CBDE5;
+}
+.main .echart-line1-data li p{
+    font-size: 12px;
+    color: #ffffff;
+    line-height: 29px;
+    margin: 0 auto;
+    position: relative;
+}
+.main .echart-line1-data li p:after,
+.main .echart-line1-data li p:before{
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: #ffffff;
+    position: absolute;
+    left: 0;
+    top:14px;
+}
+.main .echart-line1-data li p:after{
+    left: auto;
+    right: 0;
+}
+
+
+.main .table1{
+    position: absolute;
+    left: 50%;
+    top:790px;
+    margin-left: -882px;
+    width: 442px;
+
+}
+.main .table1 li{
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 42px;
+    text-align: center;
+    background-color: #0d5ba6;
+}
+.main .table1 li:nth-child(2n){
+    background-color: #1b88c9;
+}
+.main .table1 li p{
+    width: 33%;
+    float: left;
+}
+
+
+
+.main .table2{
+    position: absolute;
+    left: 50%;
+    top:775px;
+    margin-left: 735px;
+    width: 180px;
+    background-color: rgba(0,204,255,0.2);
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    transform: scale(0.75);
+}
+.main .table2 table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.main .table2 table td{
+    border:1px solid #00CCFF;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    height: 24px;
+}
+
+
+
+.main .wutang-map{
+    position: absolute;
+    left: 50%;
+    top:543px;
+    margin-left: 450px;
+    width: 140px;
+    height: 113px;
+    background: url("../images/wutang_map.png") no-repeat left top/contain;
+}
+.main .wutang-map img{
+    position: absolute;
+    border-radius: 50%;
+}
+.main .wutang-map img.active{
+    animation: flicker linear 1.3s;
+}
+
+@keyframes flicker {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255,255,255,0);
+    }
+    25% {
+        box-shadow: 0 0 15px 10px #b2ff1a;
+    }
+    80% {
+        box-shadow: 0 0 50px 10px #1affff;
+    }
+    100% {
+        box-shadow: 0 0 50px 10px rgba(255,255,255,0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

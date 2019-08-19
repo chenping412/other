@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <style type="text/css">
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        form,
+        fieldset,
+        legend,
+        input,
+        button,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+            outline: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            border: none;
+            vertical-align: middle;
+        }
+
+        ol,
+        ul,
+        li,
+        button {
+            list-style: none;
+            border: none;
+        }
+        button{
+            cursor: pointer;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 1920px;
+            height: 1080px;
+            min-height: 994px;
+            background: url("images/pin1-1_img.png") no-repeat center top/cover;
+            position: relative;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+        .main .icon{
+            position: absolute;
+            left: 50%;
+            transform: scale(1.05785);
+        }
+        .main .icon1{
+            top: 420px;
+            margin-left: -597px;
+            animation: rotate-ni linear 5s infinite;
+        }
+        .main .icon1-2{
+            top: 355px;
+            margin-left: -658px;
+            animation: rotate-shun linear 4s infinite;
+        }
+        .main .icon2{
+            top: 420px;
+            margin-left: 208px;
+            animation: rotate-ni linear 5s infinite;
+        }
+        .main .icon2-2{
+            top: 355px;
+            margin-left: 148px;
+            animation: rotate-shun linear 4s infinite;
+        }
+        @keyframes rotate-shun {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(360deg) scale(1.05785);
+            }
+        }
+        @keyframes rotate-ni {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(-90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(-180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(-270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(-360deg) scale(1.05785);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main" id="main" style="transform: scale(1)">
+    <img class="icon icon1" src="images/pin1-1_icon_01.png">
+    <img class="icon icon1-2" src="images/pin1-1_icon_01-2.png">
+    <img class="icon icon2" src="images/pin1-1_icon_02.png">
+    <img class="icon icon2-2" src="images/pin1-1_icon_02-2.png">
+</div>
+<script type="text/javascript">
+    var screenRate = 1;
+
+    function mainScale() {
+        screenRate = document.documentElement.clientWidth / 1920;
+        document.getElementById('main').style.transform = "scale(" + screenRate + ")";
+    }
+    mainScale();
+    window.onresize = function () {
+        mainScale()
+    };
+</script>
+</body>
+</html>

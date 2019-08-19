@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <style type="text/css">
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        form,
+        fieldset,
+        legend,
+        input,
+        button,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+            outline: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            border: none;
+            vertical-align: middle;
+        }
+
+        ol,
+        ul,
+        li,
+        button {
+            list-style: none;
+            border: none;
+        }
+        button{
+            cursor: pointer;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 1920px;
+            height: 1080px;
+            background: url("images/ping2-2_img.png") no-repeat center top/cover;
+            position: relative;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+        .main .btn{
+            position: absolute;
+            left: 50%;
+            top: 63px;
+            width: 222px;
+            height: 70px;
+            cursor: pointer;
+        }
+        .main .detail-model{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom:0;
+            z-index: 999;
+            background: #0b3873 url("images/ping2-2_img_01.png") no-repeat center top/cover;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+            transform: scale(0);
+            transition: all 0.3s;
+        }
+        .main .detail-model.show{
+            transform: scale(1);
+        }
+        .main .detail-model .close{
+            position: absolute;
+            left: 304px;
+            top: 122px;
+            width: 75px;
+            height: 75px;
+            cursor: pointer;
+        }
+
+        #detail-model1{
+            background-image: url("images/ping2-2_img_01.png");
+        }
+        #detail-model1 .icon1{
+            position: absolute;
+            left: 1113px;
+            top: 440px;
+            width: 98px;
+            height: 116px;
+            background: url("images/ping2-2_icon_01.png") no-repeat center top/contain;
+            animation: move-up ease 1.5s infinite;
+        }
+        #detail-model1 .icon2{
+            position: absolute;
+            left: 1253px;
+            top: 513px;
+            width: 98px;
+            height: 116px;
+            background: url("images/ping2-2_icon_02.png") no-repeat center top/contain;
+            animation: move-down ease 1.5s infinite;
+        }
+        @keyframes move-up {
+            0% {
+                transform:translate(0,0);
+                opacity: 1;
+            }
+            100% {
+                transform:translate(-20px,-30px);
+                opacity: 0;
+            }
+        }
+        @keyframes move-down {
+            0% {
+                transform:translate(0,0);
+                opacity: 1;
+            }
+            100% {
+                transform:translate(20px,30px);
+                opacity: 0;
+            }
+        }
+
+
+        #detail-model2{
+            background-image: url("images/ping2-2_img_02.png");
+        }
+        #detail-model2 .video3{
+            position: absolute;
+            right: 494px;
+            top: 389px;
+            width: 340px;
+            z-index: 1;
+            mix-blend-mode: screen;
+        }
+
+
+        #detail-model4{
+            background-image: url("images/ping2-2_img_04.png");
+        }
+        #detail-model4 .video5{
+            position: absolute;
+            left: 400px;
+            top: 380px;
+            mix-blend-mode: screen;
+            width: 530px;
+        }
+        #detail-model4 .icon1{
+            position: absolute;
+            left: 1154px;
+            top: 412px;
+            width: 215px;
+            height: 215px;
+            background: url("images/ping2-2_icon_03.png") no-repeat center top/contain;
+            transform: scale(1.05785);
+            animation: rotate-luan linear 3s infinite;
+        }
+        @keyframes rotate-luan {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            10% {
+                transform:rotate(45deg) scale(1.05785);
+            }
+            20% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            30% {
+                transform:rotate(-20deg) scale(1.05785);
+            }
+            40% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(30deg) scale(1.05785);
+            }
+            60% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            70% {
+                transform:rotate(-60deg) scale(1.05785);
+            }
+            80% {
+                transform:rotate(10deg) scale(1.05785);
+            }
+            90% {
+                transform:rotate(-10deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+        }
+
+        #detail-model5{
+            background-image: url("images/ping2-2_img_05.png");
+        }
+        #detail-model5 .content{
+            position: absolute;
+            left: 383px;
+            top: 275px;
+            width: 1153px;
+            height: 645px;
+        }
+        #detail-model5 .content img{
+            width: 100%;
+        }
+        #detail-model5 .content .swiper-container{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        #detail-model5 .content .swiper-slide{
+            height: auto;
+        }
+        #detail-model5 .content .swiper-scrollbar-drag{
+            background-color: rgba(255,255,255,0.3);
+        }
+        #detail-model5 .icon1{
+            position: absolute;
+            left: 1535px;
+            top: 782px;
+            width: 105px;
+            height: 69px;
+            background: url("images/ping2-2_icon_04.png") no-repeat center top/contain;
+        }
+        .main .main-icon1{
+            position: absolute;
+            left: 232px;
+            top: 360px;
+            width: 436px;
+            height: 436px;
+            background: url("images/ping2-2_icon_05.png") no-repeat center top/contain;
+            transform:rotate(0deg) scale(1.05785);
+            animation: rotate-shun linear 4s infinite;
+        }
+        @keyframes rotate-shun {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(360deg) scale(1.05785);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main" id="main" style="transform: scale(1)">
+    <div class="main-icon1"></div>
+
+    <div id="btn2" class="btn" style="left: 853px;" onclick="document.getElementById('detail-model1').className='detail-model show';"></div>
+    <div id="btn3" class="btn" style="left: 1092px;" onclick="document.getElementById('detail-model2').className='detail-model show';"></div>
+    <div id="btn4" class="btn" style="left: 1331px;" onclick="document.getElementById('detail-model4').className='detail-model show';"></div>
+    <div id="btn5" class="btn" style="left: 1569px;" onclick="document.getElementById('detail-model5').className='detail-model show';"></div>
+
+    <div class="detail-model" id="detail-model1">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <div class="icon1"></div>
+        <div class="icon2"></div>
+    </div>
+
+    <div class="detail-model" id="detail-model2">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <video class="video3" src="videos/map_03.mp4" autoplay="autoPlay" loop="loop" muted="muted"></video>
+    </div>
+
+    <div class="detail-model" id="detail-model4">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <video class="video5" src="videos/map_05.mp4" autoplay="autoPlay" loop="loop" muted="muted"></video>
+        <div class="icon1"></div>
+    </div>
+
+    <div class="detail-model" id="detail-model5">
+        <div class="close" onclick="this.parentNode.className='detail-model';"></div>
+        <div class="content">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/ping2-2_img_05-2.png">
+                    </div>
+                </div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+
+        </div>
+        <div class="icon1"></div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    var screenRate = 1;
+
+    function mainScale() {
+        screenRate = document.documentElement.clientWidth / 1920;
+        document.getElementById('main').style.transform = "scale(" + screenRate + ")";
+    }
+    mainScale();
+    window.onresize = function () {
+        mainScale()
+    };
+
+
+    var swiper = new Swiper('.swiper-container', {
+        scrollbar: '.swiper-scrollbar',
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        mousewheelControl: true,
+        freeMode: true,
+        roundLengths : true, //防止文字模糊
+    });
+
+</script>
+</body>
+</html>

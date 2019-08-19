@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <style type="text/css">
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        form,
+        fieldset,
+        legend,
+        input,
+        button,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            font-family: PingFang SC, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+            outline: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            border: none;
+            vertical-align: middle;
+        }
+
+        ol,
+        ul,
+        li,
+        button {
+            list-style: none;
+            border: none;
+        }
+        button{
+            cursor: pointer;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .main{
+            width: 1920px;
+            height: 1080px;
+            background: url("images/ping4-1_img_0.jpg") no-repeat center top/cover;
+            position: relative;
+            -webkit-transform-origin: left top;
+            transform-origin: left top;
+        }
+        .main .icon{
+            position: absolute;
+            right: 190px;
+            top: 445px;
+            transform: scale(1.05785);
+        }
+        .main .icon1{
+            animation: rotate-ni linear 5s infinite;
+        }
+        .main .icon2{
+            animation: rotate-shun linear 5s infinite;
+        }
+        .main .icon3{
+            top: 510px;
+            right: 137px;
+        }
+
+
+        @keyframes rotate-shun {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(360deg) scale(1.05785);
+            }
+        }
+        @keyframes rotate-ni {
+            0% {
+                transform:rotate(0deg) scale(1.05785);
+            }
+            25% {
+                transform:rotate(-90deg) scale(1.05785);
+            }
+            50% {
+                transform:rotate(-180deg) scale(1.05785);
+            }
+            75% {
+                transform:rotate(-270deg) scale(1.05785);
+            }
+            100% {
+                transform:rotate(-360deg) scale(1.05785);
+            }
+        }
+
+
+        .main .map .item{
+            position: absolute;
+            width: 54px;
+            height: 95px;
+            transform: scale(1.05785);
+        }
+        .main .map .item .quan{
+            position: absolute;
+            left: -26px;
+            bottom: -3px;
+            transform:scale(1);
+            opacity: 1;
+            transition: all 0.3s;
+            animation: scale-out linear 2s infinite;
+        }
+        @keyframes scale-out {
+            0% {
+                transform:scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform:scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform:scale(1.8);
+                opacity: 0;
+            }
+        }
+
+        .main .map .item .ren{
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100%;
+            z-index: 1;
+        }
+
+
+        .main .map .item1{
+            left: 370px;
+            top: 528px;
+        }
+        .main .map .item2{
+            left: 290px;
+            top: 780px;
+        }
+        .main .map .item3{
+            left: 489px;
+            top: 703px;
+        }
+        .main .map .item4{
+            left: 457px;
+            top: 852px;
+        }
+        .main .map .item5{
+            left: 598px;
+            top: 583px;
+        }
+        .main .map .item6{
+            left: 630px;
+            top: 793px;
+        }
+        .main .map .item7{
+            left: 807px;
+            top: 386px;
+        }
+        .main .map .item8{
+            left: 833px;
+            top: 650px;
+        }
+        .main .map .item9{
+            left: 1010px;
+            top: 490px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main" id="main" style="transform: scale(1)">
+    <div class="map" id="map-icon">
+        <div class="item item1">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item2">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item3">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item4">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item5">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item6">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item7">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item8">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+        <div class="item item9">
+            <img class="quan" src="images/ping4-1_icon_05.png">
+            <img class="ren" src="images/ping4-1_icon_04.png">
+        </div>
+    </div>
+    
+    
+    
+    <img class="icon icon1" src="images/ping4-1_icon_01.png">
+    <img class="icon icon2" src="images/ping4-1_icon_02.png">
+    <img class="icon icon3" src="images/ping4-1_icon_03.png">
+</div>
+<script type="text/javascript">
+    var screenRate = 1;
+
+    function mainScale() {
+        screenRate = document.documentElement.clientWidth / 1920;
+        document.getElementById('main').style.transform = "scale(" + screenRate + ")";
+    }
+    mainScale();
+    window.onresize = function () {
+        mainScale()
+    };
+</script>
+</body>
+</html>
