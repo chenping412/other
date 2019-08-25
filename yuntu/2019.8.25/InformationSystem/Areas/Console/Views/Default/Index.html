@@ -1,0 +1,125 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section style{}
+
+<!-- 侧边菜单 -->
+<div class="layui-side layui-side-menu">
+    <div class="layui-side-scroll">
+        <div class="layui-logo" lay-href-="home/console.html">
+            <span><a href="@Url.Action("Index", "Default", new { area = "Console" })"><b>基坑监测数据分析系统</b></a></span>
+        </div>
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+            <!--<li class="layui-nav-item layui-nav-itemed">
+                <a href="javascript:;" lay-tips="基础信息" lay-direction="2">
+                    <i class="layui-icon layui-icon-senior"></i>
+                    <cite>基础信息</cite>
+                </a>
+                <dl class="layui-nav-child">
+                    <dd class="layui-this">
+                        <a lay-href="javascript:;">基础菜单</a>
+                    </dd>
+                </dl>
+            </li>-->
+        </ul>
+    </div>
+</div>
+
+<!-- 页面标签 -->
+<div class="layadmin-pagetabs" id="LAY_app_tabs">
+    <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+    <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+    <div class="layui-icon layadmin-tabs-control layui-icon-down">
+        <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+            <li class="layui-nav-item" lay-unselect>
+                <a href="javascript:;"></a>
+                <dl class="layui-nav-child layui-anim-fadein">
+                    <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                    <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                    <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+    <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs">
+        <ul class="layui-tab-title" id="LAY_app_tabsheader">
+            <li lay-id="javascript:;" lay-attr="javascript:;" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+        </ul>
+    </div>
+</div>
+
+<!-- 主体内容 -->
+<div class="layui-body" id="LAY_app_body">
+    <div class="layadmin-tabsbody-item layui-show">
+        <iframe src="" frameborder="0" class="layadmin-iframe"></iframe>
+    </div>
+</div>
+
+@section script{
+    <script type="text/template" id="columnTemplate">
+        {{# $.each(d.item, function(i, item){ }}
+        <li class="layui-nav-item {{ i === 0 ? 'layui-nav-itemed' : '' }}">
+            {{# var htmlAttr = []; $.each(item.ActionLink.HtmlAttributes, function(j, attr){ if(attr.Name){htmlAttr.push([attr.Name, '=', attr.Value].join(''))} }); }}
+            <a href="javascript:;" {{ item.Link ? ['lay-href="', item.Link, '"'].join('') : '' }} lay-tips="{{ item.ItemName }}" lay-direction="2" {{ htmlAttr.join(' ') }}>
+                <i class="layui-icon {{ item.Icon }}"></i>
+                <cite>{{ item.ItemName }}</cite>
+            </a>
+            <dl class="{{ item.SubMenu.length === 0 ? '' : 'layui-nav-child' }}">
+                {{#  $.each(item.SubMenu, function(j, menu){ }}
+                <dd class="{{ (i === 0 && j === 0) ? 'layui-this' : '' }}">
+                    {{# var subHtmlAttr = []; $.each(menu.ActionLink.HtmlAttributes, function(l, attr){ if(attr.Name){subHtmlAttr.push([attr.Name, '=', attr.Value].join(''))} }) }}
+                    <a lay-href="{{ menu.Link ? menu.Link : 'javascript:;' }}" {{ subHtmlAttr.join(' ') }}>{{ menu.ItemName }}</a>
+                </dd>
+                {{#  }); }}
+            </dl>
+        </li>
+        {{#  }); }}
+    </script>
+    <script>
+        $(function () {
+            var isSystem = '@ViewBag.IsSystem'.toLowerCase();
+            $('li[data-console="manage"]').removeClass(isSystem === 'true' ? 'layui-hide' : '');
+            //加载菜单
+            $.jCore().Get({
+                url: '@Url.Action("Column", "Item", new { area = "Default" })'
+                //, data: {
+                //    itemCode: 'BasicInfo'
+                //    , subItemCode: 'Item_PipeData'
+                //}
+            }).then(function (res) {
+                var json = res.responseJSON.Data;
+                $('#columnTemplate').jLayUI().Template({
+                    data: {
+                        item: json || []
+                    }
+                }, function (parse) {
+                    $('#LAY-system-side-menu').html(parse || '<li class="layui-nav-item layui-nav-itemed">没有相关栏目</li>').data('menucache', json || []);
+                    //加载首页
+                    if (parse) {
+                        //var basicLink = $('#LAY-system-side-menu').find('li').eq(0).find('a').attr('lay-href');
+                        var basicLink = '@Url.Action("Default", "Item", new { area = "Default", rootId = "10000", itemId = "1", typeCode = "1002" })';
+                        if (!basicLink) {
+                            basicLink = $('dd[class="layui-this"]').find('a').attr('lay-href');
+                        }
+                        $('#LAY_app_tabsheader').find('li[class="layui-this"]').attr('lay-id', basicLink).attr('lay-attr', basicLink);
+                        $('#LAY_app_body').find('iframe[class="layadmin-iframe"]').attr('src', basicLink);
+                        //$('#LAY_app_body').find('.layui-show').removeClass('layui-hide');
+                    }
+                });
+                return json;
+            }).then(function () {
+                layui.config({
+                    //静态资源所在路径
+                    base: '@Url.Content("~/Scripts/plugins/layuiadmin/")'
+                }).extend({
+                    //主入口模块
+                    index: 'lib/index'
+                }).use('index');
+                //加载我的消息
+
+            }).catch(function (ex) {
+                $.jLayUI().Dialog('msg', '加载栏目时发生异常');
+            });
+        });
+    </script>
+}

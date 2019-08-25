@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>浇筑计划-管理首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../Scripts/plugins/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../Scripts/plugins/layui/style/admin.css" media="all">
+    <style type="text/css">
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .pour-task-list li{
+            width: 300px;
+            border:1px solid #dddddd;
+            box-sizing: border-box;
+            padding:15px;
+            margin: -1px 0 0 -1px;
+            float: left;
+        }
+        .pour-task-list li h3{
+            font-size: 16px;
+            color: #333333;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+        .pour-task-list li .row{
+            font-size: 13px;
+            margin: 10px 0;
+        }
+        #pour-plan .layui-card-body{
+            padding-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="layui-fluid" id="pour-plan" style="padding-bottom: 50px;">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">计划预警提示</div>
+                <div class="layui-card-body">
+
+                    <div class="layui-form" wid100="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">开工日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="start-date" placeholder="yyyy-MM-dd">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">完工日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="end-date" placeholder="yyyy-MM-dd">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">停工天数</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">每日作业时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">大里程台车</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">小里程台车</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">大里程泵车</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">小里程泵车</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">运输田螺车</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">台车备料时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">台车浇筑时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">泵车浇筑时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">单次运输时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">台车单次损耗</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">泵车单次损耗</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">运输车损耗</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">单元检测量</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <button type="button" class="layui-btn">提交</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row">
+                        <div class="layui-col-md6">
+                            <div id="echart-bar1" style="height: 350px;"></div>
+                        </div>
+                        <div class="layui-col-md6">
+                            <div id="echart-bar2" style="height: 350px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header">管节浇筑体积进度</div>
+                <div class="layui-card-body">
+                    <span>整体</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar" lay-percent="30%"></div>
+                    </div>
+                    <span>季度</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-orange" lay-percent="40%"></div>
+                    </div>
+                    <span>月度</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-blue" lay-percent="60%"></div>
+                    </div>
+                    <span>周</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-red" lay-percent="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header">管节浇筑隔舱数进度</div>
+                <div class="layui-card-body">
+                    <span>整体</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar" lay-percent="30%"></div>
+                    </div>
+                    <span>季度</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-orange" lay-percent="40%"></div>
+                    </div>
+                    <span>月度</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-blue" lay-percent="60%"></div>
+                    </div>
+                    <span>周</span>
+                    <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-red" lay-percent="80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+
+            <div class="layui-card">
+                <div class="layui-card-header">管节浇筑任务</div>
+                <div class="layui-card-body">
+                    <ul class="pour-task-list clearfix">
+                        <li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：1000m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar" lay-percent="100%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：9个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：900m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：10个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar" lay-percent="100%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：1000m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar" lay-percent="100%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：10个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar" lay-percent="100%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>第1周</h3>
+                            <p class="row">日期：2019/07/15 - 2019/07/21</p>
+                            <p class="row">编号：102452152</p>
+
+                            <div class="row">
+                                <p>
+                                    浇筑体积：1000m³
+                                    <span style="float: right;">完成：800m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="80%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    浇筑隔舱数：10个
+                                    <span style="float: right;">完成：7个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="70%"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="layui-card">
+                <div class="layui-card-header">当日生产状态</div>
+                <div class="layui-card-body">
+
+                    <ul class="pour-task-list clearfix">
+                        <li>
+                            <h3>浇筑节点 1</h3>
+                            <div class="row">
+                                <p>
+                                    计划浇筑体积：1000m³
+                                    <span style="float: right;">完成：900m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    计划浇筑隔舱数：10个
+                                    <span style="float: right;">完成：9个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>浇筑节点 2</h3>
+                            <div class="row">
+                                <p>
+                                    计划浇筑体积：1000m³
+                                    <span style="float: right;">完成：900m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    计划浇筑隔舱数：10个
+                                    <span style="float: right;">完成：9个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>浇筑节点 3</h3>
+                            <div class="row">
+                                <p>
+                                    计划浇筑体积：1000m³
+                                    <span style="float: right;">完成：900m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-orange" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    计划浇筑隔舱数：10个
+                                    <span style="float: right;">完成：9个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar layui-bg-blue" lay-percent="90%"></div>
+                                </div>
+                            </div>
+                        </li><li>
+                            <h3>浇筑节点 4</h3>
+                            <div class="row">
+                                <p>
+                                    计划浇筑体积：1000m³
+                                    <span style="float: right;">完成：1000m³</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar" lay-percent="100%"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    计划浇筑隔舱数：10个
+                                    <span style="float: right;">完成：10个</span>
+                                </p>
+                                <div class="layui-progress layui-progress-big" lay-showPercent="yes">
+                                    <div class="layui-progress-bar" lay-percent="100%"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+<script src="../../Scripts/plugins/layui/layui.js"></script>
+<script src="../../Scripts/plugins/echarts/echarts.js"></script>
+<script src="../../Scripts/plugins/echarts/macarons.js"></script>
+<script>
+
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#start-date'
+            , calendar: true
+        });
+        laydate.render({
+            elem: '#end-date'
+            , calendar: true
+        });
+
+
+    });
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+
+
+    // 计划预警提示:浇筑体积
+    var echartBar1Series1 = [18203, 23489, 29034, 104970];
+    var echartBar1Series2 = [19325, 23438, 31000, 121594];
+    var echartBar1 = echarts.init(document.getElementById('echart-bar1'));
+    echartBar1.setOption({
+        title: {
+            text: '浇筑体积',
+            left: 50,
+            textStyle: {
+                color: '#000000',
+                fontSize: 16,
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            selectedMode: false,
+            data: ['推演浇筑体积数', '计划浇筑体积数']
+        },
+        grid: {
+            left: '3%',
+            right: 70,
+            bottom: '4%',
+            top: 40,
+            containLabel: true
+        },
+        xAxis: {
+            name: '立方米',
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: ['周', '月度', '季度', '整体']
+        },
+        series: [
+            {
+                name: '推演浇筑体积数',
+                type: 'bar',
+                data: echartBar1Series1,
+                itemStyle: {
+                    normal: {
+                        color: function (item) {
+                            var color = "#2ec7c9";
+                            if (echartBar1Series1[item.dataIndex] > echartBar1Series2[item.dataIndex]) {
+                                color = "red";
+                            }
+                            return color
+                        },
+                        "label": {
+                            "show": true,
+                            position: 'right',
+                        }
+                    },
+                },
+            },
+            {
+                name: '计划浇筑体积数',
+                type: 'bar',
+                data: echartBar1Series2,
+                itemStyle: {
+                    normal: {
+                        color: function () {
+                            return "#b6a2de"
+                        },
+                        "label": {
+                            "show": true,
+                            position: 'right',
+                        }
+                    },
+                },
+            }
+        ]
+    });
+
+
+    // 计划预警提示:浇筑隔舱数
+    var echartBar2Series1 = [10, 40, 150, 300];
+    var echartBar2Series2 = [11, 42, 130, 400];
+    var echartBar2 = echarts.init(document.getElementById('echart-bar2'));
+    echartBar2.setOption({
+        title: {
+            text: '浇筑隔舱数',
+            left: 50,
+            textStyle: {
+                color: '#000000',
+                fontSize: 16,
+                fontWeight: 'normal'
+            }
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            selectedMode: false,
+            data: ['推演浇筑隔舱数', '计划浇筑隔舱数']
+        },
+        grid: {
+            left: '3%',
+            right: 70,
+            bottom: '4%',
+            top: 40,
+            containLabel: true
+        },
+        xAxis: {
+            name: '个',
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: ['周', '月度', '季度', '整体']
+        },
+        series: [
+            {
+                name: '推演浇筑隔舱数',
+                type: 'bar',
+                data: echartBar2Series1,
+                itemStyle: {
+                    normal: {
+                        color: function (item) {
+                            var color = "#5ab1ef";
+                            if (echartBar2Series1[item.dataIndex] > echartBar2Series2[item.dataIndex]) {
+                                color = "red";
+                            }
+                            return color
+                        },
+                        "label": {
+                            "show": true,
+                            position: 'right',
+                        }
+                    },
+                },
+            },
+            {
+                name: '计划浇筑隔舱数',
+                type: 'bar',
+                data: echartBar2Series2,
+                itemStyle: {
+                    normal: {
+                        color: function () {
+                            return "#ffb980"
+                        },
+                        "label": {
+                            "show": true,
+                            position: 'right',
+                        }
+                    },
+                },
+            }
+        ]
+    });
+
+</script>
+</body>
+</html>
+
+

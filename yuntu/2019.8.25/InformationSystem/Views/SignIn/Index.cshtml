@@ -1,0 +1,150 @@
+﻿@{
+    Layout = null;
+}
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>智慧工地-基坑监测数据分析系统</title>
+    <!-- 加载样式 -->
+    @Styles.Render("~/Content/login", "~/Content/animate")
+</head>
+<body>
+    <div class="login-main">
+        <div class="model"></div>
+
+        <div class="title">
+            <h3>铁科院</h3>
+            <p>基坑监测数据分析系统</p>
+        </div>
+        <div class="content">
+            <div class="header">
+                <img src="@Url.Content("~/Images/login-logo.png")" />
+                <h3>基坑监测数据分析系统</h3>
+                <p><span style="font-size:20px;">&nbsp;</span></p>
+            </div>
+
+            <form>
+                <div class="row">
+                    <img src="@Url.Content("~/Images/login-form-1.jpg")" />
+                    <input type="text" value="" placeholder="请输入账号" name="account" />
+                </div>
+                <div class="row">
+                    <img src="@Url.Content("~/Images/login-form-2.jpg")" />
+                    <input type="password" value="." placeholder="请输入密码" name="password" />
+                </div>
+                <div class="row" style="margin-bottom: 10px;">
+                    <img src="@Url.Content("~/Images/login-form-3.jpg")" />
+                    <input type="text" value="11" placeholder="请输入验证码" style="width: 183px;" name="code" maxlength="5" />
+                    <img id="validate" class="code" src="@Url.Content("~/Images/loadingwheel.gif")" />
+                </div>
+                <div class="row">
+                    <!--<label>
+                        <input type="checkbox">
+                        <span>自动登录</span>
+                    </label>-->
+                </div>
+                <button class="btn" data-action="submit" type="button">登  录</button>
+
+            </form>
+
+        </div>
+
+
+        <p class="bottom">
+            <img src="@Url.Content("~/Images/login-icon-.jpg")" />
+            <span>版权所有：铁科院（深圳）研究设计院有限公司</span>
+            <span>技术支持：深圳市云图华祥科科技有限公司</span>
+        </p>
+    </div>
+    @Scripts.Render("~/bundles/core", "~/bundles/CryptoJS/Core", "~/bundles/CryptoJS/MD5")
+    <script src="@Url.Content("~/Scripts/plugins/layui/layui.js")"></script>
+    <script src="@Url.Content("~/Scripts/extends/jQuery.jCore.js")"></script>
+    <script>
+        $(function () {
+            if (window != top) {
+                top.location.href = window.location.href;
+            }
+            //设置全局请求页面路径
+            //$.jData().Set('RawUrl', { key: 'RawUrl', value: '@Request.FilePath' });
+            $.jCore().Setting({
+                ApplicationPath: ['//', '@Request.Url.Authority'].join('')
+                , Token: '@XToken.Token()'
+                , PhysicalApplicationPath: '@Request.ApplicationPath'
+            });
+
+            $('input[name="account"]').focus();
+
+            $('input[name="code"]').jEvent().Input({
+                target: 'button[data-action="submit"]'
+            });
+
+            $('#validate').jCore().ValidateCode({
+                url: '@Url.Action("Graphic", "SignIn", new { area = "Default" })'
+                , width: 117
+                , height: 45
+                , length: 4
+            });
+
+            $('button[data-action="submit"]').on('click', function () {
+                var account = $('input[name="account"]').val().trim();
+                var password = $('input[name="password"]').val().trim();
+                var code = $('input[name="code"]').val().trim();
+
+                if (!account || !password) {
+                    $.jLayUI().Dialog('msg', '账号或密码不能为空', {
+                        closeBtn: 0
+                        , time: 1500
+                    });
+                    return;
+                }
+
+                if (!code) {
+                    $.jLayUI().Dialog('msg', '验证码不能为空', {
+                        closeBtn: 0
+                        , time: 1500
+                        , success: function () {
+                            $('input[name="code"]').focus();
+                        }
+                        , end: function () {
+                            $('#validate').trigger('click');
+                        }
+                    });
+                    return;
+                }
+
+                $.jCore().Ajax({
+                    url: '@Url.Action("SignIn", "SignIn", new { area = "Default" })'
+                    , data: {
+                        account: Xxtea_Encrypt(account)
+                        , password: Xxtea_Encrypt(password)
+                        , code: code.toUpperCase()
+                    }
+                    , success: function (res) {
+                        if (!res.Status) {
+                            $.jLayUI().Dialog('msg', res.Message, {
+                                closeBtn: 0
+                                , time: 1500
+                            });
+                            $('input[name="code"]').val('');
+                            $('#validate').trigger('click');
+                            return;
+                        }
+                        $.when(res).then(function () {
+                            $.jLayUI().Dialog('load', '', {
+                                success: function () {
+                                    window.location.href = '@Url.Action("Index", "Default", new { area = "Console" })'.replace(/&amp;/ig, '&');
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
