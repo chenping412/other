@@ -35,9 +35,6 @@
             font-size: 13px;
             margin: 10px 0;
         }
-        #pour-plan .layui-card-body{
-            padding-top: 0;
-        }
     </style>
 </head>
 <body>
@@ -46,120 +43,11 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <div class="layui-card-header">计划预警提示</div>
+                <div class="layui-card-header">
+                    <span>计划预警提示</span>
+                    <i id="set-config" class="layui-icon layui-icon-set-fill" style="font-size: 22px;cursor: pointer;"></i>
+                </div>
                 <div class="layui-card-body">
-
-                    <div class="layui-form" wid100="">
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">开工日期</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="start-date" placeholder="yyyy-MM-dd">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">完工日期</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" id="end-date" placeholder="yyyy-MM-dd">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">停工天数</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">每日作业时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">大里程台车</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">小里程台车</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">大里程泵车</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">小里程泵车</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">运输田螺车</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">台车备料时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">台车浇筑时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">泵车浇筑时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">单次运输时间</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">台车单次损耗</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">泵车单次损耗</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">运输车损耗</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">单元检测量</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" class="layui-input" placeholder="">
-                                </div>
-                            </div>
-
-                            <div class="layui-inline">
-                                <button type="button" class="layui-btn">提交</button>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="layui-row">
                         <div class="layui-col-md6">
                             <div id="echart-bar1" style="height: 350px;"></div>
@@ -613,23 +501,41 @@
 <script src="../../Scripts/plugins/echarts/macarons.js"></script>
 <script>
 
-    layui.use('laydate', function () {
-        var laydate = layui.laydate;
+    layui.config({
+        base: '../../Scripts/plugins/layuiadmin/'
+    }).extend({
+        index: 'lib/index'
+    }).use(['index', 'element'], function(){
+        var $ = layui.$;
 
-        laydate.render({
-            elem: '#start-date'
-            , calendar: true
+        $('#set-config').click(function(){
+            layer.open({
+                type: 2
+                ,title: '浇筑参数配置'
+                ,content: 'SetConfigForm.html'
+                ,area: ['740px', '540px']
+                ,btn: ['确定', '取消']
+                ,yes: function(index, layero){
+                    var iframeWindow = window['layui-layer-iframe'+ index]
+                            ,submitID = 'LAY-user-back-submit'
+                            ,submit = layero.find('iframe').contents().find('#'+ submitID);
+
+                    //监听提交
+                    iframeWindow.layui.form.on('submit('+ submitID +')', function(data){
+                        var field = data.field; //获取提交的字段
+
+                        //提交 Ajax 成功后，静态更新表格中的数据
+                        //$.ajax({});
+                        table.reload('LAY-user-front-submit'); //数据刷新
+                        layer.close(index); //关闭弹层
+                    });
+
+                    submit.trigger('click');
+                }
+            });
         });
-        laydate.render({
-            elem: '#end-date'
-            , calendar: true
-        });
 
-
-    });
-    layui.use('element', function () {
-        var element = layui.element;
-    });
+    })
 
 
     // 计划预警提示:浇筑体积
