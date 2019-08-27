@@ -19,10 +19,15 @@
         }
 
         .text-roll-box {
-            height: 300px;
+            height: 254px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        .text-roll-box .text-roll-list{
+            transform: translateY(255px);
         }
         .text-roll-box .text-roll-list li{
-            padding:5px 0;
+            padding:5px 10px 5px 0;
         }
         .text-roll-box .text-roll-list li:after {
             content: "";
@@ -33,14 +38,19 @@
         }
         .text-roll-box .text-roll-list li .layui-badge{
             float: left;
+            display: block;
             margin-top: 2px;
+        }
+        .text-roll-box .text-roll-list li .layui-icon-close{
+            float: right;
+            line-height: 21px;
         }
 
         .text-roll-box .text-roll-list li p {
             line-height: 22px;
             font-size: 12px;
             color: #333333;
-            padding-left: 50px;
+            padding:0 25px 0 50px;
         }
 
         .trans-disp-list li {
@@ -77,14 +87,15 @@
 
 <div class="layui-fluid" style="padding-bottom: 50px;">
     <div class="layui-row layui-col-space15">
-        <div class="layui-col-md6">
+        <div class="layui-col-md7">
             <div class="layui-card">
                 <div class="layui-card-header">预警信息提示</div>
                 <div class="layui-card-body">
-                    <div class="text-roll-box">
-                        <ul class="text-roll-list">
+                    <div class="text-roll-box" id="text-roll-box">
+                        <ul id="text-roll-list" class="text-roll-list">
                             <li>
                                 <span class="layui-badge layui-bg-green">提示</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
                                 <p>
                                     <span>预警类型：超时预警；</span>
                                     <span>层级：III级；</span>
@@ -94,6 +105,7 @@
                             </li>
                             <li>
                                 <span class="layui-badge layui-bg-orange">预警</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
                                 <p>
                                     <span>预警类型：设备预警；</span>
                                     <span>层级：II级；</span>
@@ -103,6 +115,97 @@
                             </li>
                             <li>
                                 <span class="layui-badge layui-bg-red">紧急</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：设备预警；</span>
+                                    <span>层级：II级；</span>
+                                    <span>来源：B1 运输车辆；</span>
+                                    <span>文字提示：运输车出现故障，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-green">提示</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：超时预警；</span>
+                                    <span>层级：III级；</span>
+                                    <span>来源：A0 装料；</span>
+                                    <span>提示：装料超时，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-orange">预警</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：设备预警；</span>
+                                    <span>层级：II级；</span>
+                                    <span>来源：B1 运输车辆；</span>
+                                    <span>文字提示：运输车出现故障，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-red">紧急</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：设备预警；</span>
+                                    <span>层级：II级；</span>
+                                    <span>来源：B1 运输车辆；</span>
+                                    <span>文字提示：运输车出现故障，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-green">提示</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：超时预警；</span>
+                                    <span>层级：III级；</span>
+                                    <span>来源：A0 装料；</span>
+                                    <span>提示：装料超时，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-orange">预警</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：设备预警；</span>
+                                    <span>层级：II级；</span>
+                                    <span>来源：B1 运输车辆；</span>
+                                    <span>文字提示：运输车出现故障，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-red">紧急</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：设备预警；</span>
+                                    <span>层级：II级；</span>
+                                    <span>来源：B1 运输车辆；</span>
+                                    <span>文字提示：运输车出现故障，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-green">提示</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：超时预警；</span>
+                                    <span>层级：III级；</span>
+                                    <span>来源：A0 装料；</span>
+                                    <span>提示：装料超时，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-orange">预警</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
+                                <p>
+                                    <span>预警类型：设备预警；</span>
+                                    <span>层级：II级；</span>
+                                    <span>来源：B1 运输车辆；</span>
+                                    <span>文字提示：运输车出现故障，请注意！</span>
+                                </p>
+                            </li>
+                            <li>
+                                <span class="layui-badge layui-bg-red">紧急</span>
+                                <a href="javascript:;" class="layui-icon layui-icon-close"></a>
                                 <p>
                                     <span>预警类型：设备预警；</span>
                                     <span>层级：II级；</span>
@@ -116,43 +219,43 @@
             </div>
         </div>
 
-        <div class="layui-col-md6">
+        <div class="layui-col-md5">
             <div class="layui-card">
                 <div class="layui-card-header">当日运输总量</div>
                 <div class="layui-card-body">
 
                     <ul class="layui-row layui-col-space10 layadmin-backlog">
-                        <li class="layui-col-xs4">
+                        <li class="layui-col-xs6">
                             <div class="layadmin-backlog-body">
                                 <h3>浇筑体积</h3>
                                 <p><cite>66m³</cite></p>
                             </div>
                         </li>
-                        <li class="layui-col-xs4">
+                        <li class="layui-col-xs6">
                             <div class="layadmin-backlog-body">
                                 <h3>浇筑隔仓数</h3>
                                 <p><cite>15个</cite></p>
                             </div>
                         </li>
-                        <li class="layui-col-xs4">
+                        <li class="layui-col-xs6">
                             <div class="layadmin-backlog-body">
                                 <h3>已完成运输</h3>
                                 <p><cite>15个</cite></p>
                             </div>
                         </li>
-                        <li class="layui-col-xs4">
+                        <li class="layui-col-xs6">
                             <div class="layadmin-backlog-body">
                                 <h3>在运车辆</h3>
                                 <p><cite>20辆</cite></p>
                             </div>
                         </li>
-                        <li class="layui-col-xs4">
+                        <li class="layui-col-xs6">
                             <div class="layadmin-backlog-body">
                                 <h3>平均单次运输时间</h3>
                                 <p><cite>15min</cite></p>
                             </div>
                         </li>
-                        <li class="layui-col-xs4">
+                        <li class="layui-col-xs6">
                             <div class="layadmin-backlog-body">
                                 <h3>预计运输完成时间</h3>
                                 <p><cite>30h</cite></p>
@@ -299,7 +402,30 @@
 
 <script src="../../Scripts/plugins/layui/layui.js"></script>
 <script>
-    layui.use(['element'])
+    layui.use(['element']);
+
+
+
+    var textRollTimer;
+    var textRollList=document.getElementById('text-roll-list');
+    var positionTop=255;
+    function textRoll(){
+        clearInterval(textRollTimer);
+        textRollTimer=setInterval(function(){
+            textRollList.style.transform='translateY('+positionTop+'px)';
+            positionTop-=1.5;
+            if(positionTop<-(textRollList.offsetHeight+10)) positionTop =255;
+        },20)
+    }
+    setTimeout(textRoll,3000);
+
+    var textRollBox=document.getElementById('text-roll-box');
+    textRollBox.onmouseover=function(){
+        clearInterval(textRollTimer)
+    };
+    textRollBox.onmouseout=function(){
+        textRoll();
+    };
 </script>
 </body>
 </html>
