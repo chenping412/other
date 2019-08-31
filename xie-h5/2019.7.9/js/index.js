@@ -233,6 +233,10 @@ var vm = new Vue({
                                     onSlideChangeEnd: function (swiper) {
                                         console.log(swiper.activeIndex)
                                         self.bookSwiperIndex = swiper.activeIndex;
+                                    },
+                                    onTap: function(swiper){
+                                        console.log(swiper.clickedIndex);
+                                        self.openBook(self.bookList[swiper.clickedIndex]);
                                     }
                                 });
 
@@ -248,7 +252,7 @@ var vm = new Vue({
 
         openBook: function (item) {
             this.bookDetail = item;
-            window.open('http://www.myqsl.cn/MM2/generic/web/viewer.html?file=/MM2/img/' + this.bookDetail.filetypeurl)
+            location.href='http://www.myqsl.cn/MM2/generic/web/viewer.html?file=/MM2/img/' + this.bookDetail.filetypeurl;
         },
         getVrList: function () {
             var self = this;
