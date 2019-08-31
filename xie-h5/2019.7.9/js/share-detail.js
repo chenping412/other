@@ -80,12 +80,6 @@ try {
     $(function () {
         var cardid = getParamer("cardid");//名片id
         entid = getParamer("id");//企业id
-        if (entid == "undefined" || entid == null || entid == "" || entid == 0) {
-            document.getElementById("typediv1").style.display = "none";//隐藏
-
-        } else {
-            document.getElementById("typediv1").style.display = "";//隐藏
-        }
 
         var u = navigator.userAgent, app = navigator.appVersion;
         isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
@@ -99,7 +93,7 @@ try {
 
         if (isAndroid) {
             var jumpUrl;
-            if(cardid!=null &&cardid!=""&&cardid!="undefined"&&cardid!=0){
+            if (cardid != null && cardid != "" && cardid != "undefined" && cardid != 0) {
                 if (jcompanykey) {
                     jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
                 } else if (jpersonid) {
@@ -108,7 +102,7 @@ try {
                     jumpUrl = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
                 }
             }
-            else{
+            else {
                 if (jcompanykey) {
                     jumpUrl = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
                 } else if (jpersonid) {
@@ -126,26 +120,49 @@ try {
 
     function firstJump() {
         var cardid = getParamer("cardid");//名片id
+        if (cardid != null && cardid != "" && cardid != "undefined" && cardid != 0) {
+            if (jcompanykey) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                }
+            } else if (jpersonid) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                }
+            } else if (jindex) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
+                }
+            }
+        } else {
+            if (jcompanykey) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            } else if (jpersonid) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            } else if (jindex) {
+                if (isAndroid) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                } else if (isiOS) {
+                    window.location.href = 'myqslapp://com.good.companygroup?type=1&data=' + entid;
+                }
+            }
 
-        if (jcompanykey) {
-            if (isAndroid) {
-                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-            } else if (isiOS) {
-                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-            }
-        } else if (jpersonid) {
-            if (isAndroid) {
-                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-            } else if (isiOS) {
-                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-            }
-        } else if (jindex) {
-            if (isAndroid) {
-                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-            } else if (isiOS) {
-                window.location.href = 'myqslapp://com.good.companygroup?type=2&data=' + cardid;
-            }
         }
+
     }
 
     function openApp() {
@@ -213,10 +230,14 @@ try {
     })
 
     function openEntInfo() {
-        location.href = "http://www.myqsl.cn/MM2/andios/entdetail.html?id=" + entid;
+        if (isWeixn) {
+            alert('请点击右上角,选择在浏览器中打开.');
+        } else {
+            location.href = "http://www.myqsl.cn/MM2/h5/entdetail.html?id=" + entid;
+        }
     }
 
-}catch (e){
+} catch (e) {
 
 }
 
@@ -228,102 +249,116 @@ try {
 
     var path = getRootPath_dc();
     if (location.hostname == "172.16.1.27" || location.hostname == "172.20.10.5" || location.hostname == "localhost") {
-        path= 'http://'+location.hostname+':8090/MM2';
+        path = 'http://' + location.hostname + ':8090/MM2';
     }
 
-    $.ajax({
-        type: 'post',
-        url: path + '/register/queryBusinessCardByIdH5.json',
-        dataType: 'json',
-        data: JSON.stringify({"cardid": cardid}), // Request body
-        contentType: 'application/json; charset=utf-8',
-        success: function (response) {
-            $("#name").html(response.name);
-            $("#post").html(response.title);
-            $("#mobile").html(response.mobile);
-            $("#carimg").attr("src", path + "/cardimg/" + response.carimg).show();
-            $('#section-card').show();
-
-            $('#loading').hide();
-        },error:function(){
-            $('#loading').hide();
-        }
-    });
-
-
-
-    $.ajax({
-        type: 'post',
-        url: path + '/register/queryEntDetailByIdH5.json',
-        dataType: 'json',
-
-        data: JSON.stringify({
-            "id": entid
-        }),
-        contentType: 'application/json; charset=utf-8',
-        success: function (response) {
-            $("#entname").html(response.entName);
-            $("#entEmail").html(response.entEmail);
-            $("#web").html(response.entWebsite);
-            $("#location").html(response.entAddress);
-
-            $("#imageId").attr("src", path + "/img/" + response.picPath1).show();//企业LOGO
-            if(response.entDesc){
-                $("#summary").html(response.entDesc);
-                $('#section-summary').show();
+    if (cardid && cardid != 'undefined') {
+        $.ajax({
+            type: 'post',
+            url: path + '/register/queryBusinessCardByIdH5.json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "cardid": cardid
+            }), // Request body
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                $("#name").html(response.name);
+                $("#post").html(response.title);
+                $("#mobile").html(response.mobile);
+                $("#entname").html(response.companyname);
+                $("#entEmail").html(response.email);
+                $("#web").html(response.website);
+                $("#location").html(response.address);
+                $("#imageId").attr("src", path + "/img/" + response.spare1).show();//企业LOGO
+                $("#carimg").attr("src", path + "/cardimg/" + response.carimg).show();
+                $('#section-card').show();
+                $('#loading').hide();
+            }, error: function () {
+                $('#loading').hide();
             }
+        });
 
-            if(response.entContact) $("#entdetail-logo").css('background-image','url("'+path + "/img/" + response.picPath1+'")');
+    }
 
-            if(response.entContact) $("#entContact").html(response.entContact).show();
-            if(response.entPhone) $("#entPhone").html(response.entPhone).parent().show().attr('href','tel:'+response.entPhone);
-            if(response.entEmail) $("#entEmail").html(response.entEmail).parent().show();
-            if(response.entWebsite){
-                $("#entWebsite").html(response.entWebsite).parent().show();
-                if(response.websiteflag == 1) $("#entWebsite").parent().attr('href',response.entWebsite);
-            }
-            if(response.entAddress) $("#entAddress").html(response.entAddress).parent().show();
-            $("#section-info").show();
 
-            $('#loading').hide();
-        },error:function(){
-            $('#loading').hide();
-        }
-    });
-    $.ajax({
-        type: 'post',
-        url: path + '/register/getEntFileListH5.json',
-        dataType: 'json',
-        data: JSON.stringify({
-            "entid": entid,
-            filetype: '003'
-        }),
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            if (data.code == 200 && data.data && data.data[0] && data.data[0].filetypeurl) {
-                $("#vr-iframe").attr("src",data.data[0].filetypeurl);
-                $('#section-vr').show();
+    if (entid && entid != 'undefined') {
+        $("#ent-detail-url").attr('href', 'entdetail.html?id=' + entid + '&customerid=' + customerid);
+
+        $.ajax({
+            type: 'post',
+            url: path + '/register/queryEntDetailByIdH5.json',
+            dataType: 'json',
+
+            data: JSON.stringify({
+                "id": entid
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                $("#entname").html(response.entName);
+                $("#entEmail").html(response.entEmail);
+                $("#web").html(response.entWebsite);
+                $("#location").html(response.entAddress);
+
+                $("#imageId").attr("src", path + "/img/" + response.picPath1).show();//企业LOGO
+                if (response.entDesc) {
+                    $("#summary").html(response.entDesc);
+                    $('#section-summary').show();
+                }
+
+                if (response.entContact) $("#entdetail-logo").css('background-image', 'url("' + path + "/img/" + response.picPath1 + '")');
+
+                if (response.entContact) $("#entContact").html(response.entContact).show();
+                if (response.entPhone) $("#entPhone").html(response.entPhone).parent().show().attr('href', 'tel:' + response.entPhone);
+                // if(response.entEmail) $("#entEmail").html(response.entEmail).parent().show();
+                if (response.entWebsite) {
+                    $("#entWebsite").html(response.entWebsite).parent().show();
+                    if (response.websiteflag == 1) $("#entWebsite").parent().attr('href', response.entWebsite);
+                }
+                if (response.entAddress) $("#entAddress").html(response.entAddress).parent().show();
+                $("#section-info").show();
+
+                $('#loading').hide();
+            }, error: function () {
+                $('#loading').hide();
             }
-        }
-    })
-    $.ajax({
-        type: 'post',
-        url: path + '/register/getEntFileListH5.json',
-        dataType: 'json',
-        data: JSON.stringify({
-            "entid": entid,
-            filetype: '001'
-        }),
-        contentType: 'application/json; charset=utf-8',
-        success: function (data) {
-            if (data.code == 200 && data.data && data.data[0] && data.data[0].filetypeurl) {
-                $("#video").attr({
-                    "src":path + "/mv/" + data.data[0].filetypeurl,
-                    "poster":path + "/img/" + data.data[0].filetypeimg
-                });
-                $('#section-video').show();
+        });
+        $.ajax({
+            type: 'post',
+            url: path + '/register/getEntFileListH5.json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "entid": entid,
+                filetype: '003'
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data[0] && data.data[0].filetypeurl) {
+                    $("#vr-iframe").attr("src", data.data[0].filetypeurl);
+                }
             }
-        }
-    })
+        })
+        $.ajax({
+            type: 'post',
+            url: path + '/register/getEntFileListH5.json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "entid": entid,
+                filetype: '001'
+            }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data[0] && data.data[0].filetypeurl) {
+                    $("#video").attr({
+                        "src": path + "/mv/" + data.data[0].filetypeurl,
+                        "poster": path + "/img/" + data.data[0].filetypeimg
+                    });
+                    $('#section-video').show();
+                }
+            }
+        })
+    }else {
+        $('#loading').hide();
+    }
+
 
 })();
