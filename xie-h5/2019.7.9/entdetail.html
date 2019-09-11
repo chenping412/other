@@ -48,8 +48,8 @@
         <h3 class="title">
             <span>企业视频</span>
         </h3>
-        <div class="videos" :class="{'one':videoList.length==1}">
-            <video id="video" src="mvHost+item.filetypeurl" poster="imgHost+item.filetypeimg" controls="" preload="none" webkit-playsinline="true" x5-playsinline="true" playsinline="true"></video>
+        <div class="videos">
+            <video id="video" src="" poster="" controls="" preload="none" webkit-playsinline="true" x5-playsinline="true" playsinline="true"></video>
         </div>
     </div>
 
@@ -60,27 +60,27 @@
         <div class="info">
             <a class="clearfix" style="display:none;">
                 <img src="images/conact-icon_03.png">
-                <span id="entContact" style="display:none;margin-right: 10px;">{{companyInfo.entContact}}</span>
-                <span id="entPhone">{{companyInfo.entPhone}}</span>
+                <span id="entContact" style="display:none;margin-right: 10px;"></span>
+                <span id="entPhone"></span>
             </a>
             <a class="clearfix" style="display:none;">
                 <img src="images/conact-icon_04.png">
-                <span id="entEmail">{{companyInfo.entEmail}}</span>
+                <span id="entEmail"></span>
             </a>
             <a class="clearfix" style="display:none;">
                 <img src="images/conact-icon_05.png">
-                <span id="entWebsite">{{companyInfo.entWebsite}}</span>
+                <span id="entWebsite"></span>
             </a>
             <a class="clearfix" style="display:none;">
                 <img src="images/conact-icon_07.png">
-                <span id="entAddress">{{companyInfo.entAddress}}</span>
+                <span id="entAddress"></span>
             </a>
         </div>
     </div>
 
 </div>
 <div class="loading" id="loading"></div>
-<script type="text/javascript" src="js/share-detail.js?v=20190831111"></script>
+<script type="text/javascript" src="js/share-detail.js?v=20180911"></script>
 <script>
     var _hmt = _hmt || [];
     (function() {

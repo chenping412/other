@@ -295,7 +295,6 @@ try {
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
                 $("#entname").html(response.entName);
-                $("#entEmail").html(response.entEmail);
                 $("#web").html(response.entWebsite);
                 $("#location").html(response.entAddress);
 
@@ -309,7 +308,7 @@ try {
 
                 if (response.entContact) $("#entContact").html(response.entContact).show();
                 if (response.entPhone) $("#entPhone").html(response.entPhone).parent().show().attr('href', 'tel:' + response.entPhone);
-                // if(response.entEmail) $("#entEmail").html(response.entEmail).parent().show();
+                 if(response.entEmail) $("#entEmail").html(response.entEmail).parent().show();
                 if (response.entWebsite) {
                     $("#entWebsite").html(response.entWebsite).parent().show();
                     if (response.websiteflag == 1) $("#entWebsite").parent().attr('href', response.entWebsite);
@@ -334,6 +333,7 @@ try {
             success: function (data) {
                 if (data.code == 200 && data.data && data.data[0] && data.data[0].filetypeurl) {
                     $("#vr-iframe").attr("src", data.data[0].filetypeurl);
+                    $('#section-vr').show();
                 }
             }
         })
