@@ -8,7 +8,7 @@
 .main .top-bj{
     content: '';
     display: block;
-    height: 42px;
+    height: 48px;
     background-color: #ff7cad;
     border-bottom-right-radius:50%;
     border-bottom-left-radius: 50%;
@@ -26,7 +26,7 @@
 .search-box1 input{
     display: block;
     width: 100%;
-    height: 26px;
+    height: 32px;
     box-sizing: border-box;
     border:none;
     background-color: rgba(255,255,255,0.6);
@@ -38,7 +38,7 @@
     right: 0;
     top:0;
     width: 48px;
-    height: 26px;
+    height: 32px;
     border:none;
     background-color: rgba(255,255,255,0.6);
     border-radius: 5px;
@@ -50,7 +50,7 @@
     left: auto;
     right: auto;
     top:auto;
-    margin:0 8px 15px;
+    margin:0 8px 10px;
 }
 .search-box2 input{
     background-color: #eee;
@@ -62,8 +62,11 @@
 
 .banner-swiper{
     height: 185px;
-    margin: 0 8px 25px;
+    padding:8px 8px 20px;
     position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
 }
 .banner-swiper-inner{
     width: 100%;
@@ -78,7 +81,7 @@
     border-radius: 20px;
 }
 .banner-swiper .swiper-pagination{
-    bottom: -18px !important;
+    bottom: 5px !important;
     width: 100%;
 }
 .banner-swiper .swiper-pagination-bullet{
@@ -91,7 +94,7 @@
 
 
 .menu-list{
-    padding:10px 0;
+    padding:15px 0 10px;
 }
 .menu-list li{
     float: left;
@@ -106,18 +109,18 @@
 }
 .menu-list li .icon{
     margin: 0 auto;
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 1rem;
+    height: 1rem;
     border:1px solid #b9b8b6;
     border-radius: 50%;
     line-height: 0.8rem;
     text-align: center;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 0.6rem;
+    background-size: 0.7rem;
 }
 .menu-list li span{
-    font-size: 10px;
+    font-size: 12px;
     color: #333333;
     line-height: 0.56rem;
 }
@@ -153,7 +156,7 @@
     background-color: rgba(0,0,0,0.4);
     text-align: center;
     line-height: 2.8rem;
-    font-size: 14px;
+    font-size: 16px;
     color: #FFFFFF;
 }
 
@@ -172,12 +175,13 @@
     border-bottom: 1px solid #e6e6e6;
     border-right: 1px solid #e6e6e6;
     box-sizing: border-box;
+    padding:1px;
 }
 .section1 li p{
     text-align: center;
     line-height: 25px;
     padding-top: 8px;
-    font-size: 12px;
+    font-size: 14px;
     color: #333333;
 }
 .section1 li img{
@@ -208,7 +212,7 @@
     position: absolute;
     right: 0;
     top:0;
-    font-size: 12px;
+    font-size: 13px;
     color: #666666;
     padding-right: 15px;
 }
@@ -234,7 +238,7 @@
 }
 .section2 li h3{
     padding:3px 0 0;
-    font-size: 10px;
+    font-size: 14px;
     color: #333333;
     white-space: nowrap;
     overflow: hidden;
@@ -252,7 +256,7 @@
 }
 .section2 li span{
     display: block;
-    font-size: 10px;
+    font-size: 11px;
     color: #999999;
 }
 
@@ -275,7 +279,7 @@
 }
 .section3 li h3{
     padding:3px 0 0;
-    font-size: 12px;
+    font-size: 14px;
     color: #333333;
     white-space: nowrap;
     overflow: hidden;
@@ -283,7 +287,7 @@
 }
 .section3 li p{
     font-size: 12px;
-    color: #ff2828;
+    color: #e97906;
 }
 .section3 li span{
     font-size: 10px;
@@ -349,14 +353,14 @@
 }
 .section4 li .buy h3{
     padding:5px 0 3px;
-    font-size: 10px;
+    font-size: 14px;
     color: #333333;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .section4 li .buy p{
-    font-size: 7px;
+    font-size: 9px;
     margin-bottom: 3px;
 }
 .section4 li .buy .icon{
@@ -448,11 +452,15 @@
 
 
 .section6{
-    background-color: #012547;
     padding-bottom: 10px;
+    background-repeat: no-repeat;
+    background-position:center top;
+    background-size:cover;
 }
 .section6 .title img{
-    width: 100%;
+    display: block;
+    width: 2.24rem;
+    margin: 0 auto;
 }
 .section6 ul{
     margin: 0 0.2rem;
@@ -494,8 +502,8 @@
 }
 .section6 li h3{
     padding:3px 0 0;
-    font-size: 12px;
-    color: #666666;
+    font-size: 14px;
+    color: #333333;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -504,7 +512,7 @@
     display: block;
     font-size: 10px;
     color: #999999;
-    padding:0 0 5px;
+    padding:0 0 3px;
 }
 .section6 li p{
     font-size: 12px;
@@ -523,8 +531,8 @@
     border: none;
     color: #FFFFFF;
     font-size: 10px;
-    height: 14px;
-    padding:0 7px;
+    height: 16px;
+    padding:0 10px;
     border-radius: 7px;
 }
 .section6 li.li1{
@@ -540,7 +548,7 @@
     padding-top: 0.4rem;
 }
 .section6 li.li1 h3{
-    font-size: 14px;
+    font-size: 15px;
 }
 .section6 li.li1 span{
     padding-bottom: 10px;
@@ -572,10 +580,9 @@
     padding:0 8px 12px;
 }
 .section7 .top h3{
-    font-size: 11px;
+    font-size: 14px;
     color: #666666;
-    line-height: 25px;
-    padding:0 12px;
+    line-height: 28px;
 }
 .section7 .top img{
     width: 100%;
@@ -587,27 +594,24 @@
     float: left;
     width: 50%;
     box-sizing: border-box;
-    padding-left: 6px;
     border-bottom: 1px solid #bfbfbf;
+    padding:1px 1px 1px 8px;
 }
 .section7 li:nth-child(2n){
     border-left: 1px solid #bfbfbf;
 }
 .section7 li h3{
-    font-size: 11px;
+    font-size: 14px;
     color: #666666;
-    line-height: 14px;
+    line-height: 20px;
     padding-top: 5px;
-    height: 14px;
     overflow: hidden;
 }
 .section7 li p{
-    font-size: 10px;
+    font-size: 11px;
     color: #999999;
-    line-height: 14px;
-    height: 14px;
+    line-height: 20px;
     overflow: hidden;
-    margin-bottom: 5px;
 }
 .section7 li img{
     width: 100%;
