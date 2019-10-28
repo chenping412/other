@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+<img src="./image/bg.jpg" alt="" style="width:100%;height:100%;vertical-align:middle;">
+<div class="content">
+    <div class="content-top"></div>
+    <div class="content-center">
+        <div class="center-box">
+            <div class="title">
+                <span></span>
+                <!-- <div class="close">
+                 </div> -->
+            </div>
+            <div class="desc">
+                <div class="left" id="desc-left">
+                    <!-- <div class="img-box"> -->
+                    <img src="" alt="">
+                    <!-- </div> -->
+                </div>
+                <div class="right">
+                    <div class="summary"></div>
+                </div>
+            </div>
+            <div class="empty"></div>
+        </div>
+
+        <div class="btns">
+            <button type="button" id="vr-btn">VR</button>
+            <button type="button" id="video-btn">视频</button>
+        </div>
+    </div>
+    <div class="content-bottom"></div>
+</div>
+</body>
+
+</html>
+<script>
+    window.onload = function () {
+        resizeFontSize()
+        var id = window.location.search.split('=')[1] - 1;
+        var urlStr = './image/'
+        var arr = [
+            {
+                name: '深圳企示录信息科技有限公司',
+                summary: '&nbsp;&nbsp;&nbsp;&nbsp;企示录示一个能够助推企业品牌，传递核心价值、培育未来市场的综合性信息推广平台。<br /> &nbsp;&nbsp;&nbsp;&nbsp;传递信息是我们的核心价值,提升企业曝光率使我们的服务宗旨。我们希望用诚与信为企业与需求者建立互通的桥梁，打破市场的局限，让商业 变更更为简单，有效!<br />',
+                imgUrl: './image/1.jpg',
+                vrUrl: 'https://720yun.com/t/ozq44yzjxxsq4o98h7?from=groupmessage&pano_id=gib3KhAEOYrfXtB2',
+                videoUrl: 'http://www.myqsl.cn/MM2/mv/myqslmv.mp4',
+
+            }
+        ]
+        document.querySelector('.title span').innerHTML = arr[id].name
+        document.querySelector('.left img').setAttribute('src', arr[id].imgUrl)
+        document.querySelector('.right .summary ').innerHTML = arr[id].summary
+        document.title = arr[id].name
+        //     $('.title span').html(arr[id].name)
+        //     $('.left img').attr('src', arr[id].url)
+        //     $('.right .summary ').html(arr[id].summary)
+
+        function changeRootFont() {
+            var designWidth = 1920,
+                    rem2px = 100;
+            document.documentElement.style.fontSize =
+                    ((window.innerWidth / designWidth) * rem2px) + 'px';
+            // $('html').css('fontSize', ((window.innerWidth / designWidth) * rem2px) + 'px')
+            document.querySelector('html').style.fontSize = ((window.innerWidth / designWidth) * rem2px) + 'px'
+        }
+
+        function resizeFontSize() {
+            changeRootFont();
+            window.addEventListener('resize', changeRootFont, false);
+        }
+
+        document.getElementById('vr-btn').onclick = function () {
+            location.href = arr[id].vrUrl;
+        }
+        document.getElementById('video-btn').onclick = function () {
+            document.getElementById('desc-left').innerHTML = '<video id="video-box" src="' + arr[id].videoUrl + '" autoplay="autoPlay" controls></video>';
+        }
+    }
+
+
+</script>

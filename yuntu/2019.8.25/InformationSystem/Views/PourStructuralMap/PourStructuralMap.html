@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style type="text/css">
+        body,
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        code,
+        form,
+        fieldset,
+        legend,
+        input,
+        button,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+        .pour-view{
+            width: 1000px;
+            border:1px solid #dddddd;
+            position: relative;
+            color: #666666;
+        }
+        .pour-view .bj{
+            display: block;
+            width: 100%;
+        }
+        .pour-view .car{
+            position: absolute;
+            left: 80px;
+            top: 43px;
+            font-size: 20px;
+            z-index: 10;
+        }
+        .pour-view .car2{
+            left: 90px;
+            top: 287px;
+        }
+        .pour-view .car3{
+            left: 90px;
+            top: 470px;
+        }
+        .pour-view .sudu{
+            position: absolute;
+            left: 70px;
+            top: 190px;
+            font-size: 18px;
+            z-index: 10;
+        }
+        .pour-view .sudu b{
+            color: #3bbb81;
+        }
+        .pour-view .sudu2{
+            top: 220px;
+        }
+        .pour-view .shuju{
+            position: absolute;
+            left:20px;
+            bottom: 20px;
+            z-index: 10;
+            padding:20px;
+            border:2px dashed #dddddd;
+        }
+        .pour-view .shuju p{
+            font-size: 16px;
+            color: #333333;
+            line-height: 24px;
+        }
+        .pour-view .shuju p span{
+            font-weight: bold;
+            color: #3bbb81;
+        }
+
+        .pour-view .biaochi{
+            position: absolute;
+            left: 50%;
+            top:500px;
+            z-index: 10;
+            bottom:100px;
+            width: 2px;
+            background-color: #CCCCCC;
+        }
+        .pour-view .biaochi span{
+            position: absolute;
+            top:50%;
+            right: 5px;
+            transform: translateY(-50%);
+            color: #333333;
+            font-size: 14px;
+        }
+        .pour-view .biaochi:before,
+        .pour-view .biaochi:after{
+            content: '';
+            width: 15px;
+            height: 3px;
+            position: absolute;
+            top:0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #CCCCCC;
+        }
+        .pour-view .biaochi:after{
+            top:auto;
+            bottom:0;
+        }
+
+        .pour-view .biaochi-right span{
+            left: 5px;
+            right: auto;
+        }
+        .pour-view .biaochi-bottom{
+            width: auto;
+            height: 2px;
+            top:auto;
+        }
+        .pour-view .biaochi-bottom:before,
+        .pour-view .biaochi-bottom:after{
+            left: 0;
+            top:50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 15px;
+        }
+        .pour-view .biaochi-bottom:after{
+            right: 0;
+            left: auto;
+        }
+        .pour-view .biaochi-bottom span{
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: auto;
+            right: auto;
+            top: 5px;
+        }
+        .pour-view .biaochi-top{
+            transform: rotate(-4deg);
+        }
+        .pour-view .biaochi-top span{
+            top: auto;
+            bottom: 5px;
+        }
+
+
+        .pour-view .xuxian{
+            position: absolute;
+            left: 329px;
+            right:89px;
+            bottom:362px;
+            border-bottom:2px dashed red;
+        }
+        .pour-view .biaochi-red,
+        .pour-view .biaochi-red:before,
+        .pour-view .biaochi-red:after{
+            background-color: red;
+        }
+        .pour-view .biaochi-red span{
+            color: red;
+        }
+
+        .pour-view .biaochi-green,
+        .pour-view .biaochi-green:before,
+        .pour-view .biaochi-green:after{
+            background-color: #3bbb81;
+        }
+        .pour-view .biaochi-green span{
+            color: #3bbb81;
+        }
+
+        .pour-view .jindutu{
+            position: absolute;
+            left: 329px;
+            right:89px;
+            bottom: 60px;
+            top:367px;
+        }
+        .pour-view .jindutu .wancheng{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .pour-view .jindutu .wancheng .text{
+            position: absolute;
+            left: 200px;
+            bottom:10px;
+        }
+        .pour-view .jindutu .wancheng .text p{
+            color: #333333;
+        }
+        .pour-view .jindutu .wancheng .text p span{
+            color: #3bbb81;
+        }
+    </style>
+</head>
+<body>
+<div class="pour-view">
+    <img class="bj" src="images/pour-img.jpg">
+    <h3 class="car">布料机</h3>
+    <h3 class="car car2">泵车</h3>
+    <h3 class="car car3">砼车</h3>
+
+    <p class="sudu">测速 <b>0m³/h</b></p>
+    <p class="sudu sudu2">泵速 <b>27.19m³/h</b></p>
+
+    <div class="shuju">
+        <p>仓体方量 <span>9.65m³</span></p>
+        <p>总耗时间 <span>00:05:20</span></p>
+        <p>等待耗时 <span>00:30:00</span></p>
+        <p>浇筑方量 <span>9.65m³</span></p>
+    </div>
+
+    <p class="biaochi" style="top: 300px;bottom: 362px;left: 317px;"><span>200mm</span></p>
+    <p class="biaochi" style="top: 367px;bottom: 60px;left: 317px;"><span id="total-mm">766mm</span></p>
+
+    <p class="biaochi biaochi-right" style="top: 327px;bottom: 362px;left: 920px;"><span>1.61m³</span></p>
+    <p class="biaochi biaochi-right" style="top: 367px;bottom: 279px;left: 920px;"><span>2.06m³</span></p>
+    <p class="biaochi biaochi-right" style="top: 449px;bottom: 60px;left: 920px;"><span>5.98m³</span></p>
+
+    <p class="biaochi biaochi-bottom" style="bottom: 48px;left: 326px;right:84px; "><span>宽 3000mm</span></p>
+    <p class="biaochi biaochi-bottom biaochi-top" style="bottom: 392px;left: 326px;right:84px; "><span>3016mm</span></p>
+
+
+
+    <div class="jindutu">
+        <div class="wancheng" style="top:70%;" id="wancheng">
+            <div class="text">
+                <p>仓体编码 <span>20190226160034</span></p>
+                <p>当前阶段 <span>30V浇筑</span></p>
+                <p>正泵 <span>48次</span> 摆频 <span>6.62s</span></p>
+            </div>
+        </div>
+        <p class="biaochi biaochi-right" style="top:0;bottom: 30%;left: 100px;" id="not-mm"><span>555mm</span></p>
+        <p class="biaochi biaochi-right biaochi-red" style="top:70%;bottom:0;left: 100px;" id="complete-mm"><span>211mm</span></p>
+        <p class="biaochi biaochi-green" style="top:70%;bottom:0;left: 550px;" id="complete-mmm"><span>211m³</span></p>
+    </div>
+
+    <div class="xuxian"></div>
+    <div class="xuxian" style="bottom: 279px;"></div>
+
+    <p class="biaochi biaochi-right biaochi-red" style="top: 367px;bottom: 279px;left: 336px;"><span>196mm</span></p>
+</div>
+
+<script type="text/javascript">
+    var pourTotal=766;
+    var pourComplete=0;
+    document.getElementById('total-mm').innerHTML = pourTotal +'mm';
+    function setData(){
+        pourComplete+=50;
+        if(pourComplete>pourTotal) pourComplete=pourTotal;
+        document.getElementById('complete-mm').getElementsByTagName('span')[0].innerHTML = pourComplete +'mm';
+        document.getElementById('not-mm').getElementsByTagName('span')[0].innerHTML = (pourTotal-pourComplete) +'mm';
+        var rate=(pourComplete/pourTotal)*100;
+        document.getElementById('complete-mm').style.top=(100-rate)+'%';
+        document.getElementById('complete-mmm').style.top=(100-rate)+'%';
+        document.getElementById('wancheng').style.top=(100-rate)+'%';
+        document.getElementById('not-mm').style.bottom=rate +'%';
+        if(pourComplete>=pourTotal) pourComplete=0;
+    }
+    setData();
+    setInterval(setData,1000)
+
+
+
+
+</script>
+
+</body>
+</html>

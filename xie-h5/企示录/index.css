@@ -1,0 +1,200 @@
+ html {
+   /* font-size: 100px; */
+ }
+
+ html,
+ body {
+   width: 100%;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+ }
+
+ body {
+   position: relative;
+   width: 100%;
+   height: 100%;
+ }
+
+ .content {
+   position: absolute;
+   color: #fff;
+   font-size: 0.42rem;
+   letter-spacing: 0.08rem;
+   text-align: center;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   flex-direction: column;
+   -webkit-box-flex-direction: column;
+   -webkit-flex-direction: column;
+ }
+
+ .content-top {
+   -webkit-box-flex: 300;
+   -webkit-flex: 300;
+   flex: 300;
+   width: 100%;
+ }
+
+ .content-bottom {
+   flex: 150;
+   -webkit-box-flex: 150;
+   -webkit-flex: 150;
+   width: 100%;
+ }
+
+ .content-center {
+   flex: 630;
+   -webkit-box-flex: 630;
+   -webkit-flex: 630;
+     position: relative;
+ }
+
+ .content-center .center-box {
+   height: 100%;
+   display: flex;
+   display: -webkit-box;
+   display: -webkit-flex;
+   flex-direction: column;
+ }
+
+ .content-center .title {
+   flex: 135;
+   -webkit-box-flex: 135;
+   -webkit-flex: 135;
+   display: flex;
+   display: -webkit-box;
+   display: -webkit-flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 1.1rem 0 0rem;
+   position: relative;
+ }
+
+
+ .content-center .desc {
+   flex: 435;
+   -webkit-box-flex: 435;
+   -webkit-flex: 435;
+   padding-right: 1.1rem;
+   height: 0;
+ }
+
+ .content-center .desc .left {
+   float: left;
+   width: 50%;
+   height: 100%;
+   padding-left: 1.1rem;
+   padding-right: 0.5rem;
+   box-sizing: border-box;
+
+ }
+
+ /* .left .img-box{
+  width: 100%;
+  height: 100%;
+  margin:0.05rem;
+   background: url('./image/rectangle.png') no-repeat;
+   background-size:cover;
+} */
+ .content-center .desc .left img,
+ .content-center .desc .left video {
+   width: 100%;
+   height: 100%;
+ }
+
+ .content-center .desc .right {
+   float: left;
+   width: 50%;
+   overflow-y: auto;
+   height: 100%;
+   padding-left: 0.5rem;
+   box-sizing: border-box;
+
+ }
+
+ .content-center .close {
+   position: absolute;
+   top: 25%;
+   right: -0.25rem;
+   width: 0.5rem;
+   height: 0.5rem;
+   background: url('./image/close.png') no-repeat;
+   background-size: cover;
+ }
+
+ .content-center .desc .summary {
+   width: 100%;
+   height: 100%;
+   height: 0;
+   text-align: left;
+   font-size: 0.26rem;
+   /*line-height: 0.4rem;*/
+   /* letter-spacing: 0.04rem; */
+ }
+ .content-center .btns{
+     position: absolute;
+     right: 1.1rem;
+     bottom: 9.5%;
+ }
+ .content-center .btns button{
+     width: 100px;
+     height: 32px;
+     border:none;
+     cursor: pointer;
+     background-color: #49ead8;
+     /*color: #ffffff;*/
+     font-size:16px;
+ }
+
+ .content-center .empty {
+   flex: 60;
+   -webkit-box-flex: 60;
+   -webkit-flex: 60;
+ }
+
+ .content.center .left span {
+   text-align: center;
+   line-height: 1;
+
+ }
+
+ /* 针对缺省样式 (必须的) */
+ ::-webkit-scrollbar {
+   width: 0.1rem;
+   height: 0px;
+ }
+
+ /* 滚动条的滑轨背景颜色 */
+ ::-webkit-scrollbar-track {
+   background-color: rgba(255, 255, 255, 0.3);
+   border-radius: 0.05rem;
+ }
+
+ /* 滑块颜色 */
+ ::-webkit-scrollbar-thumb {
+   background-color: rgba(255, 255, 255, 0.5);
+   border-radius: 0.2rem;
+ }
+
+ /*内层轨道的颜色*/
+ ::-webkit-scrollbar-track-piece {
+   /* background-color:  rgba(255, 255, 255, 0.5); */
+   border-radius: 0.05rem;
+ }
+
+ /* 滑轨两头的监听按钮颜色 */
+ ::-webkit-scrollbar-button {
+   /* background-color:  rgba(0, 0, 0, 0.2); */
+   width: 0;
+   height: 0;
+ }
+
+ /* 横向滚动条和纵向滚动条相交处尖角的颜色 */
+ /* ::-webkit-scrollbar-corner {
+ 	       background-color: black;
+        } */
