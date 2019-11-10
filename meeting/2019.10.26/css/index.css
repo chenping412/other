@@ -622,12 +622,94 @@
 
 
 
-
-
-
-
-
-
+.section8{
+    padding: 10px 0;
+}
+.section8 .news{
+    position: relative;
+    padding:0 10px 0 40px;
+    margin-bottom: 10px;
+}
+.section8 .news .img{
+    position: absolute;
+    left: 8px;
+    top:50%;
+    transform: translateY(-50%);
+    width: 24px;
+}
+.section8 .news .news-list{
+    height: 35px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.section8 .news .news-list ul{
+    transition: all 0.3s;
+}
+.section8 .news .news-list li{
+    line-height: 35px;
+    white-space: nowrap;
+    padding:0 10px;
+    overflow: hidden;
+}
+.section8 .title{
+    padding:5px 0;
+    text-align: center;
+}
+.section8 .title img{
+    width: 100px;
+}
+.section8 .list li{
+    width: 33.33%;
+    float: left;
+    box-sizing: border-box;
+    padding:4px;
+}
+.section8 .list li a{
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+.section8 .list li h3{
+    color: #fd7a0c;
+    font-size: 0.6rem;
+    position: absolute;
+    left: 0;
+    top:0.5rem;
+    width: 100%;
+    font-weight: normal;
+    text-align: center;
+}
+.section8 .list li h3 span{
+    font-size:0.32rem;
+}
+.section8 .list li h4{
+    position: absolute;
+    left: 0;
+    bottom:0.6rem;
+    width: 100%;
+    font-weight: normal;
+    font-size: 0.37333rem;
+    line-height: 0.56rem;
+    color: #666666;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.section8 .list li p{
+    position: absolute;
+    left: 0;
+    bottom:0;
+    width: 100%;
+    font-weight: normal;
+    font-size:0.32rem;
+    line-height: 0.48rem;
+    color: #FFFFFF;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 
 
