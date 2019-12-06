@@ -10,5 +10,6 @@
     "navigationBarBackgroundColor": "#273E66",
     "navigationBarTitleText": "写作机器人",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
