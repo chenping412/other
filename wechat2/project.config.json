@@ -8,10 +8,12 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
+	"libVersion": "2.9.2",
 	"appid": "wxeaeba3dd78a55ee7",
 	"projectname": "%E5%86%99%E4%BD%9C%E6%9C%BA%E5%99%A8%E4%BA%BA-my",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
