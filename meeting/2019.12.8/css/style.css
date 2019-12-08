@@ -1,0 +1,160 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+select,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    font-family:  Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+ol,
+ul,
+li,
+button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+input[type="radio"]{
+    width: 18px;
+    height: 18px;
+    vertical-align: bottom;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+a {
+    color: inherit;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #999;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #999;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #999;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #999;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.red{
+    color: #dc0000;
+}
+body{
+    font-size: 14px;
+    color: #ffffff;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background: #121929
+}
+
+
+.main{
+    width: 1920px;
+    /*height: 1080px;*/
+    min-height: 900px;
+    position: relative;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    background: url("../images/main-bg.png") no-repeat center 110px;
+    overflow: hidden;
+}
+.main .header{
+    width: 100%;
+    height: 82px;
+    background: url("../images/header-bg.jpg") no-repeat center/cover;
+    position: relative;
+}
+.main .header span{
+    display: block;
+    width: 420px;
+    line-height: 82px;
+    text-align: center;
+    padding:0 0 0 116px;
+    color: #FFFFFF;
+    font-size: 50px;
+}
+
+.border{
+    position: relative;
+}
+.border:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 9;
+    width: 237px;
+    height: 49px;
+    background: url("../images/border.png") no-repeat;
+}
+.border:after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom:0;
+    z-index: 9;
+    width: 237px;
+    height: 49px;
+    background: url("../images/border2.png") no-repeat;
+}

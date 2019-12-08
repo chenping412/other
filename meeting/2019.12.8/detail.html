@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+<div class="main" id="main" style="transform: scale(1)">
+    <div class="header">
+        <span>泵站监控平台</span>
+    </div>
+
+  <div class="box clearfix">
+      <div class="echart-box border">
+          <h3>龙岭泵站</h3>
+          <div class="echart">
+              <div id="echart"></div>
+              <span class="date">星期三 Wednesday 2019/11/11</span>
+              <div class="text">
+                  <span>最低水位：0.5米</span>
+                  <span>最高水位：2.5米</span>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="table-box border">
+          <h3>龙岭泵站</h3>
+          <table>
+              <thead>
+              <tr>
+                  <th style="background-color: #389932;">时间</th>
+                  <th style="background-color: #d2b63b;">水位</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr><tr>
+                  <td>2019-12-08 18:19:00</td>
+                  <td>2.3米</td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+
+</div>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript">
+    var screenRate = 1;
+    function mainScale() {
+        screenRate = document.documentElement.clientWidth / 1920;
+        document.getElementById('main').style.transform = "scale(" + screenRate + ")";
+    }
+    mainScale();
+    window.onresize = function () {
+        mainScale()
+    };
+
+    //echart
+    if (document.getElementById('echart')) {
+        echarts.init(document.getElementById('echart')).setOption({
+            title:{
+                text:'清水池水位实时数据',
+                x: 'center',
+                y: 7,
+                textStyle:{
+                    color:'#ffffff',
+                    fontSize:24,
+                    fontWeight:'normal',
+                },
+            },
+            grid: {
+                left: '3%',
+                right: '3%',
+                top: 50,
+                bottom: 25,
+                containLabel: true
+            },
+            tooltip: {
+                show: true,
+                trigger: 'axis',
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    axisLabel: {
+                        color: '#ffffff',
+                    },
+                    axisLine: {
+                        show: false,
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#ffffff',
+                            type:'dashed'
+                        }
+                    },
+                    data: ['01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: "米",
+                    nameTextStyle: {
+                        color: "#ffffff"
+                    },
+                    axisLabel: {
+                        formatter: '{value}',
+                        textStyle: {
+                            color: '#ffffff',
+                        }
+                    },
+                    axisLine: {
+                        show:false,
+                    },
+                    axisTick: {
+                        show: false,
+                    },
+                    splitLine: {
+                        show: true,
+                        lineStyle: {
+                            color: '#a0a0a0',
+                            width: 2
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name: '水位',
+                    type: 'line',
+                    symbol: 'circle',
+                    symbolSize: 10,
+                    itemStyle: {
+                        normal: {
+                            color: 'rgba(3,240,254,1)',
+                            lineStyle: {
+                                color: "rgba(3,240,254,1)",
+                                width: 2
+                            },
+                            shadowColor:'rgba(3,240,254,1)',
+                            shadowBlur:20,
+                        }
+                    },
+                    markPoint: {
+                        itemStyle: {
+                            normal: {
+                                color: 'red'
+                            }
+                        }
+                    },
+                    data: [120, 132, 101, 134, 90, 230, 210, 182, 191, 234, 290, 330]
+                },
+
+            ]
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+.main{
+    height: 1080px;
+}
+
+.tabs{
+    position: absolute;
+    left: 219px;
+    top:202px;
+    width: 553px;
+    height: 657px;
+}
+.tabs h3{
+    line-height: 90px;
+    font-size: 42px;
+    color: #FFFFFF;
+    padding-left: 54px;
+    font-weight: normal;
+}
+.tabs .list{
+    padding-top: 34px;
+    width: 440px;
+    margin: 0 auto;
+}
+.tabs .list li{
+    height: 127px;
+    line-height: 127px;
+    background-color: #c7493a;
+    margin-bottom: 37px;
+    cursor: pointer;
+}
+.tabs .list li img{
+    margin: 0 60px;
+    line-height: 0;
+    vertical-align: middle;
+    transform: translateY(-10px);
+}
+.tabs .list li span{
+    font-size: 42px;
+    color: #FFFFFF;
+}
+.tabs .list li.active{
+    box-shadow: 0 0 0 10px #FFFFFF inset;
+}
+
+
+
+.line{
+    position: absolute;
+    left: 820px;
+    top:220px;
+}
+
+
+
+.maps{
+    position: absolute;
+    top:202px;
+    right: 153px;
+    width: 890px;
+    height: 500px;
+    border:2px solid #1f3c8c;
+    background-color: rgba(255,255,255,0.11);
+}
+.maps .title{
+    float: left;
+    width: 235px;
+    height: 83px;
+    background-color: #c64939;
+    text-align: center;
+    line-height: 83px;
+    font-size: 42px;
+    color: #FFFFFF;
+}
+.maps .status{
+    float: left;
+    color: #ffffff;
+    padding:50px 0 0 25px;
+    line-height: 30px;
+    font-size: 18px;
+}
+.maps .status span+span{
+    margin-left: 30px;
+}
+.maps .status img{
+    vertical-align: middle;
+    transform: translateY(-5px);
+    margin-left: 8px;
+}
+.maps .pipeline{
+    position: absolute;
+    left: 0;
+    top:123px;
+    width: 100%;
+    height: 288px;
+    background: url("../images/maps_img_01.png") no-repeat;
+}
+.maps .pipeline .text{
+    color: #ff0056;
+    font-size: 18px;
+    position: absolute;
+}
+.maps .pipeline .text1{
+    left: 157px;
+    top: 183px;
+}
+.maps .pipeline .text2{
+    left: 737px;
+    top: 76px;
+}
+.maps .pipeline .list{
+    position: absolute;
+    left: 274px;
+    top: 93px;
+    width: 430px;
+}
+.maps .pipeline .list li{
+    float: left;
+    position: relative;
+    background: url("../images/maps_img_02.png") no-repeat left center/ 20px 98px;
+    width: 93px;
+    height: 98px;
+}
+.maps .pipeline .list .icon{
+    position: absolute;
+    left: -10px;
+    top:28px;
+    display: block;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+.maps .pipeline .list span{
+    position: absolute;
+    right: 10px;
+    top:0;
+    width: 50px;
+    font-size: 24px;
+    line-height: 98px;
+    color: #ffffff;
+    font-weight: bolder;
+}
+.maps .rate{
+    position: absolute;
+    left: 60px;
+    bottom: 35px;
+    width: 100%;
+}
+.maps .rate .item{
+    float: left;
+}
+.maps .rate .item+.item{
+    margin-left: 60px;
+}
+.maps .rate .item>span{
+    font-size: 18px;
+    color: #ffffff;
+    line-height: 25px;
+    vertical-align: middle;
+}
+.maps .rate .item .li{
+    display: inline-block;
+    height: 21px;
+    width: 240px;
+    border:2px solid #5fd6f0;
+    border-radius: 13px;
+}
+.maps .rate .item .li i{
+    font-size: 14px;
+    line-height: 19px;
+    border:1px solid transparent;
+    display: block;
+    width: 100%;
+    height: 21px;
+    box-sizing: border-box;
+    background-color: #3a7ee7;
+    border-radius: 11px;
+    text-align: center;
+    font-style: normal;
+}
+.maps .rate .item:nth-child(2) .li i{
+    background-color: #c64939;
+}
+
+
+
+.config{
+    position: absolute;
+    top:750px;
+    right: 153px;
+    width: 890px;
+    height: 217px;
+}
+.config .box{
+    width: 242px;
+    height:100%;
+    float: left;
+    margin: 0 26px;
+}
+.config .box h3{
+    font-size: 30px;
+    color: #ffffff;
+    line-height: 62px;
+    padding-left: 32px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+.config .box p{
+    font-size: 16px;
+    color: #bbbbbb;
+    line-height: 28px;
+    padding-left: 48px;
+    font-weight: normal;
+}
+.config .line{
+    position: static;
+    height: 100%;
+    float: left;
+}
+
+
+
+
