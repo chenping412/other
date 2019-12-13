@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/flow-control.css">
+</head>
+<body>
+<div class="main" id="main" style="transform: scale(1)">
+    <div class="header">
+        <span>庙角岭水厂</span>
+    </div>
+    <div class="maps border">
+        <div class="title">石灰流量控制</div>
+
+        <div class="pipeline">
+            <div class="chi" style="left: 0;top: 100px;">
+                <p>石灰池</p>
+            </div>
+            <img class="jiantou" style="left: 305px;" src="images/jiantou1.png">
+            <img class="jiantou" style="right: 305px;" src="images/jiantou1.png">
+            <div class="chi" style="right: 0;top: 100px;">
+                <p>配水井</p>
+            </div>
+            <div class="guandao"></div>
+
+
+            <div class="famen">
+                <p>
+                    管道流量：<br>
+                    <span>1000</span>升/小时
+                </p>
+            </div>
+
+
+            <div class="famen" style="left: 860px;">
+                <p>
+                    阀门开度：<br>
+                    <span>100</span>%
+                </p>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="config clearfix">
+            <div class="box border">
+                <h3>参数调整</h3>
+                <p>
+                    <span>允许误差设置±</span>
+                    <input type="text" value="100">
+                    <b>L/h</b>
+                </p>
+                <p>
+                    <span>手动调节阀门</span>
+                    <input type="text" value="0.0">
+                    <b>%</b>
+                </p>
+                <p>
+                    <span>自动调节百分比</span>
+                    <input type="text" value="1.0">
+                    <b>%</b>
+                </p>
+                <p>
+                    <span>自动调节延时值</span>
+                    <input type="text" value="3">
+                    <b>秒</b>
+                </p>
+            </div>
+        </div>
+
+        <div class="text">
+            <h3>
+                <i style="letter-spacing: 10px;">流量设置</i>：
+                <input type="text" value="1255">
+                <span>升/小时</span>
+            </h3>
+            <p>
+                <i style="letter-spacing: 17px;">阀门类型</i>：
+                <span>手动</span>
+            </p>
+            <p>
+                <i>系统运行状态：</i>
+                <span>停止运行</span>
+            </p>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+<script type="text/javascript">
+    var screenRate = 1;
+    function mainScale() {
+        screenRate = document.documentElement.clientWidth / 1920;
+        document.getElementById('main').style.transform = "scale(" + screenRate + ")";
+    }
+    mainScale();
+    window.onresize = function () {
+        mainScale()
+    };
+</script>
+</body>
+</html>

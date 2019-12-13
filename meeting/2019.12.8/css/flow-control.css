@@ -1,0 +1,162 @@
+.main{
+    height: 1080px;
+}
+
+.maps{
+    position: absolute;
+    top:120px;
+    right: 80px;
+    left: 80px;
+    bottom:80px;
+    border:2px solid #1f3c8c;
+    background-color: rgba(255,255,255,0.11);
+}
+.maps .title{
+    float: left;
+    width: 235px;
+    height: 65px;
+    background-color: #c64939;
+    text-align: center;
+    line-height: 65px;
+    font-size: 34px;
+    color: #FFFFFF;
+}
+.maps .pipeline{
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    top: 60px;
+}
+.maps .pipeline .chi{
+    position: absolute;
+    width: 280px;
+    height: 300px;
+    background: url("../images/shuichi.png") no-repeat center/contain;
+}
+.maps .pipeline .chi p{
+    position: absolute;
+    left: 0;
+    top:50%;
+    width: 100%;
+    color: #333333;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bolder;
+}
+.maps .pipeline .jiantou{
+    position: absolute;
+    top: 192px;
+    width: 135px;
+}
+.maps .pipeline .guandao{
+    position: absolute;
+    top: 260px;
+    left: 262px;
+    right: 262px;
+    z-index: 5;
+    height: 60px;
+    border-top: 12px solid #5fd6f0;
+    border-bottom: 12px solid #5fd6f0;
+    background-color: #ffffff;
+}
+.maps .pipeline .famen{
+    position: absolute;
+    top: 187px;
+    left: 464px;
+    z-index: 10;
+    width: 200px;
+    height: 200px;
+    border: 12px solid #5fd6f0;
+    background-color: #ffffff;
+    border-radius: 40px;
+}
+.maps .pipeline .famen p{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:55px;
+    font-size: 26px;
+    color: #333333;
+    text-align: center;
+    line-height: 40px;
+}
+.maps .pipeline .famen p span{
+    background-color: #000000;
+    color: greenyellow;
+    display: inline-block;
+    padding:0 8px;
+    margin-right: 5px;
+}
+
+
+.config{
+    position: absolute;
+    left: 100px;
+    bottom:30px;
+}
+.config .box{
+    float: left;
+    padding-bottom: 30px;
+}
+.config .box h3{
+    font-size: 36px;
+    color: #ffffff;
+    line-height: 70px;
+    padding-left: 30px;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+.config .box p{
+    font-size: 30px;
+    color: #bbbbbb;
+    padding:5px 30px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+.config .box p input{
+    width: 100px;
+    text-align: center;
+    font-size: inherit;
+}
+.config .box p span{
+    display: inline-block;
+    min-width: 215px;
+    text-align: right;
+}
+.config .box p b{
+    font-weight: normal;
+}
+
+
+.maps .text{
+    position: absolute;
+    left: 900px;
+    bottom: 100px;
+}
+.maps .text h3{
+    color: red;
+    font-size: 40px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.maps .text h3 input{
+    font-size: inherit;
+    width: 180px;
+    text-align: center;
+}
+.maps .text  p{
+    font-size: 34px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+.maps .text  i{
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
