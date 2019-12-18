@@ -1,64 +1,10 @@
-.main{
-    height: 1080px;
-}
-
-.tabs{
-    position: absolute;
-    left: 219px;
-    top:202px;
-    width: 553px;
-    height: 657px;
-}
-.tabs h3{
-    line-height: 90px;
-    font-size: 42px;
-    color: #FFFFFF;
-    padding-left: 54px;
-    font-weight: normal;
-}
-.tabs .list{
-    padding-top: 34px;
-    width: 440px;
-    margin: 0 auto;
-}
-.tabs .list li{
-    height: 127px;
-    line-height: 127px;
-    background-color: #c64939;
-    margin-bottom: 37px;
-    cursor: pointer;
-    border-radius: 64px;
-}
-.tabs .list li img{
-    margin: 0 50px 0 60px;
-    line-height: 0;
-    vertical-align: middle;
-    transform: translateY(-12px);
-}
-.tabs .list li span{
-    font-size: 42px;
-    color: #FFFFFF;
-}
-.tabs .list li.active{
-    box-shadow: 0 0 0 8px #FFFFFF inset;
-}
-
-
-
-.line{
-    position: absolute;
-    left: 820px;
-    top:220px;
-}
-
-
 
 .maps{
     position: absolute;
-    top:202px;
-    right: 153px;
-    width: 890px;
-    height: 500px;
+    top:180px;
+    left: 210px;
+    width: 1500px;
+    height: 505px;
     border:2px solid #ffffff;
     background-color: rgba(255,255,255,0.13);
 }
@@ -75,12 +21,12 @@
 .maps .status{
     float: left;
     color: #ffffff;
-    padding:50px 0 0 25px;
+    padding:50px 0 0 120px;
     line-height: 30px;
     font-size: 18px;
 }
 .maps .status span+span{
-    margin-left: 30px;
+    margin-left: 50px;
 }
 .maps .status img{
     vertical-align: middle;
@@ -90,58 +36,92 @@
 .maps .pipeline{
     position: absolute;
     left: 0;
-    top:123px;
+    top:110px;
     width: 100%;
     height: 288px;
-    background: url("../images/maps_img_01.png") no-repeat;
+    background: url("../images/bengfang-maps_img.png") no-repeat top center;
+}
+.maps .pipeline .guandao{
+    position: absolute;
+    left: 50%;
+    top:0;
+    margin-left: -591px;
+    z-index: 2;
 }
 .maps .pipeline .text{
     color: #ff0056;
     font-size: 18px;
     font-weight: bold;
     position: absolute;
+    left: 888px;
+    top: 135px;
+    z-index: 3;
 }
-.maps .pipeline .text1{
-    left: 157px;
-    top: 183px;
-}
-.maps .pipeline .text2{
-    left: 737px;
-    top: 76px;
-}
-.maps .pipeline .list{
+.maps .pipeline .fang1{
     position: absolute;
-    left: 274px;
-    top: 93px;
-    width: 430px;
+    left: 165px;
+    top: 148px;
+    transform: translateY(-50%);
+}
+.maps .pipeline .fang1 .name{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -45px;
+    text-align: center;
+    font-size: 18px;
+    color: #c64939;
+    font-weight: bolder;
 }
 .maps .pipeline .list li{
-    float: left;
     position: relative;
-    background: url("../images/maps_img_02.png") no-repeat left center/ 20px 98px;
-    width: 100px;
-    height: 98px;
+    width: 120px;
+    height: 20px;
+    background: url("../images/guandao3.png") no-repeat right top;
+}
+.maps .pipeline .list li+li{
+    background: url("../images/guandao2.png") no-repeat right bottom;
+    height: 83px;
+    margin-top: -8px;
+}
+.maps .pipeline .list li.only-one{
+    background: url("../images/guandao4.png") no-repeat right top;
 }
 .maps .pipeline .list .icon{
     position: absolute;
-    left: -18px;
-    top:28px;
+    left: 25px;
+    bottom: -9px;
     display: block;
 }
 .maps .pipeline .list span{
     position: absolute;
-    right: 10px;
-    top:0;
-    width: 50px;
+    left: 0;
+    right: 12px;
+    bottom: 32px;
     font-size: 24px;
-    line-height: 98px;
     color: #ffffff;
     font-weight: bolder;
+    text-align: center;
 }
+.maps .pipeline .fang2{
+    left: auto;
+    right: 296px;
+    top: 150px;
+}
+.maps .pipeline .fang2 .list li{
+    background: url("../images/guandao7.png") no-repeat right top;
+}
+.maps .pipeline .fang2 .list li+li{
+    background: url("../images/guandao6.png") no-repeat right bottom;
+}
+.maps .pipeline .fang2 .list li.only-one{
+    background: url("../images/guandao4.png") no-repeat right top;
+}
+
 .maps .rate{
     position: absolute;
-    left: 60px;
-    bottom: 35px;
+    left: 600px;
+    bottom: 50px;
     width: 100%;
 }
 .maps .rate .item{
@@ -183,13 +163,12 @@
 .config{
     position: absolute;
     top:750px;
-    right: 153px;
-    width: 890px;
-    height: 217px;
+    right: 300px;
+    left: 300px;
 }
 .config .box{
     width: 242px;
-    height:100%;
+    height: 217px;
     float: left;
     margin: 0 26px;
 }

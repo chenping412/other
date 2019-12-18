@@ -1,6 +1,6 @@
 
 .border{
-    background-color: rgba(40, 80, 224, 0.1);
+    background-color: rgba(255, 255, 255, 0.13);
     position: relative;
 }
 .border>.title{
@@ -51,7 +51,7 @@
     top:8px;
     height: 32px;
     width: 17px;
-    background:url("../images/tab_icon_02.png") no-repeat center/contain;
+    background:url("../images/tab_icon.png") no-repeat center/contain;
 }
 .floor-box .items{
     float: right;

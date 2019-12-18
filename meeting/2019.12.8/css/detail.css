@@ -2,7 +2,7 @@
 .box{
     width: 1690px;
     margin: 80px auto;
-    background-color: rgba(40, 80, 224, 0.3);
+    background-color: rgba(255, 255, 255, 0.13);
     padding:35px 20px;
 }
 .box .echart-box{

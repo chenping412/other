@@ -105,34 +105,38 @@ body{
 html,body{
     width: 100%;
     height: 100%;
-    background: #121929
+    background: #11426d
 }
 
 
 .main{
     width: 1920px;
-    /*height: 1080px;*/
-    min-height: 900px;
+    min-height: 1080px;
     position: relative;
     -webkit-transform-origin: left top;
     transform-origin: left top;
-    background: url("../images/main-bg.png") no-repeat center 110px;
+    background: url("../images/main-bg.jpg") no-repeat;
     overflow: hidden;
 }
 .main .header{
     width: 100%;
-    height: 82px;
-    background: url("../images/header-bg.jpg") no-repeat center/cover;
+    height: 75px;
     position: relative;
 }
 .main .header span{
     display: block;
     width: 420px;
-    line-height: 82px;
+    line-height: 75px;
     text-align: center;
     padding:0 0 0 116px;
     color: #FFFFFF;
     font-size: 50px;
+    white-space: nowrap;
+}
+.header span em{
+    font-size: 28px;
+    vertical-align: baseline;
+    font-style: normal;
 }
 
 .border{
@@ -144,8 +148,8 @@ html,body{
     left: 0;
     top:0;
     z-index: 9;
-    width: 237px;
-    height: 49px;
+    width: 231px;
+    height: 50px;
     background: url("../images/border.png") no-repeat;
 }
 .border:after{
@@ -154,7 +158,7 @@ html,body{
     right: 0;
     bottom:0;
     z-index: 9;
-    width: 237px;
-    height: 49px;
+    width: 231px;
+    height: 50px;
     background: url("../images/border2.png") no-repeat;
 }

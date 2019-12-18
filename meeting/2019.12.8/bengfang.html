@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/bengfang.css">
+</head>
+<body>
+<div class="main" id="main" style="transform: scale(1)">
+    <div class="header">
+        <span>沙湖水厂<em>泵房运行监控系统</em></span>
+    </div>
+
+    <div class="maps border">
+        <div class="title">沙湖水厂</div>
+        <div class="status">
+            <span>泵机状态:</span>
+            <span>打开<img src="images/maps_icon_01.png"></span>
+            <span>关闭<img src="images/maps_icon_02.png"></span>
+            <span>故障<img src="images/maps_icon_03.png"></span>
+        </div>
+
+        <div class="pipeline">
+
+            <div class="fang1">
+                <ul class="list">
+                    <li>
+                        <span>1#</span>
+                        <img class="icon" src="images/maps_icon_01.png">
+                    </li>
+                    <li>
+                        <span>2#</span>
+                        <img class="icon" src="images/maps_icon_02.png">
+                    </li>
+                    <li>
+                        <span>3#</span>
+                        <img class="icon" src="images/maps_icon_03.png">
+                    </li>
+                    <li>
+                        <span>4#</span>
+                        <img class="icon" src="images/maps_icon_01.png">
+                    </li>
+
+                    <!--<li class="only-one" data-tip="如果只有一个，就加上class=only-one">
+                        <span>1#</span>
+                        <img class="icon" src="images/maps_icon_01.png">
+                    </li>-->
+                </ul>
+                <p class="name">原厂泵房</p>
+            </div>
+
+            <div class="fang1 fang2">
+                <ul class="list">
+                    <li>
+                        <span>1#</span>
+                        <img class="icon" src="images/maps_icon_01.png">
+                    </li>
+                    <li>
+                        <span>2#</span>
+                        <img class="icon" src="images/maps_icon_02.png">
+                    </li>
+                    <li>
+                        <span>3#</span>
+                        <img class="icon" src="images/maps_icon_03.png">
+                    </li>
+
+                    <!--<li class="only-one" data-tip="如果只有一个，就加上class=only-one">
+                        <span>1#</span>
+                        <img class="icon" src="images/maps_icon_01.png">
+                    </li>-->
+                </ul>
+                <p class="name">出厂泵房</p>
+            </div>
+
+            <img class="guandao" src="images/bengfang-maps_img.png">
+
+            <p class="text">3.7米</p>
+
+        </div>
+
+        <div class="rate">
+            <div class="item">
+                <span>清水池水位：</span>
+                <div class="li">
+                    <i style="width: 55%;">55%</i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="config clearfix">
+        <div class="box border left">
+            <h3>泵站参数</h3>
+            <p>A相电压：220V</p>
+            <p>A相电压：220V</p>
+            <p>A相电压：220V</p>
+            <p>进水阀门：打开/关闭</p>
+        </div>
+
+        <div class="box border" style="float: right;">
+            <h3>高位水池</h3>
+            <p>蓄电池电压：220V</p>
+            <p>蓄电池电压：220V</p>
+            <p>蓄电池电压：220V</p>
+            <p>蓄电池电压：220V</p>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    var screenRate = 1;
+    function mainScale() {
+        screenRate = document.documentElement.clientWidth / 1920;
+        document.getElementById('main').style.transform = "scale(" + screenRate + ")";
+    }
+    mainScale();
+    window.onresize = function () {
+        mainScale()
+    };
+</script>
+</body>
+</html>
