@@ -1,0 +1,288 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: #FF3C3C;
+}
+img {
+    border: none;
+    vertical-align: middle;
+}
+ol, ul, li, button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    *zoom: 1;
+}
+.inner{
+    width: 1200px;
+    margin: 0 auto;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    min-width: 1280px;
+    background-color: #f0f1f4;
+}
+body{
+    position: relative;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.main{
+    width: 100%;
+    height:100%;
+    background: url("../images/bj03.jpg") no-repeat center top/cover;
+    position: relative;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+}
+
+#mapDiv{
+    position: absolute;
+    left: 15%;
+    top:8%;
+    z-index: 1;
+    width: 80%;
+    height: 84%;
+    overflow: hidden;
+}
+
+/* 首页装饰 */
+.mapBottomBg {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 140px;
+    z-index: 997;
+    background-image: url("../images/dg05.png");
+    background-size: 100% 200px;
+}
+.mapTopBg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 997;
+    width: 650px;
+    height: 275px;
+    background: url(../images/dg04.png) 100% 100% no-repeat;
+}
+.mapTopRightBg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 997;
+    width: 550px;
+    height: 190px;
+    background: url("../images/dg03.png") 100% 100% no-repeat;
+}
+
+
+.danj-title {
+    position: absolute;
+    left: 44%;
+    top: 45px;
+    margin-left: -350px;
+    z-index: 999;
+}
+.danj-title img {
+    width: 700px;
+}
+.xpanel-title {
+    width: 450px;
+    height: 60px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 998;
+}
+.xpanel-title img {
+    width: 50px;
+    vertical-align: middle;
+}
+.xpanel-title span {
+    font-size: 28px;
+    font-weight: bold;
+    color: #e2ff00;
+    vertical-align: middle;
+    display: inline-block
+}
+
+
+
+.search{
+    position: absolute;
+    top: 65px;
+    right: 50px;
+    z-index: 998;
+}
+.search input,
+.search button {
+    border: none;
+    outline: none;
+}
+.search input {
+    border: 2px solid #c5464a;
+    border-radius: 5px;
+    top: 0;
+    right: 0;
+    width:300px;
+    height: 42px;
+    padding-left: 13px;
+}
+.search button {
+    background: #c5464a;
+    width: 60px;
+    height: 42px;
+    cursor: pointer;
+    position: absolute;
+    right: 2px;
+    top:2px;
+    color: #FFFFFF;
+}
+
+.activityPanel{
+    position:absolute;
+    top:50%;
+    left:5%;
+    margin-top: -280px;
+    width:350px;
+    padding:20px 30px;
+    text-align: center;
+    background-color:#FF3C3C;
+    border-radius:8px;
+    z-index: 998;
+    overflow: hidden;
+}
+.activityPanel>h2{
+    padding-bottom: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
+}
+.activityPanel .activityPanel-scroll{
+    position: relative;
+    overflow: hidden;
+    height: 520px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.activityPanel .activityPanel-scroll li{
+    padding:10px;
+    font-size: 16px;
+    line-height: 24px;
+    border-bottom: 1px dotted #aaaaaa;
+}
+
+.bottom-btns{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    z-index:997;
+}
+.bottom-btns>a{
+    float: left;
+    display: block;
+    text-align:center;
+    line-height:68px;
+    font-size:22px;
+    color: #FFFFFF;
+    width:14.25%;
+    height:68px;
+    background: url('../images/dg06.png') no-repeat center/contain;
+}
+
+.gm-map-btn{
+    position: absolute;
+    right: 55px;
+    top:135px;
+    z-index: 11199;
+}
+.gm-map-btn:hover .gm-map-panel{
+    display: block;
+}
+.gm-map-panel{
+    display: none;
+    position: absolute;
+    right: 10px;
+    top:25px;
+    width: 150px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+}
+.gm-map-panel label{
+    display: block;
+    line-height: 34px;
+    cursor: pointer;
+}
+
+
+.login-contain{
+    position: absolute;
+    left: 10%;
+    top:50%;
+    z-index: 99999;
+    margin-top: -200px;
+    border-radius:8px;
+    background-color: #FFFFFF;
+    padding:20px;
+    width: 350px;
+    box-shadow: 0 0 10px 0 #CCCCCC;
+}
+.login-contain h3{
+    text-align: center;
+    padding:10px 0 20px;
+    font-size: 20px;
+}
+.login-contain .row{
+    margin-bottom: 20px;
+}
+.login-contain .row input,
+.login-contain .row button{
+    width: 100%;
+    height: 40px;
+    border:1px solid #dddddd;
+    padding:0 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+.login-contain .row input:focus{
+    border-color: #FF3C3C;
+}.login-contain .row button{
+    background: #FF3C3C;
+    color: #FFFFFF;
+}

@@ -1,0 +1,171 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: PingFang SC, Microsoft Yahei, Hiragino Sans GB, sans-serif, Arial;
+    outline: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: #FF3C3C;
+}
+img {
+    border: none;
+    vertical-align: middle;
+    max-width: 100%;
+}
+ol, ul, li, button {
+    list-style: none;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {
+    *zoom: 1;
+}
+.inner{
+    width: 1200px;
+    margin: 0 auto;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+html,body{
+    font-size: 14px;
+    min-width: 1280px;
+    position: relative;
+    background-color: #fbf5f1;
+}
+.main{
+    background-color: #fbf5f1;
+}
+.bj-top{
+    background-color: #FFFFFF;
+}
+
+.main-title{
+    position: absolute;
+    top: 130px;
+    left: 180px;
+    font-size: 36px;
+    color: #FFFFFF;
+}
+
+
+.activityPanel{
+    position:absolute;
+    top: 500px;
+    left:20px;
+    width:400px;
+    padding:20px 30px;
+    text-align: center;
+    background-color:#c30d23;
+    border-radius:8px;
+    z-index: 998;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.activityPanel .activityPanel-scroll{
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.activityPanel .activityPanel-scroll li{
+    border-bottom: 1px dotted #aaaaaa;
+    margin-bottom: 2px;
+}
+.activityPanel .activityPanel-scroll li img{
+    width: 100%;
+    display: block;
+}
+
+
+.news-list{
+    position: absolute;
+    right: 50px;
+    left: 680px;
+    top:80px;
+    padding-bottom: 30px;
+}
+.news-list li:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.news-list li{
+    font-size: 16px;
+    padding:10px 0;
+    border-bottom: 1px dashed #CCCCCC;
+}
+.news-list .btns{
+    text-align: center;
+    padding:20px 0;
+}
+.news-list .btns button{
+    background-color: #FFFFFF;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    border:1px solid #CCCCCC;
+    border-radius: 21px;
+}
+.news-list .btns button+button{
+    margin-left: 50px;
+}
+
+
+.detail-info{
+    position:absolute;
+    top: 500px;
+    left:40px;
+    width:600px;
+    padding-bottom: 50px;
+}
+.detail-info h3{
+    font-size: 20px;
+    padding:20px 0;
+}
+.detail-info .peopleZanUl{
+    padding:20px 0;
+}
+.detail-info .peopleZanUl li{
+    width: 20%;
+    float: left;text-align: center;
+}
+.detail-info .peopleZanUl li img{
+    width: 50px;
+}
+.detail-info .comment li{
+    padding:5px 0;
+    border-bottom: 1px dashed #CCCCCC;
+}
+
+
+.partyWallRightTitle{
+    font-size: 32px;
+    padding-bottom: 15px;
+}
+.partyWallRightArticle{
+    font-size: 16px;
+}
+.partyWallRightArticle p{
+    margin-bottom: 15px;
+}
