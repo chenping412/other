@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<!-- [ published at 2021-01-06 11:09:33! ] -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预览</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
+    <link rel="shortcut icon" href="{{brandDetail.hostConfig}}/icons/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="{{brandDetail.hostConfig}}/css/style.css?v=20210115">
+    <link rel="stylesheet" type="text/css" href="{{brandDetail.hostConfig}}/css/public.css?v=20210115">
+    <link rel="stylesheet" type="text/css" href="{{brandDetail.hostConfig}}/css/brand-detail.css?v=20210115.02">
+    <link rel="stylesheet" type="text/css" href="{{brandDetail.hostConfig}}/css/swiper-3.4.2.min.css?v=20210115">
+</head>
+<body>
+<p style="position: fixed;left: 0;top: 0;z-index:999999999999;background-color: yellow;padding: 5px 15px;color: #333333;">品牌预览</p>
+<div class="header" id="header">
+    <div class="inner clearfix">
+        <div class="logo left">
+            <a href="{{brandDetail.hostConfig}}/">
+                <img src="{{brandDetail.hostConfig}}/icons/logo-header.png">
+            </a>
+        </div>
+        <div class="phone right">
+            <h3>400-001-1800</h3>
+            <p>
+                <img src="{{brandDetail.hostConfig}}/icons/phone-smal.png">
+                <span>|</span>
+                <span>联系电话</span>
+            </p>
+        </div>
+
+        <div class="search">
+            <form method="get" action="{{brandDetail.hostConfig}}/search">
+                <input type="text" name="q" placeholder="品牌、型号、订货号"/>
+                <button type="submit">
+                    <img src="{{brandDetail.hostConfig}}/icons/search-icon.png">
+                    <span>搜索</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="mobile-menu-button" id="mobile-menu-button">
+            <img src="{{brandDetail.hostConfig}}/icons/menu-icon-1.png">
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="menu">
+                <a href="{{brandDetail.hostConfig}}/">首页</a>
+                <a href="{{brandDetail.hostConfig}}/companies/partner.html">合作入驻</a>
+                <a href="{{brandDetail.hostConfig}}/brands/list.html">品牌中心</a>
+                <a href="{{brandDetail.hostConfig}}/companies/about.html">关于零搜</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="brand-detail">
+    <div class="breadcrumb">
+        <p class="inner">
+            <a href="{{brandDetail.hostConfig}}/">首页</a>
+            >
+            <span>{{brandDetail.name}}</span>
+        </p>
+    </div>
+    <div class="brand-top">
+        <div class="inner clearfix">
+            <div class="logo">
+                <div class="logo-inner">
+                    <img class="img" src="{{brandDetail.logoUrl}}" alt="{{brandDetail.name}}" onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                </div>
+            </div>
+            <div class="info">
+                <h1>{{brandDetail.name}}</h1>
+                <p>
+                    <span>中文名: </span>
+                    <span>{{brandDetail.chinese_name}}</span>
+                </p>
+                <p>
+                    <span>国家: </span>
+                    <span>{{brandDetail.countryChineseName}}</span>
+                </p>
+                <p>
+                    <span>制造商: </span>
+                    <span>{{brandDetail.manufactruerCompanyName}}</span>
+                </p>
+                <p>
+                    <span>网址: </span>
+                    <a rel="nofollow" href="{{brandDetail.website}}" target="_blank">{{brandDetail.website}}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content inner clearfix">
+        <div class="content-left left">
+
+            <div class="box">
+                <h3 class="title">{{brandDetail.name}} - 品牌简介</h3>
+                <div class="detail" id="short_description"></div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">品牌宣传图</h3>
+                <div class="brand_advertise-swiper">
+                    <div class="swiper-container" id="brand_advertise-swiper">
+                        <div class="swiper-wrapper" >
+                            {{#brandDetail.advertiseUrlList}}
+                            <div class="swiper-slide">
+                                <img src="{{url}}" alt="{{file_name}}">
+                            </div>
+                            {{/brandDetail.advertiseUrlList}}
+                        </div>
+                        <div id="brand_advertise-swiper-pagination" class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">{{brandDetail.name}} - 品牌介绍</h3>
+                <div class="detail" id="description"></div>
+            </div>
+            <div class="box">
+                <h3 class="title">{{brandDetail.name}} - 品牌历史</h3>
+                <div class="detail" id="brand_history"></div>
+            </div>
+            <div class="box">
+                <h3 class="title">{{brandDetail.name}} - 应用领域</h3>
+                <div class="tags">
+                    {{#brandDetail.usingAreaList}}
+                    <span>{{name}}</span>
+                    {{/brandDetail.usingAreaList}}
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">{{brandDetail.name}} - 品牌资质</h3>
+                <div class="red-product">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>资质中文名称</th>
+                            <th>资质英文名称</th>
+                            <th>资质文件</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#brandDetail.certificationList}}
+                        <tr>
+                            <td>{{chinese_name}}</td>
+                            <td>{{english_name}}</td>
+                            <td>
+                                {{#fileList}}
+                                <p><a href="{{url}}" download="file_name">{{file_name}}</a></p>
+                                {{/fileList}}
+                            </td>
+                        </tr>
+                        {{/brandDetail.certificationList}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">{{brandDetail.name}} - 热销产品</h3>
+                <div class="red-product">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>型号</th>
+                            <th>订货号</th>
+                            <th>品名</th>
+                            <th>毛重</th>
+                            <th>净重</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/MI17-.html">MI-17</a>
+                            </td>
+                            <td>
+                                <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/MI17-.html">-</a>
+                            </td>
+                            <td>麦克风</td>
+                            <td>0.30kg</td>
+                            <td>0.20kg</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/AVC3000-.html">AVC3000</a>
+                            </td>
+                            <td>
+                                <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/AVC3000-.html">-</a>
+                            </td>
+                            <td>路由器</td>
+                            <td>2.60kg</td>
+                            <td>2.00kg</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-right right">
+            <div>
+                <div class="relation tabs-box">
+                    <div class="tabs">
+                        <a href="javascript:;" class="active">相关品牌</a>
+                        <a href="javascript:;">相关产品</a>
+                    </div>
+                    <div class="items">
+                        <div class="item active">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/APPOLDT.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NTE0MDB9.gF_nS9w0nBuIbNzAm3N96FSkBXQ"
+                                                 alt="APPOLDT"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/APPOLDT.html">APPOLDT</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/NSK.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NjAwOTd9.dgTeoDJgRoMIFJvDr0yuLqYr48E"
+                                                 alt="NSK"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/NSK.html">NSK</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/SCHNEIDERTELEMECANIQUE.html">
+                                            <img class="logo" src="{{brandDetail.hostConfig}}/images/PULS.jpg"
+                                                 alt="Schneider Telemecanique"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/SCHNEIDERTELEMECANIQUE.html">Schneider Telemecanique</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ESKSCHULTZE.html">
+                                            <img class="logo" src="{{brandDetail.hostConfig}}/images/PULS.jpg"
+                                                 alt="ESK SCHULTZE"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ESKSCHULTZE.html">ESK SCHULTZE</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/FHF.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NTU3NTl9.IcFpr_4Kg7GrLsOrKPgXHSznCjk"
+                                                 alt="FHF"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/FHF.html">FHF</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/EBERSPACHER.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NTUzNTF9.c6PaD1YLStIflKF49v6s6kfM1p4"
+                                                 alt="Eberspächer"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/EBERSPACHER.html">Eberspächer</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/FABCOAIR.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NTU4NzR9.qBCusJlmnlJZ2fReGfiMtYidarw"
+                                                 alt="fabco-air"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/FABCOAIR.html">fabco-air</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/IMINORGREN.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NTc4MTN9.8NC5Kk2MnECfinwqldR4Detg_tM"
+                                                 alt="IMI NORGREN"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/IMINORGREN.html">IMI NORGREN</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/SGM.html">
+                                            <img class="logo" src="{{brandDetail.hostConfig}}/images/PULS.jpg"
+                                                 alt="SGM"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/SGM.html">SGM</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/CARLINGTECHNOLOGIES.html">
+                                            <img class="logo" src="https://file.0so.com/api/file/files/temp/eyJmaWxlX2lkIjo1NTM3ODF9.5Uptmzp67nlV-5h2Jl8wQAec70U"
+                                                 alt="Carling Technologies"
+                                                 onerror="javascript:this.src='{{brandDetail.hostConfig}}/images/PULS.jpg'">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/CARLINGTECHNOLOGIES.html">Carling Technologies</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="item">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/PA3000-.html">PA-3000</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/PA3000-.html">-</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/MI17-.html">MI-17</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/MI17-.html">-</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/YMC2106C-.html">YMC-2106c</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/YMC2106C-.html">-</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/AVC3000-.html">AVC3000</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{brandDetail.hostConfig}}/ROGAINSTRUMENTS/AVC3000-.html">-</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">品牌新闻</h3>
+                <ul class="brand-news-list">
+                    {{#brandDetail.newsList}}
+                    <li class="clearfix">
+                        <a href="">
+                            <img src="{{imageUrl}}">
+                            <p>{{title}}</p>
+                        </a>
+                    </li>
+                    {{/brandDetail.newsList}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-contact-us">
+    <div class="contact-us">
+        <div class="inner">
+            <div class="section-title">
+                <h3>联系我们</h3>
+            </div>
+            <div class="information clearfix">
+                <div class="right clearfix">
+                    <div>
+                        <input class="left" type="text" name="company_name" required placeholder="公司"/>
+                        <input class="right" type="text" name="user_name" required placeholder="联系人姓名"/>
+                        <input class="left" type="text" name="mobile" required placeholder="联系电话"/>
+                        <input class="right" type="text" name="qq" placeholder="微信或者QQ(非必填)"/>
+                        <textarea name="demand" placeholder="你的描述"></textarea>
+                        <button type="button">提交</button>
+                    </div>
+                </div>
+                <div class="left">
+                    <p class="text">
+                        <b>联系电话：</b>0755-26924948
+                        <br><b>400电话：</b>400-001-1800
+                        <br><b>客服 QQ：</b><a target="_blank" href="https://url.cn/5sNjjTr?_type=wpa&qidian=true">4000011800</a>
+                    </p>
+                    <div class="company">
+                        <h3>零搜科技（深圳）有限公司</h3>
+                        <p>地址：深圳市南山区前海深港合作区梦海大道5033号卓越前海壹号A座2707</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="exemption">免责声明：本网站所载信息均出于公共传播有益信息的目的，相关品牌和产品的文章、图片、音视频文件等资料的版权归版权所有人所有，如果版权所有人认为不宜上网供大家浏览，或不应无偿使用，请及时通过电子邮件或电话通知我们，以迅速采取适当措施，避免给双方造成不必要的经济损失。</p>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="bottom">
+        <div class="inner">
+            <div class="clearfix">
+                <a class="logo" href="{{brandDetail.hostConfig}}/">
+                    <img src="{{brandDetail.hostConfig}}/icons/logo-footer.png">
+                </a>
+                <div class="menu">
+                    <a href="{{brandDetail.hostConfig}}/">首页</a>
+                    <a href="{{brandDetail.hostConfig}}/companies/partner.html">合作入驻</a>
+                    <a href="{{brandDetail.hostConfig}}/brands/list.html">品牌中心</a>
+                    <a href="{{brandDetail.hostConfig}}/companies/about.html">关于零搜科技（深圳）有限公司</a>
+                </div>
+            </div>
+            <div class="address">
+                <p>
+                    <img src="{{brandDetail.hostConfig}}/icons/footer-1.png">
+                    <span>零搜科技（深圳）有限公司</span>
+                </p><p>
+                <img src="{{brandDetail.hostConfig}}/icons/footer-2.png">
+                <span>深圳市南山区前海深港合作区梦海大道5033号卓越前海壹号A座2707</span>
+            </p><p>
+                <img src="{{brandDetail.hostConfig}}/icons/footer-3.png">
+                <span>400-001-1800</span>
+            </p>
+            </div>
+            <div class="wechat">
+                <img src="{{brandDetail.hostConfig}}/images/qrcode.png">
+                <p>立即咨询</p>
+            </div>
+        </div>
+    </div>
+    <div class="record-no">
+        <p>
+            <a href="{{brandDetail.hostConfig}}/">零搜科技（深圳）有限公司</a>
+            | <a href="https://beian.miit.gov.cn" rel="nofollow" target="_blank">粤ICP备16014839号</a>
+            | <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030402001552" rel="nofollow" target="_blank">粤公网安备44030402001552号</a>
+            | <a href="{{brandDetail.hostConfig}}/sitemap.xml">网站地图</a>
+        </p>
+    </div>
+</div>
+<script type="text/javascript" src="{{brandDetail.hostConfig}}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{{brandDetail.hostConfig}}/js/swiper-3.4.2.jquery.min.js"></script>
+<script type="text/javascript" src="{{brandDetail.hostConfig}}/js/common.js"></script>
+<script type="text/javascript">
+    /*轮播设置*/
+    var advertiseSwiperImg = document.getElementById('brand_advertise-swiper').getElementsByTagName('img');
+    if(advertiseSwiperImg && advertiseSwiperImg.length>1){
+        new Swiper('#brand_advertise-swiper', {
+            autoplay: 5000,
+            autoplayDisableOnInteraction: false,
+            loop: true,
+            pagination: '#brand_advertise-swiper-pagination',
+            paginationClickable: true,
+        });
+    }
+</script>
+</body>
+</html>

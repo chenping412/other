@@ -1,0 +1,28 @@
+.select-template-components{
+  display: flex;
+  &.has-append .el-input__inner{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .select-template-components-append{
+    white-space: nowrap;
+    &>div{
+      vertical-align: top;
+      line-height: 31px;
+    }
+    &>.el-tag{
+      margin: 0 !important;
+      height: 32px;
+      line-height: 31px;
+      vertical-align: top;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      padding: 0 15px;
+    }
+    .el-button{
+      vertical-align: top;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="stylesheet">
+        body {
+            -webkit-print-color-adjust: exact;
+        }
+
+        @page {
+            size: portrait;
+        }
+
+        @media print {
+            nav.navbar {
+                display: none;
+            }
+
+            .newsidebar,
+            .main-top,
+            .gotop,
+            #loading-bar,
+            #loading-bar-spinner {
+                display: none;
+            }
+
+            .wrapper,
+            .newmain,
+            .main-content {
+                margin: 0;
+                padding: 0;
+            }
+
+            .print {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 93%;
+                padding: .6cm 0.5cm;
+            }
+
+            .print * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .print header {
+                border-bottom: 1pt solid #000;
+                display: block;
+                overflow: hidden;
+                padding-bottom: .4cm;
+            }
+
+            .print hgroup {
+                display: block;
+                float: left;
+            }
+
+            .print table {
+                page-break-inside: auto;
+            }
+
+            .print h1 {
+                font-size: 16pt;
+                font-weight: bold;
+            }
+
+            .print h2 {
+                font-size: 9pt;
+            }
+
+            .print #page:after {
+                display: inline-block;
+                content: counter(page);
+            }
+
+            .print #pages:after {
+                display: inline-block;
+                content: counter(pages);
+            }
+
+            .print-box .print-box-info-item {
+                display: inline-block;
+                font-size: 9pt;
+            }
+
+            .print-box .print-box-info-item span:first-child:after {
+                content: ": ";
+            }
+
+            .mt1-5 {
+                margin-top: 1.5cm;
+            }
+            .mb1-5 {
+                margin-bottom: 1.5cm;
+            }
+            .mrp {
+                margin-right: 0.5cm;
+            }
+            .print-box-info {
+                border-bottom: 1pt solid #000;
+                padding-bottom: 1cm;
+                margin-bottom: 1cm;
+            }
+            .box-item {
+                display: inline-block;
+                margin-right: 0.3cm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="print print-box">
+        <header>
+            <h1>{{pallet.pallet_name}}</h1>
+        </header>
+        <main>
+            <section class="mt1-5 mb1-5">
+                TO:</br>
+                <span>{{pallet.send_to_company.company_name}}</span>
+            </section>
+            <section class="mt1-5 mb1-5">
+                <span>{{pallet.customTag}}</span>
+            </section>
+            <section class="print-box-info">
+                <div class="print-box-info-item mrp">
+                    <span>Length (mm)</span>
+                    <span>{{pallet.length}}</span>
+                </div>
+                <div class="print-box-info-item mrp">
+                    <span>Width (mm)</span>
+                    <span>{{pallet.width}}</span>
+                </div>
+                <div class="print-box-info-item mrp">
+                    <span>Height (mm)</span>
+                    <span>{{pallet.height}}</span>
+                </div>
+                <div class="print-box-info-item mrp">
+                    <span>Gross Weight(kg)</span>
+                    <span>{{pallet.weight}}</span>
+                </div>
+            </section>
+            <section>
+                {{#pallet.box_list}}
+                <span class="box-item">{{box_name}}</span>
+                {{/pallet.box_list}}
+            </section>
+        </main>
+    </div>
+
+
+</body>
+
+</html>

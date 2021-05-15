@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css" rel="stylesheet">
+        body {
+            -webkit-print-color-adjust: exact;
+        }
+
+        @page {
+            size: portrait;
+        }
+
+        @media print {
+            nav.navbar {
+                display: none;
+            }
+
+            .newsidebar, .main-top, .gotop, #loading-bar, #loading-bar-spinner {
+                display: none;
+            }
+
+            .wrapper, .newmain, .main-content {
+                margin: 0;
+                padding: 0;
+            }
+
+            .print {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 90%;
+                padding: .6cm 0.5cm;
+            }
+
+            .print * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .print header {
+                border-bottom: 1pt solid #000;
+                display: block;
+                overflow: hidden;
+                padding-bottom: .4cm;
+            }
+
+            .print hgroup {
+                display: block;
+                float: left;
+            }
+
+            .print table {
+                page-break-inside: auto;
+            }
+
+            .print h1 {
+                font-size: 24pt;
+                font-weight: bold;
+            }
+
+            .print h2 {
+                font-size: 9pt;
+            }
+
+            .print #page:after {
+                display: inline-block;
+                content: counter(page);
+            }
+
+            .print #pages:after {
+                display: inline-block;
+                content: counter(pages);
+            }
+
+            .print-box .print-box-info-item {
+                display: inline-block;
+                font-size: 14pt;
+            }
+
+            .print-box .print-box-info-item span:first-child:after {
+                content: ": ";
+            }
+
+            .print-box .print-box-volume-item {
+                font-size: 14pt;
+            }
+
+            .print-box .print-box-volume-item span:first-child:after {
+                content: ": ";
+            }
+
+            .print-box table {
+                margin-top: .6cm;
+                width: 100%;
+            }
+
+            .print-box table > thead > tr > th {
+                background-color: #eee !important;
+                font-size: 14pt;
+                padding: .1cm;
+            }
+
+            .print-box table > thead > tr > th:last-child {
+                text-align: right;
+            }
+
+            .print-box table > thead {
+                border-bottom: 1pt solid #000;
+            }
+
+            .print-box table > tbody > tr > td:last-child {
+                text-align: right;
+            }
+
+            .print-box table > tbody > tr > td {
+                font-size: 14pt;
+                padding: .1cm;
+            }
+
+            .print-box table > tbody > tr {
+                border-bottom: .01mm solid #b2b2b2;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="print print-box">
+    <header>
+        <h1>{{box.box_name}}</h1>
+        <div style="display: inline-block">
+            <div class="print-box-volume-item per30">
+                <span>Length (mm)</span>
+                <span>{{box.length}}</span>
+            </div>
+            <div class="print-box-volume-item per30">
+                <span>Width (mm)</span>
+                <span>{{box.width}}</span>
+            </div>
+            <div class="print-box-volume-item per30">
+                <span>Height (mm)</span>
+                <span>{{box.height}}</span>
+            </div>
+            <div class="per30">
+                <span>{{box.customTag}}</span>
+            </div>
+        </div>
+        <div style="float: right;" id="qrcode"></div>
+    </header>
+    <main>
+        <section class="print-box-info">
+
+            <div class="print-box-info-item per50">
+                <span>Gross Weight(kg)</span>
+                <span>{{box.weight}}</span>
+            </div>
+        </section>
+        <table>
+            <thead>
+            <tr>
+                <th width="10%">NO.</th>
+                <th width="20%">Brand</th>
+                <th width="40%">[Article No.]</th>
+                <th width="20%">ProductType</th>
+                <th width="10%">QTY</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#box.box_lines}}
+            <tr>
+                <td>
+                    <span>{{index}}</span>
+                </td>
+                <td>
+                    <span>{{product_info.brand.name}}</span>
+                </td>
+                <td>
+                    <span>{{product_info.product_order_no}}</span>
+                </td>
+                <td>
+                    <span>{{product_info.product_name}}</span>
+                </td>
+                <td>
+                    <span>{{quantity}}</span>
+                </td>
+            </tr>
+            {{/box.box_lines}}
+            </tbody>
+        </table>
+    </main>
+</div>
+
+
+</body>
+</html>

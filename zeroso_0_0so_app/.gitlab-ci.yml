@@ -1,0 +1,72 @@
+stages:
+  - test
+  - deploy
+
+test:
+  stage: test
+  script:
+    - cd $CI_PROJECT_DIR
+    - npm install --registry=https://nexus.0so.com/repository/npm/
+    - npm run build-test
+    - mkdir -p /home/gitlab-runner/test_0
+    - rsync -az --delete  ./dist/* /home/gitlab-runner/test_0
+  tags:
+    - gitlab-runner-test-1
+  except:
+    - branches@0so_app/0
+
+dev:
+  stage: deploy
+  script:
+    - cd $CI_PROJECT_DIR
+    - npm install --registry=https://nexus.0so.com/repository/npm/
+    - npm run build-dev
+    - ssh -p 1007 10.211.1.254 "mkdir -p /data/0so_web/dev/0"
+    - rsync -az --delete  -e 'ssh -p 1007' ./dist/* 10.211.1.254:/data/0so_web/dev/0
+  tags:
+    - gitlab-runner
+  only:
+    - staging2@0so_app/0
+
+staging:
+  stage: deploy
+  script:
+    - cd $CI_PROJECT_DIR
+    - npm install --registry=https://nexus.0so.com/repository/npm/
+    - npm run build-staging
+    - ssh -p 1007 10.221.1.254 "mkdir -p /data/0so_web/staging/0"
+    - rsync -az --delete  -e 'ssh -p 1007' ./dist/* 10.221.1.254:/data/0so_web/staging/0
+  tags:
+    - gitlab-runner
+  only:
+    - staging@0so_app/0
+
+hotfix:
+  stage: deploy
+  script:
+    - cd $CI_PROJECT_DIR
+    - npm install --registry=https://nexus.0so.com/repository/npm/
+    - npm run build
+    - ssh -p 1007 10.231.1.254 "mkdir -p /data/0so_web/hotfix/0"
+    - rsync -az --delete  -e 'ssh -p 1007' ./dist/* 10.231.1.254:/data/0so_web/hotfix/0
+  tags:
+    - gitlab-runner
+  only:
+    - hostfix@0so_app/0
+
+product:
+  stage: deploy
+  script:
+    - cd $CI_PROJECT_DIR
+    - npm install --registry=https://nexus.0so.com/repository/npm/
+    - npm run build-product
+    - ssh -p 1007 -oStrictHostKeyChecking=no 10.254.1.254 "mkdir -p /data/0so_web/product/0"
+    - rsync -az --delete  -e 'ssh -p 1007 -oStrictHostKeyChecking=no' ./dist/* 10.254.1.254:/data/0so_web/product/0
+    - ssh -p 1007 -oStrictHostKeyChecking=no 10.254.2.254 "mkdir -p /data/0so_web/product/0"
+    - rsync -az --delete  -e 'ssh -p 1007 -oStrictHostKeyChecking=no' ./dist/* 10.254.2.254:/data/0so_web/product/0
+  tags:
+    - gitlab-runner
+  only:
+    refs:
+      - master@0so_app/0
+  when: manual

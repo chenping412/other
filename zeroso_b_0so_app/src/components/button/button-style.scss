@@ -1,0 +1,14 @@
+
+@import "./../../assets/css/config";
+
+.button-icon{
+  cursor: pointer;
+  font-size: 20px;
+  vertical-align: middle;
+  margin: 2px 3px;
+  color: $color-main;
+  transition: all 0.2s;
+}
+.button-icon:hover{
+  color: $color-main-hover;
+}
